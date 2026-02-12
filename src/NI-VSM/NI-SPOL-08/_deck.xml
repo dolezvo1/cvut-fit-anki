@@ -1,0 +1,387 @@
+<deck id="1666768206" name="NI-VSM::NI-SPOL-08" deck_slug="NI-SPOL-08">
+
+    <note id="1695851867" type="1708237251">
+        <div class="field">
+Definice - Reálný náhodný proces, množina stavů
+        </div>
+        <div class="field">
+<div>Mějme pravděpodobnostní prostor \((\Omega, \mathcal F, \operatorname P)\) a indexovou množinu \(T \subseteq \mathbb R\). Systém náhodných veličin \(\{ X_t \mid t \in T \}\), kde\[X_t : \Omega \to \mathbb R,\]nazýváme <b>reálný</b> <b>náhodný proces</b>. Množinu \(T\) lze chápat jako čas, přičemž:<br/></div><div><ul><li>je-li \(T\) nejvýše spočetná, mluvíme o diskrétním čase;</li><li>je-li \(T\) nespočetná, mluvíme o spojitém čase.</li></ul><b>Množinou stavů</b> \(S\) pak nazýváme minimální podmnožinu \(S\) množiny \(\mathbb R\), pro kterou platí\[\operatorname P(X_t \in S) = 1\]pro \(t \in T\).</div><div><br/></div><div><i>* tj. pro každou hodnotu času máme náhodnou veličinu</i><br/></div>
+        </div>
+    </note>
+    <note id="2129960932" type="1708237251">
+        <div class="field">
+Definice - Trajektorie náhodného procesu
+        </div>
+        <div class="field">
+Mějme náhodný proces \(\{ X_t \mid t \in T \}\) a elementární jev \(\omega \in \Omega\). Trajektorie (realizace) náhodného procesu \(\{ X_t \}\) je funkce \(f : T \to \mathbb R\) definovaná\[f(t) := X_t(\omega)\]pro \(t \in T\).<br/>
+        </div>
+    </note>
+    <note id="1393266785" type="1708237251">
+        <div class="field">
+Definice - Střední hodnota náhodného procesu
+        </div>
+        <div class="field">
+Střední hodnotou náhodného procesu rozumíme funkci \(\mu_X: T\to\mathbb{R}\) definovanou v bodě \(t\in T\) jako \(\mu_X(t) := E X_t\).<br/>Je-li \(\mu_X \equiv 0\), říkáme, že proces \(X\) je centrovaný.<br/><ul><li>Pro diskrétní veličiny</li><ul><li>\(\mu_X(t) = \sum_{x \in \cal X} x P(X_t = x)\)<br/></li></ul><li>Pro spojité veličiny</li><ul><li>\(\mu_X(t) = \int_\infty^{-\infty} x f_{X_t}(x) \mathrm{d} x\)<br/></li></ul></ul>
+        </div>
+    </note>
+    <note id="1390795372" type="1708237251">
+        <div class="field">
+Definice - Rozptyl náhodného procesu
+        </div>
+        <div class="field">
+Rozptylem náhodného procesu rozumíme funkci <br/>\(\sigma^2_X : T\to [0, \infty)\) definovanou v bodě \(t \in T\) jako \(\sigma^2_X(t)\ :=\ \mathrm{var} X_t = E(X_t - E X_t)^2 = (EX^2_t) -\mu^2_X(t)\)
+        </div>
+    </note>
+    <note id="1618808242" type="1708237251">
+        <div class="field">
+Definice - Autokovariační funkce náhodného procesu
+        </div>
+        <div class="field">
+Funkce \(c_X: T \times T \to \mathbb{R}\), která určuje kovarianci mezi náhodnými veličinami procesu ve dvou různých časech:<br/><br/>\(c_X(t,s):= \mathrm{cov}(X_t, X_s) = E((X_t - EX_t) \cdot (X_s - EX_s))\)
+        </div>
+    </note>
+    <note id="1762577983" type="1708237251">
+        <div class="field">
+Definice - Autokorelační funkce náhodného procesu
+        </div>
+        <div class="field">
+Funkce \(r_X: T \times T \to [-1,1]\), která určuje korelaci mezi náhodnými veličinami procesu ve dvou různých časech<br/><br/>\(r_X(t,s) := \rho(X_t, X_s)
+= \frac{c_X(t,s)}{\sigma_x(t) \sigma(s)}\)
+        </div>
+    </note>
+    <note id="1640394722" type="1708237251">
+        <div class="field">
+Stacionarita
+        </div>
+        <div class="field">
+Vyjadřuje, jakým způsobem se mění vlastnosti (střední hodnota, autokovariance) náhodné veličiny v procesu během času<br/><br/>Rozlišujeme procesy:<br/><ul><li>Striktně stacionární = žádné vlastnosti se v čase nemění (např. když se jedná o zcela nezávislé výběry, tj. bílý šum)</li><li>Stacionární řádu \(N\) = odolnost proti posunutí pro všechny \(k\)-tice kde \(k \leq N\)</li><li>Slabě stacionární = nemění se střední hodnota a autokovariance</li></ul>
+        </div>
+    </note>
+    <note id="1237509457" type="1708237251">
+        <div class="field">
+Definice - Markovský řetězec
+        </div>
+        <div class="field">
+Náhodný proces \(\{ X_n \mid n \in \mathbb N_0 \}\) s nejvýše spočetnou množinou stavů \(S\) nazýváme <b>markovským řetězcem s diskrétním časem</b>, pokud splňuje <b>markovskou podmínku</b>, tj. pokud pro všechna \(n \in \mathbb N\) a všechna \(s_0, \dots, s_n \in S\) platí\[\begin{matrix}
+P(X_n = s_n | X_{n - 1} = s_{n - 1} \cap \dots \cap X_0 = s_0) \\
+= P(X_n = s_n | X_{n - 1} = s_{n - 1}).
+\end{matrix}\]<div><i>* hovorově "bezpaměťovost", tj. pravděpodobnosti následujících stavů závisí pouze na současném stavu</i></div>
+        </div>
+    </note>
+    <note id="1275576424" type="1708237251">
+        <div class="field">
+Definice - matice pravděpodobnosti přechodu markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+<b>Matice pravděpodobností přechodu markovského řetězce s diskrétním časem </b>\(\{ X_n \mid n \in \mathbb N_0 \}\) za čas mezi \(n\) a \(m\), kde \(m \geq n\) je matice\[\mathbf P(n, m) = \big( \mathbf P_{ij}(n, m) \big)_{i, j \in S},\]kde\[\mathbf P_{ij}(n, m) = \operatorname P(X_m = j | X_n = i).\]
+        </div>
+    </note>
+    <note id="1800938588" type="1708237251">
+        <div class="field">
+Definice - rozdělení markovského řetězce s diskrétním časem v čase
+        </div>
+        <div class="field">
+<b>Rozdělení markovského řetězce s diskrétním časem </b>\(\{ X_n \mid n \in \mathbb N_0 \}\)<b> v čase</b> \(n \in \mathbb N_0\) je pro \(i \in S\) charakterizované řádkovým vektorem\[\mathbf p(n) = \big( p_1(n), p_2(n), \dots),\]kde\[\mathbf p_i(n) = \operatorname P(X_n = i).\]
+        </div>
+    </note>
+    <note id="1600006827" type="1708237251">
+        <div class="field">
+Věta - Chapman-Kolmogorova rovnice
+        </div>
+        <div class="field">
+Pro matice přechodu markovského řetězce s diskrétním časem a všechna \(k \leq l \leq m \in \mathbb N_0\) platí\[\mathbf P(k, m) = \mathbf P(k, l) \cdot \mathbf P(l, m).\]Obdobně pro matice přechodu markovského řetězce se spojitým časem a všechna \(r \leq s \leq t \in \langle 0, +\infty )\) platí\[\mathbf P(r, t) = \mathbf P(r, s) \cdot \mathbf P(s, t).\]<br/><img src="chapmankolmogorov-b309d754a9707baf088e3375d722dcc5.png"/><br/>
+        </div>
+    </note>
+    <note id="1951699472" type="1708237251">
+        <div class="field">
+Definice - Homogenní markovský řetězec
+        </div>
+        <div class="field">
+Markovský řetězec s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je <b>homogenní</b>, pokud pro všechna \(n \in \mathbb N\) a všechna \( i, j \in S\) platí\[\operatorname P(X_{n + 1} = j | X_n = i) = \operatorname P(X_1 = j | X_0 = i).\]Pro homogenní markovský řetězec pak definujeme <b>jednokrokovou</b> <b>matici přechodu</b>\[\mathbf P := \mathbf P(0, 1) = \bigl( \operatorname P(X_1 = j | X_0 = i) \bigr)_{i,j \in S}.\]<br/><i>* tj. řetězec lze plně definovat jednokrokovou maticí přechodů mezi stavy a počátečním rozdělením</i><br/>
+        </div>
+    </note>
+    <note id="1881916216" type="1708237251">
+        <div class="field">
+Důsledek Chapman-Kolmogorovy rovnice
+        </div>
+        <div class="field">
+Pro homogenní markovský řetězec s diskrétním časem a všechna \(m, n \in \mathbb N_0\) platí\[\mathbf P(m, m + n) = \mathbf P(0, n) = \mathbf P^n\]a navíc\[\mathbf p(n) = \mathbf p(m) \cdot \mathbf P^{n - m} = \mathbf p(0) \cdot \mathbf P^n.\]<br/>
+        </div>
+    </note>
+    <note id="1486952760" type="1708237251">
+        <div class="field">
+Definice - Stochastická matice
+        </div>
+        <div class="field">
+Stochastická matice je matice s nezápornými prvky, kde součet jednotlivých řádků je vždy 1.<br/><ul><li>Součin stochastických matic je opět stochastická matice</li><li>K libovolné čtvercové stochastické matici \(P\) existuje homogenní markovský řetězec s diskrétním časem, tak že \(P\) je jeho matice přechodu<br/><img src="markovtransition-b8611bbd0d95934599251f0087b9f5363d38091d.jpg"/><br/></li></ul><i>* v některých materiálech se stochastická matice přímo definuje jako čtvercová</i><br/>
+        </div>
+    </note>
+    <note id="1190518588" type="1708237251">
+        <div class="field">
+Definice - Stacionární rozdělení
+        </div>
+        <div class="field">
+Mějme homogenní markovský řetězec s diskrétním časem<b> </b>a maticí pravděpodobností přechodu \(\mathbf P\). Pokud existuje vektor \(\boldsymbol \pi\) takový, že\[\begin{matrix}
+\boldsymbol \pi_i \geq 0, \quad \forall i \in S,\\
+\displaystyle \sum_{i \in S} \boldsymbol \pi_i = 1,
+\end{matrix}\]pro který platí\[\boldsymbol \pi \cdot \mathbf P = \boldsymbol \pi,\]nazýváme jej <b>stacionárním rozdělením markovského řetězce s diskrétním časem</b>. Obdobně pro homogenní markovský řetězec se spojitým časem<b> </b>a maticí pravděpodobností přechodu \(\mathbf P(t)\) musí <b>stacionární rozdělení markovského řetězce se spojitým časem </b>\(\boldsymbol \pi\) splňovat\[\boldsymbol \pi \cdot \mathbf P(t) = \boldsymbol \pi\]pro všechna \(t \geq 0\).<br/>
+        </div>
+    </note>
+    <note id="1284034787" type="1708237251">
+        <div class="field">
+Definice - Matice pravděpodobnosti přechodu homogenního markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+Stochastická matice \(P\), kde \(P_{ij}=P(X_1=j|X_0=i)\).<br/><br/>Vícekrokovou matici dostaneme umocněním základní matice, a tedy rozdělení v kroku \(n\) můžeme získat jako \(p(n)=p(0)\cdot P^n\).
+        </div>
+    </note>
+    <note id="2097884429" type="1708237251">
+        <div class="field">
+Definice - Klasifikace stavů (trvalý, přechodný, pohlcující)
+        </div>
+        <div class="field">
+Stav \(i \in S\) nazveme<ul><li><b>trvalý (rekurentní)</b>, pokud se do něj každá trajektorie v něm počínající skoro jistě vrátí (\(P(\exists n \in \mathbb{N}: X_n=i | X_0=i) = 1\))</li><li><b>přechodný (transientní)</b>, pokud který není trvalý (tedy do kterého není návrat zaručen, \(P(\exists n \in \mathbb{N}: X_n=i | X_0=i) \lt 1\))</li><li><b>pohlcující (absorbční)</b>, pokud se z něj nedá přejít do žádného jiného stavu (tedy je to nutně zároveň rekurentní stav)</li></ul>
+        </div>
+    </note>
+    <note id="1660062049" type="1708237251">
+        <div class="field">
+Definice - Čas první návštěvy stavu
+        </div>
+        <div class="field">
+<div>Čas první návštěvy stavu \(i \in S\) markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je náhodná veličina \(\tau_i : \Omega \to \{ 1, \dots, +\infty \}\) definovaná jako\[\tau_i(\omega) := \min \{ n \in \mathbb N \mid X_n(\omega) = i \},\]je-li množina neprázdná, jinak \(\tau_i(\omega) := +\infty\).<br/></div>
+        </div>
+    </note>
+    <note id="1811267222" type="1708237251">
+        <div class="field">
+Definice - Pravděpodobnost první návštěvy \(j\) při startu v \(i\)
+        </div>
+        <div class="field">
+Pravděpodobnost první návštěvy \(j\) při startu v \(i\) právě v kroku \(n\) značíme pro \(n\geq1\) jako \(f_{ij}(n) := P(\tau_j=n|X_0=i)\), speciálně \(f_{ij}(0) := 0\).<br/><br/>Pravděpodobnost, že řetězec někdy navštíví \(j\), startoval-li v \(i\), značíme<br/>\(f_{ij}=\sum^\infty_{n=1}P(\tau_j=n|X_0=i)\)<br/><br/>Důsledek: pro rekurentní stavy je \(f_{ii}=1\), pro transientní \(f_{ii}\lt1\).
+        </div>
+    </note>
+    <note id="1589330031" type="1708237251">
+        <div class="field">
+Definice - Střední doba návratu
+        </div>
+        <div class="field">
+<div>Střední doba návratu do stavu \(i \in S\) homogenního markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je definována jako\[\mu_i = \operatorname E(\tau_i | X_0 = i) = \begin{cases}
+\displaystyle \sum_{n = 1}^{+\infty} n f_{ii}(n) &amp; \text{je-li } i \text{ trvalý},\\
++\infty &amp; \text{je-li } i \text{ přechodný},
+\end{cases}\]kde \(f_{ij}(n)\) značí pravděpodobnost, že první návštěva stavu \(j\) při startu v \(i\) nastane právě v \(n\)-tém kroku.<br/></div><div><br/></div><div><br/></div><div><ul><li>Pro aperiodické stavy platí:</li><ul><li>\(\lim_{n \to \infty}P_{ii}(n)=\frac{1}{\mu_i}\)</li></ul><li>Pro \(i\) aperiodický a \(j\) jakýkoliv jiný stav platí:</li><ul><li>\(\lim_{n \to \infty}P_{ji}(n)=\frac{f_{ji}}{\mu_i}\)<br/></li></ul></ul><div><br/></div><div><i>* Rekurentní stav je nenulový, když je střední doba návratu konečná, jinak je stav nulový</i></div></div>
+        </div>
+    </note>
+    <note id="2121219542" type="1708237251">
+        <div class="field">
+Definice - nenulový a nulový trvalý stav
+        </div>
+        <div class="field">
+Trvalý stav \(i \in S\) homogenního markovského řetězce s diskrétním časem nazveme <b>nenulový</b>, pokud je střední doba návratu konečná, tedy\[\mu_i &lt; +\infty.\]V opačném případě se nazývá <b>nulový</b>, tedy v případě, kdy\[\mu_i = +\infty.\]<br/>
+        </div>
+    </note>
+    <note id="1242688679" type="1708237251">
+        <div class="field">
+Definice - Perioda stavu, periodický a aperiodický stav
+        </div>
+        <div class="field">
+<b>Periodou stavu</b> \(i \in S\) homogenního markovského řetězce s diskrétním časem nazveme číslo\[d(i) = \gcd \{ n \in \mathbb N \mid \mathbf P_{ii}(n) &gt; 0 \},\]tedy největšího společného dělitele časů, kdy se řetězec vrátí do stavu \(i\). Stav \(i\) se nazývá <b>periodický</b>, pokud \(d(i) &gt; 1\). Naopak <b>aperiodický stav</b> je stav \(i\), pro který \(d(i) = 1\).<br/>
+        </div>
+    </note>
+    <note id="1976994955" type="1708237251">
+        <div class="field">
+Věta - klasifikaci stavů markovského řetězce s diskrétním časem pomocí matice přechodu
+        </div>
+        <div class="field">
+Stav \(i \in S\) homogenního markovského řetězce s diskrétním časem je:<br/><ul><li><b>přechodný </b>právě tehdy, když\[\displaystyle \sum_{n = 0}^{+\infty} \mathbf P_{ii}(n) &lt; + \infty\]a potom pro něj platí \(\mathbf P_{ji}(n) \to 0;\)<br/></li><li><b>trvalý nulový</b> právě tehdy, když\[\displaystyle \sum_{n = 0}^{+\infty} \mathbf P_{ii}(n) = +\infty \land
+\displaystyle \lim_{n \to \infty} \mathbf P_{ii}(n) = 0,\]a potom pro něj platí \(\mathbf P_{ji}(n) \to 0\);</li><li><b>trvalý nenulový aperiodický</b> právě tehdy, když\[\displaystyle \lim_{n \to \infty} \mathbf P_{ii}(n) = \frac 1 {\mu_i} &gt; 0\]a potom pro něj platí \(\mathbf P_{ji}(n) \to \frac {f_{ji}}{\mu_i},\)<br/></li><li><b>trvalý nenulový periodický </b>právě tehdy, když má periodu \(d(i)\) a\[\displaystyle \lim_{n \to \infty} \mathbf P_{ii} \big( n \cdot d(i) \big) = \frac{d(i)}{\mu_i} &gt; 0.\]</li></ul>
+        </div>
+    </note>
+    <note id="1850217022" type="1708237251">
+        <div class="field">
+Definice - Dosažitelný stav
+        </div>
+        <div class="field">
+Stav \(j \in S\) homogenního markovského rětězce s diskrétním časem je <b>dosažitelný</b> ze stavu \(i \in S\), značíme \(i \to j\), pokud se lze dostat z \(i\) do \(j\) v konečném čase, tedy existuje \(n \in \mathbb N_0 \) tak, že \(\mathbf P_{ij}(n) &gt; 0\). Řekneme, že stavy \(i\) a \(j \) jsou <b>vzájemně dosažitelné</b>, značíme \(i \leftrightarrow j\), pokud \(i \to j\) a \(j \to i\).<br/><br/><i>* vzájemně dosažitelné stavy řetězce mají stejnou periodu</i>
+        </div>
+    </note>
+    <note id="1451411610" type="1708237251">
+        <div class="field">
+Věta - vlastnosti vzájemně dosažitelných stavů
+        </div>
+        <div class="field">
+Pokud jsou stavy \(i, j \in S\) homogenního markovského řetězce s diskrétním časem vzájemně dosažitelné, tedy \(i \leftrightarrow j\), pak jsou oba stejného typu a mají stejnou periodu.
+        </div>
+    </note>
+    <note id="2052161017" type="1708237251">
+        <div class="field">
+Definice - Uzavřená množina stavů
+        </div>
+        <div class="field">
+Množina stavů \(C \subseteq S\) homogenního markovského řetězce s diskrétním časem je <b>uzavřená</b>, pokud pro všechna \(i \in C\) a všechna \(j \notin C\) platí \(\mathbf P_{ij} = 0\).<br/><br/><i>* tj. pravděpodobnost přechodu ze stavu v této množině do stavu mimo tuto množinu je </i>\(0\)<i>.<br/>* "pohlcení" je situace, kdy se pohybjeme pouze mezi stavy v rámci </i>\(C_i\)<i> a již nikdy nevyjdeme ven</i>
+        </div>
+    </note>
+    <note id="2106217568" type="1708237251">
+        <div class="field">
+Definice - Ireducibilní množina stavů
+        </div>
+        <div class="field">
+Množina stavů \(C \subseteq S\) homogenního markovského řetězce s diskrétním časem je <b>nerozložitelná</b> (ireducibilní), pokud pro všechna \(i, j \in C\) platí \(i \leftrightarrow j\). Homogenní markovský řetězec s diskrétním časem se nazývá <b>nerozložitelný</b>, jestliže je jeho množina stavů \(S\) nerozložitelná.
+        </div>
+    </note>
+    <note id="1238622597" type="1708237251">
+        <div class="field">
+Věta - o jednoznačném rozkladu množiny stavů
+        </div>
+        <div class="field">
+<div>Množinu stavů \(S\) homogenního markovského řetězce s diskrétním časem lze jednoznačně rozložit do tvaru\[S = T \cup C_1 \cup C_2 \cup \dots,\]kde \(T\) je množina všech přechodných stavů a \(C_1, C_2, \dots\) jsou vzájemně disjunktní nerozložitelné uzavřené množiny trvalých stavů.<br/></div><div><br/></div><div>* Pokud je množina \(S\) konečná, musí existovat aspoň jeden rekurentní stav a všechny rekurentní stavy jsou nenulové, takže existuje aspoň jedna neprázdna množina \(C_i\)<br/></div><div></div><div></div><div>* V konečném čase bude řetězec pohlcen v jedné z množin \(C_i\) a tam zůstane</div><div>* Limitní chování umíme popsat chováním v množinách \(C_i\)</div>
+        </div>
+    </note>
+    <note id="1368603933" type="1708237251">
+        <div class="field">
+Popište blokový rozklad matice přechodu markovského řetězce s diskrétním časem.
+        </div>
+        <div class="field">
+Matice přechodu po uspořádání dle věty o jednoznačném rozkladu má následující tvar:<br/><img src="decomposition-f64497b5992f50931846b9ae4c2bc60e.png"/><br/>kde<br/><ul><li>\(\mathbf T\) je čtvercová matice přechodů mezi transientními stavy</li><li>\(\mathbf R_i\) jsou čtvercové matice přechodů mezi transientními a rekurentními stavy</li><li>\(\mathbf C_i\) jsou čtvercové matice přechodů mezi rekurentními stavy</li><li>\(0\) jsou nulové matice odpovídajících rozměrů</li></ul>
+        </div>
+    </note>
+    <note id="1495123570" type="1708237251">
+        <div class="field">
+Věta - o vlastnostech konečné množiny stavů markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+V konečné množině stavů \(S\) homogenního markovského řetězce s diskrétním časem existuje alespoň jeden trvalý stav a každý trvalý stav je nenulový. Označíme-li\[S_i = \{ j \in S \mid i \to j \}\]množinu stavů dosažitelných z \(i \in S\), pak pokud pro všechna \(j \in S_i\) platí \(j \to i\), je stav \(i\) trvalý nenulový. Pokud naopak existuje \(j \in S_i\) takové, že \(j \not \to i\), je stav \(i\) přechodný.<br/>
+        </div>
+    </note>
+    <note id="1160970634" type="1708237251">
+        <div class="field">
+Stacionární rozdělení
+        </div>
+        <div class="field">
+<ul><li>Jedná se o vektor \(\pi\), který obsahuje nezáporné prvky se součtem \(1\) a platí \(\pi=\pi\cdot P\)</li><li>Určuje tedy také rozdělení náhodné veličiny markovského retězce, ze kterého po jakémkoli počtu kroků zůstáváme stále v tomto rozdělení</li></ul><div><i>* detailní rovnováha, tj. </i>\(\forall i \neq j \in S\) <i>platí</i> \(\pi_i P_{ij}=\pi_j P_{ji}\)<i>, implikuje stacionaritu</i></div>
+        </div>
+    </note>
+    <note id="1249300002" type="1708237251">
+        <div class="field">
+Věta - stacionární rozdělení pro nerozložitelný markovský řetězec
+        </div>
+        <div class="field">
+<div>Pro nerozložitelný markovský řetězec platí:</div><ul><li>Jsou-li všechny stavy transientní nebo rekurentní nulové, stacionární rozdělení neexistuje.</li><li>Jsou-li všechny rekurentní stavy nenulové, existuje právě jedno stacionární rozdělení. Jsou-li navíc všechny stavy aperiodické, pak \(\pi = \lim_{n\to\infty}p(n)\) pro libovolné \(p(0)\).</li></ul>
+        </div>
+    </note>
+    <note id="1406391080" type="1708237251">
+        <div class="field">
+Věta - stacionární rozdělení pro rozložitelný markovský řetězec
+        </div>
+        <div class="field">
+Pro rozložitelný markovský řetězec platí:<ul><li>Je-li množina stavů konečná, pak stacionární rozdělení existuje.</li><li>Stacionární rozdělení \(\tilde\pi^{(r)}\) máme zaručené v množinách rekurentních nenulových stavů \(C_r\)</li><li>Pak platí, že vektor \(\pi^{(r)} := (0, \dots, 0, \tilde\pi^{(r)}, 0, \dots, 0)\) řeší \(\pi^{(p)} \cdot P = \pi^{(p)}\).</li><li>Pak libovolná konvexní lineární kombinace<br/>\(\sum_{r\in I} \lambda_r \pi^{(r)},
+\ \ \lambda_r \geq 0,
+\ \ \sum_{r \in I} \lambda_r = 1\)<br/>je stacionárním rozdělením procesu s maticí přechodu \(P\).</li></ul>
+        </div>
+    </note>
+    <note id="1390247713" type="1708237251">
+        <div class="field">
+Definice - čas absorbce trajektorie markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+<div><div>Čas absorbce trajektorie \(X_n\) markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je náhodná veličina \(\tau_A : \Omega \to \{ 0, 1, \dots, +\infty \}\) definovaná\[\tau_A(\omega) = \min \{ n \in \mathbb N_0 \mid X_n(\omega) \notin T \},\]je-li množina neprázdná, jinak \(\tau_A(\omega) = +\infty\).<br/><br/>* Čas absorbce tedy udává okamžik, kdy trajektorie řetězce opustila množinu přechodných stavů \(T\).<br/></div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="2111939966" type="1708237251">
+        <div class="field">
+Lemma - o pravděpodobnosti pohlcení trajektorie markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+<div><div>Je-li množina stavů \(S\) markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) konečná, pak\[\operatorname P(\tau_A = + \infty \mid X_0 = i) = 0\]pro všechna \(i \in T\).<br/><br/><i>* Pro trajektorie markovských řetězců s konečnou množinou stavů tedy platí, že s pravděpodobností </i>\(1\)<i> dojde k jejich pohlcení.</i><br/></div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1473881657" type="1708237251">
+        <div class="field">
+Definice - pravděpodobnost pohlcení markovského řetězce s diskrétním časem
+        </div>
+        <div class="field">
+<div><div><b>Pravděpodobnost pohlcení</b> \(\mathbf U_{ij}\) markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je pravděpodobnost, že řetězec startující v \(i \in T\) opustí \(T\) přechodem do stavu \(j \in C\), tedy\[\mathbf U_{ij} = \operatorname P(X_{\tau_A} = j | X_0 = i).\]<b>Maticí pravděpodobností pohlcení</b> pak rozumíme matici \(\mathbf U\) se složkami \(\mathbf U_{ij}\). <br/></div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1655447078" type="1708237251">
+        <div class="field">
+Definice - počet návštěv stavu
+        </div>
+        <div class="field">
+<div><div>Počet návštěv stavu \(j \in S\) před pohlcením markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) je náhodná veličina \(W_j : \Omega \to \{ 0, 1, \dots, +\infty \}\) definovaná jako\[W_j(\omega) = \displaystyle \sum_{n = 0}^\infty \mathbb 1_{\{ X_n(\omega) = j\}},\]kde \(\mathbb 1_{\{ X_n(\omega) = j\}}\) je indikátor splňující\[\mathbb 1_{\{ X_n(\omega) = j\}} = \begin{cases}
+1 &amp; X_n(\omega) = j,\\
+0 &amp; X_n(\omega) \neq j.
+\end{cases}\]<br/></div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1118576619" type="1708237251">
+        <div class="field">
+Pravděpodobnost, že retězec startující v \(i \in T\) opustí \(T\) přechodem do stavu \(j \in C\)
+        </div>
+        <div class="field">
+Buď \(R\) matice přechodů mezi rekurentními a transientními stavy a nechť matice pravděpodobností pohlcení \(U=N\cdot R\).<br/>Pak platí \(U_{ij} := P(\text{pohlcen přes stav } j | X_0 = i)\) pro \(i\in T\), \(j\in C\).
+        </div>
+    </note>
+    <note id="1913140925" type="1708237251">
+        <div class="field">
+Definice - fundamentální matice řetězce
+        </div>
+        <div class="field">
+Fundamentální maticí markovského řetězce s diskrétním časem rozumíme matici \(\mathbf N = (\mathbf I - \mathbf T)^{-1}\), kde \(\mathbf I\) je jednotková matice a \(\mathbf T\) je matice realizující přechody mezi přechodnými stavy \(T\).<br/><br/><i>* také nazýváme maticí středního počtu návštěv stavů markovského řetězce</i>
+        </div>
+    </note>
+    <note id="1217932979" type="1708237251">
+        <div class="field">
+Věta - o střední době do pohlcení
+        </div>
+        <div class="field">
+Pro střední hodnotu času absorbce, jestliže markovský řetězec s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\) startuje v \(i \in T\) platí\[\operatorname E(\tau_A | X_0 = i) = \big( ( \mathbf I - \mathbf T)^{-1} \cdot (1, 1, \dots, 1)^T \big )_i = ( \mathbf N \cdot \mathbf 1)_i = \mathbf N_{i\bullet}.\]<br/>
+        </div>
+    </note>
+    <note id="1423836470" type="1708237251">
+        <div class="field">
+Definice - Střední počet návštěv stavu, střední doba do pohlcení
+        </div>
+        <div class="field">
+<b>Střední počet návštěv </b>\(\mathbf N_{ij}\)<b> stavu</b> \(j \in T\) markovského řetězce s diskrétním časem \(\{ X_n \mid n \in \mathbb N_0 \}\), jestliže řetězec startuje v \(i \in T\) je definován jako\[\mathbf N_{ij} = \operatorname E(W_j | X_0 = i).\]<b>Maticí středního počtu návštěv stavů</b> pak rozumíme matici \(\mathbf N\) se složkami \(\mathbf N_{ij}\). <b>Střední dobu do pohlcení </b>\(\mathbf N_{i \bullet}\) jestiže řetězec startuje v \(i \in T\) definujeme jako\[\mathbf N_{i \bullet} = \displaystyle \sum_{j \in T} \mathbf N_{ij}.\]<br/>
+        </div>
+    </note>
+    <note id="1327324818" type="1708237251">
+        <div class="field">
+Věta - o vztazích fundamentální matice a matice pravděpodobností pohlcení
+        </div>
+        <div class="field">
+Mějme markovský řetězec s diskrétním časem a maticí pravděpodobností pohlcení \(\mathbf U\), maticí středního počtu návštěv stavů \(\mathbf N\), fundamentální maticí \((\mathbf I - \mathbf T)^{-1}\) a maticí \(\mathbf R\) realizující přechody mezi přechodnými a trvalými stavy v matici přechodů \(\mathbf P\). Potom platí\[\begin{matrix}
+\mathbf N = (\mathbf I - \mathbf T)^{-1},\\
+\mathbf U = \mathbf N \cdot \mathbf R,\\
+\mathbf N_{\bullet} = \mathbf N \cdot \mathbf 1,
+\end{matrix}\]kde \(\mathbf 1= (1, 1, \dots, 1)^T\) a \(\mathbf N_\bullet\) je vektor středních dob do pohlcení, tedy\[(\mathbf N_\bullet)_i = \mathbf N_{i \bullet}.\]<br/>
+        </div>
+    </note>
+    <note id="1585359849" type="1708237251">
+        <div class="field">
+Limita matice \(C^n\)
+        </div>
+        <div class="field">
+<img src="cnlimit-a2a394b0fad950fe80d36da23c1ae181f16f7a09.png"/>
+        </div>
+    </note>
+    <note id="1449646919" type="1708237251">
+        <div class="field">
+Limita matice \(P^n\)
+        </div>
+        <div class="field">
+<img src="pnlimit-eab09e6f34dc2378b1dbc00f54dadf28dcedd0ee.png"/>
+        </div>
+    </note>
+    <note id="2115259451" type="1708237251">
+        <div class="field">
+Věta - detailní rovnováha
+        </div>
+        <div class="field">
+Pokud vektor \(\boldsymbol \pi\) takový, že \[\begin{matrix}
+\boldsymbol \pi_i \geq 0, \quad \forall i \in S,\\
+\displaystyle \sum_{i \in S} \boldsymbol \pi_i = 1,
+\end{matrix}\]splňuje podmínku detailní rovnováhy, tedy pro markovský řetězec s diskrétním časem platí\[\boldsymbol \pi_i \mathbf P_{ij} = \boldsymbol \pi_j \mathbf P_{ji}\]pro všechna \(i \neq j \in S\), resp. pro markovský řetězec se spojitým časem\[\boldsymbol \pi_i \mathbf Q_{ij} = \boldsymbol \pi_j \mathbf Q_{ji}\]pro všechna \(i \neq j \in S\), pak je stacionárním rozdělením.<br/>
+        </div>
+    </note>
+    
+</deck>

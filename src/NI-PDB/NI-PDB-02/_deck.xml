@@ -1,0 +1,76 @@
+<deck id="1564116116" name="NI-PDB::NI-PDB-02" deck_slug="NI-PDB-02">
+
+    <note id="1695718583" type="1708237251">
+        <div class="field">
+Relational DBMS
+        </div>
+        <div class="field">
+Uses tables to store data in rows and columns. Relationships between tables are established through foreign keys. E.g. PostgreSQL.
+        </div>
+    </note>
+    <note id="1263549153" type="1708237251">
+        <div class="field">
+Object-relational DBMS
+        </div>
+        <div class="field">
+Extends relational databases by incorporating features of object-oriented programming. Supports complex data types and object behavior while maintaining table structures. Most RDBMS have some support for object-relational model.
+        </div>
+    </note>
+    <note id="1651822168" type="1708237251">
+        <div class="field">
+Document DBMS
+        </div>
+        <div class="field">
+Stores data in documents typically formatted as JSON or XML. Each document can have a varying structure, making it flexible and suitable for hierarchical data. E.g. MongoDB, DynamoDB.
+        </div>
+    </note>
+    <note id="2041881637" type="1708237251">
+        <div class="field">
+Wide-column Store
+        </div>
+        <div class="field">
+Organizes data into (sparse) columns rather than rows, storing each column separately. Ideal for analytical queries and large datasets, such as those found in data warehousing. E.g. Apache Cassandra.
+        </div>
+    </note>
+    <note id="1406377945" type="1708237251">
+        <div class="field">
+Key-Value DBMS
+        </div>
+        <div class="field">
+Data is stored as a collection of key-value pairs, where each key is unique. This model allows for fast retrieval and is often used in caching and session management. E.g. Redis.
+        </div>
+    </note>
+    <note id="1168397203" type="1708237251">
+        <div class="field">
+Graph DBMS
+        </div>
+        <div class="field">
+Represents data as nodes (entities) and edges (relationships). Suitable for complex queries on interconnected data, like social networks and recommendation systems. E.g. Neo4j.
+        </div>
+    </note>
+    <note id="1777849596" type="1708237251">
+        <div class="field">
+Query languages: SQL
+        </div>
+        <div class="field">
+Structured Query Language is used for managing and querying relational databases.<br/><br/>Example select query:<br/><ul><li><code>SELECT attribute FROM table1</code></li><li><code>WHERE condition</code> (filter rows)</li><li><code>JOIN table2 ON condition</code></li><li><code>GROUP BY attribute</code> (aggregate rows by attribute)</li><li><code>HAVING condition</code> (filter aggregated groups)</li><li><code>ORDER BY attribute ASC</code></li></ul>
+        </div>
+    </note>
+    <note id="1724529703" type="1708237251">
+        <div class="field">
+Query languages: XQuery
+        </div>
+        <div class="field">
+A query language designed for querying XML data. It allows usage of XML tags, which allows for creation of new XML documents.<br/><br/>Example:<br/><img src="xquery-58e855ddf958a6510c2f646b86af53ef35c16208.jpg"/>
+        </div>
+    </note>
+    <note id="1900741437" type="1708237251">
+        <div class="field">
+Query languages: Cypher
+        </div>
+        <div class="field">
+A declarative query language for graph databases.<br/><br/>Example query:<br/><ul><li><code>MATCH p=(s:City {code: 'sf'})-[:DIRECT *1..5]-&gt;(d)</code> (find any paths of edges of type <code>DIRECT</code> from <code>'sf'</code> with length at most 5)</li><li><code>OPTIONAL MATCH (f)-[:ASDF]-&gt;(d)</code> (optionally find another object with edge of type <code>ASDF</code> towards <code>d</code>)</li><li><code>WHERE condition</code> (filter matches based on a condition)</li><li><code>RETURN DISTINCT s, d;</code></li></ul><div>List comprehension:</div><div><ul><li><code>RETURN [x IN range(0,10) WHERE x % 2 = 0 | x^3]</code> (take range, filter to evens, apply third power)</li></ul></div>
+        </div>
+    </note>
+
+</deck>

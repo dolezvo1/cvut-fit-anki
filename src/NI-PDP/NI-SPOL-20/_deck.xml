@@ -1,0 +1,217 @@
+<deck id="1709785621" name="NI-PDP::NI-SPOL-20" deck_slug="NI-SPOL-20">
+
+    <note id="1399876062" type="1708237251">
+        <div class="field">
+Paralelní redukce: přehled
+        </div>
+        <div class="field">
+<div>Paralelní redukce je algoritmus, který na vstupu obdrží pole \(X\) obsahující \(n\) prvků množiny \(D\), množinu \(p\) procesorů a asociativní binární operaci \(\circ\) na \(D\). Pokud prvky pole \(X\) není možné namapovat na procesory v pořadí jejich indexů, je nutné, aby \(\circ\) byla i komutativní. Výstupem je pak hodnota \(S\) taková, že\[S = X[0] \circ X[1] \circ \dots \circ X[n - 1].\]Paralelní redukce má následujcí metriky:\[\begin{matrix}
+T(n, p) = \frac n p + \log p, \\
+\psi_1(p) = p \log p,\\
+\psi_2(n) = \frac n {\log n}.
+\end{matrix}\]</div>
+        </div>
+    </note>
+    <note id="1221421448" type="1708237251">
+        <div class="field">
+Paralelní redukce: implementace
+        </div>
+        <div class="field">
+<div>Paralelní redukce se implementuje pomocí algoritmů pro <i>all-to-one gather </i>(AOG) tedy inverzní <i>one-to-all broadcast</i> (OAB). Dle topologie lze použít následující algoritmy:<br/></div><div><ul><li><b>binární stromy a motýlky</b> - inverzní triviální záplavový algoritmus počínaje od listů a konče v kořeni,<br/></li><li><b>úplné grafy a hyperkrychle</b> - inverzní algoritmus rekurzivního zdvojování podle binomální kostry,<br/></li><li><b><i>wormhole </i>jednodimenzionální mřížky a EREW PRAM </b>- inverzní algoritmus rekurzivního zdvojování.</li></ul><div style="text-align: center;"><img src="prallimpl-b624a13dee21cc97daa9f35f3ddfedd5ab216a86.jpg"/></div></div>
+        </div>
+    </note>
+    <note id="2147091250" type="1708237251">
+        <div class="field">
+Popište funkce <i>Message Passing Interface</i> (MPI) pro paralelní redukci
+        </div>
+        <div class="field">
+<i>Message Passing Interface </i>(MPI) obsahuje následující funkce pro paralelní redukci:<br/><ul><li>\(\texttt{MPI_Reduce}\) - asymetrická redukce s kořenem, výsledek redukce je dostupný pouze v kořenovém procesu;<br/></li><li>\(\texttt{MPI_Allreduce}\) - symetrická redukce bez kořene, výsledek redukce je dostupný ve všech procesech;<br/></li><li>\(\texttt{MPI_Reduce_scatter_block}\) - symetrická redukce bez kořene kombinovaná se <i>scatterem</i>, kde \(i\)-tý proces obdrží výsledek redukce \(i\)-tých bloků jednotlivých procesů.<br/></li></ul>MPI definuje vhodné kombinace datových typů a redukčních operací a navíc umožňuje definovat vlastní redukční operaci.<table style="text-align: center;"><tbody><tr><td><img src="prmpi1-81b88024ae800efad2450f9818f6f59dba81adf6.jpg"/><br/>\(\texttt{MPI_Reduce}\)<br/></td><td><img src="prmpi2-2e0621e04442c4de63dabb213a6da676143c54e6.jpg"/><br/>\(\texttt{MPI_Allreduce}\)<br/></td><td><img src="prmpi3-5f47b3ee4d37cc34cc103d76db7f37f4b200f9a3.jpg"/><br/>\(\texttt{MPI_Reduce_scatter_block}\)<br/></td></tr></tbody></table>
+        </div>
+    </note>
+    <note id="1662448254" type="1708237251">
+        <div class="field">
+Paralelní Prefixový Součet (PPS): přehled
+        </div>
+        <div class="field">
+<ul><li>Je dáno vstupní pole \(X\) o \(n\) prvcích a binární operace \(\oplus\), a výstupem je pole prefixových součtů \(Y\), kde \(Y[i] = X[0] \oplus \dots \oplus X[i]\).</li><li>Postačující podmínkou pro paralelizovatelnost je asociativnost a komutativita operace \(\oplus\).</li></ul>
+        </div>
+    </note>
+    <note id="2019993377" type="1708237251">
+        <div class="field">
+Paralelní Prefixový Součet: implementace
+        </div>
+        <div class="field">
+Škálovaný prefixový součet pracuje s procesory \(P_0, \dots, P_{p - 1}\) a vstupním polem \(X[0, \dots, n - 1]\), které je rozděleno mezi procesory po částech \(X_0, \dots, X_{p - 1}\) každé o velikosti \(q\), kde\[q = \frac n p.\]Algoritmus pak probíhá následovně:<br/><ul><li>všechny procesory \(P_i\), \(i = 0, \dots, p - 1\), provedou paralelně perfixový součet \(S_i[s_{i, 0}, \dots, s_{i, q - 1}]\) nad svým polem \(X_i\);</li><li>z každého pole \(X_i\) je následně vybrán prvek nejvíce vpravo (součet pole \(X_i\)) \(z_i\);</li><li>procesory provedou prefixový součet nad polem \(Z[z_0, \dots, z_{p - 1}]\) a vytvoří tak pole \(\Sigma[\sigma_0, \dots, \sigma_{p - 1}]\);</li><li>všechny procesory \(P_i\), \(i = 0, \dots, p - 2\), pošlou hodnotu \(\sigma_i\) procesorům \(P_{i + 1}\) (\(\sigma_i\) odpovídá součtu všech čísel procesorů \(P_0, \dots, P_i\));</li><li>všechny procesory \(P_i\), \(i = 1, \dots, p - 1\), přijmou hodnotu \(\sigma_i\) a přičtou ji ke všem prvkům svého pole \(S_i\).</li></ul>Pro PRAM, hyperkrychli, <i>wormhole </i>mřížky a sítě s \(\mathcal O(\log p)\) průměrem je paralelní čas tohoto algoritmu\[T(n, p) = \mathcal O \Big(\frac n p \Big) + \mathcal O(\log p) + \mathcal O \Big(\frac n p \Big)\]a má tedy stejnou škálovatelnost jako paralelní redukce.<br/>
+        </div>
+    </note>
+    <note id="1401656481" type="1708237251">
+        <div class="field">
+PPS na EREW PRAM
+        </div>
+        <div class="field">
+Implementace prefixového součtu na <i>exclusive read exclusive write </i>(EREW) <i>parallel random-access machine </i>(PRAM) je <i>in-place</i> a počítá nad sdíleným polem \(M\), které vznikne kopií vstupního pole \(X\). Postupuje v následujících krocích:<br/><ul><li>každé vlákno si paralelně inicializuje lokální proměnnou \(y_i\) odpovídající hodnotou pole \(X\) a zapíše ji do pole \(M\):\[\begin{matrix}
+y_i := X[i],\\
+M[i] := y_i;
+\end{matrix}\]</li><li>pro všechna \(j = 0, \dots, \lceil \log n \rceil - 1\) iterujeme sekvenčně následující kroky:</li><ul><li>pro všechna \(i = 2^j, \dots, n -1\) provedou všechna vlákna paralelně součet jim příslušejících prvků \(M\) vzdálených \(2^j\):\[y_i := M[i] + M[i - 2^j];\]</li><li>pro všechna \(i = 2^j, \dots, n -1\) zapíšou všechna vlákna paralelně svůj výsledek do pole \(M\):\[M[i] := y_i.\]</li></ul></ul>Každé vlákno tak konstruuje binární strom napříč verzemi pole \(M\) v jednotlivých iteracích podle proměnné \(j\). V první iteraci každé vlákno sčítá listy, příčemž výslkem je vrchol předposlední hladiny a v poslední iteraci vzniká jako výsledek kořen. Z toho důvodu jsou všechny operace disjunktní a časová složitost odpovídá paralelní redukci v EREW PRAM, tedy\[T(n, p) = \frac n p + \log p.\]<div><br/></div><div style="text-align: center;"><img src="paste-0400a994b4eef4c682b3cd502074be0235274675.jpg"/><br/></div><div><br/></div>
+        </div>
+    </note>
+    <note id="1178885882" type="1708237251">
+        <div class="field">
+PPS na APRAM
+        </div>
+        <div class="field">
+Implementace prefixového součtu na <i>exclusive </i><i>asynchronous</i> <i>parallel random-access machine </i>(APRAM) je totožná s implementací na <i>exclusive read exclusive write </i>(EREW) PRAM s tím rozdílem, že používá bariérovou synchronizaci. Je tedy <i>in-place</i> a počítá nad sdíleným polem \(M\), které vznikne kopií vstupního pole \(X\). Postupuje v následujících krocích:<br/><ul><li>každé vlákno si paralelně inicializuje lokální proměnnou \(y_i\) odpovídající hodnotou pole \(X\) a zapíše ji do pole \(M\):\[\begin{matrix}
+y_i := X[i],\\
+M[i] := y_i;
+\end{matrix}\]</li><li>všechna vlákna čekají na bariéře,</li><li>pro všechna \(j = 0, \dots, \lceil \log n \rceil - 1\) iterujeme sekvenčně následující kroky:</li><ul><li>pro všechna \(i = 2^j, \dots, n -1\) provedou všechna vlákna paralelně součet jim příslušejících prvků \(M\) vzdálených \(2^j\):\[y_i := M[i] + M[i - 2^j];\]</li><li>pro všechna \(i = 2^j, \dots, n -1\) zapíšou všechna vlákna paralelně svůj výsledek do pole \(M\):\[M[i] := y_i;\]</li><li>všechna vlákna čekají na bariéře.</li></ul></ul>Každé vlákno tak konstruuje binární strom napříč verzemi pole \(M\) v jednotlivých iteracích podle proměnné \(j\). V první iteraci každé vlákno sčítá listy, příčemž výslkem je vrchol předposlední hladiny a v poslední iteraci vzniká jako výsledek kořen. Z toho důvodu jsou všechny operace disjunktní a při použití bariéry implementované pomocí binárního redukčního stromu je časová složitost algoritmu \[T(n, p) = \frac n p + \log^2 p.\]<div style="text-align: center;"><img src="paste-0400a994b4eef4c682b3cd502074be0235274675.jpg"/></div>
+        </div>
+    </note>
+    <note id="1649864699" type="1708237251">
+        <div class="field">
+PPS na nepřímém stromě/motýlku
+        </div>
+        <div class="field">
+Nepřímý strom znamená, že vnitřní uzly nevlastní vstupní hodnoty, ale pouze realizují výpočet.<br/>PPS \(n\) vstupních hodnot v listech binárních stromu \(T\) výšky \(h(T)\) lze vypočítat v \(2h(T)\) krocích. Je-li \(T\) úplný, PPS potřebuje \(O(\log n)\) kroků.<br/>Výpočet má podobu vzestupné vlny, kdy každý vnitřní uzel čeká na hodnoty z obou podstromů, které sečte a pošle svému rodiči, současně ale předá hodnotu z levého podstromu do pravého:<br/><img src="ppsindirect1-975eadea06ce8db553541899733d0ca34707a59f.jpg"/><img src="ppsindirect2-f44eb2c7804035bc8f7b63ed0793c3455824a880.jpg"/><br/>Ukázka průběhu:<br/><img src="ppsindirect3-60af0aea8fae7c7a9143f36785df28d506740a41.jpg"/>
+        </div>
+    </note>
+    <note id="1495628704" type="1708237251">
+        <div class="field">
+PPS na přímém stromě
+        </div>
+        <div class="field">
+Modifikace algoritmu pro nepřímý strom pro přímý strom s omezeným větvením<br/><ul><li>Přímý strom znamená, že každý uzel vlastní počáteční hodnotu, předpokládá se postorder linearizace<br/><img src="ppsdirect1-db28c2449c68d3a47d0cd4c57701660b4171cbc1.jpg"/><br/></li><li>Při vzestupné vlně čeká vnitřní uzel na hodnoty z podstromů, k nim přidá svoji hodnotu a výsledek pošle rodiči, zároveň pošle výsledek z levého podstromu pravému<br/><img src="ppsdirect2-645851ecc7b8e6d8f4ea920d2c3b1d631ea37b2c.jpg"/><br/></li><li>Při sestupné vlně si hodnotu shora započte pro sebe a předá podstromům<br/><img src="ppsdirect3-d2b0243d1e518e4a98b80acb4e24233b575209cc.jpg"/><br/></li><li>PPS v \(2h(T)\) krocích</li></ul>
+        </div>
+    </note>
+    <note id="1488288705" type="1708237251">
+        <div class="field">
+PPS na hyperkrychli
+        </div>
+        <div class="field">
+<div>Prefixový součet na hyperkrychli \(Q_n\) vyžaduje, aby vrcholy byly lexikograficky uspořádány podle jejich adres, které jsou interpretovány jako celá čísla. Každý procesor \(P_i\), \(i = 0, \dots, 2^n - 1\), má vlastní proměnné \(\texttt{zluta}_i\) a \(\texttt{zelena}_i\) a algoritmus probíhá následovně:<br/></div><div><ul><li>Všechny procesory \(P_i\) si paralelně inicializují své hodnoty hodnotou vstupního pole \(X[i]\):\[\begin{matrix}
+\texttt{zluta}_i = X[i],\\
+\texttt{zelena}_i = X[i].
+\end{matrix}\]</li><li>V následujících \(j = 0, \dots, n - 1\) fázích se sekvenčně provádí následující kroky:</li><ul><li>Procesor \(i\) pošle svou hodnotu \(\texttt{zelena}_i\) procesoru \(i \oplus 2^j\) a zároveň přijme jeho hodnotu \(\texttt{zelena}_{i \oplus 2^j}\), čímž dojde k výměně dat mezi procesory sousedními v \(j\)-té dimenzi.</li><li>Cizí hodnotu \(\texttt{zelena}_{i \oplus 2^j}\) přičte ke své hodnotě \(\texttt{zelena}_i\):\[\texttt{zelena}_i \coloneqq \texttt{zelena}_i + \texttt{zelena}_{i \oplus 2^j}.\]</li><li>Pokud se procesor \(i \oplus 2^j\) vyskytuje dříve v lexikografickém uspořádání, tedy\[i \oplus 2^j &lt; i,\]pak hodnotu \(\texttt{zelena}_{i \oplus 2^j}\) ještě přičte ke své hodnotě \(\texttt{zluta}_i\):\[\texttt{zluta}_i \coloneqq \texttt{zluta}_i + \texttt{zelena}_{i \oplus 2^j}.\]</li></ul></ul><div>Po skončení algoritmu platí obsahují hodnoty \(\texttt{zluty}_i\) prefixové součty, tedy \[\texttt{zluty}_i = Y[i],\]a hodnoty \(\texttt{zeleny}_i\) obsahují součet všech hodnot vstupního pole.</div></div><div><br/></div><div><img src="ppshypercube-b19a5725ab04477a214edc512a7ed788f2d1d4f2.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1823877272" type="1708237251">
+        <div class="field">
+PPS na ortogonální mřížce: Store-and-Forward
+        </div>
+        <div class="field">
+Prefixový součet na <i>store-and-foward</i> mřížkách vyžaduje jejich linearizaci, přičemž pro každou zvolenou linearizaci je algoritmus odlišný. Uvažujeme-li linearizaci lexikograficky po řádcích shora dolů, pak je algoritmus následující:<br/><ul><li>provedeme prefixový součet ve všech řádcích zleva doprava,</li><li>ve sloupci úplně vpravo provedeme prefixový součet shora dolů,</li><li>v každém řádku kromě prvního přičteme hodnotu sloupce úplně vpravo o řádek výše.</li></ul><div style="text-align: center;"><img src="ppssaf-eff3f0eb5fd4135057ed546c0b373eebf09bdc70.jpg"/></div>
+        </div>
+    </note>
+    <note id="2012370650" type="1708237251">
+        <div class="field">
+PPS na ortogonální mřížce: WormHole
+        </div>
+        <div class="field">
+Prefixový součet na <i>wormhole </i>mřížkách spočívá v simulaci prefixového součtu na nepřímém binárním stromu. Zpočátku jsou všechny uzly chápány jako listy, některé uzly se následně v dalších fázích stávají vnitřními vrcholy a uzel nejvíce vpravo figuruje jako kořen. Postupně se tedy provádí součet hodnot mezi uzly na vzdálenosti \(2^0, 2^1, \dots\), přičemž v každé úrovni se spouští příslušné zpětné komunikace, které odpovídají přeposílání hodnot do potomka ve stromové implementaci.<br/><br/><img src="ppswh-c220219ce154a3f6bf3addd5a7564ca657c519e5.png"/>
+        </div>
+    </note>
+    <note id="1895917839" type="1708237251">
+        <div class="field">
+PPS na obecném souvislém grafu
+        </div>
+        <div class="field">
+Algoritmus prefixového součtu lze aplikovat na libovolný souvislý graf v následujících krocích:<br/><ul><li>zkonstruujeme kostru grafu pomocí prohledávání do šířky záplavovým algoritmem (např. BFS),</li><li>konstru linearizujeme pomocí <i>postorder</i> číslování,</li><li>algoritmus pro prefixový součet na nepřímém stromu upravíme tak, že při odesílání výsledku rodiči je v případě vnitřních uzlů k číslu přičtena i jejich vstupní hodnota.</li></ul><div>Prefixový součet \(n\) hodnot pak lze v libovolném souvislém řídkém grafu o \(n\) uzlech řešit s časovou složitostí \(\mathcal O \big((\operatorname{diam}(G) \big)\).</div>
+        </div>
+    </note>
+    <note id="2094528777" type="1708237251">
+        <div class="field">
+Aplikace prefixového součtu: zhušťovací problém
+        </div>
+        <div class="field">
+<div>Zhušťovací problém (<i>packing problem</i>) spočívá ve výpočtu pořadí prvků v distribuované podmnožině \(Z\) daného univerza \(\mathcal U\), přičemž \(Z\) označuje pro nás zajímavé prvky. Předpokládejme, že prvky \(\mathcal U\) jsou procesory \(P_i\). Každému z nich přiřadíme bit \(b_i\) charakteristického vektoru podmnožiny \(Z\), tedy\[b_i = \begin{cases}
+1 &amp; P_i \in Z, \\
+0 &amp; P_i \notin Z.
+\end{cases}\]Paralelním prefixovým součtem nad polem bitů \(b_i\) (pomocí operace \(+\)) je vypočteno pořadí \(P_i\) v rámci \(Z\).<br/></div><div><br/></div><div><img src="packingproblem-3e681e111fb797b1c247b36af7f16f33a929dbfd.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1863307877" type="1708237251">
+        <div class="field">
+Aplikace prefixového součtu: paralelní RadixSort
+        </div>
+        <div class="field">
+Paralelní <i>RadixSort</i> je řadící algoritmus, který je možné implementovat pomocí prefixového součtu.<br/><br/>Algoritmus nejdříve řadí dle jednotek, poté dle desítek, atd., Zhušťování dle každého lexikografického symbolu a přehazování se zachováním pořadí nakonec zanechá pole seřazené:<br/><br/><img src="radixsort-a9c9458d8cce05441e6aa987836fd2d20dd790e1.jpg"/>
+        </div>
+    </note>
+    <note id="1703418726" type="1708237251">
+        <div class="field">
+Aplikace prefixového součtu: paralelní sčítačka s predikcí přenosu
+        </div>
+        <div class="field">
+Paralelní binární sčítačka je binární sčítačka, která dokáže spočíst součet \(Z\) dvou \(n\) bitových čísel \(X\) a \(Y\) rychleji, než v \(n\) krocích. Její implementace stojí na předpočítání přenosů pomocí prefixového součtu.<br/><br/>Podle dvojic bitů \(X[i]\) a \(Y[i]\) máme tři příznaky: g = určitě carry, s = ne, p = možná carry. Nad těmi uděláme paralelní prefixový součet se specificky definovanou operací. Výsledkem je pole \(C\), které přesně indikuje, kde nastanou přenosy. Následně mohou vlákna nezávisle spočítat jednotlivé bity výsledku jako \(Z_i = X_i + Y_i + C_i\).<br/><img src="adder-ffd9cc2d46ea196e1e48ae723521b24e2c20dc90.jpg"/>
+        </div>
+    </note>
+    <note id="1591465744" type="1708237251">
+        <div class="field">
+Popište tridiagonální systém rovnic a jeho převod do rekurentního tvaru
+        </div>
+        <div class="field">
+Tridiagonální systém rovnic má následující strukturu:\[\begin{align}
+g_1 x_1 + h_1 x_2 &amp;=  b_1\\
+f_2 x_1 + g_2 x_2 + h_2 x_3 &amp;= b_2\\
+&amp;  \, \, \, \vdots \\
+f_i x_{i - 1} + g_i x_i + h_i x_{i + 1} &amp;= b_i\\
+&amp; \, \, \, \vdots \\
+f_{n - 1} x_{n - 2} + g_{n - 1} x_{n - 1} + h_{n - 1} x_n &amp;= b_{n - 1}\\
+f_n x_{n - 1} + g_n x_n &amp;= b_n
+\end{align}\]Rovnici na \(i\)-tém řádku můžeme přepsat do rekurentního tvaru\[\begin{pmatrix}
+x_{i + 1}\\
+x_i\\
+1
+\end{pmatrix} = \mathcal G_i
+\begin{pmatrix}
+x_i\\
+x_{i - 1}\\
+1
+\end{pmatrix},\]kde\[\mathcal G_i = \begin{pmatrix}
+- \frac {g_i}{h_i} &amp; - \frac {f_i}{h_i} &amp; \frac {b_i}{h_i}\\
+1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1
+\end{pmatrix}\]pro \(i = 1, \dots, n - 1\). Rekurence pak spočívá v ronosti\[\begin{pmatrix}
+x_{i + 1}\\
+x_i\\
+1
+\end{pmatrix} = \mathcal H_i \begin{pmatrix}
+x_1\\
+0\\
+1
+\end{pmatrix},\]kde\[\mathcal H_i = \mathcal G_i \mathcal G_{i - 1} \cdots \mathcal G_1\]pro \(i = 1, \dots, n - 1\).<br/>
+        </div>
+    </note>
+    <note id="1890858005" type="1708237251">
+        <div class="field">
+Aplikace prefixového součtu: tridiagonální systém rovnic
+        </div>
+        <div class="field">
+Tridiagonální systém rovnic lze vyřešit pomocí paralelního prefixového součtu následujícím algoritmem:<br/><ul><li>pomocí paralelního prefixového součtu pole matic \([ \mathcal G_1, \dots, \mathcal G_{n - 1} ]\) vypočtou procesory matice \(\mathcal H_1, \dots, \mathcal H_{n - 1}\);</li><li>poslední procesor vypočte ze tří rovnic pro tři neznáme \(x_1\), \(x_{n - 1}\) a \(x_n\) hodnotu proměnné \(x_1\) a odešle ji všem ostatním procesorům;</li><li>ostatní procesory paralelně vypočtou \(x_{i + 1}\) ze všech svých rovnic.</li></ul>Časová složitost tohoto algoritmu je\[\mathcal O\bigg( \Big( \frac n p  + \log p \Big) + ( 1 + \log p) + \frac n p \bigg).\]<br/>
+        </div>
+    </note>
+    <note id="1816476184" type="1708237251">
+        <div class="field">
+Segmentový prefixový součet (SPPS)
+        </div>
+        <div class="field">
+<ul><li>Modifikace PPS pro případ, kdy je vstupní pole rozděleno do různě velkých segmentů, v rámci kterých je PPS počítána</li><li>Cílem je vypočítat všechny prefixové součty uvnitř segmentů izolovaně, rovnoměrné zatížení procesorů</li><li>SPPS se provádí jako globální PPS nad celým polem, ale s modifikovanou operací \(\overline\oplus\), jejíž tabulka se odvodí z tabulky \(\oplus\). Díky čáře na levé straně (značící začátek nového segmentu) operace nepropustí hodnoty z předchozího segmentu:<br/><img src="spps1-a3d05025628c946eae60c1fe9b343942da64cbee.jpg"/></li><li>Ukázka průběhu:<br/><img src="spps2-4e18288e3f49d5af10fb1802650223f71a2517e8.jpg"/><br/></li></ul>
+        </div>
+    </note>
+    <note id="1606030318" type="1708237251">
+        <div class="field">
+Popište funkce <i>Message Passing Interface</i> (MPI) pro paralelní prefixový součet a implementaci segmentového paralelního prefixového součtu (SPPS)
+        </div>
+        <div class="field">
+<i>Message Passing Interface </i>(MPI) obsahuje následující funkce pro paralelní prefixový součet:<br/><ul><li>\(\texttt{MPI_Scan}\) - proces započítá svá vlastní data, tedy proces \(P_i\) obsahuje prefixový součet dat procesů \(P_0, \dots, P_i\);<br/></li><li>\(\texttt{MPI_Exscan}\) - proces nezapočítá svá vlastní data, tedy proces \(P_i\) obsahuje prefixový součet dat procesů \(P_0, \dots, P_{i - 1}\).<br/></li></ul><div>Segmentový paralelní prefixový součet (SPPS) lze implementovat pomocí funkcí pro paralelní prefixový součet definováním vlastní operace korespondující operaci z definice SPPS.</div>
+        </div>
+    </note>
+    <note id="1301042212" type="1708237251">
+        <div class="field">
+Aplikace segmentového prefixového součtu: paralelní segmentový QuickSort
+        </div>
+        <div class="field">
+Paralelní segmentový QuickSort<br/><ul><li>Rozdělení pole podle procesů (rovnoměrně)</li><li>Vstupní posloupnost A je rovnoměrně rozdělena mezi \(p &lt; n\) procesorů</li><li>V jedné iteraci algoritmu je každý segment S rozdělen na 3 podsegmenty, \(S_&gt;\), \(S_=\), \(S_&gt;\).</li><li>Pivot pro daný segment je jeho první prvek zleva</li></ul><div><br/></div><div><br/></div><div>Segmentovaný paralelní prefixový součet (SPPS) lze použít pro implementaci paralelního stabilního <i>in-place</i> \(\texttt{QuickSort}\) algoritmu. Vstupní pole \(A[a_0, \dots, a_{n - 1}]\) je rozděleno rovnoměrně mezi \(p\) procesorů a zpočátku obsahuje pouze jeden segment. Algoritmus probíhá následovně:<br/><ul><li>zkontrolujeme, zda je pole seřazené, spočítáním příznaku\[f_i \coloneqq a_i \leq a_{i + 1}\]a jeho paralelní redukcí pomocí binární operace \(\texttt{AND}\) a pokud ano, algoritmus ukončíme;</li><li>pro všechny aktuální segmenty \(S\) v \(A\) iterujeme paralelně následující kroky:</li><ul><li>první prvek segmentu vybereme pivot \(b_S\) a pomocí SPPS (operace \(a \circ b = a\) respektující hranice segmentů) jej rozešleme všem procesorům uvnitř \(S\);</li><li>paralelně porovnáme každý prvek \(a_i \in S\) s pivotem \(b_S\) a určíme jejich vzájemnou relaci (\(&lt;\), \(=\) nebo \(&gt;\));</li><li>pomocí SPPS spočteme nové indexy prvků \(\{ a_i : a_i &lt; b_S \}\) uvnitř všech segmentů;</li><li>maximum ze spočtených indexů (velikost \(S_&lt;\)) pošleme pomocí SPSS doleva (operace \(a \circ b = b\) respektující hranice segmentů), protože \(|S_&lt;|\) určuje začátek \(S_=\);</li><li>pomocí SPPS spočteme nové indexy prvků \(\{ a_i : a_i = b_S \}\) uvnitř všech segmentů;</li><li>maximum ze spočtených indexů (velikost \(S_=\)) pošleme pomocí SPSS doleva (operace \(a \circ b = b\) respektující hranice segmentů), protože \(|S_&lt;| + |S_=|\) určuje začátek \(S_&gt;\);</li><li>pomocí SPPS spočteme nové indexy prvků \(\{ a_i : a_i &gt; b_S \}\) uvnitř všech segmentů;</li><li>zhuštěním segmentů podle relací prvků \(a_i\) vůči \(b_S\) rozdělíme každý segment na podsegmenty:\[S = \{ S_&lt; | S_= | S_&gt; \};\]</li></ul><li>tento postup opakujeme, dokud pole není seřazené.</li></ul></div>
+        </div>
+    </note>
+
+</deck>

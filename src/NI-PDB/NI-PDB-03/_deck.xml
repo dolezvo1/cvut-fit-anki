@@ -1,0 +1,92 @@
+<deck id="1766691896" name="NI-PDB::NI-PDB-03" deck_slug="NI-PDB-03">
+
+    <note id="1332783166" type="1708237251">
+        <div class="field">
+NoSQL databases: advantages and disadvantages
+        </div>
+        <div class="field">
+<div>NoSQL databases are generally scalable due to distribution of data among hosts. Since it is usually cheaper to buy more machines rather than to buy more powerful machines (law of diminishing returns), scalability also makes NoSQL more economical.</div><div><br/></div><div>Main disadvantages could be maturity (often key features missing), availability of support (often open-source), expertise (low number of NoSQL experts).</div>
+        </div>
+    </note>
+    <note id="1622855595" type="1708237251">
+        <div class="field">
+CAP theorem
+        </div>
+        <div class="field">
+CAP theorem states that any distributed data store can provide <b>at most two</b> of the following three guarantees:<br/><ul><li><b>Consistency</b> = all clients see the same data, regardless of which node they connect to</li><li><b>Availability</b> = all requests received by a non-failing node must result in a response</li><li><b>Partition tolerance</b> = the system continues to operate despite arbitrary number of messages being dropped by the network between nodes</li></ul>
+        </div>
+    </note>
+    <note id="1966103922" type="1708237251">
+        <div class="field">
+CA systems
+        </div>
+        <div class="field">
+Consistency and Availability is not realizable in distributed systems with number of nodes larger than 1.<br/><br/>Examples: MySQL, PostgreSQL
+        </div>
+    </note>
+    <note id="1887414699" type="1708237251">
+        <div class="field">
+AP systems
+        </div>
+        <div class="field">
+Available and Partition tolerance - request sent by the user to view or modify the data present in the database nodes are not dropped and are processed in presence of a network partition<br/><br/>Examples: DynamoDB
+        </div>
+    </note>
+    <note id="2134348463" type="1708237251">
+        <div class="field">
+CP systems
+        </div>
+        <div class="field">
+Consistency and Partition tolerance - requests sent by the user to view or modify the data present in the database nodes are dropped instead of responding with inconsistent data in presence of a network partition<br/><br/>Example: MongoDB, Redis
+        </div>
+    </note>
+    <note id="1136658354" type="1708237251">
+        <div class="field">
+Horizontal and vertical scaling
+        </div>
+        <div class="field">
+<ul><li>Vertical scaling (scaling-up) = buying bigger servers as load increases</li><li>Horizontal scaling (scaling-out) = buying more servers as load increases</li></ul>
+        </div>
+    </note>
+    <note id="1592803027" type="1708237251">
+        <div class="field">
+Data distribution: Replication
+        </div>
+        <div class="field">
+Replication = data is duplicated betwen nodes<ul><li><div>Primary-Replica (master server handles writes, replicas sync for read)</div></li><li><div>Multi-Primary (multiple servers handle reads and writes)</div></li><li><div>Good for read-heavy applications<br/></div></li></ul>
+        </div>
+    </note>
+    <note id="2007271846" type="1708237251">
+        <div class="field">
+Data distribution: Sharding
+        </div>
+        <div class="field">
+Sharding = data is split between independent nodes, for example user accounts could be split by region<ul><li>That also means Cross-Shard Queries are expensive</li><li>Good for write-heavy applications</li></ul>
+        </div>
+    </note>
+    <note id="2091750758" type="1708237251">
+        <div class="field">
+ACID
+        </div>
+        <div class="field">
+<div><ul><li><b>Atomicity</b> (transactions are all or nothing)</li><li><b>Consistency</b> (transactions obey cascades, triggers, etc.)</li><li><b>Isolation</b> (transactions are isolated until committed)</li><li><b>Durability</b> (committed changes are permanent)</li></ul></div>
+        </div>
+    </note>
+    <note id="1273578571" type="1708237251">
+        <div class="field">
+BASE
+        </div>
+        <div class="field">
+<ul><li><b>Basically Available</b> (concurrently accessible at all times)</li><li><b>Soft-state</b> (observed state may change without external input)</li><li><b>Eventually consistent</b> (reads from different node will be consistent at some point)</li></ul>
+        </div>
+    </note>
+    <note id="1644279624" type="1708237251">
+        <div class="field">
+BASE vs. ACID
+        </div>
+        <div class="field">
+ACID is relatively simple to maintain, whereas BASE is fairly difficult (requires conflict resolution over multiple copies of distributed data).<br/><br/>SQL databases are almost uniformly ACID compliant, NoSQL databases tend to conform to BASE.
+        </div>
+    </note>
+
+</deck>

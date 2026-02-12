@@ -1,0 +1,218 @@
+<deck id="1306408964" name="NI-KOP::NI-SPOL-12" deck_slug="NI-SPOL-12">
+
+    <note id="1211090051" type="1708237251">
+        <div class="field">
+Třída \(NPO\)
+        </div>
+        <div class="field">
+Optimalizační problém \(T\) patří do třídy \(NPO\), když splňuje nasledující podmínky:<br/><ul><li>Velkost výstupu instance je omezená polynomem velikosti instance</li><li>Problém ověření, zda daná konfigurace je řešením, patří do \(P\)</li><li>Existuje program pro \(TS\), který vypočíta hodnotu optimalizačního kritéria pro každé řešení každé instance v polynomiálním čase</li></ul><div><img src="npohierarchy-75283e6efc667316dee80b326a0df925.png"/><br/></div>
+        </div>
+    </note>
+    <note id="1442600410" type="1708237251">
+        <div class="field">
+Třída \(PO\)
+        </div>
+        <div class="field">
+Optimalizační problém \(T\) patří do třídy \(PO\), pokud splňuje následující podmínky:<br/><ul><li>Patří do \(NPO\)</li><li>Existuje program pro \(TS\), který každou instanci vyřeší v polynomiálním čase</li></ul><div><i>* např. problém hledání nejkratší cesty v grafu </i>\(G=(V,E)\)<i> patří do </i>\(PO\)</div>
+        </div>
+    </note>
+    <note id="1083443673" type="1708237251">
+        <div class="field">
+Pseudopolynomiální algoritmus
+        </div>
+        <div class="field">
+Algoritmus, jehož počet kroků závisí polynomiálně na velikosti
+instance, ale navíc i na vstupní proměnné, která s velikostí
+instance nesouvisí, nazýváme pseudopolynomiálním.<br/><br/><i>* obecně se jedná o nějakou jinou vlastnost vstupu, například o maximální hodnotu vstupního pole</i>
+        </div>
+    </note>
+    <note id="2132722212" type="1708237251">
+        <div class="field">
+Aproximativní algoritmus, třída APX
+        </div>
+        <div class="field">
+Algoritmus je \(R\)<b>-aproximativní</b>, pokud každou instanci problému \(T\) vyřeší v polynomiálním čase s relativní kvalitou \(R\).<br/><br/>Optimalizační problém je \(R\)-aproximativní, jestliže pro něj existuje \(R\)-aproximativní polynomiální algoritmus. Číslo \(R\) nazveme <b>aproximačním prahem problému</b>.<br/><br/>Optimalizační problém patří do třídy APX, jestliže je \(R\)-aproximativní pro konečné \(R\).<br/><br/><i>* Ne pro každý problém existuje APX řešení.</i>
+        </div>
+    </note>
+    <note id="1731322705" type="1708237251">
+        <div class="field">
+Relativní kvalita, relativní chyba
+        </div>
+        <div class="field">
+Buď \(C_{APR}(I)\), resp. \(C_{OPT}(I)\), je hodnota optimalizačného kritéria pro aproximativní, resp. optimální, řešení. Pak:<br/><div><ul><li>\(APR\) má relativní kvalitu \(R\), pokud platí \(R\ge\max_{\forall I}\{\frac{C_{APR}(I)}{C_{OPT}(I)},\frac{C_{OPT}(I)}{C_{APR}(I)}\}\)</li><li>\(APR\) má relativní chybu \(\varepsilon\), pokud platí \(\varepsilon \ge \max_{\forall I}\{\frac{|C_{APR}(I)-C_{OPT}(I)|}{\max\{C_{OPT}(I),C_{APR}(I)\}}\}\)</li><li>Hodnotu relativní chyby \(\varepsilon\) udává vztah \(\varepsilon=1-\frac{1}{R}\)</li></ul><div><i>* Hodnota kvality 1 znamená optimální hodnotu, naopak kvalita blížící se \(\infty\) znamená zcela nepřesnou hodnotu.</i></div></div>
+        </div>
+    </note>
+    <note id="1484071390" type="1708237251">
+        <div class="field">
+Polynomiální aproximativní schéma (PTAS)
+        </div>
+        <div class="field">
+Algoritmus APR, který pro každé \(1&gt;\varepsilon&gt;0\) vyřeší každou instanci problému s relativní chybou nejvýše \(\varepsilon\) v polynomiálním čase nazýváme <b>polynomiální aproximační schéma</b> problému.<br/><br/>Problém patří do třídy PTAS, jestliže pro něj existuje polynomiální
+aproximační schéma.<br/><br/><i>* aproximativní algoritmus, u kterého si můžeme libovolně určit maximální chybu</i>
+        </div>
+    </note>
+    <note id="1658198606" type="1708237251">
+        <div class="field">
+Úplné polynomiální aproximativní schéma (FPTAS)
+        </div>
+        <div class="field">
+Polynomiální aproximační schéma APR, jehož čas výpočtu závisí
+polynomiálně na \(1/\varepsilon\), nazýváme
+<b>plně polynomiální aproximační schéma</b>.<br/><br/>Problém patří do třídy FPTAS, jestliže pro něj existuje plně
+polynomiální aproximační schéma.
+        </div>
+    </note>
+    <note id="1595318091" type="1708237251">
+        <div class="field">
+Diagram tříd složitosti optimalizačních problémů
+        </div>
+        <div class="field">
+<img src="fptashierarchy-47e33d4d1d718d45f93ee50bf4904db7.png"/>
+        </div>
+    </note>
+    <note id="2145836160" type="1708237251">
+        <div class="field">
+Metoda <i>Introduction, Methods, Results, and Discussion</i> (IMRaD).
+        </div>
+        <div class="field">
+<i>Introduction, Methods, Results, and Discussion</i> (IMRaD) je metoda udávající obecnou strukturu článku pojednávajícího o výzkumné činnosti. Používá se také při prezentaci výsledků experimentálního vyhodnocení algoritmů. Podle ní by článek měl obsahovat následující části:<br/><ul><li><i><b>introduction</b></i> - účel výzkumu, výzkumná otázka;<br/></li><li><i><b>methods</b></i> - použité metody a důvod jejich použití, ověření korektnosti;<br/></li><li><i><b>results</b></i> - výsledky výzkumu, odpověď na výzkumnou otázku;<br/></li><li><i><b>discussion</b></i> - interpretace odpovědi, prostor pro budoucí výzkum.</li></ul>
+        </div>
+    </note>
+    <note id="2040537374" type="1708237251">
+        <div class="field">
+Experimentální vyhodnocení: přehled
+        </div>
+        <div class="field">
+<div>Experimentální vyhodnocení algoritmů spočívá v analýze algoritmů za účelem srovnání algoritmu s dosud známými algoritmy, porozumění nebo určení vhodnosti pro konkrétní nasazení.<br/></div><ul><li>Typicky je předmětem analýzy:<br/></li><ul><li>Kvalita řešení (buď oproti optimu, nebo navzájem)</li><li>Výpočetní náročnost (není ale vhodné používat časy výpočtu, protože ty zahrnují mnoho faktorů)</li></ul><li>Může nás zajímat například nejlepší případ, nejhorší případ, nebo průměrný případ, jejich vývoj v závislosti na parametrech<br/></li><li>K dosáhnutí kvalitního měření býva potřeba měření několikrát opakovat</li></ul>
+        </div>
+    </note>
+    <note id="1470026950" type="1708237251">
+        <div class="field">
+Postup experimentálního vyhodnocení
+        </div>
+        <div class="field">
+<div>Experimentální vyhodnocení algoritmu začíná u stanovení otázky nebo otázek, např. pro praktické instance reprezentované danými zkušebními úlohami, je algoritmus \(A\) lepší než \(B\)? Následně:</div><ul><li>Podle otázek naplánujeme experiment</li><li>Vykonáme ho, přitom (či po něm) sbíráme data</li><li>Výsledky interpretujeme</li></ul>Výstupem by měla být odpověď na otázku stanovenou na začátku.
+        </div>
+    </note>
+    <note id="1521392735" type="1708237251">
+        <div class="field">
+Výběr instancí pro experimentální vyhodnocení
+        </div>
+        <div class="field">
+<ul><li>Příklady z praxe otestují chování algoritmů v běžných situacích, ale neposkytují vhodné vstupy pro komplexní měření</li><li>Náhodné instance jsou dobře škálovatelné a rovnoměrně rozdělené, ale nemusí poskytovat dostatek informací o důležitých částích algoritmu</li><li>Náhodně generované instance s ohledem na experiment by měli být ideální k pozorování určitého chování algoritmu</li></ul>
+        </div>
+    </note>
+    <note id="1721983642" type="1708237251">
+        <div class="field">
+Fáze experimentálního vyhodnocení
+        </div>
+        <div class="field">
+<ul><li><b>White box fáze</b></li><ul><li>Omezená sada instancí</li><li>Detailní měření (i vnitřních stavů)</li><li><b>Porozumění fungování heuristiky</b></li><li>Modifikace heuristiky během měření</li></ul><li><b>Black box fáze</b></li><ul><li>Plná sada instancí</li><li>Měření statistických výsledků</li><li><b>Ověření kvality a výkonu</b></li><li>Žádné modifikace heuristiky</li></ul></ul>
+        </div>
+    </note>
+    <note id="1489680658" type="1708237251">
+        <div class="field">
+Parametry algoritmu a experimentální vyhodnocení
+        </div>
+        <div class="field">
+Parametry algoritmu na sobě všeobecně nejsou nezávislé<br/><ul><li>U některých je závislost známá</li><li>U jiných ne (nutné zjistit pomocí experimentu)</li></ul><div><i>* vždy se snažíme zkoumat vliv právě jednoho parametru v daném experimentu</i></div>
+        </div>
+    </note>
+    <note id="1578897606" type="1708237251">
+        <div class="field">
+Metriky experimentálního vyhodnocení
+        </div>
+        <div class="field">
+Metriky experimentálního vyhodnocení algoritmů jsou kvantitativní veličiny, které vznikají abstrakcí vstupů a výstupů algoritmu. Používají se k interpretaci a zobecnění jednotlivých běhů algoritmu, protože cílem je nalézt závislost metrik, která se týká algoritmu obecně, nikoliv jeho konkrétních běhů s konkrétními daty. Rozlišujeme:<br/><ul><li><b>primární metriky</b> - měřené hodnoty,<br/></li><li><b>sekundární metriky</b> - kvantitativní srovnání (průměr, medián, distribuční funkce).</li></ul>
+        </div>
+    </note>
+    <note id="1305439332" type="1708237251">
+        <div class="field">
+Vizualizace experimentálního vyhodnocení
+        </div>
+        <div class="field">
+<ul><li>Výstupem meření bývají kvantitativní data</li><li>Lze vizualizovat pomocí histogramu či grafu</li><li>Přidáním výsledků vícero algoritmů umíme tyto algoritmy snadno vizuálně porovnávat</li><li>Díky vizualizaci umíme odhalit kvalitu dat (různé skoky, nevysvětlitelné úkazy apod.)</li></ul>
+        </div>
+    </note>
+    <note id="2143016991" type="1708237251">
+        <div class="field">
+Popište srovnání algoritmů na základě experimentálního vyhodnocení
+        </div>
+        <div class="field">
+Srovnání algoritmů \(A\) a \(B\) na základě experimentálního vyhodnocení můžeme provést podle:<br/><ul><li><b>parametrů statistického rozdělení</b> - \(A\) má všechny parametry lepší než \(B\),<br/></li><li><b>dominance</b> - \(A\) je v každé instanci zadané vstupní metriky stejně dobrý nebo lepší než \(B\).</li></ul>
+        </div>
+    </note>
+    <note id="1524951706" type="1708237251">
+        <div class="field">
+Randomizované algoritmy
+        </div>
+        <div class="field">
+<ul><li>Jsou založené na náhodné volbě, lze je proto vymyslet pro každý problém</li><li>Vlastnosti těchto algoritmů jsou vyjádřené statisticky, kvalita výsledku i doba běhu mohou být náhodné proměnné</li><li>Výhody:<br/></li><ul><li>Typicky jsou poměrně jednoduše formulovatelné</li><li>Očekávaná kvalita může být vyšší než zaručená kvalita u \(APX\)</li><li>Nezávislým opakováním můžeme dosáhnout lepší kvalitu</li></ul></ul>
+        </div>
+    </note>
+    <note id="2120180355" type="1708237251">
+        <div class="field">
+Algoritmus Monte Carlo
+        </div>
+        <div class="field">
+Pevně stanovená doba běhu, kvalita výsledku je náhodná<br/><br/><i>* např. Miller-Rabinův test prvočíselnosti - stanoví zda je číslo prvočíslem s pravděpodobností </i>\(1-(\frac{1}{4})^k\)<i>, kde </i>\(k\)<i> je počet iterací testu</i>
+        </div>
+    </note>
+    <note id="1412712080" type="1708237251">
+        <div class="field">
+Algoritmus Las Vegas
+        </div>
+        <div class="field">
+Pevně stanovená kvalita výsledku, doba běhu je náhodná<br/><br/><i>* např. Quicksort - výsledkem je vždy seřazená posloupnost, ale podle volby pivota trvá různou dobu. Očekávaná časová složitost je </i>\(O(n\cdot \log(n))\)
+        </div>
+    </note>
+    <note id="1302451375" type="1708237251">
+        <div class="field">
+Algoritmus Atlantic City
+        </div>
+        <div class="field">
+Doba běhu i kvalita výsledku je náhodná (často se definuje s \(75\%\) pravděpodobností)
+        </div>
+    </note>
+    <note id="1403721447" type="1708237251">
+        <div class="field">
+Popište experimentální vyhodnocení randomizovaného algoritmu
+        </div>
+        <div class="field">
+Experimentální vyhodnocení randomizovaného algoritmu probíhá podobně jako obecné experimentální vyhodnocení algoritmu s tím rozdílem, že vlivem randomizace se zdrojem variance stává i samotný algoritmus. Může probíhat dvěma způsoby s následujícími specifiky:<br/><ul><li><b>na jedné instanci</b> - bez generátoru instancí, statistika potlačuje varianci způsobenou randomizací;<br/></li><li><b>na sadě instancí</b> - s generátorem instancí, statistika potlačuje varianci způsobenou randomizací a varianci v instancích.</li></ul><table style="text-align: center;"><tbody><tr><td><img src="eval1-d82dfe6e029df62d43b40c4eb0216122f210e70c.jpg"/></td><td><img src="eval2-40536d693e2cb21925634f409ef310a737728a1f.jpg"/></td></tr></tbody></table>
+        </div>
+    </note>
+    <note id="1250422939" type="1708237251">
+        <div class="field">
+Popište metriky experimentálního vyhodnocení randomizovaných algoritmů
+        </div>
+        <div class="field">
+Metriky experimentálního vyhodnocení randomizovaných algoritmů dělíme na:<br/><ul><li><b>metriky 1. fáze</b> - používají se pro potlačení variance způsobené randomizací,<br/></li><li><b>metriky 2. fáze</b> - používají se pro potlačení variance v instancích.</li></ul>
+        </div>
+    </note>
+    <note id="1839329987" type="1708237251">
+        <div class="field">
+Popište robustní algoritmus a metodu měření robustnosti.
+        </div>
+        <div class="field">
+Robustní algoritmus je algoritmus, který je konzistentní a efektivní napříč různými vstupy, a to i v případech, kdy nejsou vstupy nebo podmínky jeho běhu ideální. Měření robustnosti algoritmu sestává z následujících komponent:<br/><ul><li><b>instance</b> - vstupuje pouze jediná instance se zadanou vstupní metrikou,<br/></li><li><b>náhodná perturbace </b>- do instance je zanesena variance (všechny perturbace by měly být stejně pravděpodobné),<br/></li><li><b>algoritmus</b> - řeší zadanou instanci, je měřena jeho výstupní metrika;<br/></li><li><b>statistika a interpretace</b> - zkoumá varianci vyvolanou perturbací.<br/></li></ul><div style="text-align: center;"><img src="eval3-edaf6206b36b7f9cb88317b1a161528b142dcf14.jpg"/></div>
+        </div>
+    </note>
+    <note id="1182921343" type="1708237251">
+        <div class="field">
+Náhodná procházka
+        </div>
+        <div class="field">
+V stavovém prostoru se v každém kroku náhodně rozhodujeme o směru pohybu do dalšího sousedního stavu (zastavení splněním podmínky, nebo omezením počtu kroků)
+        </div>
+    </note>
+    <note id="1089560304" type="1708237251">
+        <div class="field">
+Zaujatá náhodná procházka
+        </div>
+        <div class="field">
+Podobně jako náhodná procházka, akorát v každém kroku náhodně vybíráme s nějakou "zaujatostí" (tzn. ne všechny možnosti jsou uniformní)
+        </div>
+    </note>
+
+</deck>

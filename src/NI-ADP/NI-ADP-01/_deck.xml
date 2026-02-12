@@ -1,0 +1,116 @@
+<deck id="2018400119" name="NI-ADP::NI-ADP-01" deck_slug="NI-ADP-01">
+
+    <note id="1232127683" type="1708237251">
+        <div class="field">
+DRY
+        </div>
+        <div class="field">
+Don't Repeat Yourself - Duplication of data, logic, or function in code not only makes your code lengthy but also wastes a lot of time when it comes to maintaining, debug or modify the code.
+        </div>
+    </note>
+    <note id="1533339930" type="1708237251">
+        <div class="field">
+KISS
+        </div>
+        <div class="field">
+Keep It Simple, Stupid - Nobody in programming loves to debug, maintain, or make changes in complex code. “Keep It Simple, Stupid (KISS)“ states that most systems work best if they are kept simple rather than making it complex, so when you are writing code your solution should not be complicated that takes a lot of time and effort to understand.
+        </div>
+    </note>
+    <note id="2105665778" type="1708237251">
+        <div class="field">
+YAGNI
+        </div>
+        <div class="field">
+You Aren't Gonna Need It - Always implement things when you actually need them, never when you just foresee that you [will] need them.
+        </div>
+    </note>
+    <note id="2125551663" type="1708237251">
+        <div class="field">
+SOLID: S
+        </div>
+        <div class="field">
+<b>Single Responsibility Principle</b> - there should never be more than one reason for a class to change
+        </div>
+    </note>
+    <note id="1594572429" type="1708237251">
+        <div class="field">
+SOLID: O
+        </div>
+        <div class="field">
+<b>Open-Closed Pronciple</b> - software entities should be open for extension, but closed for modification
+        </div>
+    </note>
+    <note id="1377372880" type="1708237251">
+        <div class="field">
+SOLID: L
+        </div>
+        <div class="field">
+<b>Liskov Substitution Principle</b> - functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it
+        </div>
+    </note>
+    <note id="1910938427" type="1708237251">
+        <div class="field">
+SOLID: I
+        </div>
+        <div class="field">
+<b>Interface Segregation Principle</b> - clients should not be forced to depend upon interfaces that they do not use
+        </div>
+    </note>
+    <note id="1130257628" type="1708237251">
+        <div class="field">
+SOLID: D
+        </div>
+        <div class="field">
+<b>Dependency Inversion Principle</b> - depend upon abstractions, not concretes
+        </div>
+    </note>
+    <note id="1811839223" type="1708237251">
+        <div class="field">
+POLA
+        </div>
+        <div class="field">
+Principle of Least Astonishment - the result of performing some operation should be obvious, consistent, and predictable, based upon the name of the operation and other clues
+        </div>
+    </note>
+    <note id="1400513610" type="1708237251">
+        <div class="field">
+TBSR
+        </div>
+        <div class="field">
+The Boy Scout Rule - you leave the code better than you found it
+        </div>
+    </note>
+    <note id="2104834296" type="1708237251">
+        <div class="field">
+Tech debt
+        </div>
+        <div class="field">
+Technical debt is the cost of additional rework caused by choosing the quickest solution rather than the most effective solution
+        </div>
+    </note>
+    <note id="2057220813" type="1708237251">
+        <div class="field">
+SoC
+        </div>
+        <div class="field">
+Separation of Concerns - not all classes should be concerned with all facets of the software. An example of SoC is layering, where the lower layers (e.g. data model) are not aware of the higher layers (e.g. how the data is displayed)
+        </div>
+    </note>
+    <note id="1546973033" type="1708237251">
+        <div class="field">
+LoD
+        </div>
+        <div class="field">
+Law of Demeter - "don't talk to strangers strangers" (e.g. call method on a result of a method call)
+        </div>
+    </note>
+    <note id="2125124084" type="1708237251">
+        <div class="field">
+APO
+        </div>
+        <div class="field">
+Avoid premature optimization - "Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs… We should forget about small efficiencies, say about 97% of the time: Premature optimization is root of all evil." - Donald Knuth
+        </div>
+    </note>
+
+</deck>

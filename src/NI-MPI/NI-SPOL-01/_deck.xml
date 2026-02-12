@@ -1,0 +1,323 @@
+<deck id="1924672755" name="NI-MPI::NI-SPOL-01" deck_slug="NI-SPOL-01">
+
+    <note id="1377555429" type="1708237251">
+        <div class="field">
+Teorie grup
+        </div>
+        <div class="field">
+<ul><li>Teorie grup se zabývá zobecněním uspořádané dvojice matematické struktury a operace nad ní</li><li>Na základě vlastností, které pro tuto dvojici platí, je kategorizujeme</li><li>V rámci kategorie se dá k dvojicím přistupovat stejně - není nutné dokázat každé tvrzení pro každou dvojici zvlášt, "stačí" to dokázat pro celou kategorii</li><li>Např. Pro libovolné prvky \(b\), \(c\) z grupy \((M, \circ)\) má rovnice \(b \circ x = c\) jediné řešení \(x = b^{-1} \circ c\).</li></ul>
+        </div>
+    </note>
+    <note id="1328498161" type="1708237251">
+        <div class="field">
+Definice - Grupoid
+        </div>
+        <div class="field">
+<b>Grupoid</b> (<i>magma</i>) je dvojice neprázdné množiny \(M\) a binární operace \(M \times M \to M\)<br/><br/>* <i>Neboli operace musí být na nosiči uzavřená</i>
+        </div>
+    </note>
+    <note id="1930553012" type="1708237251">
+        <div class="field">
+Definice - Pologrupa
+        </div>
+        <div class="field">
+<b>Pologrupa</b> (<i>semigroup</i>) je grupoid, jehož binární operace je asociativní, neboli<br/>\((\forall a, b, c \in M)\)\(~((a \circ b) \circ c = a \circ (b \circ c))\).
+        </div>
+    </note>
+    <note id="1524160442" type="1708237251">
+        <div class="field">
+Definice - Monoid
+        </div>
+        <div class="field">
+<b>Monoid</b> je pologrupa, ve které navíc existuje neutrální prvek \(e\), tak že<br/>\((\forall a \in M)~(a \circ e = e \circ a = a)\).
+        </div>
+    </note>
+    <note id="1504542845" type="1708237251">
+        <div class="field">
+Definice - Grupa
+        </div>
+        <div class="field">
+<b>Grupa</b> (<i>group</i>) je monoid, ve kterém navíc ke každému prvku existuje inverze, neboli<br/>\((\forall a \in M)(\exists a^{-1} \in M)\)\(~(a^{-1} \circ a = a \circ a^{-1} = e)\)
+        </div>
+    </note>
+    <note id="1319850169" type="1708237251">
+        <div class="field">
+Definice - Abelovská grupa
+        </div>
+        <div class="field">
+<b>Abelovská grupa</b> je grupa, jejíž binární operace je navíc komutativní, neboli<br/>\((\forall a,b \in M)~(a \circ b = b \circ a)\)
+        </div>
+    </note>
+    <note id="1231912222" type="1708237251">
+        <div class="field">
+Věta - jednoznačnost neutrálního prvku
+        </div>
+        <div class="field">
+V monoidu existuje právě jeden neutrální prvek.<br/><br/><i>* Důkaz sporem: pro </i>\(\overline e \neq e\)<i> musí nutně platit </i>\(\overline e = \overline e \circ e = e\)
+        </div>
+    </note>
+    <note id="1764533314" type="1708237251">
+        <div class="field">
+Věta - jednoznačnost inverzního prvku
+        </div>
+        <div class="field">
+V grupě má každý prvek právě jeden inverzní prvek.<br/><br/><i>* Důkaz sporem: pro </i>\(\overline b \neq b\)<i> jako inverzi </i>\(a\)<i> musí nutně platit </i>\(\overline b = \overline b \circ (a \circ b)
+= (\overline b \circ a) \circ b = b\)
+        </div>
+    </note>
+    <note id="1592665791" type="1708237251">
+        <div class="field">
+Věta - jednoznačnost dělení
+        </div>
+        <div class="field">
+V každé grupě lze jednoznačně dělit. Tzn.: V každé grupě \((G, \circ)\) mají pro libovolné \(a,b\in G\) rovnice \(a\circ x = b\) a \(y\circ a = b\) jediné řešení.<br/><br/><i>* Důkaz sporem: Předpokládejme, že </i>\(a\circ x = b\)<i> má dvě různá řešení, </i><br/>\(x_1 = a^{-1} \circ b\)<i> a </i>\(x_2 \neq a^{-1} \circ b\)<i>. Potom </i>\(x_2 = (a^{-1} \circ a) \circ x_2 = a^{-1} \circ (a \circ x_2) = a^{-1} \circ b = x_1\)<i>, což je spor.</i>
+        </div>
+    </note>
+    <note id="1533767730" type="1708237251">
+        <div class="field">
+Cayleyho tabulka
+        </div>
+        <div class="field">
+<div><ul><li>Cayleyho tabulka má v prvním řádku a prvním sloupci prvky \(M\), v ostatních má výsledek grupové operace pro hodnoty v záhlaví</li><li>Vztah ke grupovým vlastnostem:<ul><li>\(G\) je <b>uzavřená</b> iff tabulka obsahuje pouze prvky \(M\)</li><li>Asociativitu z ní nelze přímočaře poznat</li><li>\(G\) má <b>neutrální prvek</b> iff se v nějakém řádku a sloupci opakují nezměněné hodnoty</li><li><b>Inverzní prvek</b> k \(a\) získáme nalezením \(e\) v příslušném řádku a sloupci</li><li>\(G\) je <b>komutativní</b> iff tabulka je symetrická vůči hlavní diagonále</li></ul></li></ul></div><img src="cayley-ffc79e8910dffd45756e8b8fdcd65afec1a7f281.png"/>
+        </div>
+    </note>
+    <note id="1392706424" type="1708237251">
+        <div class="field">
+Věta - Vztah mezi Cayleyho tabulkou a latinským čtvercem
+        </div>
+        <div class="field">
+Cayleyho tabulka každé grupy tvoří latinský čtverec.<br/><br/><i>* Latinský čtverec pro </i>\(n\)<i> prvkovou množinu </i>\(M\)<i> je matice </i>\(n \times n\)<i> taková, že v každém řádku i sloupci jsou vždy všechny prvky množiny </i>\(M\)<i>.<br/>* Důkaz: pokud by Cayleyho tabulka grupy nebyla latinský čtverec, nastal by spor s větou o jednoznačnosti dělení</i>
+        </div>
+    </note>
+    <note id="1502713335" type="1708237251">
+        <div class="field">
+Definice - Řád grupy, konečná grupa
+        </div>
+        <div class="field">
+<b>Řádem grupy</b> \(G = (M, \circ)\) nazýváme počet prvků množiny \(M\) a značíme \(\#G\).<br/><br/>Je-li \(M\) nekonečná množina, je její řád nekonečno a o \(G\) říkáme, že je <b>nekonečná</b>. V opačném případě nazýváme \(G\) <b>konečnou grupou</b>.
+        </div>
+    </note>
+    <note id="1237294335" type="1708237251">
+        <div class="field">
+Definice - Podgrupa
+        </div>
+        <div class="field">
+Nechť \(G=(M, \circ)\) je grupa. <b>Podgrupou </b>\(G\) nazveme libovolnou dvojici \(H=(N,\circ)\) pro kterou platí<br/><ul><li>\(N\) je neprázdná podmnožina \(M\),</li><li>\((N,\circ)\) je grupa.</li></ul>
+        </div>
+    </note>
+    <note id="2063976675" type="1708237251">
+        <div class="field">
+Definice - Triviální a vlastní podgrupa
+        </div>
+        <div class="field">
+V každé grupě \(G\) s alespoň dvěma prvky existují vždy dvě různé podgrupy, tzv. <b>triviální</b>:<br/><ul><li>grupa obsahující pouze neutrální prvek: \((\{e\}, \circ)\)</li><li>grupa samotná: \(G=(M,\circ)\)</li></ul>Všechny ostatní podgrupy nazýváme <b>vlastní</b> podgrupy.<br/>
+        </div>
+    </note>
+    <note id="2128599675" type="1708237251">
+        <div class="field">
+Věta - průnik podgrup
+        </div>
+        <div class="field">
+Průnik dvou podgrup grupy \(G\) je opět podgrupa grupy \(G\).
+        </div>
+    </note>
+    <note id="2096425256" type="1708237251">
+        <div class="field">
+Věta - kritérium podgrupy
+        </div>
+        <div class="field">
+<div>Buď \(G = (M, \circ)\) grupa a \(N \subseteq M\) neprázdná množina. Dvojice \(H = (N, \circ)\) je podgrupa grupy \(G\), právě když \(\forall a, b \in N\) platí \(a \circ b^{-1} \in N\).<br/></div><div><br/></div><div><i>* To implikuje neutrální prvek, inverzní prvky, i uzavřenost</i></div>
+        </div>
+    </note>
+    <note id="1462118790" type="1708237251">
+        <div class="field">
+Věta - Lagrangeova
+        </div>
+        <div class="field">
+Když je \(H\) podgrupa konečné grupy \(G\), tak řád \(H\) dělí řád \(G\).<br/><br/><i>* řád grupy = počet prvků v množině</i>
+        </div>
+    </note>
+    <note id="1552867995" type="1708237251">
+        <div class="field">
+Věta - Sylowova
+        </div>
+        <div class="field">
+Nechť \(G\) je grupa konečného řádu \(n\) a \(p\) je prvočíselný dělitel <br/>\(n\). Pro každé kladné celé \(k\) kde \(p^k\) dělí \(n\) potom grupa \(G\) obsahuje podgrupu řádu \(p^k\).<br/><br/>* <i>pro </i>\(k=1\)<i> <b>Cauchyho věta</b></i>
+        </div>
+    </note>
+    <note id="2099170619" type="1708237251">
+        <div class="field">
+Věta - Grupa generovaná množinou
+        </div>
+        <div class="field">
+Buď \(G = (M,\circ)\) grupa a \(N \subseteq M\) neprázdná množina. Potom všechny prvky patřící do \(\langle N \rangle\) lze získat pomocí "grupového obalu"<br/><br/>\(\langle N \rangle = \{a^{k_1}_1 \circ a^{k_2}_2 \circ \dots \circ a^{k_n}_n : n \in \mathbb{N}, k_i \in \mathbb{Z}, a_i \in N \}\)<br/><br/><i>* tj. </i>\(\langle N \rangle\)<i> jsou všechny binární operace mezi všemi prvky grupy umocněné všemi možnými koeficienty<br/>* speciálně pro jednoprvkovou množinu </i>\(\{a\}\)<i> zavádíme </i>\(\langle a \rangle := \langle \{a\} \rangle\)
+        </div>
+    </note>
+    <note id="1630187014" type="1708237251">
+        <div class="field">
+Definice - Cyklická grupa
+        </div>
+        <div class="field">
+Grupa \(G = (M, \circ)\) se nazývá <b>cyklická</b>, pokud existuje prvek \(a \in M\) takový, že \(\langle a \rangle = G\). Tomuto prvku říkáme <b>generátor cyklické grupy</b> \(G\).<br/><br/><i>* Věta: Libovolná podgrupa cyklické grupy je opět cyklická.<br/>* cyklická je například </i>\(\mathbb{Z}^+_n\)<i>, necyklická je například grupa polí čísel konstantní délky se sčítáním po prvcích</i>
+        </div>
+    </note>
+    <note id="1947748398" type="1708237251">
+        <div class="field">
+Řád \(\mathbb{Z}^+_n\)
+        </div>
+        <div class="field">
+\(n\)
+        </div>
+    </note>
+    <note id="1117122489" type="1708237251">
+        <div class="field">
+Řád \(\mathbb{Z}^\times_p\)
+        </div>
+        <div class="field">
+\(\mathbb{Z}^\times_p\) má řád \(\varphi(p)\). Speciálně pro prvočísla platí \(\varphi(p) = p - 1\).
+        </div>
+    </note>
+    <note id="1129889466" type="1708237251">
+        <div class="field">
+Definice - Řád prvku
+        </div>
+        <div class="field">
+Když platí: \(a^m=e\) a \(m\) je nejmenší možné, považujeme \(m\) za řád prvku \(\mathrm{ord}(a)=m\). Pokud takové \(m\) neexistuje, je řád prvku nekonečno.<br/><br/>* <i>řád prvku je řád grupy, kterou prvek generuje </i>\(\mathrm{ord}(a) = \#⟨a⟩\)
+        </div>
+    </note>
+    <note id="1384483160" type="1708237251">
+        <div class="field">
+Co musí splňovat generátor \(\mathbb{Z}^+_n\)?
+        </div>
+        <div class="field">
+Věta: Grupa \(\mathbb{Z}^+_n\) je rovna \(\langle k \rangle, k \in \mathbb{Z}^+_n\) právě tehdy, když \(k\) a \(n\) jsou nesoudělná čísla (tj. \(\gcd(k, n) = 1\)).
+        </div>
+    </note>
+    <note id="1401312548" type="1708237251">
+        <div class="field">
+Co musí splňovat \(n\) aby \(\mathbb{Z}^\times_n\) byla cyklická?
+        </div>
+        <div class="field">
+Věta: \(\mathbb{Z}^\times_n\) je cyklická iff \(n\) je rovné \(2\), \(4\), \(p^k\) nebo \(2p^k\), kde \(p\) je liché prvočíslo a \(k \in \mathbb{Z}^+\)
+        </div>
+    </note>
+    <note id="1726403921" type="1708237251">
+        <div class="field">
+Jak zjistím, zda je číslo generátorem \(\mathbb{Z}^\times_n\)?
+        </div>
+        <div class="field">
+Umocňujeme na \(1,2,...\) dokud se nevrátí samo na sebe. Potom rozhodneme na základě řádu generované podgrupy.
+        </div>
+    </note>
+    <note id="1234360465" type="1708237251">
+        <div class="field">
+Jak najít všechny generátory cyklické grupy? Kolik jich je?
+        </div>
+        <div class="field">
+Věta: Je-li \((G, \circ)\) cyklická grupa řádu \(n\) a \(a\) nějaký její generátor, potom \(a^k\) je také generátor právě tehdy, když \(k\) a \(n\) jsou nesoudělná (tj. \(\gcd(k, n) = 1\)).<br/><br/>Důsledek: V cyklické grupě řádu \(n\) je počet generátorů roven \(\varphi(n)\), kde \(\varphi\) je Eulerova funkce (počet kladných celých čísel menších \(n\) s ním nesoudělných).
+        </div>
+    </note>
+    <note id="1212981247" type="1708237251">
+        <div class="field">
+Věta - Důsledek Lagrangeovy věty
+        </div>
+        <div class="field">
+Důsledkem Lagrangeovy věty je, že když umocníme libovolný prvek grupy na řád grupy, dostaneme neutrální prvek, neboli<br/>\(\forall a \in M: a^{|M|} = e\)<br/><br/><i>* Důkaz: Grupa </i>\(\langle a \rangle \)<i> je podgrupou grupy </i>\(G\)<i>. Dle Lagrangeovy věty tedy platí, že </i>\(\# \langle a \rangle\)<i> dělí </i>\(n\)<i> a dostáváme </i>\(a^n = a^{k \cdot \# \langle a \rangle} = (a^{\# \langle a \rangle})^k\)\(= (a^{\operatorname{ord} a})^k = e^k = e.\)
+        </div>
+    </note>
+    <note id="2128209990" type="1708237251">
+        <div class="field">
+Věta - Malá Fermatova věta
+        </div>
+        <div class="field">
+Grupa \(\mathbb{Z}_p^\times\) je cyklická grupa řádu \(p-1\), tedy aplikováním důsledku Lagrangeovy věty získáme:<br/><br/><b>Malá Fermatova věta</b>: Pro libovolné prvočíslo \(p\) a libovolné \(1 \leq a &lt; p\) platí \(a^{p-1} \equiv 1\ (\mathrm{mod}\ p)\)
+        </div>
+    </note>
+    <note id="2145250187" type="1708237251">
+        <div class="field">
+Definice - Podgrupa generovaná množinou
+        </div>
+        <div class="field">
+Podgrupu \(\langle N \rangle\) grupy \(G=(M,\circ)\) pro neprázdnou \(N\), \(N \subseteq M\), nazývame podgrupou generovanou množinou \(N\).
+        </div>
+    </note>
+    <note id="1815530216" type="1708237251">
+        <div class="field">
+Definice - Homomorfismus a izomorfismus grupoidů
+        </div>
+        <div class="field">
+<div>Buď \(G=(M,\circ_G)\) a \(H=(N,\circ_H)\) dva grupoidy. <b>Homomorfismem</b> nazýváme zobrazení \(h: M \to N\), kde \(\forall x,y \in M\) platí</div><br/>\(h(x \circ_G y) = h(x) \circ_H h(y)\).<br/><div><br/></div><div>Je-li navíc \(h\) injektivní, resp. surjektivní, resp. bijektivní, říkáme že \(h\) je <b>monomorfismus</b>, resp. <b>epimorfismus</b>, resp. <b>izomorfismus</b>.</div><div><br/></div><div><i>* Neboli u homomorfismu nezáleží na tom, zda nejprve zobrazíme a potom použijeme operaci, nebo nejprve použijeme operaci a potom zobrazíme.</i></div>
+        </div>
+    </note>
+    <note id="1840769663" type="1708237251">
+        <div class="field">
+Definice - Izomorfní grupy
+        </div>
+        <div class="field">
+<div>Grupy \(G\) a \(H\) nazýváme <b>izomorfní</b>, právě když existuje izomorfismus \(G \to H\). O grupě \(G\) také říkáme, že je izomorfní s grupou \(H\).</div>
+        </div>
+    </note>
+    <note id="1218286839" type="1708237251">
+        <div class="field">
+Základní vlastnosti homomorfismu grupy
+        </div>
+        <div class="field">
+Věta: Buď \(h\) homomorfismus grupy \(G=(M,\circ_G)\) do grupoidu \(H=(N,\circ_H)\). Potom \(h(G) := (h(M), \circ_H)\) je grupa.<br/><br/>Je-li \(H\) grupa, tak navíc platí:<br/><ul><li>Neutrální prvek jedné grupy se homomorfismem zobrazí vždy na neutrální prvky té druhé.</li><li>Také inverze se zachovají v následujícím smyslu: \(h(x^{-1}) = h(x)^{-1}\)</li><li>Je-li \(h\) homomorfismus grupy \(G\) do \(H\), pak \(h(G)\) je podgrupa v \(H\).</li><ul><li>Např. \(h(n) = 2n\) je homomorfismem grupy \(\mathbb{Z}_4^+\) do \(\mathbb{Z}_8^+\) a \(h(\mathbb{Z}_4^+)\) je podgrupa \(\{0,2,4,6\}\).</li></ul></ul>
+        </div>
+    </note>
+    <note id="1256525498" type="1708237251">
+        <div class="field">
+Věta - cyklické grupy stejného řádu
+        </div>
+        <div class="field">
+<div>Věta: Libovolné cyklické grupy mající stejný řád jsou izomorfní.<br/></div><div><br/></div><div>Důsledek: \((\mathbb Z, +)\) a \((\mathbb Z_n, +_n)\) jsou jediné cyklické grupy až na izomorfismus.</div>
+        </div>
+    </note>
+    <note id="1216755417" type="1708237251">
+        <div class="field">
+Věta - Cayleyova
+        </div>
+        <div class="field">
+<div>Libovolná konečná grupa je izomorfní s nějakou grupou permutací.</div>
+<br/>
+<div><i>* Grupou permutací rozumíme grupu vektorů různých prvků z </i>\(\{1, 2, \dots, n\}\)<i>, např. </i>\((1\ 2\ 4\ 3\ 5)\)<i> je permutace prohazující 3. a 4. prvek.</i></div>
+
+<div><i>Grupová operace permutace skládá, např.</i>\((1\ 2\ 4\ 3\ 5)
+\circ (2\ 1\ 3\ 5\ 4)
+= (2\ 1\ 4\ 5\ 3)\)</div>
+        </div>
+    </note>
+    <note id="2088695420" type="1708237251">
+        <div class="field">
+Definice - Problém diskrétního logaritmu
+        </div>
+        <div class="field">
+Buď \(G=(M, \circ)\) cyklická grupa řádu \(n\), \(\alpha\) nějaký její generátor a \(\beta\) její prvek. Řešit problém diskrétního logaritmu znamená najít celé číslo \(1 \leq k \leq n\) takové, že \(\overbrace {\alpha \circ \dots \circ \alpha}^k = \beta\)<br/><br/><i>* Tedy v aditivních grupách hledáme </i>\(k\)<i>, kde </i>\(k\cdot\alpha = \beta\)<i>, v multiplikativních hledáme </i>\(k\)<i>, kde </i>\(\alpha^k = \beta\)<i>.</i>
+        </div>
+    </note>
+    <note id="1231137044" type="1708237251">
+        <div class="field">
+Třídy ekvivalence
+        </div>
+        <div class="field">
+<ul><li>Množina prvků, která je vzhledem ke zvolené operaci neodlišitelná od sebe</li><li>Mějme grupu \(G\) a podgrupu \(H\), definujme ekvivalenci \(x\) je ekvivalentní \(y\), když platí \(x = y \circ h\), kde \(h \in H\)</li></ul>
+        </div>
+    </note>
+    <note id="1422036246" type="1708237251">
+        <div class="field">
+Zobrazení z jedné třídy ekvivalencé do druhé
+        </div>
+        <div class="field">
+\(f (x) = b \circ a^{-1} \circ x\) <br/><br/><i>* </i>\(a\)<i> je prvek jedné třídy, </i>\(b\)<i> druhé</i>
+        </div>
+    </note>
+    <note id="2034352581" type="1708237251">
+        <div class="field">
+Inverze zobrazení z jedné třídy ekvivalence do druhé
+        </div>
+        <div class="field">
+\(f^{-1}(y) = a \circ b^{-1}\circ y\)<br/><br/>* \(a\) je prvek jedné třídy, \(b\) druhé
+        </div>
+    </note>
+
+</deck>

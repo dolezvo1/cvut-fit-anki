@@ -1,0 +1,68 @@
+<deck id="1803793656" name="NI-AM1::NI-AM1-01" deck_slug="NI-AM1-01">
+
+    <note id="1817845146" type="1708237251">
+        <div class="field">
+Architektura softwarového systému
+        </div>
+        <div class="field">
+TODO
+        </div>
+    </note>
+    <note id="2085339866" type="1708237251">
+        <div class="field">
+Pojem služba a její charakteristiky
+        </div>
+        <div class="field">
+<ul><li>Služba realizuje účinek, který má hodnotu pro jejího uživatele</li><li>Charakteristiky: encapsulation, reusability, loose coupling, contracting, abstraction, discoverability, composability</li><li>Obecně se jedná o nějaké rozhraní (a jeho dokumentaci), které je realizováno nějakým počtem implementací</li></ul><div><img src="service-144d29a2b528103ab3f27ea568497b23dc5632be.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1904210323" type="1708237251">
+        <div class="field">
+Architektura REST: vlastnosti
+        </div>
+        <div class="field">
+<ul><li>client/server, stateless, cacheable, layered</li></ul>
+        </div>
+    </note>
+    <note id="2126412501" type="1708237251">
+        <div class="field">
+Architektura REST: zdroj
+        </div>
+        <div class="field">
+<ul><li>Zdroj (<i>resource</i>) je univerzálně identifikovaný pomocí URI<br/><img src="uri-d3ab01f91b30bde52c443270bc36163d010e6b52.jpg"/><br/></li><li>A resource in REST corresponds to one or more entities of a data model, its identifier (URI) serves as a way to access it<br/><img src="uri2-f9d37a475309cf54d9b5fc2e6be1f554b8d87356.jpg"/></li><li>A data model entity may be accessible through multiple identifiers, such as \(/orders/\{customer\_id\}/\{order\_id\}\) and \(/customers/\{customer\_id\}/orders/\{order\_id\}\). This is called URI aliasing and it's a good practice to limit it.</li><li>A Query serves to opt into selection, projection, or other processing instructions (e.g. \(/customers/?status=valid\))</li><li>Capability URL is a short-term URL, e.g. for verification</li></ul>
+        </div>
+    </note>
+    <note id="1159298125" type="1708237251">
+        <div class="field">
+Architektura REST: srovnání se SOAP
+        </div>
+        <div class="field">
+<ul><li>REST používá HTTP/S, SOAP podporuje jiné způsoby přenosu, např. SMTP</li><li>REST většinou pro data používá JSON, SOAP vždy XML</li><li>REST používá HTTP metody podle jejich sémantiky, SOAP (v případě HTTP) vše tahá přes POST</li></ul>
+        </div>
+    </note>
+    <note id="1619959542" type="1708237251">
+        <div class="field">
+Optimalizace protokolu HTTP: latence
+        </div>
+        <div class="field">
+Creating new TCP connections is expensive (requires a full round trip)<br/><br/><img alt="PPT - Lecture 23: Network Primer PowerPoint Presentation, free download ..." src="threeway-aa2dafbb438ebfbc3f6a5639ea358174.jpg"/>
+        </div>
+    </note>
+    <note id="1179512223" type="1708237251">
+        <div class="field">
+Optimalizace protokolu HTTP: keep-alive
+        </div>
+        <div class="field">
+HTTP keepalive = TCP connection is reused for multiple requests/responses, this reduces latency (three-way handshake is expensive)
+        </div>
+    </note>
+    <note id="1132312658" type="1708237251">
+        <div class="field">
+Optimalizace protokolu HTTP: pipelining
+        </div>
+        <div class="field">
+<ul><li>Requests are pipelined one after another, this saves one request and response propagation latency</li><li>Issues: a single slow response blocks all requests behind it, this may be resolved by using multiple TCP connections</li></ul>
+        </div>
+    </note>
+
+</deck>

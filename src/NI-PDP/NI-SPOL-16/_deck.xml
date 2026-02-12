@@ -1,0 +1,311 @@
+<deck id="1953688604" name="NI-PDP::NI-SPOL-16" deck_slug="NI-SPOL-16">
+
+    <note id="1852574622" type="1708237251">
+        <div class="field">
+Modely paralelních systémů
+        </div>
+        <div class="field">
+Modely paralelních systémů se dělí podle úrovně pohledu na:<br/><ul><li><b>modely výpočetního stroje</b> - HW, ISA, OS;<br/></li><li><b>modely architektury</b> - toky dat či instrukcí, organizace paměti, propojovací sítě;<br/></li><li><b>výpočetní modely</b> - analytické modely architektury pro navrhování a verifikaci paralelních programů (PRAM, BSP, APRAM);<br/></li><li><b>programovací modely</b> - sémantika paralelních vyšších jazyků a prostředí, modely přístupu do sdílené paměti.</li></ul>
+        </div>
+    </note>
+    <note id="1770467732" type="1708237251">
+        <div class="field">
+Paralelní počítač
+        </div>
+        <div class="field">
+<div>Paralelní počítač je skupina propojených výpočetních prvků (uzlů),
+které komunikují a spolupracují, aby rychleji vyřešily velké a výpočetní či
+paměťově náročné výpočetní úlohy.</div>
+        </div>
+    </note>
+    <note id="1869256618" type="1708237251">
+        <div class="field">
+Vícevláknová jádra (multithreading)
+        </div>
+        <div class="field">
+Jedno jádro může provádět více vláken výpočtů "současně"<br/><br/><i>* instrukce různých vláken mohou být zpracovávány současně, pokud si navzájem nepřekáží</i>
+        </div>
+    </note>
+    <note id="1862217025" type="1708237251">
+        <div class="field">
+Vícejádrové procesory (multicore)
+        </div>
+        <div class="field">
+Několik asynchronně pracujících jader uvnitř jednoho procesoru<br/><br/><i>* jádra mají zcela samostatné matematicko-logické jednotky a registry, ale často sdílí například L2/L3 cache</i>
+        </div>
+    </note>
+    <note id="1593208879" type="1708237251">
+        <div class="field">
+Manycore
+        </div>
+        <div class="field">
+Stovky jadier v \(CPU\) <br/><br/>* napr. Xeon Phi
+        </div>
+    </note>
+    <note id="1571418941" type="1708237251">
+        <div class="field">
+Výpočetní SMP uzly (Symmetric Multiprocessors)
+        </div>
+        <div class="field">
+Desítky vícejádrových procesorů s virtuálně sdílenou pamětí
+        </div>
+    </note>
+    <note id="1567912423" type="1708237251">
+        <div class="field">
+Výpočetní klastry (clusters)
+        </div>
+        <div class="field">
+Stovky až desetitisíce propojených \(SMP\) uzlů
+        </div>
+    </note>
+    <note id="1932234925" type="1708237251">
+        <div class="field">
+Masivně paralelní superpočítače (supercomputers)
+        </div>
+        <div class="field">
+Tisíce až statisíce výpočetních uzlů propojených speciálními rychlými sítěmi
+        </div>
+    </note>
+    <note id="1622677466" type="1708237251">
+        <div class="field">
+Cloud computing
+        </div>
+        <div class="field">
+Datová centra plná počítačů
+        </div>
+    </note>
+    <note id="1533496740" type="1708237251">
+        <div class="field">
+Toky dat a instrukcí
+        </div>
+        <div class="field">
+<ul><li>Single instruction, multiple data (SIMD)</li><ul><li>Uzly mají lokální paměti, ale mohou si vyměnovat data</li><li>Všechny uzly synchronně přijímají společný proud instrukcí, které mohou provádět, nebo ignorovat</li><li>Dnešní SIMD jsou hlavně GPU a vektorová rozšíření ISA běžných procesorů, např. \(SEE\), \(AVX\) instrukce<br/></li></ul><li>Multiple instruction multiple data (MIMD)</li><ul><li>Každý uzel je samostatný počítač s vlastní instrukční a datovou pamětí běžící asynchronně a nezávisle</li><li>Patří sem vícejádrové procesory, SMP uzly, klastry, atd.</li></ul></ul>
+        </div>
+    </note>
+    <note id="1958104637" type="1708237251">
+        <div class="field">
+Organizace paměti
+        </div>
+        <div class="field">
+<div>Paměť může být:</div><ul><li>Sdílená (UMA = Uniform Memory Access) - paměť je kompletně mimo výpočetní uzly, komunikace <b>mezi uzlem a pamětí</b> probíhá skrze síť</li><li>Distribuovaná (NUMA = Non-UMA) - každý uzel má svoji paměť, komunikace <b>mezi uzly</b> probíhá skrze síť</li><li>Virtuálně sdílená (CC-NUMA = Cache-Coherent NUMA) - je distribuovaná, ale pomocí abstrakce se tváří jako sdílená</li></ul><div><img src="uma-d7c985ea46e9939fb5bf54105793b8109a9d975c.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1111489823" type="1708237251">
+        <div class="field">
+Model RAM
+        </div>
+        <div class="field">
+<ul><li>RAM = Random access machine</li><li>Základní abstrakce Von Neumannova počítače</li><ul><li>Instrukce</li><li>Libovolně indexovaná paměť (přístup \(O(1)\))</li><li>Přenáší data mezi pamětí a procesorom a vykonává instrukci</li></ul><li>Vstup i výsledek jsou někde uložené</li></ul>
+        </div>
+    </note>
+    <note id="1745617658" type="1708237251">
+        <div class="field">
+Model PRAM: přehled
+        </div>
+        <div class="field">
+<ul><li>PRAM = Paralelní RAM, tj. množina procesorů RAM</li><li>Každý procesor má svoje registry a svojí lokální paměť, a zná index, který ho identifikuje</li><li>Navíc máme sdílenou paměť, do které může každý procesor přistoupi v konstantním čase</li><li>Jediný způsob komunikace mezi procesory je skrze sdílenou paměť</li><li>Vstupem je \(n\) položek ve sdílené paměti</li><li>Výstupem je \(n'\) položek ve sdílené paměti</li></ul>
+        </div>
+    </note>
+    <note id="1282768348" type="1708237251">
+        <div class="field">
+Model PRAM: operace
+        </div>
+        <div class="field">
+Operace:<br/><ul><li>\(\texttt{READ}\) (\(\texttt R\)) - čtení buňky sdílené paměti,<br/></li><li>\(\texttt{WRITE}\) (\(\texttt W\)) - zápis buňky sdílené paměti,<br/></li><li>\(\texttt{LOCAL}\) (\(\texttt L\)) - lokální operace s daty v lokální paměti na jednom procesoru.</li></ul><div>Doby trvání operace:</div><div><ul><li><b>Jednotkový</b> model: všechny operace trvají čas 1</li><li><b>Globální</b> model: \(\texttt L\) trvá čas 1, \(\texttt R\)/\(\texttt W\) trvají konstantní čas \(d &gt; 1\)</li></ul></div>
+        </div>
+    </note>
+    <note id="1836908134" type="1708237251">
+        <div class="field">
+Model PRAM: konflikty
+        </div>
+        <div class="field">
+<div>Ošetření konfliktů při přístupu do sdílené paměti ve výpočetním modelu <i>parallel random-access machine </i>(PRAM) lze implementovat následujícími metodami:<br/></div><ul><li><i><b>exclusive read exclusive write </b></i>(EREW) - procesory nesmí číst nebo zapisovat sdílenou paměťovou buňku současně;<br/></li><li><i><b>concurrent read exclusive write</b></i> (CREW) - procesory nesmí zapisovat sdílenou paměťovou buňku současně, současné čtení je povoleno;<br/></li><li><i><b>concurrent read concurrent write</b></i> (CRCW) - procesory smí číst i zapisovat sdílenou paměťovou buňku současně.<br/></li></ul><div>Metodu CRCW lze dále rozdělit na:</div><div><ul><li><b><i>priority </i>CRCW</b> - procesory mají pevné priority a dokončení zápisu je povoleno procesoru s nejvyšší prioritou;</li><li><b><i>arbitrary</i></b> <b>CRCW</b> - dokončení zápisu je povoleno náhodně zvolenému procesoru (algoritmus nemůže o zvoleném procesoru činit žádné předpoklady),<br/></li><li><b><i>common</i></b> <b>CRCW</b> - dokončení zápisu je povoleno všem procesorům právě tehdy, když jsou všechny zapisované hodnoty stejné (algoritmus musí zajistit splnění této podmínky).</li></ul></div>
+        </div>
+    </note>
+    <note id="1796288035" type="1708237251">
+        <div class="field">
+Model APRAM
+        </div>
+        <div class="field">
+<ul><li>Asynchronní PRAM</li><li>Procesory pracují asynchronně (nezávisle)</li><li>Je možné je explicitně synchronizovat pomocí bariér</li><li>Doba přístupu do paměti není jednotková</li><li>Zápis do stejné buňky sdílené paměti vice procesory v jeden čas je zakázaný</li><li>Výpočet probíhá jako posloupnost fází</li><ul><li>Procesory pracují v rámci fáze asynchronně</li><li>Fáze jsou oddělené synchronizačními bariérami</li></ul></ul>
+        </div>
+    </note>
+    <note id="2109794992" type="1708237251">
+        <div class="field">
+Časová složitost
+        </div>
+        <div class="field">
+<div>Časová složitost je doba výpočtu pro vstup velikosti \(n\), značíme \(T(n)\).</div><br/><div>Dobu výpočtu sekvenčního algoritmu \(A\) řešícího problém \(K\) značíme \(T_A^K(n)\).</div>
+        </div>
+    </note>
+    <note id="1165442876" type="1708237251">
+        <div class="field">
+Spodní mez časové složitosti
+        </div>
+        <div class="field">
+\(SL(n)\) je nejhorší časová složitost nejlepšího možného sekvenčního algoritmu
+        </div>
+    </note>
+    <note id="1884558357" type="1708237251">
+        <div class="field">
+Horní mez časové složitosti řešení problému
+        </div>
+        <div class="field">
+Horní mez časové složitosti řešení problému \(K\) je nejhorší časová složitost nejlepšího existujícího sekvenčního algoritmu pro \(K\) a značí se \(SU^K(n)\).
+        </div>
+    </note>
+    <note id="1074968073" type="1708237251">
+        <div class="field">
+Optimální sekvenční algoritmus
+        </div>
+        <div class="field">
+Sekvenční algoritmus je optimální, právě když platí<br/>\(T(n) = \Theta(SU(n)) = \Theta(SL(n))\)
+        </div>
+    </note>
+    <note id="2126972325" type="1708237251">
+        <div class="field">
+Nejlepší známý algoritmus
+        </div>
+        <div class="field">
+Algoritmus je nejlepší známý, právě když platí\(T(n) = \Theta(SU(n)) = \omega(SL(n))\)
+        </div>
+    </note>
+    <note id="1449775793" type="1708237251">
+        <div class="field">
+Paralelní čas
+        </div>
+        <div class="field">
+<div>Paralelní čas \(T(n, p)\) je čas, který uplynul od začátku paralelního výpočtu do okamžiku, kdy poslední procesor skončil výpočet. Závisí na:<br/></div><div><ul><li><b>velikosti instance </b>\(n\),</li><li><b>počtu procesorů</b> \(p\) - je ovlivněn architekturou paralelního počítače.</li></ul><div>Jeho měření probíhá čítáním:</div><div><ul><li><b>výpočetních kroků</b> - aritmeticko-logické a paměťové operace,<br/></li><li><b>komunikačních kroků</b> - přenos dat mezi procesory.<br/></li></ul><div><br/></div></div><div>* Podle kontextu může parameter \(p\) znamenat také počet jader, procesů, vláken atd.</div></div>
+        </div>
+    </note>
+    <note id="1844964849" type="1708237251">
+        <div class="field">
+Paralelní zrychlení, lemma o jeho vztahu s počtem procesorů
+        </div>
+        <div class="field">
+Paralelní zrychlení je definováno pomocí paralelního času:\[S(n, p) = \frac{SU^K(n)}{T(n, p)}.\]Navíc platí, že nikdy nemůže být vyšší než počet procesorů, tedy\[S(n, p) = \mathcal O(p).\]<br/><b>Důkaz</b> <br/>Důkaz provedeme sporem. Předpokládejme\[S(n, p) = \frac{SU^K(n)}{T(n, p)} = \omega (p),\]vynásobme \(T(n, p)\) a získáme\[SU^K(n) = \omega \big( p \cdot T(n, p) \big) = \omega \big( C(n, p) \big)\]neboli\[C(n, p) = \mathcal o \big( SU^K(n) \big),\]což je spor s lemmatem o vztahu paralelní ceny a horní mezí časové složitosti.
+        </div>
+    </note>
+    <note id="1905111630" type="1708237251">
+        <div class="field">
+Lineární paralelní zrychlení
+        </div>
+        <div class="field">
+Paralelní zrychlení je lineární s počtem procesorů právě tehdy, když\[S(n, p) = \Omega(p).\]Z lemmatu o vztahu paralelního zrychlení s počtem procesorů plyne, že tato podmínka je ekvivalentní s\[S(n, p) = \Theta (p).\]<br/>
+        </div>
+    </note>
+    <note id="2091938083" type="1708237251">
+        <div class="field">
+Paralelní cenu, lemma o jejím vztahu s horní mezí časové složitosti
+        </div>
+        <div class="field">
+<div>Paralelní cena je definována pomocí paralelního času:\[C(n, p) = p \cdot T(n, p).\]Navíc platí, že nikdy nemůže být nižší než horní mez časové složitosti \(SU^K(n)\), tedy\[C(n, p) = \Omega \big ( SU^K(n) \big ).\]<br/><b>Důkaz</b> <br/>Důkaz provedeme sporem. Předpokládejme\[C(n, p) = p \cdot T(n, p) = \mathcal o \big( SU^K(n) \big ).\]Pokud však budeme simulovat sekvenční běh takového algoritmu na jednom procesoru (pro \(p = 1\)), dostaneme lepší sekvenční složitost než \(SU^K(n)\), což je ve sporu s její definicí.<br/></div>
+        </div>
+    </note>
+    <note id="1987928045" type="1708237251">
+        <div class="field">
+Spodní mez na paralelní čas
+        </div>
+        <div class="field">
+\(L(n,p)=\frac{SL(n)}{p}\)
+        </div>
+    </note>
+    <note id="1359558815" type="1708237251">
+        <div class="field">
+Cenově optimální paralelní algoritmus
+        </div>
+        <div class="field">
+Paralelní algoritmus je cenově optimální, pokud\[C(n, p) = \mathcal O \big( SU^K(n) \big).\]Z lemmatu o vztahu paralelní ceny s horní mezí časové složitosti plyne, že tato podmínka je ekvivalentní s\[C(n, p) = \Theta \big( SU^K(n) \big).\]<br/>
+        </div>
+    </note>
+    <note id="1611463318" type="1708237251">
+        <div class="field">
+Paralelní efektivnost
+        </div>
+        <div class="field">
+<div>Paralelní efektivnost je definována pomocí paralelní ceny:\[E(n, p) = \frac{SU^K(n)}{C(n, p)}\]a platí \(E(n, p) \leq 1\). Alternativně lze paralelní efektivnost chápat jako paralelní zrychlení ku počtu procesorů, protože\[E(n, p) = \frac{SU^K(n)}{C(n, p)} =  \frac{S(n, p) \cdot T(n, p)}{p \cdot T(n , p)} = \frac{S(n, p)}{p}.\]<br/></div><div><br/></div><div>Paralelní algoritmus má konstantní efektivnost, jestliže existuje \(\varepsilon \in (0, 1)\) takové, že\[E(n, p) \geq \varepsilon\]pro všechna \(n\) a \(p\). Tato podmínka je ekvivalentní s\[E(n, p) = \Omega (1).\]<br/></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1844079566" type="1708237251">
+        <div class="field">
+Vyslovte větu o paralelní optimalitě výkonnosti
+        </div>
+        <div class="field">
+<div>Následující tvrzení o paralelním algoritmu jsou ekvivalentní:<br/><ul><li>algoritmus je cenově optimální,</li><li>algoritmus má lineární zrychlení,</li><li>algoritmus má konstantní efektivnost.</li></ul></div><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="2112519520" type="1708237251">
+        <div class="field">
+Amdahlův zákon
+        </div>
+        <div class="field">
+<ul><li>Máme problém velkosti \(n\) a hledáme optmální počet procesorů \(p\)</li><li>Každý algoritmus má určitou část kódu, která se dá provést pouze sekvenčně (\(f_s\)) a zbytek je paralelizovatelný (\(1-f_s\)). Pak platí, že<br/>\(S(n,p)=\frac{T_A(n)}{f_s\cdot T_A(n) \frac{1-f_s}{p}\cdot T_A(n) }=\frac{1}{f_s+\frac{1-f_s}{p}}\le\frac{1}{f_s} \)<br/></li><li>Jinak řečeno, bez ohledu na počet vláken nemůže zrychlení přesáhnout \(\frac{1}{f_s}\)</li></ul><div></div>
+        </div>
+    </note>
+    <note id="1418663550" type="1708237251">
+        <div class="field">
+Gustafsonův zákon
+        </div>
+        <div class="field">
+<div>Gustafsonův zákon relaxuje podmínku na konstantní velikost řešené instance definovanou Amdahlovým zákonem. Podle něj má být s rostoucím počtem procesorů \(p\) navyšována i velikost instance \(n\). Pak:<br/></div><div><ul><li><b>sekvenční část</b> trvá vždy konstantní čas \(t_\text{seq}\),<br/></li><li><b>paralelní část</b> škáluje lineárně s \(p\) a trvá čas \(t_\text{par}(n, p)\).<br/></li></ul><div>Podle Gustafsonova zákona platí následující vztah pro paralelní zrychlení:</div>\[S(n, p) = \frac{t_\text{seq} + t_\text{par}(n, 1)}{t_\text{seq} + t_\text{par}(n, p)}.\]Pokud je paralelní část pefektně parelelizovatelná, tedy\[t_\text{par}(n, p) = \frac{SU^K(n) - t_\text{seq}}{p},\]dostaneme\[S(n, p) = \frac{t_\text{seq} + SU^K(n) - t_\text{seq}}{t_\text{seq} + \frac{SU^K(n) - t_\text{seq}}{p}} = \frac{SU^K(n)}{t_\text{seq} + \frac{SU^K(n) - t_\text{seq}}{p}}\]a platí\[\displaystyle \lim_{n \to \infty} S(n, p) = p.\]<br/></div>
+        </div>
+    </note>
+    <note id="1789531986" type="1708237251">
+        <div class="field">
+Paralelní škálovatelnost
+        </div>
+        <div class="field">
+Paralelní algoritmus je paralelně škálovatelný, jestliže je schopen udržet stejnou hodnotu paralelní efektivnosti \(E(n, p)\) pro měnící se velikost instance \(n\) a počet procesorů \(p\). Rozlišujeme:<br/><ul><li><b>slabou škálovatelnost</b> (Gustafsonův zákon) - rychlost růstu \(n\) takového, že při rostoucím \(p\) zůstává paralelní efektivnost stejná,</li><li><b>silnou škálovatelnost</b> (Amdahlův zákon) - rychlost poklesu paralelní efektivnosti pro konstantní \(n\) a rostoucí \(p\).</li></ul>
+        </div>
+    </note>
+    <note id="1759082624" type="1708237251">
+        <div class="field">
+Izoefektivní funkce
+        </div>
+        <div class="field">
+<div>Mějme \(\varepsilon \in (0, 1)\). Izoefektivní funkce \(\psi_1\), kde\[n = \psi_1(p),\]pro zadaný počet procesorů \(p\) udává minimální velikost instance \(n\), při které je paralelní efektivnost \(E(n, p)\) alespoň \(\varepsilon\). Formálně se jedná o asymptoticky minimální funkci takovou, že\[\forall n_p = \Omega \big( \psi_1(p) \big) : E(n_p, p) \geq \varepsilon\]a stojí tak na Gustafsonově zákonu. Izoefektivní funkce \(\psi_2\), kde\[p = \psi_2(n),\]pro zadanou velikost instance \(n\) udává maximální počet procesorů \(p\), při kterém je paralelní efektivnost \(E(n, p)\) alespoň \(\varepsilon\). Formálně se jedná o asymptoticky maximální funkci takovou, že\[\forall p_n = \mathcal O \big( \psi_2(n) \big) : E(n, p_n) \geq \varepsilon\]a stojí tak na Amdahlově zákonu.<br/></div>
+        </div>
+    </note>
+    <note id="1688673852" type="1708237251">
+        <div class="field">
+Implementace bariéry: centrální čítač
+        </div>
+        <div class="field">
+<ul><li>Čítač je inicializovaný na 0 a na příchozí fázi, procesy k němu přistupují ve vzájemném vyloučení</li><li>Každý proces dorazí k bariéře, zkontroluje, zda je v příchozí fázi a inkrementuje čítač</li><li>Je-li čítač &lt;p, proces se deaktivuje, jinak nastaví bariéru do odchozí fáze, a aktivuje ostatní procesy</li><li>Poslední aktivovaný proces nastaví bariéru do příchozí fáze</li></ul><i>* tedy má složitost </i>\(\Theta(dp)\)<i> </i><br/>
+        </div>
+    </note>
+    <note id="1539068080" type="1708237251">
+        <div class="field">
+Implementace bariéry: binární redukční strom
+        </div>
+        <div class="field">
+<ul><li>Proces dorazí k bariéře a zkontroluje, zda je v příchozí fázi.</li><li>Tam čeká, až skončí redukce v jeho podstromech (lze si představit třeba jako ranky \(2i\) a \(2i+1\)).</li><li>Po jejím skončení pošle signál rodiči. Kořen počká na redukci z obou podstromů a přepne do
+odchozí fáze.</li><li>Procesy se aktivují ve zpětném pořadí.<br/></li></ul><i>* tedy má složitost </i>\(\Theta(d \log p)\)<br/>
+        </div>
+    </note>
+    <note id="1134272049" type="1708237251">
+        <div class="field">
+Programovací model: datový paralelismus
+        </div>
+        <div class="field">
+Datový (iterační) paralelismus je programovací model paralelních systémů. Spočívá ve vytvoření smyčky, jejíž iterace jsou prováděny paralelně jednotlivými procesory tak, jak jsou naplánovány (<i>scheduled</i>). Předpokladem je datová nezávislost jednotlivých iterací, která může být zajištěna:<br/><ul><li>překladačem (implicitně),</li><li>programátorem (explicitně).</li></ul>
+        </div>
+    </note>
+    <note id="1905312673" type="1708237251">
+        <div class="field">
+Programovací model: funkční paralelismus
+        </div>
+        <div class="field">
+Funkční paralelismus (<i>task parallelism</i>) je programovací model paralelních systémů. Spočívá v tom, že program je rozdělen na nezávislé části, zvané úlohy (<i>tasks</i>), které mohou být prováděny paralelně jednotlivými procesory. Úlohy jsou podle jejich vzájemných datových závislostí organizovány do grafu úloh, který určuje jejich plánování. Funkční paralelismus typicky využívá <i>task pool</i>, ze kterého nevyužité procesory úlohy postupně odebírají.
+        </div>
+    </note>
+    <note id="1980789923" type="1708237251">
+        <div class="field">
+Programovací model: paralelní programovací šablony
+        </div>
+        <div class="field">
+Paralelní programovací šablony jsou programovací model paralelních systémů. Patří mezi ně:<br/><ul><li><i><b>pipelining</b> </i>- vlákna se podílí na postupném zpracování;<br/></li><li><i><b>fork-join</b></i> - počáteční vlákno začne provádět program sekvenčně a vytváří tým paralelních vláken;<br/></li><li><i><b>single program multiple data</b></i> (SPMD) - všechna vlákna provádí asynchronně stejný kód, který je větven podle jejich identifikátorů;<br/></li><li><i><b>master-slave</b></i> - <i>master </i>přiděluje práci, <i>slave</i> ji vykonává a vrací výsledky;<br/></li><li><i><b>client-server</b></i> - <i>client </i>požaduje práci, <i>server</i> ji vykonává a vrací výsledky;<br/></li><li><b>producent-konzument</b> - producentská vlákna přidávají práci do fronty, konzumentská vláka ji vykonávají a vrací výsledky.</li></ul>
+        </div>
+    </note>
+
+</deck>

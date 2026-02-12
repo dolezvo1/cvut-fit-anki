@@ -1,0 +1,252 @@
+<deck id="1986931693" name="NI-KOP::NI-SPOL-11" deck_slug="NI-SPOL-11">
+
+    <note id="1106213061" type="1708237251">
+        <div class="field">
+Kombinatorický problém: přehled
+        </div>
+        <div class="field">
+Kombinatorická matematika se zajímá o konečné a diskrétní problémy (teoreticky je možné v konečném čase vyzkoušet všechny kombinace, v praxi problém s dobou běhu)
+        </div>
+    </note>
+    <note id="2147252368" type="1708237251">
+        <div class="field">
+Definice - Kombinatorický problém
+        </div>
+        <div class="field">
+Kombinatorický problém je definován:<br/><ul><li><b>Vstupní proměnné</b> (vstupní abeceda, např. seznam zastávek)<br/></li><li><b>Výstupní proměnné</b> (výstupní abeceda, např. "ano, konfigurace s danými vlastnostmi existuje")<br/></li><li><b>Konfigurační proměnné</b> vyjadřují stav v prohledávaném prostoru (např. pořadí zastávek)<br/></li><li><b>Omezení</b> (např. uzavřená cesta bez opakování)<br/></li><li><b>Optimalizační kritérium</b> (napr. nejkratší cesta)<br/></li></ul>
+        </div>
+    </note>
+    <note id="1214762703" type="1708237251">
+        <div class="field">
+Instance problému
+        </div>
+        <div class="field">
+Instance problému \(I\) je ohodnocení vstupních proměnných.
+        </div>
+    </note>
+    <note id="1127020541" type="1708237251">
+        <div class="field">
+Konfigurační proměnné, vztah k výstupním proměnným
+        </div>
+        <div class="field">
+Konfigurační proměnné jsou proměnné, jejichž ohodnocení jsou procházena při řešení problému hrubou silou. Musí platit, že:<br/><ul><li>konfiguračních proměnných je konečný počet,</li><li>nabývají konečně mnoha ohodnocení.</li></ul>V určitých třídách problémů mohou být shodné s výstupními proměnnými (konstruktivní problémy), avšak není tomu tak vždy (rozhodovací problémy). Společně s ohodnocením vstupních proměnných lze z jejich ohodnocení:<br/><ul><li>zkonstruovat hledaný výstup,</li><li>zkontrolovat omezení,</li><li>vypočíst hodnotu optimalizačního kritéria.</li></ul>
+        </div>
+    </note>
+    <note id="1485798138" type="1708237251">
+        <div class="field">
+Řešení a optimální řešení kombinatorického problému
+        </div>
+        <div class="field">
+<b>Řešení instance</b> je konfigurace \(Y\) (ohodnocení konfiguračních proměnných) splňující omezení pro instanci \(I\), tedy platí \(R(I,Y)\).<br/><ul><li><b>Optimální řešení</b> = řešení s nejlepší hodnotou optimalizačního kritéria</li><li>Suboptimální řešení = řešení s vyhovující hodnotou optimalizačního kritéria</li></ul><div><i>* </i>\(R(I,Y)\)<i> rozhoduje, zda </i>\(Y\)<i> je řešením instance </i>\(I\)<br/></div>
+        </div>
+    </note>
+    <note id="1794687133" type="1708237251">
+        <div class="field">
+Typy problémů bez optimalizačního kritéria
+        </div>
+        <div class="field">
+<ul><li><b>Rozhodovací problém</b><br/></li><ul><li>Existuje nějaké řešení? (tj. existuje \(Y\), kde \(R(I,Y)\)?)</li><li>Platí pro všechna \(Y\), kde \(R(I,Y)\)?<br/></li></ul><li><b>Konstruktivní problém</b></li><ul><li>Sestrojit nějaké řešení (tj. sestrojit \(Y\), že \(R(I,Y)\))</li></ul><li><b>Enumerační problém</b></li><ul><li>Sestrojit všechna řešení (tj. všechna \(Y\), že \(R(I,Y)\))</li></ul><li><b>Početní problém</b></li><ul><li>Kolik existuje \(Y\), že \(R(I,Y)\)?</li></ul></ul>
+        </div>
+    </note>
+    <note id="1147445515" type="1708237251">
+        <div class="field">
+Optimalizační problém
+        </div>
+        <div class="field">
+<ul><li>\(I\) je instance</li><li>\(Y\) je konfigurace<br/></li><li>\(R(I,Y)\) - omezení<br/></li><li>\(C(Y)\) - optimalizační kritérium (cenová funkce)<br/></li></ul><div><i>* </i>\(R(I,Y)\)<i> rozhoduje zda </i>\(Y\)<i> je řešením instance </i>\(I\)<br/></div><i>* </i>\(C(Y)\)<i> ohodnocuje </i>\(Y\)<i> pro umožnění porovnání,</i> <i>např. součet délek cest mezi zastávkami</i>
+        </div>
+    </note>
+    <note id="1683131093" type="1708237251">
+        <div class="field">
+Typy optimalizačních problémů
+        </div>
+        <div class="field">
+<ul><li><b>Optimalizační konstruktivní problém</b><br/></li><ul><li>Sestrojit nějaké \(Y\) tak, že \(R(I,Y)\) a \(C(Y)\) je nejlepší možné</li></ul><li><b>Optimalizační enumerační problém</b><br/></li><ul><li>Sestrojit všechny \(Y\) tak, že \(R(I,Y)\) a \(C(Y)\) je nejlepší možné</li></ul><li><b>Optimalizační evaluační problém</b><br/></li><ul><li>Zjistit nejlepší možné \(C(Y)\), že \(R(I,Y)\) (odpovídá určité konfiguraci, ale ta pro využití nemusí být podstatná)</li></ul><li><b>Optimalizační rozhodovací problém</b><br/></li><ul><li>Existuje \(Y\), že \(R(I,Y)\) a \(C(Y)\) je alespoň tak dobré, jako nějaká konstanta \(K\)?</li></ul></ul>
+        </div>
+    </note>
+    <note id="1291306389" type="1708237251">
+        <div class="field">
+Algoritmus
+        </div>
+        <div class="field">
+Postup řešení problému<br/><br/><i>* jeden problém je možné řešit různými algoritmy</i>
+        </div>
+    </note>
+    <note id="1798258859" type="1708237251">
+        <div class="field">
+Asymptotická složitost
+        </div>
+        <div class="field">
+Způsob měření výpočetní náročnosti algoritmu:<br/><ul><li>Jak dlouho bude trvat řešení instance daným algoritmem?</li><li>Paměťová a časová složitost v závislosti na velkosti instancie</li></ul><div>Asymptotická horní/dolní/těsná mez<br/>Nechť \(f,g: \mathbb{N} \to \mathbb{R}\) potom:<br/><br/>\(f(n)=O(g(n)) \iff \exists c&gt;0,n_0 \in N:\forall n&gt;n_0 :f(n) \leq c \cdot g(n)\),</div><div>\(f(n) = \Omega(g(n)) \iff \exists c&gt;0,n_0 \in N:\forall n&gt;n_0 :f(n) \geq c\cdot g(n)\),</div><div>\(f(n) = \Theta(g(n)) \iff f(n) = O(g(n)) \land f(n) = \Omega(g(n))\)<br/><br/><i>* horní mez asymptotické složitosti problému je dána horní mezí nejrychlejšího algoritmu (tj. "nejrychlejší algoritmus řeší instance problému velikosti</i> \(n\) <i>nejhůře v</i> \(f(n)\) <i>krocích")</i></div>
+        </div>
+    </note>
+    <note id="1794422776" type="1708237251">
+        <div class="field">
+Princip kategorizace problémů
+        </div>
+        <div class="field">
+<ul><li>Poznáme výpočetný model</li><li>Zvolíme obmedzenie</li><ul><li>Počet krokov polynomiálny s volkosťou inštancie</li><li>Pamäť polynomialny s velkosťou inštancie</li><li>Konštantná hĺbka obvodu</li><li>Logaritmický počet komunikovaných bitov...</li></ul><li>Pýtame sa</li><ul><li>Čo sa s týmto obmedzeným prostriedkom dá spočítať? (Trieda zložitosti problému)</li><li>Aké problémy sú v tejto triede najtažšie? Porovnanie náročnosti \(\to\) vzájmený prevod inštancií (redukcia)</li></ul></ul>
+        </div>
+    </note>
+    <note id="2047459497" type="1708237251">
+        <div class="field">
+Turingův stroj
+        </div>
+        <div class="field">
+Model univerzálního výpočetního modelu (stroje)<br/><ul><li>Skladá se z</li><ul><li>Nekonečné pásky s datovými buňkami</li><li>Posuvné hlavy, která slouží k čtení a zápisu na pásku</li><li>Stavového automatu, který ovládá hlavu</li></ul><li>Deterministický \(TS\) = v každém kroku je jednoznačně určené, co má stroj dělat dále</li><li>Nedeterministický \(TS\) = z daného stavu může vést více přechodů do jiných stavů (není jednoznačné, který z nich má být použit)</li><li>Měření Turingova stroje</li><ul><li>Časová složitost se měří maximálním počtem kroků \(TS\) pro všechny instance</li><li>Paměťová složitost se měří maximálním počtem použitých buněk pro všechny instance</li></ul></ul><div><i>* rozdíl mezi Turingovým strojem a RAM strojem je polynomiální, tedy nemá vliv na třídu problému</i></div><div><i>* u nedeterministického </i>\(TS\)<i> musíme simulovat všechny varianty přechodu</i><i><br/></i></div><div><i><br/></i></div><div><img src="turingmachine-8c78c23baa1eb20ae79ff11ce7eaf292f76022e2.png"/><i><br/></i></div>
+        </div>
+    </note>
+    <note id="1415090171" type="1708237251">
+        <div class="field">
+Definice - třída \(\text P\)
+        </div>
+        <div class="field">
+Rozhodovací problém patří do třídy \(\text P\), jestliže pro něj existuje program pro deterministický Turingův stroj, který jej řeší v čase \(\mathcal O(n^k)\), kde \(n\) je velikost instance a \(k\) konečné číslo.<br/><br/><i>* např. výpočet GCD</i>
+        </div>
+    </note>
+    <note id="1931898632" type="1708237251">
+        <div class="field">
+Definice - třídy \(PSPACE\), \(EXPTIME\), \(EXPSPACE\)
+        </div>
+        <div class="field">
+<ul><li>\(PSPACE\) - problémy, na které nám stačí polynomiální množství pásky (paměti) na \(DTS\) \(O(n^k)\)</li><li>\(EXPTIME\) - problémy, které umíme řešit na \(DTS\) v exponenciálním čase \(O(2^{P(n)})\)</li><li>\(EXPSPACE\) - problémy, na které nám stačí exponenciální množství pásky (paměti) na \(DTS\) \(O(2^{P(n)})\)</li></ul><div><i>* </i>\(P ⊂ PSPACE ⊂ EXPTIME ⊂ EXPSPACE\)<br/></div><div><img src="pspace-efda208a93d905ea1c63edf0d82284e9.png"/></div>
+        </div>
+    </note>
+    <note id="1969019719" type="1708237251">
+        <div class="field">
+Definice - třídy \(NP\) pomocí TS
+        </div>
+        <div class="field">
+<div>Rozhodovací problém \(\Pi\) patří do třídy \(\text{NP}\), jestliže pro něj existuje program pro nedeterministický Turingův stroj, který každou instanci \(I \in \Pi_\texttt{ano}\) problému \(\Pi\) řeší v čase \(\mathcal O(n^k)\), kde \(n\) je velikost instance a \(k\) konečné číslo.<br/></div><br/><i>* např. SAT nebo TSP</i><br/>
+        </div>
+    </note>
+    <note id="1624512270" type="1708237251">
+        <div class="field">
+Certifikát
+        </div>
+        <div class="field">
+Neboli svědek - poskytuje možnost "snadno" ověřit odpověď na původní otázku. Ověření certifikátu \(NP\) a \(coNP\) problémů je (z jejich definice) \(P\).<br/><br/>Pro \(NP\) máme certifikáty pro ANO-instance. Pro \(coNP\) máme certifikáty pro NE-instance.<br/>Některé problémy jsou v obou množinách, tj. ANO- i NE-instance mají certifikát v \(P\) (např. zjistění, zda číslo má celočíselného dělitele: pro ANO- je certifikát daný dělitel, pro NE- je certifikát celý rozklad)
+        </div>
+    </note>
+    <note id="2037208158" type="1708237251">
+        <div class="field">
+Definice - třída \(NP\) pomocí certifikátu
+        </div>
+        <div class="field">
+Rozhodovací problém \(\Pi\) patří do třídy \(\text{NP}\), jestliže pro každou instanci \(I \in \Pi_\texttt{ano}\) problému \(\Pi\) existuje konfigurace \(Y\) taková, že kontrola, zda je \(Y\) řešením, patří do \(\text P\). Konfiguraci \(Y\) pak nazýváme svědkem (certifikátem).
+        </div>
+    </note>
+    <note id="1856010233" type="1708237251">
+        <div class="field">
+Vztahy tříd \(\text{P}\), \(\text{NP}\), \(\text{coNP}\)
+        </div>
+        <div class="field">
+Třída \(\text{coNP}\) je  "doplněk" třídy \(\text{NP}\) problémů, tj. ptá se na opačnou otázku (je pravda, že <b>ne</b>existuje konfigurace, tak že...?)<br/><div><br/></div><div>Jistě platí: \(\text{P} \subseteq \text{NP} \subseteq \text{PSPACE}\), \(\text{P} \subseteq \text{coNP}\)</div><div><br/></div><div>Není jisté, zda \(\text{P} \stackrel{?}{=} \text{NP}\), \(\text{NP} \stackrel{?}{=} \text{coNP}\).</div><div><img src="nphard-2ca273553d1b17a2a6c7d80de9a921da.png"/></div>
+        </div>
+    </note>
+    <note id="1416649680" type="1708237251">
+        <div class="field">
+Polynomiální hierarchie
+        </div>
+        <div class="field">
+Nechť  \(\Sigma_0^P \equiv P\), \(\Pi_0^P \equiv P\).<br/>Pak \(\Sigma_i^P\) je třída problémů, pro něž existuje krátký \(\exists\)-certifikát s kontrolou v \(\Pi_{i-1}^P\).<br/>Pak \(\Pi_i^P\) je třída problémů, pro něž existuje krátký \(\forall\)-certifikát s kontrolou v \(\Sigma_{i-1}^P\).<br/><br/><i>* tedy </i>\(\Sigma_1^P\equiv NP\),<i> </i>\(\Pi_1^P \equiv coNP\)<br/>* tedy certifikáty \(\Sigma_2^P\), resp.<i> </i>\(\Pi_2^P\),<i> umíme oveřit v </i>\(coNP\), resp.<i> </i>\(NP\), atd.
+        </div>
+    </note>
+    <note id="1646680986" type="1708237251">
+        <div class="field">
+\(NP\)-těžké problémy
+        </div>
+        <div class="field">
+<div>\(NP\)-těžké problémy (\(NPH\)) jsou <b>všechny</b> problémy, na které umíme zredukovat všechny \(NP\) problémy.</div>
+        </div>
+    </note>
+    <note id="1745238149" type="1708237251">
+        <div class="field">
+\(NP\)-úplné problémy
+        </div>
+        <div class="field">
+\(NP\)-úplné problémy (\(NPC\)) jsou takové problémy v \(NP\), na které umíme zredukovat všechny ostatní \(NP\) problémy (tedy všechny \(NPC\) jsou navzájem ekvivalentní).<div><br/></div>* \(NPC=NP \cap NPH\), \(NPC \subsetneq NPH\)<br/>
+        </div>
+    </note>
+    <note id="1810805338" type="1708237251">
+        <div class="field">
+\(NP\)-střední problémy
+        </div>
+        <div class="field">
+<div>\(NP\)-střední problémy (\(NPI\)) jsou \(NP\) problémy, které nejsou v \(P\) ani v \(NPC\).</div>
+        </div>
+    </note>
+    <note id="1247078101" type="1708237251">
+        <div class="field">
+Cookova věta a její důsledky
+        </div>
+        <div class="field">
+Věta: Problém splnitelnosti Booleovy formule (SAT) je \(\text{NP}\)-úplný (\(NPC\)).<br/><br/>Důsledky:<br/><ul><li>Množina \(NPC\) není prázdná.</li><li>Pokud je \(SAT\) redukovatelný na nějaký problém \(p \in NP\), pak \(p\in NPC\).</li><li>Zároveň jakýkoli \(NP\) problém lze redukovat na \(SAT\).<br/></li></ul>
+        </div>
+    </note>
+    <note id="1860930154" type="1708237251">
+        <div class="field">
+Karpova redukce
+        </div>
+        <div class="field">
+<div>Rozhodovací problém \(T_1\) je <b>Karp-redukovatelný</b> (<i>many-one reduction</i>) na \(T_2\) (\(T_1 ∝ T_2\)), pokud existuje polynomiální program pro \(DTS\), který převede každou instanci problému \(T_1\) na instanci problému \(T_2\) tak, že výstup obou instancí bude shodný.</div><div><br/></div><div>Pokud je \(A\) redukovatelný na \(B\) a \(B\) na \(A\), pak říkáme, že jsou <b>polynomiálně ekvivalentní</b>.<br/></div><div><br/></div>Relace \(∝\) je <b>tranzitivní</b> (\(T_1 ∝ T_2 \land T_2 ∝ T_3 \implies T_1 ∝ T_3\))
+        </div>
+    </note>
+    <note id="1866530513" type="1708237251">
+        <div class="field">
+Halting problém
+        </div>
+        <div class="field">
+Známe zdrojový kód programu a jeho vstup. Poběží stroj navždy, nebo se zastaví?<br/><br/><i>* problém je nerozhodnutelný</i>
+        </div>
+    </note>
+    <note id="1262614921" type="1708237251">
+        <div class="field">
+Turingova redukce
+        </div>
+        <div class="field">
+<div><div>Rozhodovací problém \(T_1\) je Turing-redukovatelný na \(T_2\) (\(T_1 \underline \propto T_2\)) pokud existuje program \(M_1\) pro \(DTS\), který řeší každou instanci problému \(T_1\) tak, že používá program \(M_2\) pro problém \(T_2\) jako podprogram (jeho trvání se považuje za jeden krok)</div></div><br/><i>* mnohem obecnejší než Karpova redukce, mj. nemusí probíhat v </i><i>polynomiálním čase</i>
+        </div>
+    </note>
+    <note id="1289499680" type="1708237251">
+        <div class="field">
+Zrychlení řešení NPO úloh
+        </div>
+        <div class="field">
+<ul><li>Metoda redukce stavového prostoru - např. branch and bound</li><li>Aproximace - přibližné řešení, které ale může být dostačující</li><li>Randomizace - algoritmy založené na náhodné volbě</li></ul>
+        </div>
+    </note>
+    <note id="1183486921" type="1708237251">
+        <div class="field">
+Typické NPC úlohy
+        </div>
+        <div class="field">
+<ul><li>SAT, 3SAT - problém splnitelnosti booleovské formule</li><li>Hamiltonovská kružnice, problém obchodního cestujícího (TSP)</li><li>Problém batohu, Diskérní logaritmus</li></ul><i>* některé úlohy lze řešit globálními metodami (dekompozice, dynamické programování, ...)</i><br/>
+        </div>
+    </note>
+    <note id="1914917936" type="1708237251">
+        <div class="field">
+Definice - problém splnitelnosti Booleovy formule
+        </div>
+        <div class="field">
+Problém splnitelnosti Booleovy formule (SAT) je kombinatorický problém. Je dána množina \(n\) booleovských proměnných \(X = \{ x_1, x_2, \dots, x_n \}\) a Booleova formule \(F(X)\) v KNT. Cílem je rozhodnout, zda je tato formule splnitelná, tedy rozhodnout, zda existuje ohodnocení \(Y : X \to \{ 0, 1 \}\) proměnných \(x_1, x_2, \dots, x_n\) takové, že<br/>\[F \big( Y(X) \big) = 1.\]<br/>
+        </div>
+    </note>
+    <note id="1549702772" type="1708237251">
+        <div class="field">
+Definice - problém Hamiltonovy kružnice 
+        </div>
+        <div class="field">
+Problém Hamiltonovy kružnice (<i>Hamiltonian cycle</i>) je kombinatorický problém. Na vstupu je dán graf \(G = (V, E)\) a cílem je rozhodnout, zda obsahuje Hamiltonovu kružnici, tedy kružnici, která každý vrchol navštíví právě jednou. Problém Hamiltonovy kružnice patří do třídy \(\text{NP}\).<br/><br/><i>* TSP má podobný princip (uzavřená cesta v grafu), ale uvažujeme úplný graf a cílem je cenu minimalizovat</i>
+        </div>
+    </note>
+    <note id="1623942802" type="1708237251">
+        <div class="field">
+Definice - 0/1 problém batohu
+        </div>
+        <div class="field">
+0/1 problém batohu je kombinatorický problém, kde je dána nosnost batohu \(M\), množina předmětů \(U\) a pro každý prvek \(u \in U\):<br/><ul><li>váha \(w(u) \in \mathbb N\),</li><li>cena \(c(u) \in \mathbb N\).</li></ul><div>Cílem je sestrojit množinu \(U'\) tak, aby</div><div>\[\displaystyle \sum_{u \in U'} w(u) \leq M \quad \text a \quad \displaystyle \sum_{u \in U'} c(u) \max,\]tedy aby nebyl batoh přetížen a cena věcí byla maximální.</div>
+        </div>
+    </note>
+
+</deck>

@@ -1,0 +1,76 @@
+<deck id="1137534265" name="NI-ADP::NI-ADP-03" deck_slug="NI-ADP-03">
+
+    <note id="1371827913" type="1708237251">
+        <div class="field">
+GoF Structural: Adapter
+        </div>
+        <div class="field">
+Adapter allows objects with incompatible interfaces to collaborate.
+        </div>
+    </note>
+    <note id="2092301050" type="1708237251">
+        <div class="field">
+GoF Structural: Bridge
+        </div>
+        <div class="field">
+Bridge lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.<br/><br/><img alt="Solution suggested by the Bridge pattern" src="bridge-065879952cf7ec719899d7e49fb69ada.png"/>
+        </div>
+    </note>
+    <note id="1341859317" type="1708237251">
+        <div class="field">
+GoF Structural: Composite
+        </div>
+        <div class="field">
+Composite lets you compose objects into tree structures and then work with these structures as if they were individual objects.
+        </div>
+    </note>
+    <note id="1642664879" type="1708237251">
+        <div class="field">
+GoF Structural: Decorator
+        </div>
+        <div class="field">
+Decorator lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.<br/><br/>Commonly given example are Java's I/O streams:<br/><pre>inputStream = new BufferedReader(new FileReader("xanadu.txt"));</pre>
+        </div>
+    </note>
+    <note id="1635351046" type="1708237251">
+        <div class="field">
+GoF Structural: Facade
+        </div>
+        <div class="field">
+Facade provides a simplified interface to a library, a framework, or any other complex set of classes.<br/><br/><img alt="The structure of the Facade pattern example" src="facade-78e77b45212e72b85d3db599ef2084d3.png"/>
+        </div>
+    </note>
+    <note id="1981056605" type="1708237251">
+        <div class="field">
+GoF Structural: Flyweight
+        </div>
+        <div class="field">
+Flyweight lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
+        </div>
+    </note>
+    <note id="1958361149" type="1708237251">
+        <div class="field">
+GoF Structural: Proxy
+        </div>
+        <div class="field">
+Proxy lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+        </div>
+    </note>
+    <note id="1796431006" type="1708237251">
+        <div class="field">
+Non-GoF: Lazy loading
+        </div>
+        <div class="field">
+Lazy loading is the practice of delaying load or initialization of resources or objects until they’re actually needed to improve performance and save system resources. For example, if a web page has an image that the user has to scroll down to see, you can display a placeholder and lazy load the full image only when the user arrives to its location.
+        </div>
+    </note>
+    <note id="1379578165" type="1708237251">
+        <div class="field">
+Non-GoF: Dependency injection
+        </div>
+        <div class="field">
+Dependency injection is a technique that makes a class independent of its dependencies. It achieves that by decoupling the usage of an object from its creation.
+        </div>
+    </note>
+
+</deck>

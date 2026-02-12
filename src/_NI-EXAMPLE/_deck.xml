@@ -1,0 +1,12 @@
+<deck id="1420498952" name="NI-EXAMPLE::NI-EXAMPLE-01" deck_slug="NI-EXAMPLE-01">
+
+    <note id="1420498952" type="1708237251">
+        <field name="front">
+            Front text
+        </field>
+        <field name="back">
+            Back text
+        </field>
+    </note>
+
+</deck>

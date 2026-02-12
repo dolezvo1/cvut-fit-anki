@@ -1,0 +1,180 @@
+<deck id="1347546064" name="NI-MPI::NI-SPOL-02" deck_slug="NI-SPOL-02">
+
+    <note id="1985443100" type="1708237251">
+        <div class="field">
+Definice - Okruh, komutativní okruh
+        </div>
+        <div class="field">
+Buď \(M\) neprázdná množina a \(+\) a \(\cdot\) binární operace na \(M\). Potom <b>okruh</b> (<i>ring</i>) je trojice \(R = (M, +, \cdot)\), ve které platí:<br/><ol><li>\((M,+)\) je abelovská grupa,<br/></li><li>\((M, \cdot)\) je monoid,</li><li>platí levý a pravý distributivní zákon:\((\forall a,b,c \in M)\)\(\ ( a(b + c) = ab + ac\)\(\ \land (b+c)a = ba + ca)\)</li></ol><div>Je-li navíc \((M, \cdot)\) komutativní monoid, nazýváme \(R\) <b>komutativním okruhem</b>.<br/></div><div><br/></div><div><i>* hlavní rozdíl od grupoidů je, že okruh má dvě operace (je to trojice)</i></div>
+        </div>
+    </note>
+    <note id="1900447761" type="1708237251">
+        <div class="field">
+Definice - Dělitelé nuly
+        </div>
+        <div class="field">
+Nenulové prvky \(a,b \in M\) z okruhu \((M, +, \cdot)\) nazýváme dělitelé nuly, právě tehdy, když \(a \cdot b = b \cdot a = 0\).
+        </div>
+    </note>
+    <note id="1659413686" type="1708237251">
+        <div class="field">
+Definice - Obor integrity
+        </div>
+        <div class="field">
+Obor integrity (<i>integral domain</i>) je komutativní okruh, ve kterém neexistují delitělé nuly, neboli<br/>\((\forall a, b \in M)\)\(~((a \neq 0 \land b \neq 0) \Rightarrow a \cdot b \neq 0)\)
+        </div>
+    </note>
+    <note id="1857665198" type="1708237251">
+        <div class="field">
+Definice - Těleso
+        </div>
+        <div class="field">
+Okruh \(T = (M, +, \cdot)\) nazýváme <b>těleso</b> (<i>field</i>), pokud platí, že \((M \setminus \{0\}, \cdot)\) je Abelovská grupa
+        </div>
+    </note>
+    <note id="1114717258" type="1708237251">
+        <div class="field">
+Řád tělesa
+        </div>
+        <div class="field">
+Počet prvků tělesa<br/><br/><i>* těleso může mít nekonečný řád</i>
+        </div>
+    </note>
+    <note id="1811622211" type="1708237251">
+        <div class="field">
+Vlastnosti těles
+        </div>
+        <div class="field">
+Věta: Pokud pro \(a, b\) z tělesa \(T\) platí \(ab = 0\), potom \(a=0\) nebo \(b=0\).<br/><br/>* Důkaz: Z definice tělesa musí být \((M \setminus \{0\}, \cdot)\) abelovská grupa, a tedy uzavřená
+        </div>
+    </note>
+    <note id="1238599332" type="1708237251">
+        <div class="field">
+Definice - Homomorfismus okruhů (resp. těles)
+        </div>
+        <div class="field">
+Zobrazení \(h\) z okruhu (resp. tělesa) \(R\) do okruhu (resp. tělesa) \(S\) je <b>homomorfismem</b> těchto okruhů (resp. těles), jestliže je \(h\) homomorfismem příslušných aditivních a multiplikativních grupoidů (resp. grup), a platí \(h(1_R) = 1_S\).<br/><br/>Je-li navíc \(h\) bijekce (prosté a "na"), jedná se o <b>izomorfismus</b> těchto okruhů (resp. těles).
+        </div>
+    </note>
+    <note id="1372224461" type="1708237251">
+        <div class="field">
+Definice - Izomorfní tělesa
+        </div>
+        <div class="field">
+Tělesa \(T\) a \(K\) nazýváme <b>izomorfní</b>, právě když existuje izomorfismus \(T \to K\). V tomto případě také říkáme, že těleso \(T\) je izomorfní s tělesem \(K\).
+        </div>
+    </note>
+    <note id="1325656609" type="1708237251">
+        <div class="field">
+Definice - Konečné těleso
+        </div>
+        <div class="field">
+Těleso, které má konečný počet prvků se nazývá <b>konečné těleso</b> (<i>finite field</i>).<br/><br/><i>* základním příkladem jsou tělesa omezená prvočísleným modulem </i>\(p\) tzn. \(Z^+_p\) a \(Z^\times_p\)
+        </div>
+    </note>
+    <note id="1877449512" type="1708237251">
+        <div class="field">
+Konstrukce konečných těles neprvočíselného řádu
+        </div>
+        <div class="field">
+Mějme prvočíslo \(p\) a \(n \in \mathbb Z\) takové, že \(n \geq 2\). Postup konstrukce konečného tělesa neprvočíselného řádu je následující:<br/><ul><li>uvažme těleso \(T\) s \(p\) prvky (např. \((\mathbb Z_p, +, \cdot)\)),</li><li>sestrojme okruh \(T[x]\) všech polynomů nad tělesem \(T\),</li><li>nalezněme ireducibilní polynom \(p(x) \in T[x]\) stupně \(n\),</li><li>sestrojme množinu \(F\) všech polynomů z \(T[x]\) stupně nejvýše \(n - 1\) včetně nulového polynomu,</li><li>vybavme \(F\) operacemi sčítání polynomů v \(T[x]\) a násobení polynomů v \(T[x]\) modulo \(p(x)\).</li></ul><div>Potom \(F\) s takto zavedenými operacemi tvoří konečné těleso řádu \(p^n\).</div>
+        </div>
+    </note>
+    <note id="2142680703" type="1708237251">
+        <div class="field">
+Věta - řád konečného tělesa
+        </div>
+        <div class="field">
+Řádem konečného tělesa musí být mocnina prvočísla, tedy číslo zapsatelné jako \(p^n\), kde \(p\) je prvočíslo a \(n\) je kladné celé číslo.<br/><br/>Navíc platí, že všechna tělesa řádu \(p^n\) jsou <b>navzájem izomorfní</b>.
+        </div>
+    </note>
+    <note id="2087098409" type="1708237251">
+        <div class="field">
+Definice - Galoisovo těleso, jeho charakteristika
+        </div>
+        <div class="field">
+Těleso s \(p^n\) prvky, kde \(p\) je prvočíslo a \(n \in \mathbb Z^+\), nazývame Galoisovo těleso (<i>Galois field</i>) a značíme ho \(GF(p^n)\). Prvočíslo \(p\) se nazýva <b>charakteristikou</b> tělesa \(GF(p^n)\).<br/><br/><i>* aditivní grupa má řád </i>\(p^n\)<i>, je cyklická iff </i>\(n=1\)<br/><i>* multiplikativní grupa má řád </i>\(p^n-1\)<i>, je vždy cyklická</i>
+        </div>
+    </note>
+    <note id="1672753878" type="1708237251">
+        <div class="field">
+Jak spočítat multiplikativní inverzi v \(\mathbb{Z}^\times_{p}\)?
+        </div>
+        <div class="field">
+Hledáme \(a^{-1}\) kde \(a^{-1} \cdot a = 1\ (\mathrm{mod}\ p)\), což lze přeformulovat jako  \(a^{-1} \cdot a + k \cdot p = 1\). K nalezení Bezoutových koeficientů \(a^{-1}\) a \(k\) použijeme rozšířený Euklidův algoritmus (<i>Extended Euclidean Algorithm</i>).<br/><br/><img src="eea-1758ddf64bd944f88dd1f650d2fbb864fb9738ba.jpg"/>
+        </div>
+    </note>
+    <note id="1689097838" type="1708237251">
+        <div class="field">
+Jak spočítat multiplikativní inverzi v \(GF(p^n)\) ?
+        </div>
+        <div class="field">
+Jedna možnost je opět použít EEA, nicméně v případě polynomů modulo ireducibilní polynom (např. \(x^3 + 2x + 1\)), lze využít MFV (multiplikativní grupa má \(p^n -1\) prvků, tedy \(a^{-1} = a^{p^n - 2}\)) a identitu vycházející z upraveného polynomu (tj. \(x^3 = -2x -1\))
+        </div>
+    </note>
+    <note id="1660934457" type="1708237251">
+        <div class="field">
+Definice - Polynom nad okruhem
+        </div>
+        <div class="field">
+Mějme okruh \(R\) a \(a_i \in R, i = 0,1,...,n\). <br/><br/>Formální výraz ve tvaru: \(P(x)=\sum_{i=0}^na_i \cdot x^i\) <br/><br/>nazýváme <b>polynomem nad okruhem </b>\(R\).<br/><br/><i>* </i>\(a_i\)<i> = koeficienty polynomu<br/>* </i>\(x\)<i> = formální proměnná polynomu<br/>* největší </i>\(i\)<i> s nenulovým </i>\(a_i\)<i> = stupeň polynomu<br/>* </i>\(P(x)=0\)<i> = nulový polynom</i>
+        </div>
+    </note>
+    <note id="1090855296" type="1708237251">
+        <div class="field">
+Věta - Okruh polynomů
+        </div>
+        <div class="field">
+Buď \(R\) okruh. Potom množina všech polynomů nad okruhem \(R\) spolu s operacemi sčítání a násobení definovanými předpisy<br/><br/>\(\sum_{i=0}^na_i \cdot x^i+\sum_{i=0}^nb_i \cdot x^i :=\sum_{i=0}^n(a_i + b_i )x^i\)<br/>\(\Bigl( \sum_{i=0}^n a_ix^i \Bigr)\cdot\Bigl( \sum_{i=0}^n b_ix^i \Bigr) := \sum_{i=0}^{n+m} \Bigl( \sum_{j+k=i} a_jb_k \Bigr)x^i\)<br/><br/>kde \(a_i, b_i \in R\) pro všechny hodnoty i, tvoří <b>okruh polynomů nad okruhem </b>\(R\). Tento okruh značíme \(R[x]\).<br/><br/><i>* Abychom mohli sčítat, odčítat a násobit polynomy nad </i>\(R\)<i>, stačí nám vědět jak sčítat, odčítat a násobit jejich koeficienty<br/>* Rozdíl mezi </i>\(Z_3\)<i> a </i>\(Z_3[x]\)<i>:</i><br/><ul><li>\(Z_3\)<i> je množina zbytků po dělení 3 (neboli </i>\(\{0, 1, 2\}\)<i>)</i></li><li>\(Z_3[x]\)<i> jsou polynomy s koeficienty z množiny </i>\(Z_3\)</li></ul>
+        </div>
+    </note>
+    <note id="1632227684" type="1708237251">
+        <div class="field">
+Lemma - o násobení polynomů
+        </div>
+        <div class="field">
+Buď \(T\) těleso a \(f(x), g(x) \in T[x]\) nenulové polynomy. Platí<br/>\(\deg(f(x) \cdot g(x))\)\(= \deg(f(x)) + \deg(g(x))\)<br/><br/><i>* stupeň polynomu je součet stupňů jeho rozkladu</i>
+        </div>
+    </note>
+    <note id="1462969955" type="1708237251">
+        <div class="field">
+Lemma - o dělení polynomů
+        </div>
+        <div class="field">
+Buď \(T\) těleso a \(f(x),g(x) \in T[x]\) nenulové polynomy. Pak existují jednoznačně určené polynomy \(q(x), r(x) \in T[x]\) takové, že \(f(x) = q(x) \cdot g(x) + r(x)\),<br/>kde \(r(x)\) je buď nulový, nebo má stupeň ostře menší než stupeň \(g(x)\).<br/><br/><i>* tj. dělením polynomu </i>\(f\)<i> polynomem </i>\(g\)<i> dostaneme jednoznačně určený podíl </i>\(q\)<i> a zbytek </i>\(r\)
+        </div>
+    </note>
+    <note id="1525979434" type="1708237251">
+        <div class="field">
+Definice - největší společný dělitel polynomů
+        </div>
+        <div class="field">
+Mějme dva polynomy \(f(x), g(x) \in T[x]\). Potom polynom \(h(x) \in T[x]\) nazveme největším společným dělitelem polynomů \(f(x)\) a \(g(x)\), značeno \(\gcd \big( f(x), g(x) \big)\), jestliže:<br/><ul><li>\(h(x)\) dělí \(f(x)\);<br/></li><li>\(h(x)\) dělí \(g(x)\);<br/></li><li>každý polynom, který dělí \(f(x)\) i \(g(x)\), dělí také \(h(x)\).</li></ul><div><i>* To, že </i>\(h(x)\)<i> dělí </i>\(f(x)\)<i>, znamená, že existuje </i>\(q(x) \in T[x]\)<i> takové, že</i>\[f(x) = q(x)h(x).\]</div>
+        </div>
+    </note>
+    <note id="1330015889" type="1708237251">
+        <div class="field">
+Věta - Bezoutova rovnost pro polynomy
+        </div>
+        <div class="field">
+Buď \(f(x), g(x) \in T[x]\) nenulové polynomy. Potom existují polynomy \(u(x),v(x) \in T[x]\) tak, že \[u(x)f(x) + v(x)g(x) = \gcd(f(x), g(x))\]<br/><i>* gcd dvou polynomů lze zapsat jako lineární kombinaci daných </i><i>polynomů</i><br/>
+        </div>
+    </note>
+    <note id="1225917914" type="1708237251">
+        <div class="field">
+Věta - Polynomial factor theorem
+        </div>
+        <div class="field">
+Buď \(T\) těleso a \(p(x) \in T[x]\) polynom stupně \(n\). Prvek \(\xi \in T\) je kořen polynomu \(p\) právě tehdy, když \(p(x) = (x - \xi) \cdot g(x)\), kde \(g(x) \in T[x]\) je stupně \(n - 1\).<br/><br/>* např. \(x^2 -x -2 = (x+1)(x-2)\) má dva kořeny, \(\{-1, +2\}\).
+        </div>
+    </note>
+    <note id="1717797197" type="1708237251">
+        <div class="field">
+Definice - Ireducibilní polynom
+        </div>
+        <div class="field">
+Buď \(P(x) \in K[x]\) stupně alespoň 1. Řekneme, že \(P(x)\) je <b>ireducibilní nad okruhem </b>\(K\), jestliže pro každé dva polynomy \(A(x), B(x) \in K[x]\) platí<br/><br/>\(A(x) \cdot B(x) = P(x) \implies\)\((\deg(A(x)) = 0 \lor \deg(B(x) = 0)\)<br/><br/><i>* polynom, který už nejde rozložit na součin jiných dvou polynomů s nižším stupňem<br/>* ireducibilní polynomy se chovají jako prvočísla mezi polynomy</i>
+        </div>
+    </note>
+
+</deck>

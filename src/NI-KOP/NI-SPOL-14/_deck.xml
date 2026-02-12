@@ -1,0 +1,229 @@
+<deck id="1381544225" name="NI-KOP::NI-SPOL-14" deck_slug="NI-SPOL-14">
+
+    <note id="1125190622" type="1708237251">
+        <div class="field">
+Popište schéma, jeho řád a délku
+        </div>
+        <div class="field">
+<b>Schéma </b>je kódování jedince (chromozom), v němž mají některé proměnné (geny) neurčenou hodnotu. <b>Řádem schématu</b> je počet určených proměnných a jeho <b>délkou</b> je maximální vzdálenost mezi určenými proměnnými. 
+        </div>
+    </note>
+    <note id="1803103265" type="1708237251">
+        <div class="field">
+Hypotéza stavebních bloků
+        </div>
+        <div class="field">
+Hypotéza stavebních bloků popisuje princip fungování evolučních algoritmů. Podle ní fungují evoluční algoritmy proto, že výsledné kvalitní řešení úlohy skládají z kvalitních řešení menších podúloh (stavebních bloků). V případě evolučních algoritmů je stavební blok definován množinou proměnných kódování jedince (genů), tedy schématem.
+        </div>
+    </note>
+    <note id="1715712461" type="1708237251">
+        <div class="field">
+Vliv selekčního tlaku v evolučních algoritmech a jeho vazba s pravděpodobností mutace
+        </div>
+        <div class="field">
+Selekční tlak v evolučních algoritmech má následující vliv:<br/><ul><li><b>příliš vysoký selekční tlak</b> - nebezpečí uváznutí v lokálním optimu (degenerace populace),<br/></li><li><b>příliš nízký selekční tlak</b> - nebezpečí převážení mutace nad pomalou konvergencí (divergence).<br/></li></ul><div>Při snižování selekčního tlaku, musí tedy být snižována i pravděpodobnost mutace.</div>
+        </div>
+    </note>
+    <note id="1174641877" type="1708237251">
+        <div class="field">
+Populace v evolučních algoritmech a metody jejího řízení.
+        </div>
+        <div class="field">
+<div>Populace je v evolučních algoritmech množina jedinců. Při křížení a mutaci vznikne z \(\mu\) rodičů \(\lambda\) potomků a výslednou populaci lze řídit následujícími metodami:<br/></div><div><ul><li><b>náhrada </b>\((\mu = \lambda)\) - potomci nahradí rodiče (náhrada <i>en bloc</i>), případně několik málo elitních rodičů zůstane v nové populaci (náhrada s elitismem);<br/></li><li><b>soutěž</b> \((\mu + \lambda)\) - nová populace je vytvořena výběrem ze skupiny rodičů a potomků;<br/></li><li><b>soutěž </b>\((\mu, \lambda)\) - nová populace je vytvořena výběrem pouze z potomků.</li></ul><div><br/></div><div>* V případě \((\mu, \lambda)\) soutěže vyprodukuje \(\mu\) rodičů \(\lambda &gt; \mu\) potomků. Pokud nastává rovnost, dochází k náhradě <i>en bloc</i> \((\mu = \lambda)\).</div></div><div><br/></div><div>Velikost populace:<br/><ul><li>Malá (10) - nebezpečí ztráty diverzity<br/></li><li>Méně obtížné problémy - od 30 jedinců, linerání růst<br/></li><li>Obtížné problémy - 100 jedinců<br/></li><li>Velké instance - sublineární růst s velikostí populace, technické důvody<br/></li></ul></div>
+        </div>
+    </note>
+    <note id="1287425370" type="1708237251">
+        <div class="field">
+Metody náhodného výběru jedinců v selekci evolučních algoritmů
+        </div>
+        <div class="field">
+<div><div>Mezi metody náhodného výběru jedinců v selekci evolučních algoritmů patří:<br/><ul><li><b>ruletový výběr</b> - rozevření políčka rulety odpovídá pravděpodobnosti výběru, \(m\)-krát je zvolen náhodný úhel a vybrán odpovídající jedinec;<br/></li><li><b>univerzální stochastické vzorkování</b> - vychází z ruletového výběru, je zvolen náhodný úhel, který je \((m - 1)\)-krát odměřen a je vybrán odpovídající jedinec.<br/></li></ul><div><br/></div><div>* Dále existuje turnajový výběr, který kombinuje přepočet zdatnosti na pravděpodobnost výběru jedince a náhodný výběr jedinců do jediného kroku.</div></div></div>
+        </div>
+    </note>
+    <note id="1687876761" type="1708237251">
+        <div class="field">
+Metody přepočtu zdatnosti na pravděpodobnost výběru jedince v selekci evolučních algoritmů
+        </div>
+        <div class="field">
+Pro přepočet zdatnosti na pravděpodobnost výběru jedince v selekci evolučních algoritmů není typicky využita přímá úměra, protože často vede k uváznutí v lokálním optimu (degeneraci populace). Pro zachování diverzity je totiž potřeba v populaci ponechat slabší jedince. Používají se následující metody:<br/><ul><li><i><b>scaling</b></i> - přepočet pomocí lineární funkce,<br/></li><li><i><b>ranking</b></i> - seřazení jedinců podle zdatnosti a výběr na základě pořadí,<br/></li><li><i><b>truncation selection</b></i> - výběr několika nejzdatnějších jedinců.<br/></li></ul><div><br/></div><div>* Dále existuje turnajový výběr, který kombinuje přepočet zdatnosti na pravděpodobnost výběru jedince a náhodný výběr jedinců do jediného kroku.</div>
+        </div>
+    </note>
+    <note id="1295405045" type="1708237251">
+        <div class="field">
+Turnajový výběr v evolučních algoritmech a jeho souvislost se selekčním tlakem
+        </div>
+        <div class="field">
+Turnajový výběr kombinuje přepočet zdatnosti na pravděpodobnost výběru jedince a náhodný výběr jedinců v selekci evolučních algoritmů do jediného kroku. Funguje tak, že náhodně vybere několik jedinců a z nich zvolí toho nejzdatnějšího. Tento proces je opakován až do naplnění nové populace. Řízením velikosti turnaje lze řídit selekční tlak:<br/><ul><li><b>turnaj s celou populací</b> - vysoký selekční tlak, nejzdatnější jedinec je vždy vybrán (intenzifikace),<br/></li><li><b>turnaj s jedním jedincem</b> - nízký selekční tlak, nezáleží na zdatnosti jedinců (diverzifikace).</li></ul>
+        </div>
+    </note>
+    <note id="1498552514" type="1708237251">
+        <div class="field">
+Selekci, selekční tlak a zdatnost jedince v evolučních algoritmech
+        </div>
+        <div class="field">
+<b>Selekce </b>je fáze evolučních algoritmů s cílem dosáhnout toho, aby početní zastoupení jedinců v populaci odpovídalo jejich zdatnosti. Probíhá v následujících krocích:<br/><ul><li>z konfigurace, kterou jedinec reprezentuje, je vypočteno optimalizační kritérium odpovídající <b>zdatnosti jedince</b>;</li><li>zdatnost jedince je na základě selekčního tlaku přepočtena na pravděpodobnost výběru jedince;</li><li>proběhne náhodný výběr jedinců.</li></ul><div><b>Selekční tlak</b> je pravděpodobnost výběru nejzdatnějšího jedince. Určuje tedy, jak velký důraz je při náhodném výběru jedinců kladen na zdatnost.</div>
+        </div>
+    </note>
+    <note id="1694749372" type="1708237251">
+        <div class="field">
+Simulovaná evoluce - Genetické programování
+        </div>
+        <div class="field">
+<div>Genetické programování patří mezi evoluční algoritmy. Vyznačuje se následujícími vlastnostmi:<br/></div><div><ul><li><b>kódování jedince</b> - strom výrazu nebo výpočtu programu,<br/></li><li><b>křížení </b>- dominující operátor (výměna podstromů),<br/></li><li><b>mutace </b>- upozaděný operátor (nahrazení podstromu náhodně vygenerovaným podstromem),<br/></li><li><b>řízení populace</b> - náhrada (<i>en bloc</i>, s elitismem nebo jiná).</li></ul><div>Obecná struktura genetického programování se liší v tom, že před křížením probíhá výběr pro křížení a před selekcí testování jedinců. V tomto kontextu vyjadřuje zdatnost jedince funkčnost programu, který kóduje, a právě funkčnost je předmětem testů předcházejícím selekci. Fáze tedy jsou:<br/></div><div><ul><li>testy a selekce,</li><li>výběr pro křížení a křížení,</li><li>mutace,</li><li>řízení populace.</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1369273938" type="1708237251">
+        <div class="field">
+Simulovaná evoluce - Evoluční programování
+        </div>
+        <div class="field">
+<div><div>Evoluční programování patří mezi evoluční algoritmy. Vyznačuje se následujícími vlastnostmi:<br/></div></div><div><ul><li><b>kódování jedince</b> - stavový stroj (např. automat, neuronová síť nebo program s pevnou strukturou);<br/></li><li><b>křížení </b>- nepoužívá se, jedinec je chápán jako vlastní druh a vyvíjí se samostatně;<br/></li><li><b>mutace </b>- změna počátečního stavu, změna výstupního symbolu, změna přechodu, přidání nebo odebrání stavu;<br/></li><li><b>řízení populace</b> - soutěž \((\mu + \lambda)\) nebo turnajový výběr.</li></ul><div>Obecná struktura evoluční strategie se liší v tom, že nepoužívá křížení. Fáze tedy jsou:</div><div><ul><li>selekce,</li><li>mutace,</li><li>řízení populace.</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1286102533" type="1708237251">
+        <div class="field">
+Simulovaná evoluce - Evoluční strategie
+        </div>
+        <div class="field">
+<div>Evoluční strategie patří mezi evoluční algoritmy. Vyznačuje se následujícími vlastnostmi:<br/></div><div><ul><li><b>kódování jedince</b> - vektor reálných čísel a endogenní parametry (velikost a směr kroku, standardní odchylky);<br/></li><li><b>křížení </b>- diskrétní, střední, vážené;<br/></li><li><b>mutace </b>- přičtení náhodné veličiny (vektoru) s rozdělením \(\operatorname N(0, \sigma^2)\) nebo podobným,<br/></li><li><b>řízení populace</b> - soutěž \((\mu + \lambda)\) nebo \((\mu, \lambda)\) s <i>rankingem</i>.</li></ul><div>Obecná struktura evoluční strategie se liší v tom, že před křížením probíhá ještě výběr pro křížení. Fáze tedy jsou:</div><div><ul><li>selekce,</li><li>výběr pro křížení a křížení,</li><li>mutace</li><li>řízení populace.</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1188866225" type="1708237251">
+        <div class="field">
+Metody křížení v evoluční strategii
+        </div>
+        <div class="field">
+V evoluční strategii vstupuje do křížení pouze \(\rho\) vybraných rodičů a mezi metody jejich křížení patří:<br/><ul><li><b>diskrétní</b> - potomek dědí každou svou složku z náhodně zvoleného rodiče,<br/></li><li><b>střední</b> - potomek vzniká jako průměr (po složkách) rodičů,<br/></li><li><b>vážená</b> - potomek vzniká jako vážený průměr (po složkách) rodičů,</li></ul>
+        </div>
+    </note>
+    <note id="1524363452" type="1708237251">
+        <div class="field">
+Simulovaná evoluce - Genetické algoritmy
+        </div>
+        <div class="field">
+<div>Evoluční algoritmy jsou lokální heuristiky založené na práci s vícero stavy (jedinci). Jejich základním principem je, že stavy mezi sebou interagují a jejich kombinacemi vznikají nové stavy. Evoluční algoritmy jsou nejprve inicializovány s počáteční populací a poté v cyklu iterují následující kroky:<br/></div><div><ul><li><b>selekce </b>- výběr rodičů další populace s cílem zvýšení podílu zdatných jedinců (intenzifikace),<br/></li><li><b>křížení </b>(binární operátor) - rekombinace genetické informace do nových jedinců,<br/></li><li><b>mutace</b> (unární operátor) - náhodný zdroj nové genetické informace (diverzifikace),</li><li><b>řízení populace </b>- nahrazení staré populace novou populací.<br/></li></ul><div>Jejich výstupem je poté konečná populace. Mezi evoluční algoritmy patří:</div><div><ul><li>genetický algoritmus,</li><li>genetické programování,</li><li>evoluční strategie,</li><li>evoluční programování.</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1970668734" type="1708237251">
+        <div class="field">
+Genetický algoritmus a jeho obecná struktura
+        </div>
+        <div class="field">
+Genetický algoritmus patří mezi evoluční algoritmy. Vyznačuje se následujícími vlastnostmi:<br/><ul><li><b>kódování jedince</b> - binární řetězec;<br/></li><li><b>křížení </b>- dominující operátor (jednobodové, dvoubodové, uniformní);<br/></li><li><b>mutace </b>- upozaděný operátor (inverze bitů);<br/></li><li><b>řízení populace</b> - náhrada (<i>en bloc</i> nebo s elitismem).</li></ul>Genetický algoritmus používá obecnou strukturu evolučního algoritmu (selekce, křížení, mutace a řízení populace).<br/>
+        </div>
+    </note>
+    <note id="1800096885" type="1708237251">
+        <div class="field">
+Kostra genetického algoritmu
+        </div>
+        <div class="field">
+<ol><li>Inicializujeme úvodní populaci</li><li>Vybereme najzdatnejší jedince</li><li>Tyto jedince mezi křížíme</li><li>Vykonáme mutaci</li><li>Výslední jedinci tvoří novou generaci</li></ol><img src="ga1-e0514287920f6623e4416b67ba155da0.png"/><br/>
+        </div>
+    </note>
+    <note id="1231436391" type="1708237251">
+        <div class="field">
+Paralely s genetikou: Jedinec, gen, populace
+        </div>
+        <div class="field">
+<ul><li>Jedinec =&gt; Konfigurace</li><li>Genetická reprezentace jedince =&gt; Kódovaní konfigurace (např. vektor proměnných)</li><li>Gen =&gt; Konfigurační proměnná</li><li>Alela =&gt; Hodnota proměnné<br/></li><li>Generace =&gt; Aktuální množina konfigurací</li></ul>
+        </div>
+    </note>
+    <note id="1953963675" type="1708237251">
+        <div class="field">
+Ukončovací podmínky genetického algoritmu
+        </div>
+        <div class="field">
+<div>Ukončovací podmínky genetického algoritmu jsou typicky voleny podle:<br/></div><div><ul><li><b>peveného počtu populací</b> - algoritmus je ukončen po daném počtu populací,</li><li><b>příznaků konvergence</b> - změna průměrné zdatnosti mezi populacemi nebo rozložení zdatnosti v populaci.</li></ul></div>
+        </div>
+    </note>
+    <note id="1556103107" type="1708237251">
+        <div class="field">
+Omezující podmínky
+        </div>
+        <div class="field">
+Behem křížení a mutace se může stát, že výsledný jedinec nesplňuje omezující podmínky<br/><ul><li>Relaxace - nesplnění omezujících podmínek převedeme na penalizaci zdatnosti (nutné hodnotu penalizace odladit)</li><li>Trest smrti - zahodíme neplatná žešení (omezujeme stavový prostor, občas je cesta k lepšímu řešení skrz neplatná)</li><li>Doménové operátory - operace mutace a krížení volíme tak, aby vždy vyšlo validní řešení</li><li>Dekodéry - volíme reprezentaci tak, aby každý možný genotyp odpovídal nějakému řešení (tedy ve stavovém prostoru se nacházejí pouze platná řešení)</li></ul>
+        </div>
+    </note>
+    <note id="2099375724" type="1708237251">
+        <div class="field">
+Paralely s genetikou: Operátory, konvergence, biodiverzita
+        </div>
+        <div class="field">
+<ul><li>Operátor mutace =&gt; Unární operátor<br/></li><li>Operátor křížení =&gt; Binární operátor<br/></li><li>Fitness =&gt; Optimalizační kritérium<br/></li><li>Degenerace =&gt; Rozšíření konfigurace uvázlé v lokálním minimu<br/></li><li>Konvergence =&gt; Rozšíření kvalitní konfigurace<br/></li><li>Biodiverzita =&gt; Diverzita populace (jak moc se od sebe jedinci liší: vysoká = velký prostor je prozkoumáván zároveň, nízká = degenerace populace, jedinci jsou skoro totožní)</li></ul>
+        </div>
+    </note>
+    <note id="1514122727" type="1708237251">
+        <div class="field">
+Uváznutí v lokálním optimu
+        </div>
+        <div class="field">
+Obecně:<br/><ul><li>Je vhodné mít dostatečně nízký selekční tlak, aby nedocházelo k rychlé konvergenci populace a uváznutí v lokálních minimech</li><li>Uváznutí umíme detekovat sledováním diverzity populace a zlepšovaním mezi generacemi</li><li>Mutace je hlavní operátor, který má uváznutí zabránit.</li></ul><div>Protiopatření:</div><div><ul><li>Adaptivní mutace - dočasně zvýšíme pravděpodobnost mutace (zvýšíme tak diverzifikaci populace)</li><li>Operátor Katastrofy - zahodíme většinu populace a doplníme ji náhodnými jedinci</li><li>Generovaní náhodných potomků - místo křížení vygenerujeme náhodného jedince (jedinci mezi generacemi mají za běžných okolností podobný genotyp)</li></ul></div><div><i>* V případě vysokého selekčního tlaku však s nejvyšší pravděpodobností nepomůže ani mutace před uváznutím v lokálním optimu</i><br/></div>
+        </div>
+    </note>
+    <note id="1782383338" type="1708237251">
+        <div class="field">
+Inicializace genetického algoritmu
+        </div>
+        <div class="field">
+<ul><li>Způsob vytvoření počáteční generace jedinců</li><ul><li>Náhodný - vytvoříme \(N\) zcela náhodných jedinců (náhodný binární vektor)</li><li>Podle pravidiel - podle nějakých pravidiel vytvoříme už na začátku poměrně zdatných jedinců (základem je stále náhoda)</li><li>První generáce daná úlohou - netřeba vytvářet protože jsou zadaní samotnou úlohou</li></ul><li>Je důležité aby jedinci v populaci měli dostatečnou diverzitu (proto jsou náhodní jedinci lepší)</li><li>Každý jedinec v populaci představuje zakódované řešení zadané úlohy</li><li>Všichni jedinci populace jsou ohodnoceni fitness funkcí a tím je vytvořená první generace algoritmu</li></ul><br/>
+        </div>
+    </note>
+    <note id="2082313786" type="1708237251">
+        <div class="field">
+Selekce genetického algoritmu
+        </div>
+        <div class="field">
+<ul><li>Realizace přirozeného výběru (podle Darwinovy teorie)</li><li>Na základě funkce zdatnosti (fitness funkce) určíme kteří jedinci prežijí</li><ul><li>Zpravidla prežívají ti zdatnejší jedinci</li><li>Výpočet hodnotící funkce by měl být rychlý (opakuje se pro každého jedince v generaci)</li><li>Výsledek hodnotící funkce je nezávislý pro každého jedince</li><li>Výpočet funkce zdatnosti: \(f_{Z_i}=\frac{c_i}{c_{avg}}\)</li></ul><li>Nejedná se o jednoduché vybrání \(N\) nejlepších jedinců z populace. Selekce musí zaručit i to, že se rekombinace může zúčastnit i nejhorší z jedinců v populaci (zachování diverzity do další generace)</li></ul>
+        </div>
+    </note>
+    <note id="1336489612" type="1708237251">
+        <div class="field">
+Metody křížení v genetickém algoritmu a jejich problémy
+        </div>
+        <div class="field">
+<div>Metody křízení v genetickém algoritmu jsou závislé na zvoleném kódování. Předpokládejme dva jedince kódované pomocí binárních řetězců:<br/>\[\begin{matrix}
+a_1a_2 \dots a_n,\\
+b_1b_2 \dots b_n,\\
+\end{matrix}\]pak existují následující metody křížení jedinců:<br/><ul><li><b>jednobodové křížení </b>- je zvolen náhodný index \(i\) a potomci jsou sestrojeni jako</li></ul><div>\[\begin{matrix}
+a_1 \dots a_ib_{i + 1} \dots b_n,\\
+b_1 \dots b_ia_{i + 1} \dots a_n;
+\end{matrix}\]</div><ul><li><b>dvoubodové křížení</b> - jsou zvoleny dva náhodné indexy \(i\) a \(j\) takové, že \(i &lt; j\), a potomci jsou sestrojeni jako<br/></li></ul><div>\[\begin{matrix}
+a_1 \dots a_ib_{i + 1} \dots  b_ja_{j + 1} \dots a_n,\\
+b_1 \dots b_ia_{i + 1} \dots a_jb_{j + 1} \dots b_n;
+\end{matrix}\]</div><ul><li><b>uniformní křížení </b>- je zvolen náhodný binární řetězec, pokud je na jeho \(i\)-tém indexu \(0\), použije se v prvním potomku \(a_i\), pokud \(1\) tak \(b_i\), a druhý potomek je sestrojen inverzí tohoto binárního řetězce.<br/></li></ul><div>Jednobodové a dvoubodové křížení je závislé na pořadí, což způsobuje nerobustnost. Řešením je permutace prvků řetězce při zachování jejich významu (zapamatování původního pořadí).</div></div>
+        </div>
+    </note>
+    <note id="1552862177" type="1708237251">
+        <div class="field">
+Mutace v genetickém algoritmu
+        </div>
+        <div class="field">
+<div>Mutace v genetickém algoritmu je závislá na zvoleném kódování. Předpokládejme jedince kódované pomocí binárních řetězců. Při mutaci jsou jedinci interpretováni jako konkatenace těchto řetezců, ve které jsou invertovány bity na náhodných pozicích, dokud není dosaženo požadované pravděpodobnosti mutace.</div><div><br/></div><div><i>* typicky se používají pro pravděpodobnost mutace malé hodnoty jako </i>\(1\%\)</div><div></div><div><i>* musí se používat opatrně, jinak způsobuje degradaci algoritmu</i></div>
+        </div>
+    </note>
+    <note id="2055157160" type="1708237251">
+        <div class="field">
+Kompetentní genetický algoritmus
+        </div>
+        <div class="field">
+Kompetentní genetický algoritmus je genetický algoritmus, který zachází optimálně i se schématy vyšších řádů. Mezi kompetentní genetické algoritmy patří <i>fast messy</i> genetický algoritmus a vychází z nich Bayesovská optimalizace.
+        </div>
+    </note>
+    <note id="1676664027" type="1708237251">
+        <div class="field">
+Popište <i>fast messy </i>genetický algoritmus
+        </div>
+        <div class="field">
+<i>Fast messy </i>genetický algoritmus je kompetentní genetický algoritmus, který namísto jedinců explicitně pracuje se stavebními bloky ve formě schémat. V případě <i>fast messy </i>genetického algoritmu jsou schémata reprezentována seznamem dvojic identifikace proměnné (genu) a hodnota proměnné. Z toho důvodu mohou nastat následující situace:<br/><ul><li><b>schéma proměnnou nespecifikuje</b> - proměnná je převzata z nejzdatnějšího (referenčního) jedince,<br/></li><li><b>schéma proměnnou specifikuje vícekrát</b> - použije se první výskyt proměnné ve schématu.</li></ul><i>Fast messy</i> genetický algoritmus probíhá tak, že v cyklu iteruje následující kroky, přičemž v každé iteraci je zvýšen řád schémat:<br/><ul><li><b>primordiální fáze</b> - generování, filtrace a krácení schémat,<br/></li><li><b>juxtapoziční fáze</b> - spojování, rozdělování a mutace schémat.</li></ul>
+        </div>
+    </note>
+    <note id="1911422517" type="1708237251">
+        <div class="field">
+Popište Bayesovskou optimalizaci
+        </div>
+        <div class="field">
+Bayesovská optimalizace vychází z kompetentních genetických algoritmů. Schémata vyšších řádů zohledňuje tak, že pracuje se stochastickým modelem vazeb mezi hodnotami proměnných schémat. Bayesovská optimalizace je nejprve inicializována s náhodnou populací a poté v cyklu iteruje následující kroky:<br/><ul><li>je zkonstruován stochastický model závislosti zdatnosti na hodnotách proměnných schémat v aktuální populaci,</li><li>podle tohoto modelu je vygenerována nová populace,</li><li>výsledná populace je sestavena výběrem nejzdatnějších jedinců z obou populací.</li></ul>
+        </div>
+    </note>
+
+</deck>

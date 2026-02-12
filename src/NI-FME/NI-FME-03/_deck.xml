@@ -1,0 +1,12 @@
+<deck id="2059157945" name="NI-FME::NI-FME-03" deck_slug="NI-FME-03">
+
+    <note id="2111741898" type="1708237251">
+        <div class="field">
+Automatizace dokazování správnosti programů: principy, možnosti, omezení.
+        </div>
+        <div class="field">
+TODO: weakest preconditions, quantifier elimination, strongest postconditions
+        </div>
+    </note>
+
+</deck>

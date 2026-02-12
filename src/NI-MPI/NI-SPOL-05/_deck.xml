@@ -1,0 +1,290 @@
+<deck id="1508642564" name="NI-MPI::NI-SPOL-05" deck_slug="NI-SPOL-05">
+
+    <note id="1943514873" type="1708237251">
+        <div class="field">
+Numerická matematika: přehled
+        </div>
+        <div class="field">
+Numerická matematika je odvětví matematiky, které se věnuje matematickým metodám hledajícím přibližná řešení matematických úloh a jejich spolehlivosti. Typicky využívá počítače. Zahrnuje např. metody pro řešení soustav lineárních rovnic, výpočet integrálů nebo hledání lokálních a globálních extrémů.
+        </div>
+    </note>
+    <note id="1101957879" type="1708237251">
+        <div class="field">
+Kategorizace chyb v numerické matematice
+        </div>
+        <div class="field">
+<div>Chyby v numerické matematice dělíme dle jejich původu na:<br/></div><div><ul><li><b>chyby modelu</b> - matematický model úlohy je zjednodušený (např. je zanedbáno tření);<br/></li><li><b>chyby dat</b> - vstupní data pocházejí z měření, která nemají absolutní přesnost;<br/></li><li><b>chyby algoritmu</b> - algoritmus v konečném počtu kroků nenajde přesné řešení, ale pouze přibližné;<br/></li><li><b>zakrouhlovací chyby</b> - chyby v aritmetických operacích při samotném výpočtu.</li></ul></div>
+        </div>
+    </note>
+    <note id="1194057714" type="1708237251">
+        <div class="field">
+Reprezentace čísel v počítači
+        </div>
+        <div class="field">
+<div>IEEE-754 [\(s\)][\(e\)][\(m\)] bit (např. 32bit =&gt; [1][8][23]bit, kde \(b\) je 127)</div><br/>Strojové číslo \(x=(-1)^s \cdot 2^{e-b} \cdot m\)<br/><ul><li>\(s\) = znaménko</li><li>\(e\) = exponent</li><li>\(m\) = signifikant ("mantisa")</li><li>\(b\) = bias (offset exponentu)<br/></li></ul><div><i>* bias záleží na konkrétní přesnosti (half = 15, single = 127, double = 1023,...)</i></div>
+        </div>
+    </note>
+    <note id="1178476805" type="1708237251">
+        <div class="field">
+Normalizovaná čísla
+        </div>
+        <div class="field">
+<ul><li>Platí pro ně \(0 &lt; e &lt; 2^d-1\)</li><li>\(x = (-1)^s \cdot (1.m_2) \cdot 2^{e-b}\)</li></ul><i>* mají skrytý bit nastavený na 1<br/>* exponenty (</i>\(e-b\)<i>) se pohybují v určitém rozsahu (např. </i><br/>\(\{1, \dots, 254\} - 127 = \{-126, \dots, +127\}\)<i> při jednoduché přesnosti)</i><br/>
+        </div>
+    </note>
+    <note id="1929883712" type="1708237251">
+        <div class="field">
+Subnormální čísla
+        </div>
+        <div class="field">
+<ul><li>Platí pro ně \(e = 0\) a \(m \neq 0\)</li><li>\(x = (-1)^s \cdot (0.m_2) \cdot 2^{1-b}\)</li></ul><i>* mají skrytý bit nastavený na 0<br/>* exponenty se pohybují mimo bežný rozsah - zapisujeme tak čísla, které jsou velmi blízko nule</i><br/>
+        </div>
+    </note>
+    <note id="1080445009" type="1708237251">
+        <div class="field">
+Princip skrytého bitu
+        </div>
+        <div class="field">
+Skrytý bit reprezentuje první cifru čísla \((h.m_2)_2\), ale není přímou součástí binární reprezentace čísla (vyplývá z hodnoty \(e\))<br/><ul><li>Má hodnotu 1 u normalizovaných čísel</li><li>Má hodnotu 0 u subnormálních čísel</li></ul>
+        </div>
+    </note>
+    <note id="1361839414" type="1708237251">
+        <div class="field">
+Definice - Strojová čísla, strojová přesnost
+        </div>
+        <div class="field">
+<b>Množina strojových čísel</b> je podmnožina \(\mathbb R\), která je označována\[F \equiv F(|m|, |e|, b).\]\(F\) je charakterizována pomocí <b>strojové přesnosti</b> (<i>machine epsilon</i>) \(\varepsilon_F\), což je vzdálenost čísla \(1\) od nejbližšího vyššího čísla v \(F\), tj.\[\varepsilon_F = (1.0 \dots 01)_2 \cdot 2^0 - (1.0 \dots 00)_2 \cdot 2^0.\]<br/><i>* pro jednoduchou přesnost </i>\(\varepsilon_F = 2^{-23}\) a pro dvojitou \(\varepsilon_F = 2^{-52}\)<br/>
+        </div>
+    </note>
+    <note id="1917421712" type="1708237251">
+        <div class="field">
+Definice - zobrazení \(\operatorname{fl}\) (<i>float</i>)
+        </div>
+        <div class="field">
+Zobrazení \(\operatorname{fl}: \mathbb R \to F\) je zobrazení, které každému reálnému číslu přiřadí „nejbilžší“ strojové číslo, přičemž „nejbližší“ číslo je vybráno na základě zvolené strategie zaokrouhlování či usekávání.
+        </div>
+    </note>
+    <note id="2008215807" type="1708237251">
+        <div class="field">
+Tvrzení - vzdálenost normalizovaného strojového čísla od jeho sousedů
+        </div>
+        <div class="field">
+Vzdálenost libovolného normalizovaného čísla \(x \in F\) od jeho nejbližších sousedů z \(F\) je nejméně \(\varepsilon_F \frac {|x|} 2\) a nejvíce \(\varepsilon_F\ |x|\).<br/><br/><i>* kde </i>\(\varepsilon_F\)<i> značí strojovou přesnost</i>
+        </div>
+    </note>
+    <note id="1855657834" type="1708237251">
+        <div class="field">
+Největší, nejmenší kladné normalizované a nejmenší kladné subormální číslo v jednoduché přesnosti
+        </div>
+        <div class="field">
+Pro <b>jednoduchou</b> přesnost (=32 bitů) máme \(|m|_2 = 23\), \(d = |e|_2 = 8\) (v bitech) a \(b = 127\). Proto:<br/><ul><li>\(\max F = (1.1\dots1)_2 \cdot 2^{254-127}\)\(= (2 - 2^{-23}) \cdot 2^{127}\)</li><li>minimální kladné normalizované \(=(1.0\dots0)_2 \cdot 2^{1-127} = 2^{-126}\)</li><li>minimální kladné subnormální \(= (0.0\dots1)_2 \cdot 2^{1-127}\)\(= 2^{-23-126}=2^{-149}\)</li></ul>
+        </div>
+    </note>
+    <note id="1271564359" type="1708237251">
+        <div class="field">
+Definice - Přetečení a podtečení
+        </div>
+        <div class="field">
+Přetečení (<i>overflow</i>) resp. podtečení (<i>underflow</i>) je pokus o reprezentaci čísla mimo rozsah
+        </div>
+    </note>
+    <note id="1295377401" type="1708237251">
+        <div class="field">
+Definice - Absolutní chyba
+        </div>
+        <div class="field">
+<b>Absolutní chybou</b> reprezentace čísla \(x \in \mathbb R\) pomocí strojového čísla \(\alpha\) rozumíme hodnotu \(|\alpha - x|\)<br/><br/><i>* tj. o kolik se zaokrouhlilo</i>
+        </div>
+    </note>
+    <note id="1626939298" type="1708237251">
+        <div class="field">
+Definice - Relativní chyba
+        </div>
+        <div class="field">
+Pro nenulové \(x \in \mathbb{R}\) je <b>relativní chyba</b> reprezentace pomocí strojového čísla \(\alpha\) rovna \(\frac{|\alpha-x|}{|x|}\).<br/><br/><i>* tj. o kolik procent se zaokrouhlilo oproti původnímu číslu</i>
+        </div>
+    </note>
+    <note id="1557593489" type="1708237251">
+        <div class="field">
+Definice - Zaokroulovací jednotka
+        </div>
+        <div class="field">
+Zaokrouhlovací jednotka (<i>unit roundoff error</i>) \(\mathbf u\) označuje horní mez relativní chyby. Pro normalizované číslo platí<br/>\[\mathbf u = 2^{-|m|}.\]<br/>Pro číslo s jednoduchou přesností tedy dostáváme \(\mathbf u = 2^{-23}\).<br/>
+        </div>
+    </note>
+    <note id="1567574455" type="1708237251">
+        <div class="field">
+Tvrzení - odhad relativní chyby v reprezentaci pomocí strojového čísla
+        </div>
+        <div class="field">
+Nechť \(x \in \mathbb R\) leží mezi nejmenším a největším normalizovaným kladným číslem množiny \(F\). Pak platí<br/>\[\operatorname{fl}(x) = x(1 + \delta), \quad |\delta| \leq \mathbf u,\]kde \(\mathbf u\) je zaokrouhlovací jednotka (<i>unit roundoff error</i>). <br/>
+        </div>
+    </note>
+    <note id="1522848494" type="1708237251">
+        <div class="field">
+Tvrzení - odhad relativní chyby při aritmetických operacích se strojovými čísly
+        </div>
+        <div class="field">
+Nechť \(x, y \in F\) a \(\odot\) značí operaci sčítání, odčítání, násobení nebo dělení. Pokud je výsledek v intervalu normalizovaných čísel, tak platí<br/>\[\operatorname{fl}(x \odot y) = (x \odot y)(1 + \delta), \quad |\delta| \leq \mathbf u,\]kde \(\mathbf u\) je zaokrouhlovací jednotka.<br/><br/><i>* tento model je poměrně jednoduchý: moderní procesory umí např. Fused Multiply Add, které počítá </i>\((x,y,z)\to x \pm yz\)<i> s jedním zaokrouhlením</i>
+        </div>
+    </note>
+    <note id="1933847030" type="1708237251">
+        <div class="field">
+Definice - Krácení
+        </div>
+        <div class="field">
+Numerická chyba typu krácení (<i>cancellation</i>) je zaokrouhlovací chyba, která nastává v případě, že jsou od sebe odčítána dvě skoro stejně velká čísla. Cifry nejvyšších řádů se odečtou a posunutím výsledku vznikají na konci reprezentovaného čísla prázdné pozice, které není možné dopočítat.<br/>\[\begin{matrix}
+\begin{matrix}
+6.666\ 666\ 667\\
+6.661\ 729\ 492\\
+\hline
+\end{matrix}\\
+\begin{matrix}
+0.004\ 937\ 175\\
+4.937\ 175\ \color{red}{000}
+\end{matrix}
+\end{matrix}\]Krácení se lze vyhnout následujícími způsoby:<br/><ul><li>přeformulování problému tak, aby nedocházelo k odčítání;</li><li>použitím rozvojů funkcí do řad (např. do Taylorovy řady);</li><li>použitím jiných rovností.</li></ul>
+        </div>
+    </note>
+    <note id="2134085156" type="1708237251">
+        <div class="field">
+Tvrzení - ztráta platných bitů při odečítání
+        </div>
+        <div class="field">
+Nechť \(x\) a \(y\) jsou normalizovaná strojová čísla a platí \(x &gt; y &gt; 0\). Pokud \(2^{-p} \leq 1 - \frac y
+x \leq 2^{-q}\) pro nějaká
+kladná celá \(p\) a \(q\), tak platí, že nejvíce \(p\) a nejméně \(q\) platných binárních bitů je ztraceno při provedení odečítání \(x - y\).
+        </div>
+    </note>
+    <note id="1970663351" type="1708237251">
+        <div class="field">
+Popište původ a řešení zaokrouhlovacích chyb.
+        </div>
+        <div class="field">
+Zaokrouhlovací chyby vznikají v důsledku zaokrouhlovacích chyb v jednotlivých operacích a jejich kumulace a v důsledku krácení (<i>cancellation</i>). Lze se jim vyhnout pomocí:<br/><ul><li>exaktní aritmetiky (\(\mathbb Z\), \(\mathbb Q\) nebo \(GF(p)\)),</li><li>intervalové aritmetiky,</li><li>reprezentace čísel formátem <i>unum</i>.</li></ul>
+        </div>
+    </note>
+    <note id="1133072946" type="1708237251">
+        <div class="field">
+Zaokrouhlovací strategie
+        </div>
+        <div class="field">
+<ul><li>K nejbližšímu strojovému číslu</li><li>K nule</li><li>K \(\pm\infty\)</li><li>Náhodně</li></ul>
+        </div>
+    </note>
+    <note id="1204297553" type="1708237251">
+        <div class="field">
+Definice - Dopředná chyba
+        </div>
+        <div class="field">
+<b>Dopředná/přímá chyba</b> (<i>forward error</i>) je \(\Delta v\) kde \(V(d) + \Delta v = V^*(d)\)<br/><br/><img src="errors-3aa3df65cc93d1e6362cca2575fdc4d3.png"/><br/><br/><i>* tj. odchylka spočítaného řešení </i>\(V(d)\)<i> od přesného (teoretického) řešení </i>\(V^*(d)\)
+        </div>
+    </note>
+    <note id="1844419929" type="1708237251">
+        <div class="field">
+Definice - Zpětná chyba
+        </div>
+        <div class="field">
+<b>Zpětná chyba</b> (<i>backward error</i>) je nejmenší (v normě) číslo \(\Delta d\) tak, že \(V^*(d+ \Delta d) = V(d)\).<br/><br/><img src="errors-3aa3df65cc93d1e6362cca2575fdc4d3.png"/><br/><i><br/>* vyjadřuje, jaký potřebujeme rozdíl na vstupu přesného (</i><i>teoretického</i><i>) algoritmu </i>\(V^*\)<i>, abychom získali stejný výsledek, který vrátí nepřesný algoritmus </i>\(V\)<i> pro vstup </i>\(d\)<i>, tj. "jaký problém byl ve skutečnosti řešen nepřesným algoritmem"</i>
+        </div>
+    </note>
+    <note id="1614523702" type="1708237251">
+        <div class="field">
+Definice - Zpětně stabilní algoritmus
+        </div>
+        <div class="field">
+Numerický algoritmus je <b>zpětně stabilní</b> (<i>backward stable</i>), jestliže je jeho zpětná chyba relativně malá pro všechny vstupy.<br/><br/><i>* "relativně malá" závisí na kontextu</i>
+        </div>
+    </note>
+    <note id="1946162042" type="1708237251">
+        <div class="field">
+Definice - Podmíněnost úlohy
+        </div>
+        <div class="field">
+<b>Podmíněnost úlohy</b> vyjadřuje závislost změny na výstupu na změně vstupních dat - jejich malé perturbaci \(\delta{}d\).<br/><br/><i>* další pohled na nepřesnost - nemáme chybu, ale změnili jsme vstupní data, abychom dopočítali nejbližší (nepřesný) výsledek</i>
+        </div>
+    </note>
+    <note id="1164829428" type="1708237251">
+        <div class="field">
+Definice - Relativní číslo podmíněnosti
+        </div>
+        <div class="field">
+<b>Relativní číslo podmíněnosti</b> (<i>relative condition number</i>) úlohy je<br/><br/>\(C_r =
+\lim_{\epsilon \to 0^+}
+\sup_{d+ \delta d\in D,\ \Vert \delta d\Vert\le\epsilon}
+\left(
+\frac{\Vert V^*(d+\delta d)-V^*(d)\Vert}{\Vert\delta d\Vert}
+\cdot
+\frac{\Vert d \Vert}{\Vert V^*(d)\Vert}
+\right)\)<br/><br/>kde \(D\) je zkoumaný definiční obor \(V\) potažmo \(V^*\)<br/><ul><li>Pokud je \(C_r≈ 1\), řekneme, že úloha je <b>dobře podmíněná</b></li><li>Pokud je velké, řekneme, že je <b>špatně podmíněná</b></li></ul><div>\(V^*(d)\) = teoretický (přesný) výstup algoritmu<br/>\(V(d)\) = výsledek v konečné aritmetice<br/></div><div><i>* špatná podmíněnost znamená, že malá perturbace na vstupu způsobí velkou odchylku ve výsledku</i></div>
+        </div>
+    </note>
+    <note id="1663182755" type="1708237251">
+        <div class="field">
+Vyslovte lemma o načítání chyb
+        </div>
+        <div class="field">
+Mějme \(| \delta_i | \leq \mathbf u\) a \(| \rho_i| = 1\) pro všechna \(i \in \hat n\), \(n \in \mathbb N\) a nechť \(n \mathbf u &lt; 1\). Potom\[\prod_{i = 1}^n (1 + \delta_i)^{\rho_i} = 1 + \Theta_n,\]kde\[| \Theta_n| \leq \frac{n \mathbf u}{1 - n \mathbf u}.\]<br/>
+        </div>
+    </note>
+    <note id="1417253657" type="1708237251">
+        <div class="field">
+Popište značení počtu nakumulovaných chyb
+        </div>
+        <div class="field">
+Počet nakumulovaných chyb se značí\[\langle n \rangle = \prod_{i = 1}^n(1 + \delta_i)^{\rho_i},\]kde \(n \in \mathbb N\) je počet chyb a platí<br/>\[\begin{matrix}
+\langle j \rangle \cdot \langle k \rangle = \langle j + k \rangle,\\
+\displaystyle \frac{\langle j \rangle}{\langle k \rangle} = \langle j + k \rangle.
+\end{matrix}\]<br/>* Jedná se o velmi volné značení, tedy nemusí nutně platit\[\langle n \rangle \stackrel{?}{=} \langle n \rangle.\]<br/>
+        </div>
+    </note>
+    <note id="1887419118" type="1708237251">
+        <div class="field">
+Definice - přímá numerická metoda
+        </div>
+        <div class="field">
+<div>Přímá numerická metoda je numerická metoda, která počítá řešení matematického problému v konečném počtu kroků a v teoretické absolutní přesnosti dává přesné řešení. Příkladem takové metody je Gaussova eliminační metoda (GEM).</div>
+        </div>
+    </note>
+    <note id="1962579848" type="1708237251">
+        <div class="field">
+Definice - iterační numerická metoda
+        </div>
+        <div class="field">
+<div>Iterační numerická metoda je numerická metoda, která počítá řešení matematického problému tak, že konstruuje posloupnost přibližných „řešení“ \(x_0, x_1, x_2, \dots\), přičemž každé další přibližné „řešení“ je odvozeno od toho předchozího:<br/>\[x_k = T(x_{k - 1}), \quad k = 1, 2, \dots. \]Zobrazení \(T\) je voleno tak, aby posloupnost \((x_k)_{k = 0}^\infty\) měla za limitu skutečné řešení daného matematického problému. Příkladem takové metody je mocninná metoda.</div>
+        </div>
+    </note>
+    <note id="1370714051" type="1708237251">
+        <div class="field">
+Porovnejte výhody a nevýhody přímých a iteračních numerických metod
+        </div>
+        <div class="field">
+Přímé a iterační numerické metody mají následující výhody a nevýhody:<br/><table style="text-align: center;"><tbody><tr><td><b>přímé metody</b></td><td><b>iterační metody</b></td></tr><tr><td>poskytují přesné řešení (v teoretické absolutní přesnosti)</td><td>poskytují přibližné „řešení“</td></tr><tr><td>více výpočetně náročné</td><td>méně výpočetně náročné</td></tr><tr><td>trpí zaokrouhlovacími chybami</td><td>dobře nastavné zobrazení \(T\) dokáže zaokrouhlovací chyby mezi iteracemi opravovat</td></tr><tr><td>kvalitu řešení nelze řídit</td><td>kvalitu řešení lze řídit pomocí kritéria zastavení</td></tr></tbody></table>
+        </div>
+    </note>
+    <note id="1312844581" type="1708237251">
+        <div class="field">
+Defince - přidružená maticová norma
+        </div>
+        <div class="field">
+<div>Přidruženou maticovou normu pro nějakou vektorovou normu \(\| \cdot \| \) na \(\mathbb R^n\) definujeme jako<br/>\[\| \mathbf A \| := \sup \{ \| \mathbf{Ax} \| : \mathbf x \in \mathbb R^{n, 1} \land \| \mathbf x \| = 1 \}.\]Takto definovaná norma tedy splňuje vlastnosti normy, jako je konzistence a submultiplikativita.</div>
+        </div>
+    </note>
+    <note id="1489570049" type="1708237251">
+        <div class="field">
+Popište mocninnou metodu a její předpoklady
+        </div>
+        <div class="field">
+Mocninná metoda je iterační numerická metoda, která slouží k nalezení v absolutní hodnotě největšího vlastního čísla a příslušného vlastního vektoru. Mějme matici \(\mathbf M \in \mathbb C^{n, n}\) splňující následující předpoklady:<br/><ul><li>\(\mathbf M\) je diagonalizovatelná, tedy existuje \(\mathbf P \in \mathbb C^{n, n}\) splňující<div>\[\mathbf M = \mathbf{PDP}^{-1},\]kde \(\mathbf D = \operatorname{diag}(\lambda_1, \dots, \lambda_n),\)</div></li><li>vlastní čísla \(\mathbf M\) můžeme označit jako</li></ul><div>\[|\lambda_1| &gt; |\lambda_2| \geq \dots \geq |\lambda_n|.\]Zvolme nyní \(\mathbf x_0 \in \mathbb C^n\) a konstruujme posloupnost \((\mathbf x_k)_{k = 0}^\infty\) pomocí rekurentního nebo explicitního vztahu</div><div>\[\mathbf x_{k + 1} = \mathbf M \mathbf x_k \quad \text{nebo} \quad \mathbf x_k = \mathbf M^k \mathbf x_0, \quad k \in \mathbb N.\]Pokud vektor \(\mathbf x_k\) normalizujeme tak, aby jeho první složka byla \(1\), bude mít pro \(k \to \infty\) za limitu vlastní vektor příslušející vlastnímu číslu \(\lambda_1\).</div>
+        </div>
+    </note>
+    <note id="1457402861" type="1708237251">
+        <div class="field">
+Popište úlohu řešení soustavy lineárních rovnic a její podmíněnost
+        </div>
+        <div class="field">
+Mějme soustavu \(n \in \mathbb N\) lineárních rovnic pro \(n\) neznámých v maticovém tvaru\[\mathbf{Ax} = \mathbf b,\]kde \(\mathbf A \in \mathbb R^{n, n}\) je regulární matice soustavy, \(\mathbf b \in \mathbb R^{n, 1}\) je vektor pravých stran a \(\mathbf x \in \mathbb R^{n, 1}\) je hledané řešení. Předpokládejme nyní, že \(\mathbf b \neq 0\), a proveďme změnu (perturbaci) \(\mathbf b\) o \(\delta \mathbf b\). Označíme-li změnu v řešení \(\mathbf x\) symbolem \(\delta \mathbf x\), pak\[\mathbf A(\mathbf x + \delta \mathbf x) = \mathbf{Ax} + \mathbf A \delta \mathbf x = \mathbf b + \delta \mathbf b.\]Nyní odhadneme \(\| \delta \mathbf x \|\) vztahem\[\| \delta \mathbf x \| = \| \mathbf A^{-1} \delta \mathbf b \| \stackrel{1.}{\leq} \| \mathbf A^{-1} \| \cdot \| \delta b\|\]a \(\frac 1 {\| \mathbf x \|}\) vztahem\[\| \mathbf b \| = \| \mathbf{Ax} \| \stackrel{1.}{\leq} \| \mathbf A \| \cdot \| \mathbf x \| \Rightarrow \frac 1 {\| \mathbf x \|} \leq \frac{\| \mathbf A \|}{\| \mathbf b \|}.\]Pokud oba odhady složíme, získáme\[\frac{\| \delta \mathbf x \|}{\| \mathbf x \|} \leq \underbrace{\| \mathbf A \| \cdot \| \mathbf A^{-1} \|}_{\kappa(\mathbf A)} \cdot \frac{\| \delta \mathbf b \|}{\| \mathbf b \|},\]kde \(\kappa(\mathbf A)\) nazýváme číslem podmíněnosti matice \(\mathbf A\). Z této nerovnosti vyplývá, že relativní chyba v řešení \(\mathbf x\) soustavy je menší než relativní chyba pravé strany \(\mathbf b\) vynásobená číslem podmíněnosti. Čím je \(\operatorname \kappa(\mathbf A)\) větší, tím je úloha hůře podmíněná.<br/>
+        </div>
+    </note>
+
+</deck>

@@ -1,0 +1,207 @@
+<deck id="1250805792" name="NI-PDP::NI-SPOL-17" deck_slug="NI-SPOL-17">
+
+    <note id="2116384620" type="1708237251">
+        <div class="field">
+Popište klasifikaci paralelizovatelných programů
+        </div>
+        <div class="field">
+Sekvenční algoritmy se z hlediska paralelizovatelnosti na vícejádrových procesorech se sdílenou pamětí dělí na:<br/><ul><li><b>výpočetně intenzivní </b>- čas procesoru strávený výpočtem nad daty je větší než čas strávený přesunem dat z paměti (např. násobení matic má složitost \(\mathcal O(n^3)\), ale paměťová reprezentace zabírá \(\mathcal O(n^2)\));<br/></li><li><b>paměťově intenzivní</b> - čas procesoru strávený výpočtem nad daty je menší než čas strávený přesunem dat z paměti, jejich výpočetní výkon je omezen propustností paměti (např. skalární součin).</li></ul>
+        </div>
+    </note>
+    <note id="1576946570" type="1708237251">
+        <div class="field">
+Falešné sdílení
+        </div>
+        <div class="field">
+Falešné sdílení (<i>false sharing</i>) je jeden ze zdrojů neefektivity paralelizovatelných algoritmů. Dochází k němu v případě, že různá vlákna najednou zapisují na adresy, které jsou mapovány do stejného bloku <i>cache</i>. V důsledku toho je podle koherenčního protokolu (např. MESI) blok invalidován a při dalším přístupu nastává <i>cache miss</i>, což zpomaluje výpočet.<br/><br/><i>* block cache paměti má typicky 64 B</i>
+        </div>
+    </note>
+    <note id="1111639736" type="1708237251">
+        <div class="field">
+Postup odstranění falešného sdílení
+        </div>
+        <div class="field">
+Postupy pro odstranění falešného sdílení se liší podle velikosti paměťové oblasti. Pro velká pole se falešnému sdílení lze vyhnout splněním dvou podmínek:<br/><ul><li><b>vhodná granularita plánování</b> - vláknům jsou přidělovány bloky pole o velikosti bloku <i>cache</i>,<br/></li><li><b>zarovnání</b> - začátek pole je v paměti zarovnán se začátkem bloku <i>cache</i>.<br/></li></ul><div>Pro malá pole je potřeba jejich prvky doplnit o výplň tak, aby velikost prvku byla rovna velikosti bloku <i>cache</i>. Následně lze použít stejný postup jako pro velká pole.</div>
+        </div>
+    </note>
+    <note id="1747603415" type="1708237251">
+        <div class="field">
+Paralelizace nad sdílenou pamětí
+        </div>
+        <div class="field">
+<ul><li>Standardem je low-level knihovna pthreads (POSIX threads)</li><li>Umožňuje zpracovávat vlákna a poskytuje základní sychronizační nástroje</li><li>Uživatel ale musí řešit mnoho implementačních detailů, tedy pro většinu aplikací je příliš složitá</li></ul>
+        </div>
+    </note>
+    <note id="1848065639" type="1708237251">
+        <div class="field">
+Progamový model OpenMP a paralelní oblasti
+        </div>
+        <div class="field">
+<div><b>Programový model OpenMP </b>stojí na programovací šabloně <i>fork-join</i>. Program vytvořený pomocí OpenMP je tedy zprvu prováděn sekvenčně počátečním vláknem, které v určitých místech kódu vytváří týmy paralelních vláken. Tato místa jsou explicitně označena a nazývají se <b>paralelní oblasti</b> (<i>parallel regions</i>). Mimo ně běží pouze počáteční vlákno a program je prováděn sekvenčně.<br/></div><div><div style="text-align: center;"><img src="ompmodel-f65a3b9f690cc2dcdc18f5bad0a16e7016ce7c4f.jpg"/></div></div>
+        </div>
+    </note>
+    <note id="1474617505" type="1708237251">
+        <div class="field">
+Paměťový model OpenMP
+        </div>
+        <div class="field">
+<ul><li>Využíva se volnejší konzistence ve sdílené paměti</li><li>Změna ve sdílené paměti se neprojeví hned u ostatních vláken</li><li>Pro explicitní synchronizaci využijeme funkci flush()</li></ul>
+        </div>
+    </note>
+    <note id="1210163138" type="1708237251">
+        <div class="field">
+Paralelní oblasti OpenMP
+        </div>
+        <div class="field">
+<ul><li>Vytváříme pomocí direktivy \(\#pragma\ omp\ parallel\)</li><li>Může nasledovat podmínka, určení počtu vláken a definice proměnných</li><ul><li>Podmínka určuje, zda bude oblast vůbec vykonaná paralelně</li><li>Počet vláken určuje kolik vláken bude použito k paralelnímu zpracování (včetně hlavního vlákna)</li></ul><li>Na konci oblasti je implicitní bariéra</li><li>Vlákna se většinou nevytvářejí a neruší pro každou oblast, ale je vytvořený pool vláken ze kterého jsou průběžně využívána</li><li><b>Pokud spadne jedno vlákno, ukončí se celý proces</b></li></ul>
+        </div>
+    </note>
+    <note id="1596171504" type="1708237251">
+        <div class="field">
+Proměnné v paralelních oblastech OpenMP
+        </div>
+        <div class="field">
+<div>Vlastnosti proměnných v paralelních oblastech OpenMP se definují pomocí následujících klauzulí:<br/></div><ul><li>\(\texttt{shared}\) - proměnná je sdílená všemi vlákny (synchronizace přístupu není implicitně zajištěná)</li><li>\(\texttt{private}\) - každé vlákno má vlastní instanci proměnné, její počáteční hodnota není definovaná a po opuštění paralelní oblasti je obnovena její původní hodnota</li><li>\(\texttt{firstprivate}\) - chová se jako \(\texttt{private}\) proměnná jejíž instance jsou inicializovány hodnotou, kterou měla před vstupem do paralelní oblasti<br/></li><li>\(\texttt{threadprivate}\) - chová se jako \(\texttt{private}\) proměnná s životností napříč všemi paralelními oblastmi</li><li>\(\texttt{reduction}\) - každé vlákno má vlastní instanci proměnné inicializovanou na nulu, při opouštění paralelní oblasti jsou veškeré instance zkombinovány s původní hodnotou pomocí daného operátoru a zapsány do původní proměnné</li></ul><div></div><div><div>Dále existuje klauzule \(\texttt{default}\), která umožňuje specifikovat vlastnost všech proměnných, jejichž vlastnosti nebyly explicitně uvedeny. Vlastnosti ukazatelů se aplikují pouze na ně jako takové, nikoliv na odkazované proměnné.</div></div>
+        </div>
+    </note>
+    <note id="1664125077" type="1708237251">
+        <div class="field">
+Popište OpenMP direktivu \(\texttt{parallel}\)
+        </div>
+        <div class="field">
+OpenMP direktiva \(\texttt{parallel}\) se používá pro vytváření paralelních oblastí. Vlákno, které na direktivu narazí se stává <i>master</i> vláknem a je mu přiřazen identifikátor 0. Na konci každé paralelní oblasti je umístěna implicitní bariéra. Vlákna, která dosáhnou konce paralelní oblasti nejsou typicky ničena, ale odkládána do <i>thread poolu </i>a později recyklována.
+        </div>
+    </note>
+    <note id="1678572146" type="1708237251">
+        <div class="field">
+Popište OpenMP direktivu \(\texttt{for}\)
+        </div>
+        <div class="field">
+<div>OpenMP direktiva \(\texttt{for}\) implementuje datový (iterační) paralelismus. Podobně jako v direktivě \(\texttt{parallel}\) je i zde na konci cyklu umístěna implicitní bariéra. Mezi časté klauzule direktivy \(\texttt{for}\) patří:<br/><ul><li>\(\texttt{schedule}\) - strategie přiřazení iterací cyklu vláknům,<br/></li><li>\(\texttt{collapse}\) - počet úrovní víceúrovňového cyklu, které má být spojeno do jednoho iterátoru;<br/></li><li>\(\texttt{ordered}\) - specifikuje, že iterace musí být vykonány v sekvenčním pořadí;<br/></li><li>\(\texttt{nowait}\) - specifikuje, ža vlákna nemusí čekat na bariéře.<br/></li></ul><div>Direktiva \(\texttt{for}\) navíc definuje klauzuli \(\texttt{lastprivate}\) pro vlastnosti proměnných, která specifikuje, že po opuštění paralelní oblasti je do proměnné uložena hodnota vypočtená v syntakticky poslední iteraci cyklu.</div></div><div><br/></div><i>* není vhodné otevírat v cyklu paralelní oblast (přináší to vyšší režii)<br/>* je možné nejprve vytvořit paralelní oblast pomocí <br/></i>\(\texttt{#pragma omp parallel}\)<i> a až potom použít </i>\(\texttt{#pragma omp for}\)<br/>* defaultní způsob přidělování iterací je \(\texttt{schedule(static, 1)}\)<br/>
+        </div>
+    </note>
+    <note id="1998556926" type="1708237251">
+        <div class="field">
+Řízení iterací \(omp\ for\) (= \(schedule(type[,\ chunksize])\))
+        </div>
+        <div class="field">
+<ul><li>\(\texttt{static}\) - práce se rovnoměrně rozdělí po blocích o velkosti \(chunksize\) iterací, pokud je uvedena, jinak souvislý podíl \(n/p\) iterací</li><li>\(\texttt{dynamic[,chunksize=1]}\) - práce je rozdělovaná dynamicky během zpracování po blocích \(chunksize\) iterací (=&gt; rozumná volba, pokud jsou jednotlivé iterace různě náročné, ale vyšší režie kvůli synchronizaci)</li><li>\(\texttt{guided[,chunksize=1]}\) - velikost bloků je přidělována dynamicky jako \(\max\{\frac{\text{#dosud nepřidělené iterace}}{p}, chunksize\}\) (=&gt; rozumná volba, pokud jsou obtížnost iterací postupně roste, ale vyšší režie kvůli synchronizaci)</li><li>\(\texttt{runtime}\) - způsob přidělení iterácí je zvolen až za běhu podle systémové proměnné \(OMP\_SCHEDULE\)</li><li>\(\texttt{auto}\) - způsob přidělování iterací je ponechán na kompilátoru nebo OS</li></ul>
+        </div>
+    </note>
+    <note id="1361741842" type="1708237251">
+        <div class="field">
+Popište OpenMP direktivu \(\texttt{task}\)
+        </div>
+        <div class="field">
+<div>OpenMP direktiva \(\texttt{task}\) implementuje funkční paralelismus (<i>task parallelism</i>) a používá se zejména pro paralelizaci algoritmů typu <i>divide-and-conquer</i>. Mechanismus přidělování úloh vláknům je postaven na principu producent-konzument s tím, že každé vlákno může být současně producentem i konzumentem. Úloha se v OpenMP skládá z:<div><ul><li>ukazatele na začátek kódu,</li><li>vstupních dat,</li><li>datové struktury, do které konzumentské vlákno provádějící úlohu vloží svůj identifikátor.</li></ul></div>Mezi časté klauzule direktivy \(\texttt{task}\) patří:<br/><ul><li>\(\texttt{if}\) - podmínka, která musí být splněna pro vytvoření úlohy, v opačném případě je úloha provedena sekvenčně;<br/></li><li>\(\texttt{final}\) - udává podmínku a pokud je platná, nebude daná úloha generovat další úlohy;<br/></li><li>\(\texttt{priority}\) - přiřadí úloze prioritu.</li></ul><div><br/></div></div><div><img src="omptask-35344e73a6cce7b1bdd6c5130dd773dfeadae1f5.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1886490258" type="1708237251">
+        <div class="field">
+Synchronizační nástroje: direktivy bloků/operací
+        </div>
+        <div class="field">
+<div><ul><li>\(\texttt{master}\) - daný blok vykoná pouze hlavní vlákno (ostatní ho přeskočí a nečekají)</li><li>\(\texttt{single}\) - daný blok vykoná pouze nějaké jedno vlákno (ostatní čekají "na konci")</li><li>\(\texttt{critical[(name)]}\) - kritická sekce = k danému bloku může přistupovat v jednu chvíli pouze jedno vlákno (ostatní čekají na začátku). Nepovinně může mít "jméno", potom jsou vlákna výluční v rámci stejně pojmenovaných kritických sekcí.</li><li>\(\texttt{atomic read|write|update|capture}\) - zajišťuje atomicitu operací nad skalární proměnnou.<ul><li>\(\texttt{read}\) - čtení<br/></li><li>\(\texttt{write}\) - zápis<br/></li><li>\(\texttt{update}\) - čtení, modifikace a zápis<br/></li><li><div><div><div>\(\texttt{capture}\) - čtení, modifikace, zápis a získání hodnoty před nebo po provedení modifikace.<br/></div></div></div></li></ul><div>Varianty \(\texttt{read}\) a \(\texttt{update}\) se používají z toho důvodu, že na některých architekturách nejsou operace čtení a zápisu paměti atomické operace.</div></li></ul></div>
+        </div>
+    </note>
+    <note id="1083333183" type="1708237251">
+        <div class="field">
+Synchronizační nástroje: samostatné direktivy
+        </div>
+        <div class="field">
+<ul><li>\(\texttt{barrier}\) - vlákna zde čekají, dokud sem nedorazí všechna vlákna<br/></li><li>\(\texttt{cancel TYPE [if(condition)]}\) - umožňuje nám bezpečně vyskočit z nejvnitřnější oblasti typu \(\texttt{TYPE}\) (=\(\texttt{parallel}\)|\(\texttt{sections}\)|\(\texttt{for}\)|\(\texttt{taskgroup}\)). Nepovinně lze doplnit o podmínku.</li><li>\(\texttt{taskwait}\) - vlákno zde čeká na dokončení synovských úloh<br/></li><li>\(\texttt{flush}\) - propsání aktuálních hodnot daných sdílených proměnných do sdílené paměti</li></ul>
+        </div>
+    </note>
+    <note id="2127692703" type="1708237251">
+        <div class="field">
+Paralelizace násobení polynomů
+        </div>
+        <div class="field">
+<div>Máme polynomy \(A,\) \(B\), chceme vypočítat jejich součin \(C\). Beží nám cykly \(i\) (vnější) a \(j\) (vnitřní).</div><ul><li>Sekvenčně - \(i\times j:C_{i+j}=A_i\cdot B_i\) (každý s každým)</li><li>Paralelně I - Paralelizace \(i\) cyklu</li><ul><li>Tedy \(i\) threadů (každý thread řeší násobení jednoho člena prvního polynomu)</li><li>Atomicky zapisují do \(C\) (kritická sekce)</li></ul><li>Paralelně II - Paralelizace \(j\) cyklu</li><ul><li>Máme \(i\cdot j\) threadů (každý thread řeší jedno fyzické násobení)</li><li>Nemáme kritickou sekci</li><li>Vysoká režie (velký počet oblastí a čekání na bariéry)</li></ul><li>Paralelně III - disjunktní oblasti C</li><ul><li> <div> <div><div>\(\#pragma\ omp\ parallel\ for\ schedule(static,\ (m+n)/c*p)\)<br/></div> </div> </div></li><li>Nerozdělujeme jednotlivá násobení, ale výsledné členy \(C\) (každý se počítá zvlášť), tedy nemáme kolízie zápisu, pouze paralelní čtení</li></ul><img src="disjunctpolynomials-84880743124b13308cc74153e7156418a0e57d92.jpg"/></ul>
+        </div>
+    </note>
+    <note id="1955201577" type="1708237251">
+        <div class="field">
+Paralelizace násobení hustých matic
+        </div>
+        <div class="field">
+<div>Máme dvě matice \(A\), \(B\), chceme jejich součin \(C\). Běží nám cykly \(i\) (vnější) a \(j\) (vnitřní).</div><ul><li>Sekvenčně - \(i \times j:C[i][j]=s\), kde \(s\) je skalární produkt (součet násobků složek) \(i\)-tého řádku \(A\) a \(j\)-tého sloupce \(B\)</li><li>Paralelně I - paralelizace \(i\) cyklu</li><ul><li>Bez kolizií</li><li>Pouze 1 implicitní bariéra (minimální synchronizace)</li></ul><li>Paralelizace II - Paralelizace \(j\) cyklu</li><ul><li>Bez kolizií</li><li>Mnoho implicitních bariér (větší režie)</li></ul><li>...</li></ul><div><i>* dá se vymyslet spousta možností paralelizace, ale paralelizace na vnějším cyklu </i>\(i\)<i> škáluje nejlépe</i></div><div><img src="mmmouter-bcf127d374b4677378ef03cacde4f5eb4d6daf70.jpg"/><i><br/></i></div>
+        </div>
+    </note>
+    <note id="1766714775" type="1708237251">
+        <div class="field">
+Formáty řidkých matic: souřadnicový
+        </div>
+        <div class="field">
+<div><b>Souřadnicový </b>(<i>coordinate</i>) <b>formát uložení řídkých matic</b> reprezentuje matici pomocí tří polí:<br/></div><ul><li>\(\texttt{RowInd}\) - indexy řádků nenulových prvků matice,<br/></li><li>\(\mathtt{ColInd}\) - indexy sloupců nenulových prvků matice,<br/></li><li>\(\texttt{Elems}\) - hodnoty nenulových prvků matice,</li></ul>kde konkrétní index do těchto polí popisuje vždy stejný prvek.<br/><img src="sparsecoordinate-5d07aaa1006ffc14837163b6c86a225c.png"/><br/><br/><b>Algoritmus násobení řídké matice </b><b>v souřadnicovém formátu vektorem</b> \(\mathbf x\) pak iteruje přes všechny indexy \(i\) a počítá\[\texttt{y[RowInd[i]] += Elems[i] * x[ColInd[i]]}.\]Paralelizuje se pomocí datového paralelismu (direktiva \(\texttt{for}\)) a používá statické plánování s implicitní velikostí <i>chunku</i> \(n / p\). Kvůli nepřímé adresaci je nutné zajistit synchronizaci zápisu (např. \(\texttt{atomic update}\)) a bude docházet k falešnému sdílení.<br/>
+        </div>
+    </note>
+    <note id="1688647916" type="1708237251">
+        <div class="field">
+Formáty řidkých matic: komprimované řádky
+        </div>
+        <div class="field">
+<div><b>Formát komprimovaných řádků </b>(<i>compressed sparse row</i>) <b>pro uložení řídkých matic</b> reprezentuje matici pomocí tří polí:<br/></div><ul><li>\( \texttt{RowStart}\) - indexy pole \(\texttt{ColInd}\), od nichž jsou v \(\texttt{ColInd}\) uloženy indexy sloupců nenulových prvků matice jednotlivých řádků;<br/></li><li>\(\texttt{ColInd}\) - indexy sloupců nenulových prvků matice;<br/></li><li>\(\texttt{Elems}\) - hodnoty nenulových prvků matice,</li></ul>kde konkrétní index v \(\texttt{ColInd}\) a \(\texttt{Elems}\) popisuje vždy stejný prvek. Navíc jsou položky lexikograficky uspořádány podle indexu řádku a sloupce.<br/><img src="sparsecompressed-99013d289373236255ff8df578893594.png"/><br/><br/><b>Algoritmus násobení řídké matice ve formátu komprimovaných řádků vektorem </b>\(\mathbf x\) pak iteruje přes všechny řádky \(i\) a následně přes všechny prvky \(j\) daného řádku a počítá\[\texttt{y[i] += Elems[j] * x[ColInd[j]]}.\]Paralelizuje se pomocí datového paralelismu (direktiva \(\texttt{for}\)) a speciálního plánování:<br/><ul><li>každé vlákno \(P_k\) si spočte svůj ideální dělící bod jako \(k \cdot (n/p)\), kde \(n\) je počet nenulových prvků matice,</li><li>pomocí binárního vyhledávání hledá v \(\texttt{RowInd}\) hodnotu nejbližší svému ideálnímu dělícímu bodu.</li></ul><div>To lze díky tomu, že \(\texttt{RowInd}\) je uspořádané a každý jeho prvek značí celkový počet nenulových prvků na předchozích řádcích. Není tak nutné synchronizovat zápisy a nedochází k falešnému sdílení.</div>
+        </div>
+    </note>
+    <note id="1464599494" type="1708237251">
+        <div class="field">
+Paralelizace QuickSort
+        </div>
+        <div class="field">
+<div>Algoritmus \(\texttt{QuickSort}\) se paralelizuje pomocí funkčního paralelismu (direktiva \(\texttt{task}\)), přičemž za úlohu (<i>task</i>) se považuje každé rekurzivní volání. Používají se následující principy:<br/></div><div><ul><li><b>odstranění koncové rekurze </b>(<i>tail recursion</i>) - úloha je vytvořena pouze pro jedno rekurzivní volání a druhé je vyřešeno iteračně v rámci aktuální úlohy;<br/></li><li><b>prahování</b> - pokud množství neseřazených čísel klesne pod \(\frac{n}{k \cdot p}\), kde \(k &gt; 1\), je úsek seřazen sekvenčně v rámci aktuální úlohy, čímž dojde k lepšímu dynamickému vyvážení zátěže vláken;<br/></li><li><b>paralelizace rozdělování posloupnosti </b>- nahrazení inherentně sekvenčního rozdělování posloupnosti v Lomutově variantě algoritmu \(\texttt{QuickSort}\) Hoareovou variantou a její paralelizace.</li></ul></div>
+        </div>
+    </note>
+    <note id="2126127788" type="1708237251">
+        <div class="field">
+Hoarova varianta QuickSort
+        </div>
+        <div class="field">
+<ul><li>Třídění podle pivota probíhá pomocí dvou ukazatelů, jeden se pohybuje od začátku pole, druhý od konce<br/></li><li>Pro 2 čísla (podle ukazatelů) se rozhodujeme následovně (proces neutralizace):<br/></li><ul><li>Ani jeden správně podle pivota =&gt; prohodím prvky a posunu ukazatele<br/></li><li>Právě jeden správně podle pivota =&gt; jeho ukazatel posuneme<br/></li><li>Oba jsou správně podle pivota =&gt; prvky neprohazuji, posunu oba ukazatele</li></ul></ul>
+        </div>
+    </note>
+    <note id="1083973206" type="1708237251">
+        <div class="field">
+Paralelizace Hoarovy varianty QuickSort
+        </div>
+        <div class="field">
+<div>Rozdělování posloupnosti v Hoareově variantě algoritmu \(\texttt{QuickSort}\) se provádí pomocí direktivy \(\texttt{parallel}\) a vnořeného paralelismu (dochází k němu v rámci již paralelizovaných úloh). Funguje tak, že indexy, které prochází pole, jsou sdílené proměnné a každé vlákno se snaží získat unikátní hodnoty těchto proměnných tak, aby mohlo provést jednu iteraci algoritmu Hoareova rozdělení posloupnosti. Existují dva přístupy:<br/><ul><li><b>rozdělování po prvcích</b> - nutnost synchronizace posuvů indexů (direktiva \(\texttt{atomic capture}\)), falešné sdílení;</li><li><b>rozdělování po blocích</b> - vláknům jsou přiděleny disjunktní bloky o velikosti bloků <i>cache</i>, odstraňuje nutnost synchroznizace a falešné sdílení.</li></ul><div>V obou případech může po paralelní fázi zbýt \(p\) „špinavých“ prvků nebo bloků, které jsou zařazeny sekvenčně jedním z vláken.</div></div>
+        </div>
+    </note>
+    <note id="1981385873" type="1708237251">
+        <div class="field">
+Popište postupy paralelizace algoritmu \(\texttt{MergeSort}\). Proč nefunguje přímočará paralelizace?
+        </div>
+        <div class="field">
+Algoritmus \(\texttt{MergeSort}\) lze paralelizovat dvěma způsoby:<br/><ul><li><b>funkční paralelismus</b> (direktiva \(\texttt{task}\)) - využívá principy sekvenčního algoritmu \(\texttt{MergeSort}\) a dvoucestné slučování (<i>two-way merging</i>),<br/></li><li><b>obecný paralelismus</b> (direktiva \(\texttt{parallel}\)) - využívá zcela odlišnou implementaci algoritmu \(\texttt{MergeSort}\) a \(p\)-cestné slučování (\(p\)<i>-way merging</i>).</li></ul>Na rozdíl od algoritmu \(\texttt{QuickSort}\) nebude u algoritmu \(\texttt{MergeSort}\) fungovat přímočará paralelizace pomocí funkčního paralelismu, a to z toho důvodu, že v <i>task poolu</i> vznikne velké množství úloh s triviálními operacemi, které často přistupují do stejného bloku <i>cache</i>. Zpomalení režií vláken a falešným sdílením tak převýší benefity paralelizace.<br/>
+        </div>
+    </note>
+    <note id="1149437441" type="1708237251">
+        <div class="field">
+Dvojcestný MergeSort
+        </div>
+        <div class="field">
+<div>V podstatě klasický MergeSort, ale paralelizujeme slučování dvou seřazených polí o \(n/2\) prvcích. Idea slučování:</div><ul><li>Vlákna \(i\in 0..(p-1)\) naleznou pomocí binárního vyhledávání nad proměnnou \(j\in0..dl_i\) nejmenší index \(ds_i + dl_i - j\), kde \(A[ds_i + dl_i - j] &gt; B[ds_i + j]\) (\(ds\) = start vedlejší diagonály, \(dl\) = délka vedlejší diagonály)</li><li>Každé vlákno zapíše \(n/p\) seřazených (WLOG největších) prvků "pod indexem \(j\)" (tj. z \(A[0..(ds_i + dl_i - j)]\) a \(B[0..(ds_i + j)]\)) na správné indexy (tj. \(i\cdot \frac n p\) až \((i+1)\cdot\frac n p -1\)) ve výstupním poli</li><li>Tedy výstupní pole obsahuje prvky seřazené, a to s paralelním časem \(O(\log n + n/p)\)</li></ul><div><i>* Skvělá vlastnost je, že není potřeba žádná koordinace vláken, mimo znalosti svých indexů</i><br/></div><div><i>* Můžeme si přestavit matici kde </i>\(M[i,j] = \begin{cases}
+0 &amp; \text{if } A[i] &gt; B[j] \\
+1 &amp; \text{if } A[i] &lt; B[j]
+\end{cases}\)</div><img src="twowaymerge-5cd91b3a0f855e060eb7237777158522.png"/><br/>
+        </div>
+    </note>
+    <note id="1483621578" type="1708237251">
+        <div class="field">
+\(p\)-cestný MergeSort
+        </div>
+        <div class="field">
+<div>V podstatě klasický MergeSort, ale paralelizujeme slučování \(p\) seřazených polí o \(n/p\) prvcích. Idea hledání dělících míst v polích:</div><ul><li>Vlákno vybere náhodný pivot z oblastí mezi oddělovači pro každé pole (inicializováno na celá pole), porovná počet menších čísel (získaný binárním vyhledáváním nad poli) s \(i\cdot \frac n p\).</li><li>Pokud je pivot menší nebo roven, vlákno nastaví pravé oddělovače na indexy prvků nalezených binárním vyhledáváním. V opačném případě nastaví levé oddělovače.</li><li>Zužování prohledávané oblasti pokračuje, dokud se levé a pravé oddělovače nerovnají, a to jsou hledaná dělící místa</li></ul><div>* Paralelní čas: \(O(\frac n p \log \frac n p + p \log \frac n p \log n + \frac n p \log p)\)</div><div></div><div><br/></div><div><img src="pwaymerge-272cc6375e8210b2a447d1b94a0f6c3e.png"/><br/></div>
+        </div>
+    </note>
+    <note id="1556621704" type="1708237251">
+        <div class="field">
+Zdroje neefektivity paralelizovatelných algoritmů
+        </div>
+        <div class="field">
+Mezi zdroje neefektivity paralelizovatelných algoritmů patří:<br/><ul><li><b>nevyvážená výpočetní zátěž</b> - vlákna příliš často čekají na bariéře a jádra nejsou plně využita;</li><li><b>příliš těsná synchronizace</b> - velký počet bariér nebo kritických sekcí;<br/></li><li><b>omezený paralelismus</b> - pokud je paralelizace algoritmu omezena povahou problému, neměl by výpočet používat více vláken, než je nutné<br/></li><li><b>vysoká řežie správy vláken</b> - časté vytváření nebo zánik vláken, nevhodné použití dynamického plánování (\(\texttt{schedule(dynamic)}\)),<br/></li><li><b>významná sekvenční část</b> - paralelizace příliš malé části algoritmu nebo překročení hranice počtu vláken stanovené Amdahlovým zákonem;<br/></li><li><b>neefektivní využití </b><i><b>cache</b></i> - častý zápis do sdílených proměnných v <i>cache</i> a falešné sdílení.</li></ul>
+        </div>
+    </note>
+
+</deck>

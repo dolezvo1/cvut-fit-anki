@@ -1,0 +1,378 @@
+<deck id="2116568582" name="NI-PDP::NI-SPOL-19" deck_slug="NI-SPOL-19">
+
+    <note id="1565767789" type="1708237251">
+        <div class="field">
+Dělení propojovacích sítí paralelních počítačů
+        </div>
+        <div class="field">
+<div>Propojovací sítě paralelních počítačů se z hlediska jejich struktury dělí na:<br/></div><div><ul><li><b>přímé</b> - výpočetní uzly jsou integrovány s přepínači a tvoří vrcholy souvislého grafu (binární hyperkrychle, mřížky, toroidy, přímé motýlky);<br/></li><li><b>nepřímé vícestupňové </b>- výpočetní uzly jsou odděleny od přepínačů a připojují se na jedné nebo více stranách vícestupňové sítě přepínačů (nepřímé a obousměrné motýlky, Closova topologie).<br/></li></ul><table style="text-align: center;"><tbody><tr><td><img src="topologydirect-178d8d45673e8c0eda4daccf55195824ab49a3c7.jpg"/><br/>přímá propojovací síť</td><td><img src="topologyindirect-74bd815cab578ce563e58ddd82956275655e3cd0.jpg"/><br/>nepřímá propojovací síť</td></tr></tbody></table><div>Podle způsobu jejich konstrukce pak rozlišujeme:</div><div><ul><li><b>ortogonální</b> - definované pomocí kartézského součinu (binární hyperkrychle, mřížky, toroidy);<br/></li><li><b>hyperkubické </b>- definované rozvinutím každého uzlu hyperkrychle do více uzlů (přímé, nepřímé a obousměrné motýlky, tlusté stromy).</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1501542529" type="1708237251">
+        <div class="field">
+Vlastnosti grafu: stupeň, regularita
+        </div>
+        <div class="field">
+<ul><li>Stupeň uzlu \(deg_G(u)\) je počet sousedů uzlu \(u\)</li><li>Regularita = stupeň každého uzlu je rovný konstantě \(k\)</li></ul>
+        </div>
+    </note>
+    <note id="1531976401" type="1708237251">
+        <div class="field">
+Definujte topologii, popište jejich vlastnosti a dělení
+        </div>
+        <div class="field">
+Topologie \(G_n\) je množina grafů (instancí topologie) tvořených podle stejného principu, jejichž struktura a velikost je definována velikostí dimenze \(n\). Topologie mohou mít následující vlastnosti:<br/><ul><li><b>hierarchicky rekurzivní</b> - instance menších dimenzí jsou podgrafy instancí větších dimenzí;<br/></li><li><b>inkrementálně škálovatelné</b> - definované pro všechna \(N\);<br/></li><li><b>částečně škálovatelné</b> - definované pouze pro některá \(N\), kterých je však nekonečně mnoho.<br/></li></ul><div>Podle stupňů uzlů dělíme topologie na:</div><div><ul><li><b>řídké </b>- stupně uzlů nezávisí na \(n\) a jsou omezeny konstantou:\[|E(G_n)| = \mathcal O \big( |V(G_n)| \big),\]<br/></li><li><b>husté</b> - stupně uzlů rostou s \(n\):\[|E(G_n)| = \omega \big( |V(G_n)| \big).\]</li></ul></div>
+        </div>
+    </note>
+    <note id="1715709563" type="1708237251">
+        <div class="field">
+Definice - průměrná vzdálenost v grafu
+        </div>
+        <div class="field">
+Mějme graf \(G\) o \(n\) vrcholech. Průměrnou vzdálenost v \(G\) definujeme jako\[\overline{\operatorname{dist}}(G) = \frac{1}{n(n - 1)} \displaystyle \sum_{\substack{u, v \in V(G)\\ u \neq v}} \operatorname{dist}_G(u, v).\]<br/>
+        </div>
+    </note>
+    <note id="1732406524" type="1708237251">
+        <div class="field">
+Definice - excentricita, průměr a poloměr grafu
+        </div>
+        <div class="field">
+Mějme graf \(G\). <b>Excentricita </b>\(\operatorname{exc}(u)\)<b> </b>vrcholu \(u \in V(G)\) je definována jako\[\operatorname{exc}(u) = \displaystyle \max_{v \in V(G)} \bigl( \operatorname{dist}_G(u, v) \bigr).\]<b>Průměr </b>\(\operatorname{diam}(G)\)<b> </b>a <b>poloměr </b>\(\operatorname{r}(G)\) grafu \(G\) jsou pak definovány jako\[\begin{matrix}
+\operatorname{diam}(G) = \displaystyle \max_{u \in G} \bigl( \operatorname{exc}(u) \bigr),\\
+\operatorname r(G) = \displaystyle \min_{u \in G} \bigl( \operatorname{exc}(u) \bigr).
+\end{matrix}\]<br/>
+        </div>
+    </note>
+    <note id="1678554552" type="1708237251">
+        <div class="field">
+Kartézský součin grafů (definice, vlastnosti)
+        </div>
+        <div class="field">
+<ul><li>Kartézský součin dvou grafů \(G = {\color{lightgreen} G_1} \times {\color{orange} G_2}\):<br/>\(V(G) = \left\{
+({\color{lightgreen} x}, {\color{orange} y}) \mid
+{\color{lightgreen} x} \in V(G_1),\ {\color{orange} y} \in V(G_2)
+\right\}\)<br/>\(\begin{matrix}
+\begin{align}E(G) = &amp; \big \{
+\langle ({\color{lightgreen} x_1}, {\color{orange} y}), ({\color{lightgreen} x_2}, {\color{orange} y}) \rangle
+\mid
+\langle {\color{lightgreen} x_1}, {\color{lightgreen} x_2} \rangle \in E(G_1), {\color{orange} y} \in V(G_2) \}\\
+\cup &amp; \big \{
+\langle ({\color{lightgreen} x}, {\color{orange} y_1}), ({\color{lightgreen} x}, {\color{orange} y_2}) \rangle
+\mid {\color{lightgreen} x} \in V(G_1), \langle {\color{orange} y_1}, {\color{orange} y_2} \rangle \in E(G_2) \}.
+\end{align} 
+\end{matrix}\)</li><li>tj. kartézský součin vrcholů, a hrana vede mezi novými vrcholy tehdy, pokud vedla mezi původními vrcholy v jednom nebo druhém grafu.<br/><img src="cartesian-bbe1d298b64c2091c12fadd571045520b467bb32.jpg"/><br/></li><li>Kartézský součin je komutativní a asociativní, tj. \(G_1 \times G_2 \equiv G_2 \times G_1\) a \((G_1 \times G_2) \times G_3 \equiv G_1 \times (G_2 \times G_3)\), kde \(\equiv\) je relace isomorfismus.</li></ul>
+        </div>
+    </note>
+    <note id="2112892847" type="1708237251">
+        <div class="field">
+Definujte uzlově symetrický graf
+        </div>
+        <div class="field">
+<ul><li>Graf \(G\) je uzlově symetrický, jestliže pro každé dva vrcholy \(u, v \in V(G)\) existuje automorfismus \(f : G \to G\) takový, že\[f(u) = v.\]</li><li>Jsou-li \(G_1\) a \(G_2\) uzlově symetrické grafy, pak \(G = G_1 \times G_2\) je také uzlově symetrický.</li><li>Každý uzlově symetrický graf je nutně regulární.<br/><img src="symmetric-4902f655cf1364a7d2183dd8fe3687853ef0fde6.png"/><br/></li></ul><div>* symterie zjednodušuje proces návrhu algoritmů<br/></div>
+        </div>
+    </note>
+    <note id="1847678053" type="1708237251">
+        <div class="field">
+Definujte uzlový řez, hranový řez, uzlovou souvislost a hranovou souvislost, uzlově \(k\)-souvislý graf a hranově \(k\)-souvislý graf
+        </div>
+        <div class="field">
+<b>Uzlový</b> resp. <b>hranový</b> řez grafu je množina uzlů resp. hran, jejichž odebráním se graf stává nesouvislým. <b>Uzlová souvislost </b>\(\kappa(G)\) resp. <b>hranová souvislost </b>\(\lambda(G)\) grafu \(G\) je velikost minimálního uzlového resp. hranového řezu. Graf \(G\) pak nazýváme <b>uzlově </b>\(k\)<b>-souvislý</b> resp. <b>hranově </b>\(k\)<b>-souvislý</b>, jestliže\[\kappa(G) = k\]resp.\[\lambda(G) = k.\]<br/><img src="cuts-7dbe6ca5b5869d7b0fb6a5404ff9b31d50bbbda1.jpg"/><br/>
+        </div>
+    </note>
+    <note id="1782061773" type="1708237251">
+        <div class="field">
+Vyslovte lemma o uzlové a hranové souvislosti grafu a definujte optimální souvislost grafu
+        </div>
+        <div class="field">
+Podle <b>lemmatu o uzlové a hranové souvislosti grafu</b> pro každý souvislý graf \(G\) platí\[\kappa(G) \leq \lambda(G) \leq \delta(G),\]kde \(\delta(G)\) označuje minimum ze stupňů uzlů \(G\).<br/>Graf \(G\) pak nazveme <b>optimálně souvislý</b>, jestliže\[\kappa(G) = \lambda(G) = \delta(G).\]<br/>* TODO: význam optimální souvislosti?<br/>
+        </div>
+    </note>
+    <note id="1909352222" type="1708237251">
+        <div class="field">
+Vlastnosti grafu: souvislost, hranová bisekční šířka
+        </div>
+        <div class="field">
+<ul><li>Uzlová/hranová souvislost je velikost minimálního uzlového/hranového řezu, tj. minimální počet uzlů/hran, jejichž odebrání způsobí rozpojení grafu \(G\)</li><li>Hranová bisekční šířka \(\operatorname{bw_e}(G)\) grafu \(G\) je velikost nejmenšího hranového řezu, kterým je \(G\) rozdělen na dva podgrafy o velikostech\[\biggl \lceil \frac {|V(G)|}{2} \biggr \rceil \quad \text a \quad \biggl \lfloor \frac {|V(G)|}{2} \biggr \rfloor.\]<br/></li></ul>
+        </div>
+    </note>
+    <note id="1513112075" type="1708237251">
+        <div class="field">
+Definujte bipartitní graf a vyvážený bipartitní graf
+        </div>
+        <div class="field">
+<b>Bipartitní graf</b> je graf, pro který existuje dělení jeho vrcholů do dvou partit takové, že koncové vrcholy každé hrany náleží různým partitám. Bipartitní graf se nazývá <b>vyvážený</b>, jestliže obě jeho partity obsahují polovinu celkového počtu vrcholů.
+        </div>
+    </note>
+    <note id="1150020718" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: stupeň uzlu, průměr
+        </div>
+        <div class="field">
+<div>Mezi základní požadavky na propojovací sítě paralelních počítačů patří:<br/><ul><li><b>konstantní stupeň uzlů</b> - univerzální a levné směrovače,<br/></li><li><b>malý průměr a malá průměrná vzdálenost </b>- nižší komunikační zpoždění.<br/></li></ul><div>Oba požadavky jsou protichůdné. Z prvního plyne použití řídkých topologií s nízkou souvislostí a velkými vzdálenostmi, druhý požaduje vysokou souvislost a malé vzdálenosti. Lze dokázat, že optimální spodní mez průměru \(N\)-uzlové sítě je \(\Omega(\log N)\).</div></div>
+        </div>
+    </note>
+    <note id="1110975442" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: škálovatelnost
+        </div>
+        <div class="field">
+<ul><li><b>Inkrementálně škálovatelná topologie</b> = definovaná pro jakékoli \(N\)</li><li><b>Částečně škálovatelná topologie</b> = není definovaná pro jakékoli \(N\)</li><li><b>Efektivně škálovatelná topologie</b> = pro vytvoření \((N + k)\)-uzlové instance z \(N\)-uzlové instance je třeba odebrat pouze \(O(k)\) hran a pak \(O(k)\) hran přidat</li></ul>
+        </div>
+    </note>
+    <note id="2038851719" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: hierarchická rekurzivita
+        </div>
+        <div class="field">
+<ul><li>graf má hierarchicky rekurzivní topologii, jestliže obsahuje menší instance sebe sama</li><li>hierarchicky rekurzivní topologie jsou obvykle pouze částečně škálovatelné</li><li>dobrá pro realizaci obvodů a induktivní návrhy a mapování paralelních rekurzivních algoritmů</li></ul>
+        </div>
+    </note>
+    <note id="1328102929" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: souvislost, bisekční šířka
+        </div>
+        <div class="field">
+Je žádoucí vysoká souvislost a odolnost vůči poruchám, kvůli spolehlivosti a robustnosti sítě. Tj. v případě výpadku uzlů nebo spojů by měla síť nabídnout náhradní krátké spoje.<br/><br/>Velká bisekční šířka jednak pomáhá dostupnosti, ale také je klíčová pro algoritmy, které dělí problém na dva stejně velké podproblémy.
+        </div>
+    </note>
+    <note id="1836645448" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítš: podpora pro směrování
+        </div>
+        <div class="field">
+Chceme minimální směrování a podporu pro kolektivní komunikační operace
+        </div>
+    </note>
+    <note id="1976886383" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: vnořitelnost
+        </div>
+        <div class="field">
+Vnořitelnost jiných a do jiných topologií, tj. efektivní simulace jiných topologií.<br/><br/><i>* typicky z důvodu efektivního spouštění paralelního algoritmu koncipovaného pro nějakou specifickou topologii</i>
+        </div>
+    </note>
+    <note id="1826543375" type="1708237251">
+        <div class="field">
+Požadavky na propojovací sítě: kružnice
+        </div>
+        <div class="field">
+Existence hamiltonovských kružnic či cest a existence 2-barvení<br/><ul><li>Hamiltonovská kružnice = vnoření \(N\)-uzlové kružnice - speciální případ vnořitelnosti</li><li>Kritická vlastnost - zjednodušení návrhu algortimů, kde jsou procesory otnačeny čísly \(1..p\) a komunikace je posun dat ve směru indexování, např. třídící algoritmy</li></ul>
+        </div>
+    </note>
+    <note id="1825605640" type="1708237251">
+        <div class="field">
+Striktně ortogonální (mřížkové) topologie - \(n\)-rozměrná binární hyperkrychle \(Q_n\)
+        </div>
+        <div class="field">
+<ul><li>Vrcholy jsou binární řetězce délky \(n\), hrany jsou právě mezi vrcholy, které se liší právě v jednom bitu.<br/><img src="hypercubeq4-5977c5ae515a374c54f3bcbaf6598a01129143ed.jpg"/><br/></li><li>Triviální vlastnosti:<ul><li>\(|V(Q_n)| = 2^n\) (=počet binárních řetězců délky \(n\)), \(|E(Q_n)| = n2^{n-1}\) (=počet dimenzí krát polovina vrcholů)</li><li><div>je regulární, navíc vzdálenost dvou vrcholů je jejich Hammingova vzdálenost</div></li></ul></li><li>uzlově i hranově symetrická<br/></li><li><div>pouze částečně škálovatelná, ale je efektivně škálovatelná</div></li><li>Hlavní nedostatek: stupeň roste logaritmicky, tj. je to hustá topologie<br/></li><li>Téměř jakákoli jiná topologie je do ní vnořitelná (tj. dá se v ní efektivně simulovat)</li><li>Pro směrování v binárních hyperkrychlích se používá minimální \(e\)-<i>cube </i>směrování, které bity v adresách testuje podle zvoleného uspořádání (např. zprava doleva)</li></ul>
+        </div>
+    </note>
+    <note id="1353359635" type="1708237251">
+        <div class="field">
+Striktně ortogonální (mřížkové) topologie: \(n\)-rozměrná mřížka <br/>\(M(z_1 \dots z_n)\) o velkosti stran \(z_1 \dots z_n\)
+        </div>
+        <div class="field">
+<ul><li>Sestavena kartézským součinem mřížek nižších dimenzí:<br/>\(M(z_1\dots z_n) = M(z_1)\times\dots\times M(z_n)\)<br/><img src="mesh334-fa761cc7f292f2b665cc94ed1ff4573a5da1c9c5.jpg"/><br/></li><li>Uzly mřížky jsou označeny n-znakovými řetězci; dva uzly jsou sousední, právě když se liší v jedné souřadnici o jedničku<br/>\(|V(M(\dots))| = \prod_{i=1}^n z_i\), \(|E(M(\dots))|=\sum_{i=1}^n (z_i - 1) \prod_{j=1,j\neq i}^n z_j\)<br/></li><li>Není regulární ani symetrická, je pouze částečně škálovatelná, je řídká</li><li>Je hierarchicky rekurzivní, má optimální souvislost, je bipartitní</li><li>Minimální směrování = dimenziálně uspořádané směrování (při konstrukci cesty mezi 2 uzly se hrany smějí používat pouze v jediném pořadí dimenzí)</li></ul>
+        </div>
+    </note>
+    <note id="1432293779" type="1708237251">
+        <div class="field">
+Striktně ortogonální (mřížkové) topologie - \(n\)-rozměrný toroid <br/>\(T(z_1 \dots z_n)\) o velkosti stran \(z_1 \dots z_n\)
+        </div>
+        <div class="field">
+<ul><li>"zabalená mřížka" - každá lineární řada má navíc hranu propojující první a poslední uzel<br/><img src="toroid334-918433d6f785ce211dae6462004ccd60fc3dc19e.jpg"/><br/></li><li>Dva uzly jsou sousední, právě když se liší v jedné souřadnici o jedničku modulo velikost strany dané dimenze - díky tomu je toroid regulární a uzlově symetrický<br/>\(|V(M(\dots))| = \prod_{i=1}^n z_i\), \(|E(T(\dots))| = n\times\prod_{i=1}^n z_i\)</li><li>Průměr je poloviční oproti stejně velké mřížce.<br/>Bipartitní, pokud jsou všechny délky stran sudé.</li><li>Komerčně populární díky svým vlastnostem</li></ul>
+        </div>
+    </note>
+    <note id="1605890530" type="1708237251">
+        <div class="field">
+O motýlcích a spol. všeobecně platí
+        </div>
+        <div class="field">
+<ul><li>Vzniknou rozvinutím každého vrcholu hyperkrychle na více uzlů</li><li>Kvůli tomu zhoršená částečná škálovatelnost \(N\) hodnoty \(n2^n\) apod.</li><li>Optimální z hlediska průměru - dosahují logaritmický průměr při konstantním stupni uzlů</li><li>Dobrá bisekční šířka - \(\Omega(N/\log N)\)</li></ul>
+        </div>
+    </note>
+    <note id="2053696212" type="1708237251">
+        <div class="field">
+Hyperkubické topologie: zabalený motýlek \(wBF_n\) dimenze \(n\)
+        </div>
+        <div class="field">
+<ul><li>Vznikne rozvinutím uzlů \(Q_n\) do \(2^n\) kružnic o \(n\) uzlech<br/><img src="wbf3-1483ac4ada07cb650a6a33f5e5432d9d94e4496e.jpg"/><br/>\(|V(wBF_n)| = n2^n\), \(|E(wBF_n)| = n2^{n+1}\)</li><li>Dva druhy hran, proto není hranově symetrický<ul><li><div>Kružnicové hrany v rámci kružnice, tj.</div>\(\langle (i, x), (i \oplus_n 1, x)\rangle\)</li><li>Hyperkubické hrany mezi kružnicemi, tj. \(\langle (i, x), (i \oplus_n 1, \mathrm{neg}_i(x)) \rangle\)<br/></li></ul></li><li>Je regulární, uzlově symetrický, ale není hierarchicky rekurzivní</li><li>Optimální průměr, řidká topologie, je bipartitní pokud \(n\) je sudé</li></ul>
+        </div>
+    </note>
+    <note id="2128840513" type="1708237251">
+        <div class="field">
+Hyperkubické topologie: obyčejný motýlek \(oBF_n\) dimenze \(n\)
+        </div>
+        <div class="field">
+<ul><li>vznikne ze zabaleného motýlku rozříznutím zpětných hran kružnic<br/><img src="obf3-c1ee47dbdda91cc0ca063de8ae3015ee9651476e.jpg"/><br/>\(|V(oBF_n)| = (n+1)2^n\), \(|E(oBF_n)| = n2^{n+1}\)<br/></li><li>není symetrický ani regulární</li><li>řídká topologie, je hierarchicky rekurzivní, bipartitní, má optimální průměr</li><li>lze využít jako minimální permutační síť, tj. levnou náhradu křížového přepínače</li></ul>
+        </div>
+    </note>
+    <note id="1494311148" type="1708237251">
+        <div class="field">
+Problém vnoření: statické vnořování
+        </div>
+        <div class="field">
+Statický vnořovací problém<br/><ul><li>Máme graf procesů a graf fyzického propojení výpočetních uzlů, chceme namapovat procesy na uzly tak, aby mohly efektivně komunikovat a nevytěžovat zbytečně síť bez změn v distribuovaném algoritmu</li><li>Uvažujeme zdrojový graf \(G\) s vrcholy \(V(G)\) a hranami \(E(G)\) a cílovou síť \(H\) s uzly \(V(H)\) a linkami \(E(H)\). Pak (statické) vnoření G do \(H\) je dvojice zobrazení \((\varphi, \xi)\), kde:<br/>\(\varphi: V(G)\to V(H)\), \(\xi: E(G) \to {\cal P}(H)\),<br/>kde \({\cal P}(H)\) je množina všech cest v síti \(H\).</li></ul><div><i>* hrany mezi procesy se mapují na cesty mezi uzly, ne nutně na jednotlivé hrany</i></div>
+        </div>
+    </note>
+    <note id="1947727216" type="1708237251">
+        <div class="field">
+Problém vnoření: měřítka kvality: zatížení, expanze
+        </div>
+        <div class="field">
+<ul><li><div>Mějme vnoření \(G \stackrel{\text{emb}}{\to} H\) zdrojového grafu \(G\) do hostitelského grafu \(H\). <b>Maximální zatížení hostitelského vrcholu</b> je měřítko kvality vnoření definované jako\[\operatorname{load}(\varphi, \xi) = \displaystyle \max_{v \in V(H)} | \{ u \in V(G) : \varphi(u) = v \} |.\]</div><ul><li><div>= maximální počet procesů, který bude přidělen jednomu procesoru (ideálně chceme stejnoměrné zatížení)</div></li></ul></li><li><b>Expanze vnoření</b> - poměr velikosti cílové sítě (=počet výpočetních uzlů) a velikosti zdrojového grafu (=počet procesů)<ul><li><div>větší expanze implikuje dražší simulace (ideálně chceme 1, snižujeme úměrným rovnoměrným zatížením uzlů)</div></li></ul></li></ul>
+        </div>
+    </note>
+    <note id="1621464413" type="1708237251">
+        <div class="field">
+Problém vnoření: měřítka kvality: dilatace, zahlcení
+        </div>
+        <div class="field">
+<ul><li>Mějme vnoření \(G \stackrel{\text{emb}}{\to} H\) zdrojového grafu \(G\) do hostitelského grafu \(H\). <b>Maximální dilatace zdrojových hran</b> v hostitelském grafu je měřítko kvality vnoření definované jako\[\operatorname{dil}(\varphi, \xi) = \displaystyle \max_{e \in E(G)} \operatorname{len} \bigl( \xi(e) \bigr).\]<ul><li>Po jak dlouhých cestách budou muset cestovat zprávy posílané přes hrany v zdrojovém grafu</li><li>Sledujeme, pokud máme přepínání citlivé na vzdálenosti, jinak průměrná dilatace</li></ul></li><li>Maximální zalhcení cílové hrany</li><ul><li><b>Linkové zahlcení</b> - maximální počet obrazů zdrojových hran procházejících skrz cílové linky</li><li><b>Uzlové zahlcení</b> - maximální počet obrazů zdrojových hran procházejících skrz cílové uzly</li><li>Spíše sledujeme průměrné zahlcení</li></ul></ul>
+        </div>
+    </note>
+    <note id="1328042136" type="1708237251">
+        <div class="field">
+Problém vnoření: kvaziizometrické topologie
+        </div>
+        <div class="field">
+<div>Grafy \(G\) a \(H\) jsou kvaziizometrické, pokud existují vnoření \(G \stackrel {\text{emb}}\to H\) a \(H \stackrel {\text{emb}}\to G\) s konstantními hodnotami měřítek kvality vnoření.</div>
+        </div>
+    </note>
+    <note id="1548551206" type="1708237251">
+        <div class="field">
+Problém vnoření: simulace se zpomalením, výpočetně ekvivalentní sítě
+        </div>
+        <div class="field">
+<div>Propojovací síť paralelních počítačů \(G\) <b>simuluje síť </b>\(H\)<b> se zpomalením</b> \(h\), jestliže každý krok výpočtu na \(H\) může být simulován v \(\mathcal O(h)\) krocích na \(G\). Sítě \(G\) a \(H\) jsou <b>výpočetně ekvivalentní</b>, jestliže \(G\) dokáže simulovat \(H\) s konstantním zpomalením a naopak.</div>
+        </div>
+    </note>
+    <note id="1362481193" type="1708237251">
+        <div class="field">
+Problém vnoření: vnoření hyperkrychle do nízkorozměrných mřížek
+        </div>
+        <div class="field">
+<ul><li>Máme hyperkrychlický algoritmus, a chceme, aby běžel na 2D mřížce</li><li>Rekurzivně použijeme Mortonovu křivku, tj. vždy namapujeme 4 podkrychle \(Q_{n-2}\) na 4 čtvrtmřížky v Z-pořadí, což vytváří konečnou fraktální strukturu<br/><img src="zordermapping-fbbcbce2d6bc99cb52374d04a9bf20ff38631b9c.jpg"/><br/></li></ul>
+        </div>
+    </note>
+    <note id="1240638679" type="1708237251">
+        <div class="field">
+Vyslovte větu o vzdálenostech při vnoření hyperkrychle do dvoudimenzionální mřížky pomocí Mortonovy křivky a z něj plynoucí důsledek pro maximální dilataci zdrojových hran v hostitelském grafu.
+        </div>
+        <div class="field">
+Pro vnoření \(Q_{2k} \stackrel{\text{emb}}{\to} M(2^k, 2^k)\) hyperkrychle do dvoudimenzionální mřížky pomocí Mortonovy křivky s \(\operatorname{load}(\varphi, \xi) = 1\) a \(k \geq 2\) platí, že vzdálenost hyperkubických uzlů lišících se v bitu \(i \in 0, \dots, 2 k -1\) v mřížce je\[\operatorname{dist} \bigl( \varphi(u), \varphi( u \oplus 2^i) \bigr) = 2^{\lfloor \frac i 2 \rfloor }.\]Z toho plyne že maximální dilatace zdrojových hran v hostitelském grafu je\[\operatorname{dil}(\varphi, \xi) = 2^{\lfloor \frac{2k - 1}{2} \rfloor} = 2^{k - 1}.\]
+        </div>
+    </note>
+    <note id="1778780710" type="1708237251">
+        <div class="field">
+Popište způsob směrování v přímých motýlcích.
+        </div>
+        <div class="field">
+Pro směrování v přímých motýlcích se používají přepínače podporující čtyři stavy:<br/><ul><li>identita,</li><li>inverze,</li><li>dolní <i>broadcast</i>,</li><li>horní <i>broadcast</i>.</li></ul><div style="text-align: center; "><img src="obfrouting-4185c521cf76a57632a6da2b9d2d8a60.jpg"/><br/></div><div>Předpokládáme-li směrování z jednoho konce sítě na druhý, je cesta reprezentována binárním vektorem, který lze získat jako adresu cílového uzlu (příp. její obrácení). Každý bit cesty značí nastavení přepínače příslušné úrovně, přičemž nula značí horní výstup a jednička dolní výstup.</div>
+        </div>
+    </note>
+    <note id="1294231489" type="1708237251">
+        <div class="field">
+Popiš přímého, nepřímého a obousměrného motýlka. Jaká je zde souvislost s tlustým stromem?
+        </div>
+        <div class="field">
+<img src="bf1-5fc6feb6c4f4c72d93a92e598bbbb83e98b30e24.jpg"/><br/><img src="bf2-2e7cfdf79d1f5d8775e3008fadb6d7cb7af83872.jpg"/><br/><img src="bf3-350393a194fdebccca63436b7598eca9c05ea976.jpg"/><br/><img src="bf4-97d7994dd163f83f92591ecee895d2373d285dfe.jpg"/>
+        </div>
+    </note>
+    <note id="1954818968" type="1708237251">
+        <div class="field">
+Popiš základní myšlenku vnoření 2-D toroidu do 1-D toroidu.
+        </div>
+        <div class="field">
+<img src="toroidembedding-7a54b01c7e24d0298cdf6655909a26106f05b8a1.jpg"/>
+        </div>
+    </note>
+    <note id="1182014907" type="1708237251">
+        <div class="field">
+Popiš základní myšlenku vnoření obdélníkových mřížek do čtvercových mřížek.
+        </div>
+        <div class="field">
+<img src="meshembedding-659128c46b4cb0c91b2bb4683e1df34e17a0f056.jpg"/>
+        </div>
+    </note>
+    <note id="1593198027" type="1708237251">
+        <div class="field">
+Popiš základní myšlenku vnoření čtvercových mřížek do obdélníkových mřížek.
+        </div>
+        <div class="field">
+<img src="squarerectangleembedding1-ed20ab9caef87bfb651db7ebaad9a1c024f6797f.jpg"/><br/><img src="squarerectangleembedding2-1aa84a83bf6cd0d0a949b1c7a4a3c2257f5c5629.jpg"/>
+        </div>
+    </note>
+    <note id="1302394689" type="1708237251">
+        <div class="field">
+Vyslovte a dokažte větu o nejkratších cestách v binární hyperkrychli.
+        </div>
+        <div class="field">
+Počet různých nejkratších cest mezi dvěma uzly binární hyperkrychle \(Q_n\) ve vzdálenosti \(k\) je \(k!\).<br/><br/><b>Důkaz</b> <br/>Protože vzdálenost v binární hyperkrychli lze vyjádřit pomocí Hammingovy vzdálenosti, odpovídá každá nejkratší cesta mezi dvěma vrcholy ve vzdálenosti \(k\) nějaké permutaci \(k\) souřadnic, ve kterých se vrcholy liší.
+        </div>
+    </note>
+    <note id="1273994307" type="1708237251">
+        <div class="field">
+Vyslovte větu o průměrovém argumentu.
+        </div>
+        <div class="field">
+Mějme vnoření \(G \stackrel{\text{emb}}{\to} H\) zdrojového grafu \(G\) do hostitelského grafu \(H\) splňující \(\operatorname{load}(\varphi, \xi) = 1\) a nechť platí \(|V(G)| = |V(H)|\). Potom spodní mez pro maximální dilataci zdrojových hran v hostitelském grafu je\[\operatorname{dil}(\varphi, \xi) \geq \Big \lceil \frac{\operatorname{diam}(H)}{\operatorname{diam}(G)} \Big \rceil.\]
+        </div>
+    </note>
+    <note id="2117703885" type="1708237251">
+        <div class="field">
+Vyslovte větu o symetrii a automorfismech binární hyperkrychle.
+        </div>
+        <div class="field">
+Binární hyperkrychle \(Q_n\) je uzlově symetrická topologie, ve které existuje \(2^n \cdot n!\) různých automorfismů.
+        </div>
+    </note>
+    <note id="1617018650" type="1708237251">
+        <div class="field">
+Vyslovte větu o vlastnostech uzlově symetrických grafů a naznačte myšlenku důkazu její části o kartézském součinu.
+        </div>
+        <div class="field">
+Každý uzlově symetrický graf \(G\) je zároveň regulární. Pokud je navíc \(H\) další uzlově symetrický graf, pak kartézský součin \(G \times H\) je také uzlově symetrický.<br/><br/><b>Důkaz (kartézský součin)</b> <br/>Z předpokladu, že \(G\) je uzlově symetrický, plyne, že pro každé \(u_G, v_G \in V(G)\) existuje automorfismus \(f_{u_G, v_G} : G \to G\) takový, že\[f_{u_G, v_G}(u_G) = v_G.\]Obdobně z předpokladu, že \(H\) je uzlově symetrický, plyne, že pro každé \(u_H, v_H \in V(H)\) existuje automorfismus \(f_{u_H, v_H} : H \to H\) takový, že\[f_{u_H, v_H} (u_H) = v_H.\]Chceme tedy ukázat, že pro každé \((u_G, u_H) \in V(G \times H)\) existuje automorfismus \(f_{u_G, u_H, v_G, v_H} : G \times H \to G \times H\) takový, že\[f_{u_G, u_H, v_G, v_H} \bigl( (u_G, u_H) \bigr) = (v_G, v_H).\]Takový automorfismus však můžeme zkonstruovat ze vstupních automorfismů jako\[f_{u_G, u_H, v_G, v_H} \bigl( (u_G, u_H) \bigr) \coloneqq \bigl( f_{u_G, v_G}(u_G), f_{u_H, v_H} (u_H)  \bigr).\]Pak už jen zbývá ukázat, že \(f_{u_G, u_H, v_G, v_H}\) je bijekce a zachovává incidenci.
+        </div>
+    </note>
+    <note id="1093001708" type="1708237251">
+        <div class="field">
+Vyslovte větu o vzdálenostech v binární hyperkrychli.
+        </div>
+        <div class="field">
+Počet uzlů ve vzdálenosti \(k\) od daného uzlu v binární hyperkrychli \(Q_n\) je \(n \choose k\) a pro průměrnou vzdálenost platí \(\overline{\operatorname{dist}}(Q_n) \dot = \lceil \frac n 2 \rceil\).
+        </div>
+    </note>
+    <note id="1230624844" type="1708237251">
+        <div class="field">
+Vyslovte větu o vzdálenostech v uzlově symetrickém grafu.
+        </div>
+        <div class="field">
+Pro každý uzlově symetrický graf \(G\) platí\[\operatorname{diam}(G) = \operatorname r(G),\]což plyne z toho, že pro každé dva vrcholy \(u, v \in V(G)\) platí\[\operatorname{exc}(u) = \operatorname{exc}(v).\]
+        </div>
+    </note>
+    <note id="1505872243" type="1708237251">
+        <div class="field">
+Vyslovte větu o vztahu stejnorozměrných mřížek a toroidů.
+        </div>
+        <div class="field">
+Stejnorozměrné mřížky \(M(z_1, \dots, z_n)\) a toroidy \(K(z_1, \dots, z_n)\) jsou kvaziizometrické a tedy i výpočetně ekvivalentní.<br/><br/><img src="meshtoroidembedding-cc5d98a7035b00c78322a88690402e6f0e2b45b5.jpg"/>
+        </div>
+    </note>
+    <note id="1122151433" type="1708237251">
+        <div class="field">
+Vyslovte větu o vztahu stejnorozměrných zabalených a obyčejných motýlků.
+        </div>
+        <div class="field">
+Zabalený motýlek \(wBF_n\) a obyčejný motýlek \(oBF_n\) jsou kvaziizometrické a tedy i výpočetně ekvivalentní.<br/><br/><img src="bfembedding1-0ba86655a9f0077826f5ec4afeed95372b9225f5.jpg"/><br/><img src="bfembedding2-46254f3a15b274820fbfe12c57c0fe646c8be1a8.jpg"/>
+        </div>
+    </note>
+    <note id="1668039918" type="1708237251">
+        <div class="field">
+Vyslovte větu o výpočetní ekvivalenci kvaziizometrických propojovacích sítích paralelních systémů.
+        </div>
+        <div class="field">
+Kvaziizometrické propojovací sítě paralelních systémů jsou výpočetně ekvivalentní, ale ne naopak.
+        </div>
+    </note>
+</deck>

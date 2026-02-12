@@ -1,0 +1,20 @@
+<deck id="1418262814" name="NI-PDB::NI-PDB-04" deck_slug="NI-PDB-04">
+
+    <note id="1338793490" type="1708237251">
+        <div class="field">
+OLTP vs. OLAP database
+        </div>
+        <div class="field">
+<ul><li>OLTP (Online Transaction Processing) = simple CRUD, but large volume</li><li>OLAP (Online Analytical Processing) = small volume of complex read-only queries, business intelligence</li></ul>
+        </div>
+    </note>
+    <note id="1266123678" type="1708237251">
+        <div class="field">
+Complex benchmarks (TPC-C, TPC-E, TPC-H): principles, metrics
+        </div>
+        <div class="field">
+TPC stands for Transaction Processing Performance Benchmark. <br/><br/>TPC-C measures database throughput in transactions per minute (<b>tpmC</b>), also tracks price to performace ratio.<br/><br/>TPC-E measures database throughput in transactions per second (<b>tpsE</b>), also tracks price to performace ratio.<br/><br/>TPC-H is benchmark over database of fixed size. Measures database throughput in queries per hour (<b>QphE@Size</b>), also tracks price to performace ratio.
+        </div>
+    </note>
+
+</deck>

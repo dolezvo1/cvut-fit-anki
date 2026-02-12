@@ -1,0 +1,44 @@
+<deck id="1311090234" name="NI-NUR::NI-NUR-03" deck_slug="NI-NUR-03">
+
+    <note id="2096931715" type="1708237251">
+        <div class="field">
+Qualitative vs Quantitative studies
+        </div>
+        <div class="field">
+Qualitative studies<br/><ul><li>Discover existence of problems, relatively small number of participants</li><li>"What people dislike about the app?", "How can a process be improved?"</li></ul>Quantitative studies<br/><ul><li>Results are numbers, large volume of data needed</li><li>"How often do users need undo?", "How long does it take to select an menu item?"</li></ul>
+        </div>
+    </note>
+    <note id="2005165498" type="1708237251">
+        <div class="field">
+Heuristic evaluations
+        </div>
+        <div class="field">
+Performed by an expert, checks heuristics rules, e.g. Nielsen's Heuristics:<br/><br/><div><ol><li>Visibility of system status</li><li>Match between system and the real world</li><li>User control and freedom</li><li>Consistency and standards</li><li>Error prevention</li><li>Recognition rather than recall</li><li>Flexibility and efficiency of use</li><li>Aesthetic and minimalist design</li><li>Help users recognize, diagnose, and recover from errors</li><li>Help and documentation</li></ol></div>
+        </div>
+    </note>
+    <note id="1169845646" type="1708237251">
+        <div class="field">
+Cognitive walkthrough
+        </div>
+        <div class="field">
+Performed by an expert, "What the user would do"
+        </div>
+    </note>
+    <note id="1570256286" type="1708237251">
+        <div class="field">
+User surveys
+        </div>
+        <div class="field">
+Users respond using a form (e.g. mark statements from strongly agree to strongly disagree). Easy to administer and easy to process, but limited insights. Should be as short as possible.
+        </div>
+    </note>
+    <note id="1477709802" type="1708237251">
+        <div class="field">
+Usability testing
+        </div>
+        <div class="field">
+Key part is observing real users using the product to discover errors and areas of improvement<br/><br/>Usability engineering = usability testing in an usability lab, controlled environment<br/><br/>Screener = quick questionnaire to determine we have a person in the targetted demographic (gender, hobbies, age, occupation, etc.)
+        </div>
+    </note>
+
+</deck>

@@ -1,0 +1,180 @@
+<deck id="1607118388" name="NI-KOP::NI-SPOL-13" deck_slug="NI-SPOL-13">
+
+    <note id="1649401732" type="1708237251">
+        <div class="field">
+Definice - Úplná strategie pohybu stavovým prostorem
+        </div>
+        <div class="field">
+<div>Úplná strategie prohledávání stavového prostoru je strategie, která navštíví všechny stavy kromě těch, o kterých je známo, že nedávají řešení (nebo optimální řešení).<br/></div>
+        </div>
+    </note>
+    <note id="2113018335" type="1708237251">
+        <div class="field">
+Definice - Systematická strategie pohybu stavovým prostorem
+        </div>
+        <div class="field">
+Systematická strategie prohledávání stavového prostoru je úplná strategie, která každý stav navštíví nejvýše jednou.<br/><ul><li>Ukladáme si informaci o tom, které stavy jsme už navštívili</li><li>V nejhorším případě musíme projít všechny stavy (=brute force)</li></ul>
+        </div>
+    </note>
+    <note id="1449201646" type="1708237251">
+        <div class="field">
+Popište realizace systematických strategií prohledávání stavového prostoru
+        </div>
+        <div class="field">
+Systematické strategie prohledávání stavového prostoru lze realizovat v následujících podobách:<br/><ul><li><b>prohledávání do šířky</b> (BFS) - pomocí fronty,</li><li><b>prohledávání do hloubky </b>(DFS) - pomocí zásobníku,</li><li><b>prohledávání metodou „nejlepší nejdříve“ </b>(<i>best first</i>) - pomocí prioritní fronty.</li></ul>
+        </div>
+    </note>
+    <note id="1154556882" type="1708237251">
+        <div class="field">
+Strategie prořezávání stavovým prostorem
+        </div>
+        <div class="field">
+Určíme, které uzly nenavštěvovat.<br/><ul><li>Prořezáváme se na základě znalosti optimalizačního kritéria a omezujících podmínek</li><li>Pokud víme, že určitá část stavového prostoru nemůže poskytnout lepší řešení než to dosud nalezené, nemusíme ji prohledávat</li><li>Pokud víme, že určitá část stavového prostoru nesplňuje omezující podmínky, nemusíme ji prohledávat</li><li>Můžeme využít i odhad horní/dolní meze optimálního kritéria a prořezávat i na základě toho</li></ul>
+        </div>
+    </note>
+    <note id="1910560775" type="1708237251">
+        <div class="field">
+Heuristické metody
+        </div>
+        <div class="field">
+<ul><li>Heuristika je přístup k řešení problému používaním metody, která negarantuje nalezení optimálního řešení</li><li>Dobré heurisitky využívají vlastnosti problému a v některých případech umíme dokázat, že je heuristické řešení dobrou aproximací optima</li><li>V případech, kdy hledání optima není možné, nebo je nepraktické, se heuristiky používají pro urychlené nacházaní přijatelného řešení</li></ul>
+        </div>
+    </note>
+    <note id="2010279912" type="1708237251">
+        <div class="field">
+Druhy heuristik
+        </div>
+        <div class="field">
+<ul><li>Konstruktivní heuristika - začne s triviální konfigurací a postupnými kroky konstruuje řešení</li><li>Interativní heuristika - začne z nějakého (i neplatného) řešení a postupně ho vylepšuje</li><li>Dvoufázová heuristika </li><ul><li>V první fázi slouží k získání řešení (konstruktivně, náhodné řešení)</li><li>Ve druhé fázi iteratívně vylepšuje</li></ul></ul>
+        </div>
+    </note>
+    <note id="1932602782" type="1708237251">
+        <div class="field">
+Druhy heuristických metod, jejich principy
+        </div>
+        <div class="field">
+<ul><li><b>Lokální metody</b> - stojí na prohledávání stavového prostoru, zaměřují se na aktuální konfiguraci a příští konfiguraci vybírají z jejích sousedů</li><li><b>Globální metody</b> - dekomponují instanci na vícero menších instancí a z jejich řešení skládají výsledné řešení, někdy označovány jako metody <i>divide</i>-<i>and</i>-<i>conquer </i>(rozděl a panuj)</li></ul>
+        </div>
+    </note>
+    <note id="1737228177" type="1708237251">
+        <div class="field">
+Heuristická funkce
+        </div>
+        <div class="field">
+<ul><li>Stavu \(s\) je přiřazená hodnota (obvykle empiricky odvozená, odhad)</li><li>Preferované jsou stavy s vyššími, resp. nižšími hodnotami (dle požadavků)</li><li>Při shodě hodnot heuristické funkce u více stavů, může být výběr založený na náhodě</li></ul>
+        </div>
+    </note>
+    <note id="1105389090" type="1708237251">
+        <div class="field">
+Greedy heuristiky
+        </div>
+        <div class="field">
+<ul><li>Rozhodují se ve prospěch lokálního optima</li><li>Doufáme, že najdeme globální optimum (nechceme uváznout v lokálním optimu)</li></ul>
+        </div>
+    </note>
+    <note id="1297657836" type="1708237251">
+        <div class="field">
+Lokální heuristiky
+        </div>
+        <div class="field">
+<ul><li>U náročnejších problémů je systematické prohledávání i s ořezáním neúnosné (trvalo by příliš dlouho)</li><li>Proto používáme heuristiky, které se snaží na základě znalosti vlastností problému předpovídat, kudy vede cesta stavovým prostorem k nejlepšímu řešení</li><li>Heuristiky většinou nenacházejí optimální řešení, ale dokáží najít dostatečně dobré řešení</li><li>Každý stav v okolí aktuálního stavu je ohodnocený heuristickou funkcí, na jejíž základě se určí, které stavy se prozoumají a které ne</li></ul>
+        </div>
+    </note>
+    <note id="1421651811" type="1708237251">
+        <div class="field">
+Jednoduché lokální heuristiky, příklady
+        </div>
+        <div class="field">
+<div>Jednoduché heuristiky mají pouze jeden aktuální stav a počítají s jeho sousedy.<br/></div><ul><li>Náhodná procházka<br/></li><ul><li>Přesun na náhodného souseda</li></ul><li>Best only</li><ul><li>Přesun na souseda s nejlepší cenou</li></ul><li>First improvement</li><ul><li>Podobné jako Best only, ale vybere nějakého souseda z množiny sousedů s vyššími hodnotami</li></ul><li>Kernighan-Lin</li><ul><li>Podobné jako Best only, ale z aktuálního stavu pokračuje několik kroků pomocí stejné operace a z takto navštívených stavů vybere další stav</li></ul></ul><div><i>* mezi pokročilé lokální heuristiky dále patří simulované ochlazování a simulovaná evoluce, které se však svou strukturou od základních lokálních heuristik liší</i></div>
+        </div>
+    </note>
+    <note id="1685373216" type="1708237251">
+        <div class="field">
+Optimum
+        </div>
+        <div class="field">
+<ul><li>Globální optimum - stav ve kterém je hodnota optimálního kritéria nejlepší v rámci všech stavů</li><li>Lokální optimum - stav ve kterém je hodnota optimálního kritéria nejlepší v rámci sousedních stavů v jeho okolí</li></ul><div><i>* problém lokálního optima je, že pokud jsou všichni sousedi horší, než aktuální stav, tak nevíme, kam pokračovat (pochopitelně se ve většině případů nebude jednat o optimální řešení)</i></div>
+        </div>
+    </note>
+    <note id="1771016289" type="1708237251">
+        <div class="field">
+Metody řešení uváznutí v lokálním optimu
+        </div>
+        <div class="field">
+<ul><li><b>K-okolí</b> - Můžeme zvětšit uvažované okolí (rozumné řešení, ale výpočetně náročné)</li><li><b>Randomizované algoritmy</b> - Spouštění heuristiky z vícero náhodných počátečních stavů</li><li><b>Backtracking</b> - podpora návratu, takže se po dosáhnutí minima vrátíme o několik kroků zpět a vydáme se jinou cestou</li><li>Přidání <b>možnosti úniku</b> přijmutím horšího řešení (=&gt; simulované ochlazování)</li><li>Zpracovávání <b>více stavů najednou</b> (=&gt; genetické algoritmy)</li><li><b>Restrikce operací</b> (=&gt; Tabu search)</li></ul><div>Hovoříme o dvou fázích heuristiky dle ochoty přijmout akci vedoucí k horšímu řešení: diverzifikace (vysoká ochota), intenzifikace (nízká ochota).</div>
+        </div>
+    </note>
+    <note id="2060041161" type="1708237251">
+        <div class="field">
+Definice - Stav algoritmu
+        </div>
+        <div class="field">
+Mějme vnitřní proměnné \(Z\) algoritmu \(A\) řešícího instanci \(I\) problému \(\Pi\) s konfiguračními proměnnými \(Y\). Každé ohodnocení \(s\) proměnných \(Z \cup Y\) nazýváme stavem algoritmu \(A\) řešícího \(I\).<br/><br/><i>* jedno ohodnocení vnitřních a konfiguračních proměnných</i>
+        </div>
+    </note>
+    <note id="1507706876" type="1708237251">
+        <div class="field">
+Definice - Stavový prostor, akce
+        </div>
+        <div class="field">
+<div>Mějme množinu všech stavů \(S = \{ s_i \}\) algoritmu \(A\) řešícího instanci \(I\). Nechť \(Q = \{ q_j \}\) je množina operátorů takových, že<br/>\[q_j : S \to S, \quad q_j(s_i) \neq s_i, \quad \forall q_j, \forall s_i.\]Dvojici \((S, Q)\) pak nazýváme <b>statovým prostorem</b> algoritmu \(A\) řešícího \(I\). Aplikace \(q_j\) na \(s_i\) se nazývá <b>akce</b>.<br/></div><div><br/></div><div><br/></div><div><i>* stavový prostor je dvojice </i><i>množiny stavů a </i><i>množiny operátorů, které netvoří smyčky</i></div><div><i>* akce je aplikace operátoru na stav</i></div>
+        </div>
+    </note>
+    <note id="2009356199" type="1708237251">
+        <div class="field">
+Graf stavového prostoru
+        </div>
+        <div class="field">
+Graf stavového prostoru lokální heuristiky je orientovaný graf, kde hrany odpovídají akcím.<br/><br/>V závislosti na typu heuristiky může mít následující vlastnosti:<br/><ul><li><b>acykličnost</b> - jednodušší heuristiky, typicky hladové algoritmy;</li><li><b>cykličnost</b> - složitější heuristiky.</li></ul>
+        </div>
+    </note>
+    <note id="1764922584" type="1708237251">
+        <div class="field">
+Okolí stavu
+        </div>
+        <div class="field">
+množina stavů dosažitelných ze stavu pomocí aplikace některé operace
+        </div>
+    </note>
+    <note id="2049961547" type="1708237251">
+        <div class="field">
+k-okolí stavu
+        </div>
+        <div class="field">
+Množina stavů dosažitelných ze stavu aplikací nejméně jedné a nejvíce \(k\) operací
+        </div>
+    </note>
+    <note id="1250264003" type="1708237251">
+        <div class="field">
+Sousední stavy
+        </div>
+        <div class="field">
+stavy z okolí stavu
+        </div>
+    </note>
+    <note id="1445970608" type="1708237251">
+        <div class="field">
+Inverzní operátory
+        </div>
+        <div class="field">
+Např. pro knapsack libovolnou vloženou věc je možné odebrat, v grafu je možné libovolně dlouho bloudit
+        </div>
+    </note>
+    <note id="1370374271" type="1708237251">
+        <div class="field">
+Stavový prostor TSP/HC
+        </div>
+        <div class="field">
+<ul><li>Konfigurace = podgraf</li><li>Uzel stavového prostoru = podgraf</li><li>Operátor = např. dvojzáměna na hranách</li></ul><div>* TSP = problém obchodního cestujícího, HC = hamiltonovská kružnice</div>
+        </div>
+    </note>
+    <note id="1934687522" type="1708237251">
+        <div class="field">
+Definice - Prostor prohledávání
+        </div>
+        <div class="field">
+Prostor prohledávání se od stavového prostoru liší tím, že ohodnocení proměnných jeho prvků může být nedefinované. Dosazením všech možných hodnot za nedefinované proměnné vzniká podmnožina stavového prostoru.<br/><br/><i>* např. v prostoru prohledávání by mohl být přípustný prvek </i>\(\texttt{0?1}\)<i> a dosazením všech možných hodnot za nedefinovanou proměnnou lze získat stavy </i>\(\texttt{011}\)<i> a </i>\(\texttt{001}\)<i>, které tvoří podmnožinu stavového prostoru</i>
+        </div>
+    </note>
+
+</deck>

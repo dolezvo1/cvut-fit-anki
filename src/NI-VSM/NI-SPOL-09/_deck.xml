@@ -1,0 +1,283 @@
+<deck id="1642606043" name="NI-VSM::NI-SPOL-09" deck_slug="NI-SPOL-09">
+
+    <note id="1239219189" type="1708237251">
+        <div class="field">
+Markovské řetězce se spojitým časem
+        </div>
+        <div class="field">
+<ul><li>Náhodný proces \(\{X_t:t\ge0\}\) s diskrétnou množinou stavov \(S\), která splňuje markovskou podmínku</li><ul><li>\(P(X_{t_k} = s_k|X_{t_0} = s_0,X_{t_1} = s_1,\dots,X_{t_{k-1}} = s_{k-1})
+= P(X_{t_k} = s_k|X_{t_{k-1}} = s_{k-1})\)</li><li>k předpovězení stavu v čase \(t+s\) nám stačí znát stav v čase \(t\) (na historii nezáleží)</li></ul><li>\(p_i(t)=P(X_t=i)\), kde \(i\) je stav<br/></li><li>\(p(t)=(p_1(t),p_2(t),\dots)\) je rozdělení v čase \(t\)</li><li>Stejně jako u diskrétních definujeme i homogenitu, tj. že<br/>\(P(X_{s+t} =j|X_s =i)=P(X_t =j|X_0 =i)\)</li></ul><div><i>* v podstatě stejné jako u diskrétních Markovských řětězců, rozdíl je v tom, že místo diskrétního času máme čas spojitý</i></div>
+        </div>
+    </note>
+    <note id="2000120836" type="1708237251">
+        <div class="field">
+Definice - Čítací proces
+        </div>
+        <div class="field">
+Čítací proces (<i>counting process</i>) je náhodný proces \(\{ N_t \mid t \geq 0 \}\), jehož trajektorie jsou (ve smyslu skoro jistě):<br/><ul><li><b>nezáporné</b> -<b> </b>\(N_t \geq 0\),<br/></li><li><b>celočíselné </b>- \(N_t \in \mathbb Z\),<br/></li><li><b>neklesající </b>- \(s \leq t \Rightarrow N_s \leq N_t\).</li></ul><i>* Poissonův proces je čítací proces s nezávislými exponenciálně rozdělenými časy mezi událostmi</i><br/>
+        </div>
+    </note>
+    <note id="1108042808" type="1708237251">
+        <div class="field">
+Definice - Poissonův proces (pomocí přírustků)
+        </div>
+        <div class="field">
+Homogenní Poissonův proces \(\{ N_t \mid t \geq0 \}\) je náhodný proces, pro který platí:<br/><ul><li>\(N_0 = 0\) skoro jistě,</li><li>\(N_t - N_s \sim \operatorname{Poisson} \bigl( \lambda (t - s) \bigr)\) pro všechna \(t &gt; s \in \langle 0, + \infty )\),</li><li>\(\{ N_t \}\) má nezávislé přírůstky, tedy pro všechna \(n \in \mathbb N\) a všechna \(t_0 &lt; t_1 &lt; \dots &lt; t_n \in \langle 0, + \infty )\) platí, že\[N_{t_1} - N_{t_0}, N_{t_2} - N_{t_1}, \dots, N_{t_n} - N_{t_n - 1}\]jsou nezávislé.</li></ul>
+        </div>
+    </note>
+    <note id="2104033516" type="1708237251">
+        <div class="field">
+Definice - Poissonův proces (pomocí trajektorií)
+        </div>
+        <div class="field">
+Mějme i.i.d. náhodné veličiny \(\{ X_j \mid j \in \mathbb N \}\) s rozdělením \(\operatorname{Exp}(\lambda)\) udávající délky časových intervalů mezi událostmi a definujme časy příchodů událostí \(\{ T_n \mid n \in \mathbb N\}\) pomocí rekurentního předpisu\[T_n = T_{n - 1} + X_n,\]případně pomocí explicitního předpisu\[T_n = \displaystyle \sum_{j = 1}^n X_j,\]přičemž klademe \(T_0 = 0\). Potom homogenní Poissonův proces je náhodný proces \(\{ N_t \mid t \geq 0 \}\) čítající počet událostí do času \(t\), tedy\[N_t(\omega) = \max \{ n \in \mathbb N_0 \mid T_n(\omega) \leq t \}.\]<br/><i>* hodnoty </i>\(X_j\)<i> jsou délky časových intervalů mezi událostmi<br/>* hodnota </i>\(T_n\)<i> je čas </i>\(n\)<i>-té události<br/>* hodnota </i>\(N_t\)<i> je počet výskytů události do času </i>\(t\)<i> (včetně)</i><br/>
+        </div>
+    </note>
+    <note id="1990114868" type="1708237251">
+        <div class="field">
+Binomický x Poissonův proces
+        </div>
+        <div class="field">
+Binomický proces je podobně jako Poissonův proces čítač událostí, ale s diskrétním časem.<br/><br/><img src="binomicvspoisson-26f86e08d43711d45a3def75424b62fbe1581beb.jpg"/><br/><br/><i>* klíčové je, že geometrické rozdělení je, stejně jako exponenciální, bezpaměťové</i>
+        </div>
+    </note>
+    <note id="1932963626" type="1708237251">
+        <div class="field">
+Poissonův proces: přehled
+        </div>
+        <div class="field">
+<ul><li>Náhodný proces indexovaný spojitým časem, hodnoty jsou přirozená čísla.<br/></li><li>Lze ho chápat jako počet událostí do času \(t\), proto se často používá k modelování obsluhy na sobě nezávislých požadavků</li><li>Doba mezi jednotlivými příchody má exponenciální rozdělení<br/>\(Exp(\lambda)\)<br/></li><li>\(N(t)\) udáva počet příchodů do času \(t\) a má Poissonovo rozdělení \(Poiss(\lambda t)\)</li></ul><div><i>* exponenciální rozdělení "nemá paměť", tzn. rozdělení zbývajícího času do příchodu je stále stejné bez ohledu na to, jak dlouho již čekáme</i><br/></div>
+        </div>
+    </note>
+    <note id="1307347286" type="1708237251">
+        <div class="field">
+Exponenciální rozdělení
+        </div>
+        <div class="field">
+<div>\(X \sim Exp(\lambda)\)<br/></div><ul><li>Hustota: \(f(x; \lambda) = \begin{cases}
+\lambda e^{-\lambda t} &amp; x\geq 0,\\
+0 &amp; x \lt 0
+\end{cases}\)</li><li>Distribuční funkce: \(F(x; \lambda) = \begin{cases}
+1-e^{-\lambda t} &amp; x\geq 0,\\
+0 &amp; x \lt 0
+\end{cases}\)</li><li>\(EX=\frac{1}{\lambda}\), \(\mathrm{var}X=\frac{1}{\lambda^2}\), moment \(\mathrm{E}[X^k]=\frac{k!}{\lambda^k}\)</li></ul>
+        </div>
+    </note>
+    <note id="1653588100" type="1708237251">
+        <div class="field">
+Věta - Bezpaměťovost exponenciálního rozdělení
+        </div>
+        <div class="field">
+Buď \(T \sim Exp(\lambda)\) exponenciálně rozdělená náhodná veličina. Pak pro všechna \(t, s \geq 0\) platí \(P(T &gt; t + s\ |\ T &gt; t) = P(T &gt; s)\).<br/><br/><i>* "Pokud jsme na příjezd autobusu čekali t minut, pak pravděpodobnost, že budeme čekat dalších s minut je stejná, jako kdybychom vůbec nečekali."</i>
+        </div>
+    </note>
+    <note id="1954067937" type="1708237251">
+        <div class="field">
+Věta - Silná bezpaměťovost exponenciálního rozdělení
+        </div>
+        <div class="field">
+Buď \(T\sim Exp(\lambda)\) a buď \(A\) spojitá nezáporná náhodná veličina nezávislá na \(T\). Pak pro všechna \(s \geq 0\) platí \(P(T \gt A + s \ | \ T \gt A) = P(T \gt s)\).<br/><br/><i>* "Pokud jsme na příjezd autobusu č. 143 čekali do příjezdu autobusu č. 180, pak pravděpodobnost, že budeme čekat dalších s minut je stejná, jako kdybychom vůbec nečekali."</i>
+        </div>
+    </note>
+    <note id="1720556754" type="1708237251">
+        <div class="field">
+Definice - Markovský řetězec se spojitým časem
+        </div>
+        <div class="field">
+Náhodný proces \(\{ X_t \mid t \geq 0 \}\) s nejvýše spočetnou množinou stavů \(S\) nazýváme <b>markovským řetězecem se spojitým časem</b>, pokud splňuje <b>markovskou podmínku</b>, tj. pokud pro všechna \(n \in \mathbb N\), všechna \(t_0 &lt; t_1 &lt; \dots &lt; t_n \in \langle 0, + \infty )\) a všechna \(s_0, \dots, s_n \in S\) platí\(\operatorname P(X_{t_n} = s_n | X_{t_{n - 1}} = s_{n - 1} \cap \dots X_{t_0} = s_0) = \operatorname P(X_{t_n} = s_n | X_{t_{n - 1}} = s_{n - 1}).\)
+        </div>
+    </note>
+    <note id="1902311371" type="1708237251">
+        <div class="field">
+Definice - Matice pravděpodobnosti přechodu markovského řetězce se spojitým časem
+        </div>
+        <div class="field">
+<b>Matice pravděpodobností přechodu markovského řetězce se spojitým časem </b>\(\{ X_t \mid t \geq 0 \}\) za čas mezi \(s\) a \(t\), kde \(t \geq s\) je matice\[\mathbf P(s, t) = \big( \mathbf P_{ij}(s, t) \big)_{i, j \in S},\]kde\[\mathbf P_{ij}(s, t) = \operatorname P(X_t = j | X_s = i).\]<br/>
+        </div>
+    </note>
+    <note id="1187596108" type="1708237251">
+        <div class="field">
+Definice - Rozdělení markovského řetězce se spojitým časem v čase
+        </div>
+        <div class="field">
+<b>Rozdělení markovského řetězce se spojitým časem </b>\(\{ X_t \mid t \geq 0 \}\)<b> v čase </b>\(t \in \langle 0, +\infty)\) je pak pro \(i \in S\) charakterizované řádkovým vektorem\[\mathbf p(t) = \big( p_1(t), p_2(t), \dots),\]kde\[\mathbf p_i(t) = \operatorname P(X_t = i).\]<br/>
+        </div>
+    </note>
+    <note id="1885647121" type="1708237251">
+        <div class="field">
+Kdy je náhodný proces markovský?
+        </div>
+        <div class="field">
+Náhodný proces \(\{X_t\ |\ t \geq0\}\) s nejvýše spočetnou množinou stavů \(S\) je markovský právě tehdy, když \(\forall k \in\mathbb{N}\), \(\forall\ 0 \leq t_0 \le t_0 \le t_1 \le \dots \le t_k \in \mathbb{R}_0^+\), a \(\forall s_0, \dots, s_k \in S\) platí <br/>\(P(X_{t_0} = s_0, \dots, X_{t_k} = s_k)
+= p_{s_0}(t_0) \cdot P_{s_0 s_1}(t_0, t_1) \cdot \ \dots \ \cdot P_{s_{k-1} s_k}(t_{k-1}, t_k)\)
+        </div>
+    </note>
+    <note id="1131920915" type="1708237251">
+        <div class="field">
+Definice - homogenní markovský řetězec se spojitým časem
+        </div>
+        <div class="field">
+Markovský řetězec se spojitým časem je homogenní, pokud pro všechna \(t, s \in \langle 0, + \infty )\) platí\[\mathbf P(t, t + s) = \mathbf P(0, s) := \mathbf P(s).\]<br/>
+        </div>
+    </note>
+    <note id="1709454016" type="1708237251">
+        <div class="field">
+Věta - důsledky Chapman-Kolmogorovovy rovnice pro homogenní markovské řetězce se spojitým časem.
+        </div>
+        <div class="field">
+Pro homogenní markovský řetězec se spojitým časem a všechna \(t, s \in \langle 0, +\infty)\) platí\[\mathbf P(t + s) = \mathbf P(t) \cdot \mathbf P(s) = \mathbf P(s) \cdot \mathbf P(t)\] a navíc\[\mathbf p(t) = \mathbf p(s) \cdot \mathbf P(t - s) = \mathbf p(0) \cdot \mathbf P(t).\]<br/>
+        </div>
+    </note>
+    <note id="1651461477" type="1708237251">
+        <div class="field">
+Definice - Matice skokových intenzít
+        </div>
+        <div class="field">
+Pokud pro všechna \(i, j \in S\), \(i \neq j\) existují konečné limity<br/>\(Q_{ii}:=\lim_{h \to 0+}\frac{P_{ii}(h)-1}{h}\), \(Q_{ij}:=\lim_{h \to 0+}\frac{P_{ij}(h)}{h}\),<br/>pak \(Q=(Q_{ij})_{i,j\in S}\) nazýváme maticí skokových intenzit.<br/><ul><li>Lze rovněž zapsat jako \(Q := \lim_{h \to0+}\frac{1}{h}(P(h)-E) = P'(0)\), přičemž \(E=P(0)\)</li></ul><i>* Matice přechodů může být zpětně vytvořená z </i>\(Q\)<i> pomocí Kolmogorovy zpětné diferenciální rovnice </i>\(P'(t)=QP(t)\)<i> (po vyřešení dostávame </i>\(P(t)=e^{tQ}\)<i>)</i><br/>
+        </div>
+    </note>
+    <note id="1237056906" type="1708237251">
+        <div class="field">
+Vlastnosti Matice skokových intenzít
+        </div>
+        <div class="field">
+<ul><li>Složky na diagonále jsou \(\le0\), ostatní \(\ge0\)<br/></li><li>součet prvků v řádku je 0, tedy hodnota na diagonále odpovídá <b>mínus</b> součtu ostatních hodnot v řádku</li><li>V poli \(i,j\) je intenzita skoků z \(i\) do \(j\), v poli \(i\), \(i\) je intenzita skoků z \(i\) pryč</li></ul>
+        </div>
+    </note>
+    <note id="1136204442" type="1708237251">
+        <div class="field">
+Věta - o simulaci markovského řetězce se spojitým časem pomocí skokových intenzit
+        </div>
+        <div class="field">
+Mějme čas \(\rho_i\) do výskoku ze stavu \(i \in S\) markovského řetězce se spojitým časem \(\{ X_t \mid t \geq 0 \}\), tedy \(X_{\rho_i} \neq i\) a \(X_s = i\) pro \(s \in \langle 0, \rho_i)\). Pak má \(\rho_i\) exponenciální rozdělení s parametrem \(- \mathbf Q_{ii}\), tedy \[\rho_i \sim \operatorname{Exp}(-\mathbf Q_{ii})\]a pravděpodobnost, že řetězec v čase \(\rho_i\) skočí z \(i\) do \(j \in S\) je dána poměrem intenzit \(\mathbf Q_{ij}\), tedy\[\operatorname P(X_{\rho_i} = j | X_0 = i) = \frac {\mathbf Q_{ij}} {-\mathbf Q_{ii}} = \frac {\mathbf Q_{ij}}{\displaystyle \sum_{\stackrel{k \in S}{i \neq k}} \mathbf Q_{ik}}.\]<br/>
+        </div>
+    </note>
+    <note id="1094448970" type="1708237251">
+        <div class="field">
+Postup simulace markovského řetězce se spojitým časem markovským řetězcem s diskrétním časem časovaným pomocí homogenního Poissonova procesu
+        </div>
+        <div class="field">
+<div>Mějme homogenní markovský řetězec se spojitým časem \(\{ X_t \mid t \geq 0 \}\) simulovaný homogenním markovským řetězcem s diskrétním časem \(\{ Y_n \mid n \in \mathbb N_0 \}\) časovaným pomocí homogenního Poissonova procesu \(\{ N_t \mid t \geq 0 \}\) s intenzitou \(\lambda\), tedy\[X_t = Y_{N_t},\]a předpokládejme, že známe matici skokových intenzit \(\mathbf Q\) řetězce \(\{ X_t \}\). Potom postupujeme v následujících krocích:<br/><ul><li>definujeme\[\lambda = \displaystyle \sup_{i \in S}(- \mathbf Q_{ii}),\]</li><li>zkonstruujeme matici přechodu \(\mathbf D\) řetězce \(\{ Y_n \}\)\[\mathbf D = \mathbf I + \frac 1 \lambda \mathbf Q,\]</li><li>vygenerujeme trajektorii homogenního Poissonova procesu \(\{ N_t \}\),</li><li>vygenerujeme trajektorii řetězce \(\{ Y_n \}\) pomocí \(\mathbf D\),</li><li>trajektorii řetězce \(\{ X_t \}\) získáme jako\[X_t = Y_{N_t}.\]</li></ul></div>
+        </div>
+    </note>
+    <note id="1165943079" type="1708237251">
+        <div class="field">
+Diskrétní řetězec časovaný Poissonovým procesem
+        </div>
+        <div class="field">
+Věta: Buď \(\{N_t|t\ge0\}\) Poissonův proces s intenzitou \(\lambda\). Buď \(\{Y_n|n\ge N_0\}\) řetězec s diskrétním časem s maticí přechodu \(D\). Potom proces \(\{X_t|t \ge0\}\) definovaný jako \(X_t=Y_{N_t}\) je homogenní markovský proces se spojitým časem.<br/><br/>Matice skokových intenzit \(\mathbf Q\) řetězce má tvar\[\mathbf Q = \lambda(\mathbf D - \mathbf I)\]kde \(\mathbf D\) je matice pravděpodobností přechodu řetězce \(\{ Y_n \}\) a \(\mathbf I\) je jednotková matice. \(D\) musí být stochastická, tedy \(D\) můžeme zkonstruovat právě když platí  \(\sup_{i \in S}(-Q_{ii})\lt+\infty\).<br/><br/><i>* </i>\(N_t\)<i> je čítací proces, jehož "počtem výskytů" indexujeme diskrétní časy řetězce </i>\(Y_n\)<br/>
+        </div>
+    </note>
+    <note id="1383721809" type="1708237251">
+        <div class="field">
+Definice, věta - stacionární rozdělení markovského řetězce se spojitým časem
+        </div>
+        <div class="field">
+<div>Definice: Stejně jako u řetězců s diskrétním časem i zde máme stacionární rozdělení \(\pi\), kde \(\forall t \geq 0\) platí \(\pi\cdot P(t)=\pi\).</div><div><br/></div><div>Věta: Vektor \(\boldsymbol \pi\) je stacionárním rozdělením markovského řetězce se spojitým časem a maticí skokových intenzit \(\mathbf Q\) právě tehdy, když\[\boldsymbol \pi \cdot \mathbf Q = 0.\]</div>
+        </div>
+    </note>
+    <note id="2017641292" type="1708237251">
+        <div class="field">
+Chapman-Kolmogorova věta pro Markovské řetězce se spojitým časem
+        </div>
+        <div class="field">
+\(P(t,r)=P(t,s)\cdot P(s,r)\)<br/><br/><i>* časový pokrok můžeme rozdělit na dvě části a jejich matice přechodů po vynásobení dávají </i>\(P(t+s)\)
+        </div>
+    </note>
+    <note id="1538744350" type="1708237251">
+        <div class="field">
+Věta - Simulace Poissonova procesu pomocí skokových intenzit
+        </div>
+        <div class="field">
+<ul><li>Čas do výskoku z \(i\) je exponenciální s \(\lambda_i = -Q_{ii}\), tj. \(\tau_i \sim \mathrm{Exp}(-Q_{ii})\),<br/></li><li>pravděpodobnost uskutečnení skoku z \(i\) do \(j\) je dána poměrem intenzit, tj. \(P(X_{\tau_i}=j\ |\ X_0=i) = \frac{\phantom{-}Q_{ij}}{-Q_{ii}}\).</li><li>Princip simulace</li><ul><li>Začínám v \(i\in S\)</li><li>generuji náhodný čas \(\tau_i\sim Exp(-Q_{ii})\) a posunu hodiny</li><li>změním stav z \(i\) na \(j\) s pravděpodobností \(\frac{\phantom{-}Q_{ij}}{-Q_{ii}}\)</li></ul></ul>
+        </div>
+    </note>
+    <note id="2056832032" type="1708237251">
+        <div class="field">
+Věta - Matice pravděpodobností přechodu markovského řetězce se spojitým časem simulovaného markovským řetězcem s diskrétním časem časovaným pomocí homogenního Poissonova procesu.
+        </div>
+        <div class="field">
+Mějme homogenní markovský řetězec se spojitým časem \(\{ X_t \mid t \geq 0 \}\) simulovaný homogenním markovským řetězcem s diskrétním časem \(\{ Y_n \mid n \in \mathbb N_0 \}\) časovaným pomocí homogenního Poissonova procesu \(\{ N_t \mid t \geq 0 \}\) s intenzitou \(\lambda\), tedy\[X_t = Y_{N_t}.\]Pak matice pravděpodobností přechodu \(\mathbf P\) řetězce \(\{ X_t \}\) má složky\[\mathbf P_{ij}(t) = \displaystyle \sum_{n = 0}^{+\infty} \frac {(\lambda t)^n} {n!} e^{- \lambda t} (\mathbf D^n)_{ij},\]kde \(\mathbf D\) je matice pravděpodobností přechodu řetězce \(\{ Y_n \}\).<br/>
+        </div>
+    </note>
+    <note id="1181634450" type="1708237251">
+        <div class="field">
+Věta - Kolmogorovy rovnice
+        </div>
+        <div class="field">
+<div>Mějme homogenní markovský řetězec se spojitým časem a maticí intenzit \(\mathbf Q\). Pak pro matice přechodu \(\mathbf P(t)\) platí Kolmogorovova dopředná rovnice\[\mathbf P'(t) = \mathbf P(t) \cdot \mathbf Q\]a Kolmogorovova zpětná rovnice\[\mathbf P'(t) = \mathbf Q \cdot \mathbf P(t).\]</div>
+        </div>
+    </note>
+    <note id="1419309921" type="1708237251">
+        <div class="field">
+Věta - důsledek Kolmogorových rovnic
+        </div>
+        <div class="field">
+<div>Mějme markovský řetězec se spojitým časem a maticí intenzit \(\mathbf Q\). Pak rozdělení v čase \(\mathbf p(t)\) je řešením soustavy diferenciálních rovnic\[\begin{matrix}
+\mathbf p'(t) = \mathbf p(t) \mathbf Q,\\
+\mathbf p(0) = \mathbf p_\text{initial}.
+\end{matrix}\]Pokud navíc položíme\[\mathbf p_\text{initial} = \mathbf e_i,\]pak jako řešení získáme \(i\)-tý řádek maticí přechodu \(\mathbf P(t)\).<br/></div>
+        </div>
+    </note>
+    <note id="1282824832" type="1708237251">
+        <div class="field">
+Definice - nerozložitelný markovský řetězec se spojitým časem
+        </div>
+        <div class="field">
+Markovský řetězec se spojitým časem nazveme nerozložitelný (ireducibilní) pokud se lze z libovolného stavu \(i \in S\) dostat do libovolného stavu \(j \in S\) pomocí konečně mnoha přeskoků, tedy pokud existuje \(n \in \mathbb N\) a stavy \(i = s_0, s_1, \dots, s_n = j \in S\) takové, že\[\mathbf Q_{s_k s_{k + 1}} &gt; 0\]pro \(k = 0, \dots, n - 1\).<br/>
+        </div>
+    </note>
+    <note id="1914480529" type="1708237251">
+        <div class="field">
+Věta - vztah nerozložitelného markovského řetězce se spojitým časem a jeho stacionárního rozdělení
+        </div>
+        <div class="field">
+Mějme markovský řetězec se spojitým časem. Potom pokud existuje stacionární rozdělení \(\boldsymbol \pi\), pak je jednoznačně určené a pro všechna \(i, j \in S\) platí\[\displaystyle \lim_{t \to +\infty} \mathbf P_{ij}(t) = \boldsymbol \pi_j.\]Pokud naopak stacionární rozdělení neexistuje, pak pro všechna \(i, j \in S\) platí\[\displaystyle \lim_{t \to + \infty} \mathbf P_{ij}(t) = 0.\]<br/>Důsledek: Pokud je množina stavů markovského řetězce se spojitým časem konečná, pak existuje jeho stacionární rozdělení.<br/>
+        </div>
+    </note>
+    <note id="1838183743" type="1708237251">
+        <div class="field">
+Věta - detailní rovnováha markovského řetězce se spojitým časem
+        </div>
+        <div class="field">
+Pokud rozdělení \(\mathbf \pi\) splňuje detailní rovnováhu, tj. \(\forall i \neq j \in S\) platí \[\mathbf \pi_j \mathbf Q_{ji} = \mathbf \pi_i \mathbf Q_{ij},\] pak je stacionárním rozdělením.<br/>
+        </div>
+    </note>
+    <note id="1877906459" type="1708237251">
+        <div class="field">
+Exponenciální závody
+        </div>
+        <div class="field">
+<ul><li>Při paralelní obsluze požadavků nás zajímá, který skončí dříve</li><li>Proto musíme porovnávat různé obsluhovací systémy resp. jejich exponenciální rozdělení s různými parametry</li><li>Vágně lze říci, že náhodný proces \(\{ X_t \mid t \geq 0 \}\) je markovský řetězec se spojitým časem právě tehdy, když mezi jednotlivými stavy probíhají exponenciální závody.<br/></li></ul>
+        </div>
+    </note>
+    <note id="1882852687" type="1708237251">
+        <div class="field">
+Lemma - rozdělení minima náhodných veličin s exponenciálním rozdělením
+        </div>
+        <div class="field">
+<div>Mějme nezávislé náhodné veličiny \(T \sim \operatorname{Exp}(\lambda)\) a \(S \sim \operatorname{Exp}(\mu)\). Pak platí\[Z = \min \{ T, S \} \sim \operatorname{Exp}(\lambda + \mu).\]<br/><br/></div><div>Tuto vlastnost lze rozšířit pro libovolný konečný počet nezávislých náhodných veličin \(T_1, \dots, T_n\) splňujících \(T_i \sim \operatorname{Exp}(\lambda_i)\). Pro ně pak platí\[\min \{ T_1, \dots, T_n  \} \sim \operatorname{Exp}(\lambda_1 + \dots + \lambda_n).\]<br/></div><div>* Navíc platí \(\mathrm{E} \max\{T_1, T_2\}
+= \mathrm{E}T_1 + \mathrm{E}T_2 - \mathrm{E}\min\{T_1, T_2\}\), z čehož plyne \(\mathrm{E} \max\{T_1, T_2\} = \frac1\lambda+\frac1\mu - \frac1{\lambda+\mu}\)</div><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1337008616" type="1708237251">
+        <div class="field">
+Lemma - vítěz exponenciálních závodů
+        </div>
+        <div class="field">
+<div>Mějme nezávislé náhodné veličiny \(T \sim \operatorname{Exp}(\lambda)\) a \(S \sim \operatorname{Exp}(\mu)\). Pak platí\[\begin{align}
+\operatorname P(T &lt; S) &amp;= \frac{\lambda}{\mu + \lambda},\\
+\operatorname P(S &lt; T) &amp;= \frac{\mu}{\lambda + \mu}.
+\end{align}\]<br/>Tuto vlastnost lze rozšířit pro libovolný konečný počet nezávislých náhodných veličin \(T_1, \dots, T_n\) splňujících \(T_i \sim \operatorname{Exp}(\lambda_i)\). Pro ně pak platí\[\operatorname P(T_i = \min \{ T_1, \dots, T_n \}) = \frac{\lambda_i}{\lambda_1 + \dots + \lambda_n}.\]<br/></div><div></div>
+        </div>
+    </note>
+    <note id="1913777859" type="1708237251">
+        <div class="field">
+Kdy je náhodný proces Poissonův proces?
+        </div>
+        <div class="field">
+Řekneme, že proces \(\{N_t\ |\ t \in[0, \infty)\}\) je Poissonův proces, pokud:<div><ol><li>\(N_0 = 0\) skoro jistě</li><li>\((\forall t &gt; s \geq 0)\ (N_t - N_s \sim Poisson(\lambda(t-s)))\)</li><li>\(\{N_t\}\) má nezávislé přírustky: \(\forall k \in \mathbb{N}\) a pro všechny \(0 \leq t_0 \lt t_1 \lt \dots \lt t_k\) jsou \(N_i - N_{i-1}\) nezávislé</li></ol></div>
+        </div>
+    </note>
+
+</deck>

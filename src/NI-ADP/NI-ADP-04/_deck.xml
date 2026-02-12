@@ -1,0 +1,92 @@
+<deck id="1279305815" name="NI-ADP::NI-ADP-04" deck_slug="NI-ADP-04">
+
+    <note id="1597993233" type="1708237251">
+        <div class="field">
+GoF Behavioral: Chain of Responsibility
+        </div>
+        <div class="field">
+Chain of Responsibility lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.<br/><br/><img alt="Handlers are lined-up one by one, forming a chain" src="chainofresponsibility-d7a8e85f886818394a181b884948cb3a.png"/>
+        </div>
+    </note>
+    <note id="1256997916" type="1708237251">
+        <div class="field">
+GoF Behavioral: Command
+        </div>
+        <div class="field">
+Command turns a request into a stand-alone object that contains all information about the request. This transformation lets you pass requests as a method arguments, delay or queue a request’s execution, and support undoable operations.<br/><br/><img alt="The GUI objects delegate the work to commands" src="command-11c51bb202d74360e815bc1c25b1859f.png"/>
+        </div>
+    </note>
+    <note id="2000404875" type="1708237251">
+        <div class="field">
+GoF Behavioral: Interpreter
+        </div>
+        <div class="field">
+Interpreter suggests modeling the domain with a recursive grammar. Each rule in the grammar is either a ‘composite’ (a rule that references other rules) or a terminal (a leaf node in a tree structure). Interpreter relies on the recursive traversal of the Composite pattern to interpret the ‘sentences’ it is asked to process.
+        </div>
+    </note>
+    <note id="1883089457" type="1708237251">
+        <div class="field">
+GoF Behavioral: Iterator
+        </div>
+        <div class="field">
+Iterator lets you traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.).<br/><br/><img alt="Structure of the Iterator design pattern" src="iterator-f4e69a906bc526819681d22bbb18d924.png"/>
+        </div>
+    </note>
+    <note id="1924402528" type="1708237251">
+        <div class="field">
+GoF Behavioral: Mediator
+        </div>
+        <div class="field">
+Mediator lets you reduce chaotic dependencies between objects. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.<br/><br/><img alt="Structure of the Mediator design pattern" src="mediator-0439e08d193b3b255fbde8e058a7c11cc5fee42c.png"/>
+        </div>
+    </note>
+    <note id="2022153357" type="1708237251">
+        <div class="field">
+GoF Behavioral: Memento
+        </div>
+        <div class="field">
+Memento lets you save and restore the previous state of an object without revealing the details of its implementation.<br/><br/><img alt="The originator has full access to the memento, whereas the caretaker can only access the metadata" src="memento-81b267154d07887c588d73e32044c324a047291a.png"/>
+        </div>
+    </note>
+    <note id="1645331146" type="1708237251">
+        <div class="field">
+GoF Behavioral: Observer
+        </div>
+        <div class="field">
+Observer lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.<br/><br/><img alt="Notification methods" src="observer-f3ae841b147106e7e5ff5011634795ff.png"/>
+        </div>
+    </note>
+    <note id="2018327771" type="1708237251">
+        <div class="field">
+GoF Behavioral: State
+        </div>
+        <div class="field">
+State lets an object alter its behavior when its internal state changes. It appears as if the object changed its class.<br/><br/><img alt="Structure of the State design pattern" src="state-465599af8d33351a06ed59df953450a6.png"/>
+        </div>
+    </note>
+    <note id="1585134067" type="1708237251">
+        <div class="field">
+GoF Behavioral: Strategy
+        </div>
+        <div class="field">
+Strategy lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.<br/><br/><img alt="Structure of the Strategy design pattern" src="strategy-022c686b2ae8a39f03172f04ee7f49238055ec14.png"/>
+        </div>
+    </note>
+    <note id="2046900738" type="1708237251">
+        <div class="field">
+GoF Behavioral: Template method
+        </div>
+        <div class="field">
+Template Method defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.<br/><br/><img alt="Template method defines the skeleton of the algorithm" src="templatemethod-d12c665d1dbaaa2180da009aa0dd3422c11361c9.png"/>
+        </div>
+    </note>
+    <note id="1199413888" type="1708237251">
+        <div class="field">
+GoF Behavioral: Visitor
+        </div>
+        <div class="field">
+Visitor lets you separate algorithms from the objects on which they operate.<br/><br/><img alt="Structure of the Visitor design pattern" src="visitor-2e4c42095dc71b8a7f6ae1b09d036e42976f5a3f.png"/>
+        </div>
+    </note>
+
+</deck>

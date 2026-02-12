@@ -1,0 +1,166 @@
+<deck id="2109511533" name="NI-PDB::NI-PDB-01" deck_slug="NI-PDB-01">
+
+    <note id="1542450672" type="1708237251">
+        <div class="field">
+Execution plans, cost
+        </div>
+        <div class="field">
+Execution plan describes an algorithm to obtain data requested by a SELECT statement. There are more potential execution plans for given SELECT, optimization means to find the best execution plan.<br/><br/>cost of an execution plan = number of I/O blocks (pages) to be processed (read + written)
+        </div>
+    </note>
+    <note id="1203943549" type="1708237251">
+        <div class="field">
+Storage structures
+        </div>
+        <div class="field">
+<ul><li>heap table</li><li>heap table with index</li><li>index organized table (IOT)</li><li>cluster</li></ul><div><img src="storagestructures-dffcb9381423832e6203c30bd4d69615ad86ebbe.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1789001251" type="1708237251">
+        <div class="field">
+B-tree
+        </div>
+        <div class="field">
+<div>B-tree is a balanced tree. Usually tends to be wide (\(&gt;50\) child nodes, not a binary tree!) and shallow (depth \(\sim 2..4\) levels).</div><div><br/></div><div><img src="btree-d4571fb0ba7cada09538a1b911dc1282785c2d3c.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1338791514" type="1708237251">
+        <div class="field">
+Table statistics
+        </div>
+        <div class="field">
+(heap) table statistics<br/><ul><li>\(n_R\) = number of rows of relation \(R\)</li><li>\(V(A, R)\) = number of different values of attribute \(A\) in relation \(R\)</li><li>\(p_R\) = number of pages required to store R</li><li>\(b_R\) = block factor = number of rows of \(R\) that fit in one page</li></ul><div>general table statistics<br/></div><div><ul><li>min and max values</li><li>histograms</li></ul></div>
+        </div>
+    </note>
+    <note id="1908993557" type="1708237251">
+        <div class="field">
+Index statistics
+        </div>
+        <div class="field">
+<div>B-tree statistics (assuming index on relation \(R\) with key \(A\))</div><div><ul><li>\(f_I(A,R)\) = average number of children of branch node (~50-150 in real DBs)</li><li>\(I(A,R)\) = index tree depth (number of levels, ~2-3 in real DBs)</li><li>p(A, R) = number of leaf blocks for index tree</li></ul><div>index statistics<br/></div></div><div><ul><li>clustering factor = amount of data blocks which must be visited (read) to receive data
+sorted (according to index key)</li></ul></div>
+        </div>
+    </note>
+    <note id="1978784503" type="1708237251">
+        <div class="field">
+Selection cost on base table with no index:<br/>select * from R where A = ’x’;
+        </div>
+        <div class="field">
+<div>If the searched column is known to be unique, the cost is on average \(p_R/2\) (half of the blocks required to scan the whole table). Otherwise the cost is always \(p_R\) (Full Table Scan, since multiple matching rows might be found).</div>
+        </div>
+    </note>
+    <note id="1963688440" type="1708237251">
+        <div class="field">
+Selection cost on base table with unique index on R(A):<br/>select * from R where A = ’x’;
+        </div>
+        <div class="field">
+<ul><li>cost = \(I(A,R) + 1\) in case of heap table + index<br/>▶ primary key constraint creates unique index</li><li>cost = \(I(A,R)\) in case of IOT</li></ul>
+        </div>
+    </note>
+    <note id="1644638993" type="1708237251">
+        <div class="field">
+Selection cost on base table with non-unique index on R(A):<br/>select * from R where A = ’x’;
+        </div>
+        <div class="field">
+<ul><li>cost = \(I(A,R) + n(R(A=\text{'x'}))\)<br/>▶ in practice highly depends on clustering factor of index<br/></li></ul>
+        </div>
+    </note>
+    <note id="1456350776" type="1708237251">
+        <div class="field">
+Selection cost on IOT with composed index on R(A, B):<br/>select B from R where A = ’x’;
+        </div>
+        <div class="field">
+<ul><li>cost = \(I((A,B),R) - 1\)\(+ \lceil n(R(A=\text{'x'}))/b_I(A,B) \rceil\)<br/>▶ -1 because walking down the index tree we already reached the
+first leaf block of index<br/></li></ul>
+        </div>
+    </note>
+    <note id="2054971403" type="1708237251">
+        <div class="field">
+Selection cost on IOT with composed index on R(A, B), but A is unique:<br/>select B from R where A = ’x’;
+        </div>
+        <div class="field">
+<ul><li>cost = \(I((A,B),R)\)<br/>▶ looks strange, but may be a design decision<br/></li></ul>
+        </div>
+    </note>
+    <note id="1286193339" type="1708237251">
+        <div class="field">
+Selection with inequality cost on IOT:<br/>select A from R where A &lt; ’x’;
+        </div>
+        <div class="field">
+<ul><li>cost = \(I(A,R) + p_I(A,R)/2\)<br/>▶ evaluate A = ‘x’, take all leaf blocks on left side (ordering list of leafs)<br/>▶ average cost (we suppose value ‘x’ is in middle)<br/></li></ul>
+        </div>
+    </note>
+    <note id="1788914940" type="1708237251">
+        <div class="field">
+Selection with inequality cost on base table:<br/>select * from R where A &lt; ’x’;
+        </div>
+        <div class="field">
+<ul><li>without using index \(R(A)\): cost = \(p_R\) <br/></li><li>when using index \(R(A)\): average cost = \(I(A) + p_I(A,R)/2 + n_R/2\) <br/></li></ul>
+        </div>
+    </note>
+    <note id="1882722780" type="1708237251">
+        <div class="field">
+Sorting in RDBMS: overview
+        </div>
+        <div class="field">
+<ul><li>RDBMS need to be able to sort data which may not fit into RAM at once (this is referred to as <i>external sorting</i>).<br/></li><li>RDBMS use sort for DISTINCT, ORDER BY, HAVING, set operations, etc.</li></ul>
+        </div>
+    </note>
+    <note id="1291709855" type="1708237251">
+        <div class="field">
+Multi-run sort
+        </div>
+        <div class="field">
+Idea of multi-run sort:<br/><ul><li><div>in the first run, sort \(\frac{p_R}{M}\)pieces of length \(M\)</div></li><li><div>in additional runs, sort up to \(M - 1\) pieces of length \((M - 1)^{k-1} M\)</div></li><li><div>total cost: \(\text{#runs} \cdot p_R\) reads, \(\text{#runs} \cdot p_R\) writes</div></li></ul><div><div>Multi-run sort cost can be further improved by using a priority queue as an intermediary container - this guarantees average length of runs is \(2M\)<span style="white-space: pre;">.</span></div></div><div><br/></div><div>TODO: images?</div>
+        </div>
+    </note>
+    <note id="1523871760" type="1708237251">
+        <div class="field">
+Relational algebra
+        </div>
+        <div class="field">
+<ul><li>\(\pi_{ATTRIBUTES}\) = projection (restrict data to specified attributes)<br/></li><li>\(\sigma_{CONDITION}\) = selection (restrict data to rows that match)<br/></li><li>\(R \bowtie_{CONDITION} S\) = join relations on condition<br/></li></ul>
+        </div>
+    </note>
+    <note id="1988856626" type="1708237251">
+        <div class="field">
+Join between relations
+        </div>
+        <div class="field">
+<div>Join is an operation where a new relation \(RS\) is created by concatenating rows of \(R\) and \(S\) where a condition holds (usually key equality).</div>
+        </div>
+    </note>
+    <note id="1333534180" type="1708237251">
+        <div class="field">
+Nested loops join
+        </div>
+        <div class="field">
+Simplest way to join two relations \(R\), \(S\) (WLOG assume \(p_R \leq p_S\)). Requires at least \(M=3\) memory blocks (one for blocks of \(R\), one for blocks of \(S\), one for output blocks). Read cost:<br/><ul><li>if \(M=3\) (minimal case) then \(p_R + p_R \cdot p_S\) reads</li><li>if \(3 &lt; M &lt; p_R + 2\) then \(p_R + \left\lceil\frac{p_R}{M-2}\right\rceil \cdot p_S\) reads</li><li>if \(M \geq p_R + 2\) (ideal case) then \(p_R + p_S\) reads</li></ul><div>Writes cost (TODO: on average?) \(\frac{n_R \cdot n_S}{V(a,S) \cdot b_{RS}}\).<br/></div><div><br/></div><div><img src="nestedloopsjoin-3ddb3e59f24b3b572b4d77673e3274776b33635f.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="2043216633" type="1708237251">
+        <div class="field">
+Merge join
+        </div>
+        <div class="field">
+<div>Sort \(R\) according to \(a\), sort \(S\) according to \(a\), merge sorted relations. Read cost:</div><div><ul><li>if \(M=3\) (minimal case) then \(\sim 2p_R \log(p_R) + 2p_S \log(p_S) + p_R + p_S\)</li><li>if \(3 &lt; M &lt; \sqrt{p_S}\) then cost depends on number of runs</li><li>if \(M \geq \sqrt{p_S}\) (ideal case) then \(\sim 3(p_R + p_S)\)<ul><li><div>i.e. sort both relations using 2-run sort (\(2p_R + 2p_S\)), then join the sorted output (\(p_R + p_S\))</div></li></ul></li></ul></div>
+        </div>
+    </note>
+    <note id="1293607229" type="1708237251">
+        <div class="field">
+Hash join
+        </div>
+        <div class="field">
+Idea is to reduce the amount of mutual comparisons by hashing the join attribute of both relations (e.g. modulo k) and comparing only groups from \(R\) and \(S\) with the same hash value.<br/><br/>(read cost formula not stated)
+        </div>
+    </note>
+    <note id="1257774673" type="1708237251">
+        <div class="field">
+Join using indexes and special structures
+        </div>
+        <div class="field">
+R is ordered by a, S.a is primary key<br/><ul><li>cost: pR + I(A,S) + p(A,S) + V(A,R)<br/>▶ read R (pR) and index on S(A) (I(A,S)+p(A,S))<br/>▶ lookup to S by rowid in case of equality (V(A,R))</li></ul><div><br/></div><div>R is ordered by a, S is hashed by A (i.e. in hash cluster by a)</div><div><ul><li>cost: pR + V(A,R)</li></ul><div><br/></div><div>Join + selection, R.b is primary key, S.a is secondary key<br/></div></div><div><ul><li>i.e. <code>select * from R join S on (R.a=S.a) where R.b='x';</code></li><li>cost: I(a,S) + I(b,R) + 2<br/></li></ul></div>
+        </div>
+    </note>
+    
+</deck>

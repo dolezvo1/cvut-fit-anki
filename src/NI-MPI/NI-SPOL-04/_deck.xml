@@ -1,0 +1,166 @@
+<deck id="1968998999" name="NI-MPI::NI-SPOL-04" deck_slug="NI-SPOL-04">
+
+    <note id="2007804373" type="1708237251">
+        <div class="field">
+Integrál: přehled
+        </div>
+        <div class="field">
+<ul><li>Nástroj na výpočet obsahu pod grafem nějaké funkce</li><li>Výpočet obsahu:</li><ul><li>Rozdělit interval na úseky</li><li>Aproximovat funkci \(f\) do konstantami zvolených funkcí stupňovitého tvaru</li><li>obsah každé funkce je obdélník</li></ul></ul><div><i>* čím menší rozdělení intervalu, tím přesnější je výsledek</i></div>
+        </div>
+    </note>
+    <note id="1154543916" type="1708237251">
+        <div class="field">
+Definice - Rozdělení intervalu, dělící body intervalu, norma rozdělení \(\sigma\)
+        </div>
+        <div class="field">
+Máme daný interval \([a, b]\)<br/><ul><li>Konečnou množinu \(\sigma=\{x_1,x_2,\dots,x_n\}\) tak, že \(a=x_0 \lt x_1 \lt \dots \lt x_n = b\) nazýváme <b>rozdělením intervalu</b> \([a,b]\)</li><li>Body \(x_k\), \(k=1,2,\dots,n-1\) nazýváme <b>dělící body intervalu </b>\([a,b]\)</li><li>Číslo \(\nu(\sigma)=\max\{\Delta_k:k=1,2,\dots,n\}\), kde \(\Delta_k=x_k-x_{k-1},k=1,2,\dots,n\) nazýváme <b>normou rozdělení </b>\(\sigma\)</li></ul>
+        </div>
+    </note>
+    <note id="1415867674" type="1708237251">
+        <div class="field">
+Kdy je posloupnost rozdělení \(\sigma_n\) normální?
+        </div>
+        <div class="field">
+Posloupnost rozdělení \(\sigma_n\) nazveme normální, pokud pro její normy platí \(\lim_{x \to \infty}\nu(\sigma_n)=0\)
+        </div>
+    </note>
+    <note id="1419474525" type="1708237251">
+        <div class="field">
+Věta - postačující podmínka integrability
+        </div>
+        <div class="field">
+Buď \(f\) spojitá na \([a, b]\). Potom existuje \(f_a^b f(x)\mathrm{d}x\).<br/><br/>Je-li \(\sigma_n\) normální posloupnost rozdělení, potom<br/>\(\lim_{n\to\infty} s_f(\sigma_n)\) a \(\lim_{n\to\infty} S_f(\sigma_n)\)<br/>existují a jsou rovny \(f_a^b f(x)\mathrm{d}x\).
+        </div>
+    </note>
+    <note id="2142389164" type="1708237251">
+        <div class="field">
+Definice - horní a dolní Darbouxova suma
+        </div>
+        <div class="field">
+Označme \(M_{i,j} = \sup\{f(x,y): (x, y) \in [x_{i-1}, x_i] \times [y_{j-1}, y_j]\}\) a \(m_{i, j} = \inf\{f(x,y): (x, y) \in [x_{i-1}, x_i] \times [y_{j-1}, y_j]\}\).<br/><br/><b>Horní Darbouxova suma </b>\(f\)<b> vzhledem k rozdělení </b>\(\sigma\) je<br/>\(S_f(\sigma) = \sum_{i=1}^n \sum_{j=1}^m M_{i,j} (x_i - x_{i-1}) (y_j - y_{j-1})\)<br/>a <b>dolní Darbouxova suma </b>\(f\)<b> vzhledem k rozdělení </b>\(\sigma\) je<br/>\(s_f(\sigma) = \sum_{i=1}^n \sum_{j=1}^m m_{i,j} (x_i - x_{i-1}) (y_j - y_{j-1})\)<br/><br/><i>* horní suma je odhad objemu pod funkcí pomocí maximální hodnoty funkce v jednom obdélníčku rozdělení, dolní suma naopak pomocí minimální hodnoty</i>
+        </div>
+    </note>
+    <note id="2025972967" type="1708237251">
+        <div class="field">
+Definice - Horní a dolní Darbouxův integrál
+        </div>
+        <div class="field">
+<b>Horní Darbouxův integrál (funkce </b>\(f\)<b> na </b>\(D\)<b>)</b> je<br/>\(D_f=\inf\{S_f(\sigma): \sigma \text{ je rozdělení } D\}\)<br/>a <b>dolní Darbouxův integrál (funkce </b>\(f\)<b> na </b>\(D\)<b>)</b> je<br/>\(d_f=\sup\{s_f(\sigma): \sigma \text{ je rozdělení } D\}\).<br/><br/><i>* jedná se o nejtěsnější možné horní, resp. dolní, odhady</i>
+        </div>
+    </note>
+    <note id="1540736955" type="1708237251">
+        <div class="field">
+Definice - Darbouxův integrál
+        </div>
+        <div class="field">
+Pokud \(D_f=d_f\), tak tuto hodnotu nazýváme <b>(dvojitým) Darbouxovým integrálem</b> funkce \(f\) na \(D\) a značíme ji<br/><br/>\(\iint_D f(x,y)\mathrm{d}x\mathrm{d}y = D_f = d_f\).<br/><br/>Řekneme, že \(f\) je <b>(Darbouxovsky) integrabilní</b> na \(D\).<br/><br/><i>* když se horní i dolní integrál rovnají tak víme, že sčítáme správně </i><i>(tj. </i><i>máme tak malé obdélníčky, že funkci dokonale opíší)</i>
+        </div>
+    </note>
+    <note id="1280384163" type="1708237251">
+        <div class="field">
+Věta - výpočet dvojného integrálu nad obdélníkovou oblastí
+        </div>
+        <div class="field">
+Buď \(f(x,y)\) integrabilní funkce na \(D = [a,b] \times [c, d]\). Pokud existuje jeden z integrálů<br/>\(\int_a^b \left(\int_c^d f(x,y) \mathrm{d}y \right)\mathrm{d}x\) nebo \(\int_c^d \left(\int_a^b f(x,y) \mathrm{d}x \right)\mathrm{d}y\)<br/>potom je roven dvojnému integrálu<br/>\(\iint_D f(x,y) \mathrm{d}x\mathrm{d}y\).
+        </div>
+    </note>
+    <note id="1202475102" type="1708237251">
+        <div class="field">
+Definice - Primitivní funkce
+        </div>
+        <div class="field">
+Nechť funkce \(f\) je definovaná na intervalu \((a,b)\), kde \(-\infty \le a \lt b \le +\infty\). Funkci \(F\), která splňuje:<br/><br/>\(F'(x)=f(x)\) pro každé \(x \in (a,b)\)<br/><br/>nazýváme <b>primitivní funkcí</b> k funkci \(f\) v intervalu \((a,b)\).
+        </div>
+    </note>
+    <note id="2029482376" type="1708237251">
+        <div class="field">
+Věta - Newtonova formula
+        </div>
+        <div class="field">
+Nechť \(f\) je funkce spojitá na intervalu \([a,b]\) s primitivní funkcí \(F\) na \((a,b)\). Potom platí rovnost:<br/><br/>\(\int_a^b f(x) \mathrm{d}x=\lim_{x \to b-}F(x)\)\(-\lim_{x \to a+}F(x)\)<br/><br/><i>* zaběhlé značení pravé strany: </i>\(\Big[ F(x)\Big]_a^b\)
+        </div>
+    </note>
+    <note id="1317260951" type="1708237251">
+        <div class="field">
+Věta - per partes
+        </div>
+        <div class="field">
+Nech \(f\) a \(g\) jsou funkce spojité na intervalu \([a,b]\), \(f\) má spojitou derivaci na intervalu \([a,b]\) a nechť \(G\) je primitivní funkce k funkci \(g\) na intervalu \([a,b]\). Potom platí:<br/><br/>\(\int_a^b f(x) g(x) \mathrm{d}x
+= [f(x)G(x)]_a^b - \int_a^b f'(x)G(x)\mathrm{d}x\)
+        </div>
+    </note>
+    <note id="1076413738" type="1708237251">
+        <div class="field">
+Věta - o substituci v \(\mathbb{R}\)
+        </div>
+        <div class="field">
+Nechť pro funkce \(f\) a \(\varphi\) platí:<br/><ul><li>\(\varphi\) a její derivace \(\varphi'\) jsou spojité na \([\alpha, \beta]\)</li><li>\(f\) je spojitá na \(\varphi([\alpha,\beta])\)<br/></li></ul><div>Potom:</div><div><br/></div><div>\(\int_\alpha^\beta f(\varphi(t))\cdot\varphi'(t) \mathrm{d}t =
+\int_{\varphi(\alpha)}^{\varphi(\beta)}f(x) \mathrm{d}x\).</div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1333740916" type="1708237251">
+        <div class="field">
+Definice - množina míry nula
+        </div>
+        <div class="field">
+Množina \(Z \subset \mathbb R^2\) má <b>míru nula</b> (<i>null set</i>), pokud pro každé \(\varepsilon &gt; 0\) existují obdélníky\[[a_i, b_i] \times [c_i, d_i], \quad i = 1, \dots, n\]tak, že\(\quad Z \subset \bigcup_{i = 1}^n R_i \quad\)a\(\quad \displaystyle \sum_{i = 1}^n |b_i - a_i| \cdot |d_i - c_i| &lt; \varepsilon.\)<br/><br/><i>* Tedy její "plochu" lze pokrýt spočetným množstvým libovolně malých obdélníků<br/>* Množiny míry nula jsou tedy pro hodnotu integrálu „zanedbatelné.“</i><br/>
+        </div>
+    </note>
+    <note id="1910591467" type="1708237251">
+        <div class="field">
+Věta - integrabilita a nespojitost na množině míry nula
+        </div>
+        <div class="field">
+Omezená funkce \(f : D_f \to \mathbb R\), \(D_f = [a, b] \times [c, d]\), je integrabilní, pokud množina<br/>\[\{ \mathbf x \in D_f : f \text{ není spojitá v } \mathbf x \}\]má míru nula.<br/><br/><i>* Důsledek: Spojitá funkce </i>\(f : D_f \to \mathbb R\)<i>, která má na omezené množině </i>\(D_f\)<i> hranici míry nula, je integrabilní.</i><br/>
+        </div>
+    </note>
+    <note id="2033628680" type="1708237251">
+        <div class="field">
+Výpočet oblasti omezené funkcemi ("typ 1", "typ 2")
+        </div>
+        <div class="field">
+<img src="type1-8b507da574d1a0a54483a05b36a44cb4.png"/><br/><ul><li>Sčítáme hodnoty nad body \((x, y)\), kde \(x\) je z intervalu \([a, b]\) a \(y\) je omezené spojitými funkcemi \(\varphi_1(x)\) a \(\varphi_2(x)\), kde \(\varphi_1(x) \leq \varphi_2(x)\)</li><li>Integrujeme podle \(y\), potom podle \(x\) (sčítáme svislé čáry ohraničené funkcemi \(\varphi_1(x)\) a \(\varphi_2(x)\))</li><li>Pokud integrál na pravé straně existuje, platí<br/>\(\iint_D f(x,y)\mathrm{d}x\mathrm{d}y\)\(=\int_a^b\left(\int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y) \mathrm{d}y\right)\mathrm{d}x\)</li></ul><div><i>* ("typ 2" není potřeba zvlášť definovat, stačí prostě </i>\(f\)<i>, </i>\(\varphi_1\) a<i> </i>\(\varphi_2\)<i> otočit okolo diagonály přeznačením </i>\(x\) <i>a</i> \(y\)<i>)</i></div><div><img src="type2-2764ac81b9db4f6a865427ff872cdaa6.png"/></div>
+        </div>
+    </note>
+    <note id="1966145611" type="1708237251">
+        <div class="field">
+Definice - Jacobiho matice
+        </div>
+        <div class="field">
+Mějme \(\Psi: \mathbb{R}^n \to \mathbb{R}^n\), \(\Psi(\mathbf v) = (\Psi_1(\mathbf v),\dots,\Psi_n(\mathbf v))\). <b>Jacobiho matice</b> funkce \(\Psi\) je nasledující zobrazení \(\mathbb{R}^n \to \mathbb{R}^{n,n}\) (pro \(\mathbf v=(v_1,v_2,\dots,v_n))\)<br/><br/>\(J_\Psi= \begin{pmatrix}
+    \frac{\partial \Psi_1}{\partial v_1} &amp;\dots &amp; \frac{\partial \Psi_1}{\partial v_n} \\
+    \vdots &amp; \ddots &amp; \vdots\\
+    \frac{\partial \Psi_n}{\partial v_1 } &amp;\dots &amp; \frac{\partial \Psi_n}{\partial v_n}
+\end{pmatrix}\)<br/><br/>pokud všechny parciální derivace existují.<br/><br/><i>* Funkce </i>\(J_\Psi\)<i> má v řádcích složky gradientů jednotlivých složek </i>\(\Psi\), neboli<br/>\(J_\Psi= \begin{pmatrix}
+    \nabla\Psi_1 \\
+    \vdots \\
+    \nabla\Psi_n 
+\end{pmatrix}\)
+        </div>
+    </note>
+    <note id="1775740303" type="1708237251">
+        <div class="field">
+Věta - o substituci v \(\mathbb{R}^n\)
+        </div>
+        <div class="field">
+Nechť \(D\) je omezená uzavřená množina na \(\mathbb{R}^n\). Nechť \(\Psi: \mathbb{R}^n \to \mathbb{R}^n\) má spojité všechny parciální derivace na nějaké otevřené nadmnožině množiny \(D\) a <i>skoro všude</i> na \(D\) platí, že:<br/><ul><li>\(\Psi\) je bijekce<br/></li><li>\(\det{J_\Psi}\) je nenulový<br/></li></ul><div>Potom pro každou spojitou funkci \(f: D \to \mathbb{R}\) platí:</div><div><br/></div><div><div></div><div>\(\int_Df(\Psi(\mathbf v))|\det{J_\Psi(\mathbf v)}|\mathrm{d} \mathbf v\)\(= \int_{\Psi(D)}f(\mathbf x) \mathrm{d} \mathbf x \)</div></div><br/><div>kde \(\mathbf x = (x_1,\dots,x_n)\).</div><div><br/></div><div><i>* "skoro všude" zde znamená, že množina, na níž tvrzení neplatí, má míru nula.</i><br/></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1132800474" type="1708237251">
+        <div class="field">
+Věta - Aditivita integrálu
+        </div>
+        <div class="field">
+Nechť jsou \(f\) a \(g\) spojité funkce na intervalu \([a, b]\). Potom integrál funkce \(f+g\) (která je také nutně spojitá na \([a, b]\)) platí<br/><br/>\(\int_a^b (f+g)(x) \mathrm{d}x\)\(= \int_a^b f(x) \mathrm{d}x + \int_a^b g(x) \mathrm{d}x\)
+        </div>
+    </note>
+    <note id="1408922617" type="1708237251">
+        <div class="field">
+Věta - Multiplikativita integrálu
+        </div>
+        <div class="field">
+Nechť \(f\) je spojitá na intervalu \([a, b]\) a \(c \in \mathbb{R}\) je konstanta. Potom pro integrál funkce \(cf\) platí<br/><br/>\(\int_a^b (cf)(x) \mathrm{d}x = c\int_a^b f(x) \mathrm{d}x\)
+        </div>
+    </note>
+
+</deck>

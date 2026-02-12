@@ -1,0 +1,36 @@
+<deck id="2044200483" name="NI-FME::NI-FME-01" deck_slug="NI-FME-01">
+
+    <note id="2084037907" type="1708237251">
+        <div class="field">
+Specifikace správnosti programů
+        </div>
+        <div class="field">
+<ul><li>Determining program correctness requires knowing what the program is supposed to do, i.e. a specification</li><li>Example:<br/>In: natural number \(k\)<br/>Out: a prime factor of \(k\)<br/></li><li>Function specifications may allow more than one correct output for one input, but must have at least one output for each input.</li><li>Specifications in natural language are often ambiguous, therefore a formal specification is preferable</li><li>We can use standard predicate logic (quantifiers, conjunction, disjunction, implication, negation, predicates and functions, etc.)<br/></li></ul>
+        </div>
+    </note>
+    <note id="1689226457" type="1708237251">
+        <div class="field">
+Axiomatické modelování datových struktur: Pair \({\cal P}[{\cal T}]\) of elements of \(\cal T\)
+        </div>
+        <div class="field">
+Function symbols:<br/><ul><li>\(\mathrm{pair}: {\cal T}\times{\cal T}\to{\cal P}[{\cal T}]\)<br/></li><li>\(\mathrm{fst}: {\cal P}[{\cal T}] \to {\cal T}\)</li><li>\(\mathrm{snd}: {\cal P}[{\cal T}] \to {\cal T}\)<br/></li></ul><div>Axioms:</div><div><ul><li>\(\forall x, y . \mathrm{fst}(\mathrm{pair}(x, y)) = x\)<br/></li><li>\(\forall x, y . \mathrm{snd}(\mathrm{pair}(x, y)) = y\)</li><li>\(\forall p . \mathrm{pair}(\mathrm{fst}(p), \mathrm{snd}(p)) = p\)</li></ul></div>
+        </div>
+    </note>
+    <note id="2003887740" type="1708237251">
+        <div class="field">
+Axiomatické modelování datových struktur: List \({\cal L}[{\cal T}]\) of elements of \(\cal T\)
+        </div>
+        <div class="field">
+Function symbols:<br/><ul><li>\(\mathrm{cons}: {\cal T}\times{\cal L}[{\cal T}]\to{\cal L}[{\cal T}]\)<br/></li><li>\(\mathrm{first}: {\cal L}[{\cal T}] \to {\cal T}\)</li><li>\(\mathrm{rest}: {\cal L}[{\cal T}] \to {\cal L}[{\cal T}]\)<br/></li><li>\(\mathrm{empty}: {\cal L}[{\cal T}]\)</li></ul><div>Axioms:</div><div><ul><li>\(\forall l, x . \mathrm{first}(\mathrm{cons}(x, l)) = x\)<br/></li><li>\(\forall l, x . \mathrm{rest}(\mathrm{cons}(x, l)) = l\)</li><li>\(\forall l . \neg [l = \mathrm{empty}] \implies \mathrm{cons}(\mathrm{first}(l), \mathrm{last}(l)) = l\)</li><li>\(\forall l, x . \neg [\mathrm{cons}(x, l) = \mathrm{empty}]\)</li></ul></div>
+        </div>
+    </note>
+    <note id="1140927445" type="1708237251">
+        <div class="field">
+Axiomatické modelování datových struktur: Array \({\cal A}[{\cal T}]\) of elements of \(\cal T\)
+        </div>
+        <div class="field">
+Function symbols:<br/><ul><li>\(\cdot [\cdot]: {\cal A}[{\cal T}]\times{\cal N}\to{\cal T}\)<br/></li><li>\(\mathrm{write}: {\cal A}[{\cal T}] \times {\cal N} \times {\cal T} \to {\cal A}[{\cal T}]\)</li></ul><div>Axioms:</div><div><ul><li>\(\forall a, v, i, j . [i = j] \implies [\mathrm{write}(a, i, v)[j] = v]\)<br/></li><li>\(\forall a, v, i, j . \neg[i=j] \implies [\mathrm{write}(a, i, v)[j] = a[j]]\)</li><li>\(\forall a, b . [\forall i . a[i] = b[i]] \iff [a = b]\)</li></ul></div>
+        </div>
+    </note>
+
+</deck>

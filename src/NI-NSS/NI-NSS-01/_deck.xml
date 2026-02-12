@@ -1,0 +1,36 @@
+<deck id="1420946354" name="NI-NSS::NI-NSS-01" deck_slug="NI-NSS-01">
+
+    <note id="1787791824" type="1708237251">
+        <div class="field">
+Teoretické základy evolvabiltních softwarových systémů: principy a zákony
+        </div>
+        <div class="field">
+<ul><li>Separation of concerns</li><li>Data version transparency</li><li>Action version transparency</li><li>Separation of state</li></ul>
+        </div>
+    </note>
+    <note id="1870224302" type="1708237251">
+        <div class="field">
+Teoretické základy evolvabiltních softwarových systémů: stabilita systému, normalizované systémy
+        </div>
+        <div class="field">
+System is Normalized (Stable) if any <b>Combinatorial Ripple Effects</b> are prevented
+        </div>
+    </note>
+    <note id="1520940388" type="1708237251">
+        <div class="field">
+Teoretické základy evolvabiltních softwarových systémů: kombinatorický efekt, problematika modularity
+        </div>
+        <div class="field">
+Combinatorial effects are instabilities caused by ripple effects.<br/><br/>Example: Change Ripples: The Saturn V:<br/><ul><li>To Increase thrust power: Add additional F1, Additional fuel line, More powerful fuel pump, Larger fuel tank stage 1, Stronger fuel tank stage 1, Adapt shape fuel tank stage 1, Enlarge interstage &amp; second stage, Adapt interstage &amp; second stage...</li><li>-&gt; Design new rocket</li></ul>
+        </div>
+    </note>
+    <note id="1124397757" type="1708237251">
+        <div class="field">
+Historie přístupu k evolvabilitě softwarových systémů.
+        </div>
+        <div class="field">
+The First Generation<br/><ul><li>Assumptions: From-scratch development, Insourcing, Requirements can be developed up front</li><li> Paradigm: Structured development</li><li> Process: Waterfall model (Royce, 1970)</li></ul>The Second Generation<br/><ul><li>Paradigm: Object orientation (object = combination of data and process)</li><li>Principles: Encapsulation/information hiding, Inheritance</li><li>Notation: Consolidation of notation: Booch, Rumbaugh, Jacobson define UML</li><li> Assumptions: “The” method does not exist, Reuse is of primary importance, Requirements change quickly</li><li> Process: Iterative development, Unified Process (RUP)</li><li>Use Case-driven development methodology</li><li>Design Patterns (Gamma et al., 1995)</li></ul>        
+        </div>
+    </note>
+
+</deck>

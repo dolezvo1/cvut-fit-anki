@@ -1,0 +1,491 @@
+<deck id="1171873355" name="NI-VSM::NI-SPOL-06" deck_slug="NI-SPOL-06">
+
+    <note id="1288493901" type="1708237251">
+        <div class="field">
+Definujte multinomické rozdělení.
+        </div>
+        <div class="field">
+Mějme diskrétní náhodnou veličinu \(X\), která nabývá hodnot \(1, \dots, k\) s pravděpodobnostmi \(p_1, \dots, p_k\). Označme rozdělení \(X\) jako \(\mathbf p = (p_1, \dots, p_k)^T\). Provedeme-li náhodný výběr \(X_1, \dots, X_n\) z rozdělení \(\mathbf p\), můžeme výsledek zaznamenat pomocí četností \(N_1, \dots, N_k\), se kterými jednotlivé hodnoty nastaly, tedy \[N_i = |\{ j \in \hat n \mid X_j = i \}|.\]Náhodný vektor \(\mathbf N = (N_1, \dots, N_k)^T\) pak má multinomické rozdělení s parametry \(n\) a \(\mathbf p\), což značíme \(N \sim \operatorname M(n ,\mathbf p)\).<br/>
+        </div>
+    </note>
+    <note id="2033070202" type="1708237251">
+        <div class="field">
+Popište postup provedení \(\chi^2\) testu dobré shody při neznámých parametrech.
+        </div>
+        <div class="field">
+Mějme náhodný výběr \(X_1, \dots, X_n\) z obecného rozdělení \(F_{\boldsymbol \theta}\) závislého na neznámém parametru \(\boldsymbol \theta\). Vytvořme rozklad \(\mathbb R\) do \(k\) intervalů\[I_1 = (-\infty, b_1 \rangle, \quad I_2 = (b_1, b_2 \rangle, \quad \dots, \quad I_k = (b_{k - 1}, +\infty).\]Četnosti \(N_1, \dots, N_k\) naměřených hodnot v jednotlivých intervalech \(I_1, \dots, I_k\), kde\[N_i = |\{ j \in \hat n \mid X_j \in I_i \}|\]pak mají multinomické rozdělení \(\operatorname M(n, \mathbf p')\), kde\[p_i' = \operatorname P(X_1 \in I_i).\]Nyní odhadněme parametr \(\boldsymbol \theta\) metodou minimálního \(\chi^2\).  Potom můžeme použít \(\chi^2\) statistiku z testu dobré shody při známých parametrech:\[\chi^2 = \displaystyle \sum_{i = 1}^k \frac{(N_i - np_i(\boldsymbol \theta))^2}{np_i(\boldsymbol \theta)}.\]Její kritický obor \(S_\alpha\) stanovíme jako:\[\chi^2 \geq \chi^2_{\alpha, k - m - 1},\]kde \(m\) je počet odhadnutých parametrů.
+        </div>
+    </note>
+    <note id="1121029646" type="1708237251">
+        <div class="field">
+Popište testovou statistiku a kritický obor testové statistiky.
+        </div>
+        <div class="field">
+<b>Testová statistika</b> je funkce \(T: \mathbb R^n \to \mathbb R\), kterou lze aplikovat na:<br/><ul><li>číselné vektory \(\mathbf x \in \mathbb R^n\), čímž obdržíme číslo:\[T(\mathbf x) = x \in \mathbb R\]</li><li>náhodné vektory \(\mathbf X\), čímž obdržíme náhodnou veličinu \(T(\mathbf X) : \Omega \to \mathbb R\) takovou, že\[T(\mathbf X)(\omega) = T \bigl( X(\omega) \big) = x \in \mathbb R.\]</li></ul><b>Kritickým oborem </b>\(S_\alpha \subset \mathbb R\) testové statistiky nazýváme množinu hodnot testové statistiky, pro které testování na hladině významnosti \(\alpha\) skončí zamítnutím nulové hypotézy \(H_0\). Pokud tedy:<ul><li>\(T(\mathbf X) \in S_\alpha\), tak zamítáme \(H_0\) na hladině významnosti \(\alpha\);<br/></li><li>\(T(\mathbf X) \notin S_\alpha\), tak nezamátíme \(H_0\) na hladině významnosti \(\alpha\).</li></ul>
+        </div>
+    </note>
+    <note id="2115574139" type="1708237251">
+        <div class="field">
+Popište testovou statistiku pro střední hodnotu při neznámém rozptylu (jednovýběrový \(\operatorname t\)-test).
+        </div>
+        <div class="field">
+Mějme náhodný výběr \(X_1, \dots, X_n\) z normálního rozdělení \(\operatorname N(\mu, \sigma^2)\). Pro testy o střední hodnotě \(\mu\) porovnávané s \(\mu_0\) uvažujeme testovou statistiku\[T = \frac {\bar X_n - \mu_0}{\frac {s_n} {\sqrt n}},\]kde za předpokladu \(\mu = \mu_0\) je \(T \sim \operatorname t_{n -1}\). Kritický obor testové statistiky \(S_\alpha\) stanovíme následovně:
+<table style="width: 100%; text-align: center">
+  <tbody>
+    <tr>
+      <td><b>nulová hypotéza</b> \(H_0\)</td>
+      <td><b>alternativní hypotéza </b>\(H_A\)</td>
+      <td><b>kritický obor testové statistiky </b>\(S_\alpha\)</td>
+    </tr>
+    <tr>
+      <td>\(\mu = \mu_0\)<br/></td>
+      <td>\(\mu \neq \mu_0\)<br/></td>
+      <td>\(|T| \geq t_{\frac \alpha 2, n - 1}\)<br/></td>
+    </tr>
+    <tr>
+      <td>\(\mu \leq \mu_0\)</td>
+      <td>\(\mu &gt; \mu_0\)</td>
+      <td>\(T \geq t_{\alpha, n - 1}\)<br/></td>
+    </tr>
+        <tr>
+      <td>\(\mu \geq \mu_0\)</td>
+      <td>\(\mu &lt; \mu_0\)</td>
+      <td>\(T \leq -t_{\alpha, n - 1}\)<br/></td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+    </note>
+    <note id="1117864142" type="1708237251">
+        <div class="field">
+Popište testovou statistiku pro střední hodnotu při známém rozptylu.
+        </div>
+        <div class="field">
+Mějme náhodný výběr \(X_1, \dots, X_n\) z normálního rozdělení \(\operatorname N(\mu, \sigma^2)\) a předpokládejme, že známe rozptyl \(\sigma^2\). Pro testy o střední hodnotě \(\mu\) porovnávané s \(\mu_0\) uvažujeme testovou statistiku\[T = \frac {\bar X_n - \mu_0}{\frac \sigma {\sqrt n}},\]kde za předpokladu \(\mu = \mu_0\) je \(T \sim \operatorname N(0, 1)\). Kritický obor testové statistiky \(S_\alpha\) stanovíme následovně:
+<table style="width: 100%; text-align: center">
+  <tbody>
+    <tr>
+      <td><b>nulová hypotéza</b> \(H_0\)</td>
+      <td><b>alternativní hypotéza </b>\(H_A\)</td>
+      <td><b>kritický obor testové statistiky </b>\(S_\alpha\)</td>
+    </tr>
+    <tr>
+      <td>\(\mu = \mu_0\)<br/></td>
+      <td>\(\mu \neq \mu_0\)<br/></td>
+      <td>\(|T| \geq z_{\frac \alpha 2}\)<br/></td>
+    </tr>
+    <tr>
+      <td>\(\mu \leq \mu_0\)</td>
+      <td>\(\mu &gt; \mu_0\)</td>
+      <td>\(T \geq z_{\alpha}\)<br/></td>
+    </tr>
+        <tr>
+      <td>\(\mu \geq \mu_0\)</td>
+      <td>\(\mu &lt; \mu_0\)</td>
+      <td>\(T \leq -z_{\alpha}\)<br/></td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+    </note>
+    <note id="1261290025" type="1708237251">
+        <div class="field">
+Popište testovou statistiku pro \(\chi^2\) test dobré shody při známých parametrech.
+        </div>
+        <div class="field">
+Mějme náhodný výběr \(X_1, \dots, X_n\) z diskrétního rozdělení \(\mathbf p' = (p_1', \dots, p_k')\). Četnosti \(N_1, \dots, N_k\) jednotlivých hodnot tohoto náhodného výběru pak mají multinomické rozdělení \(\operatorname M(n, \mathbf p')\). Pro \(\chi^2\) test dobré shody při známých parametrech a hypotéze \[H_0 : \mathbf p' = \mathbf p \quad \text{proti} \quad H_A: \mathbf p' \neq \mathbf p,\]kde \(\mathbf p = (p_1, \dots, p_k)^T\), uvažujeme testovou statistiku\[\chi^2 = \displaystyle \sum_{i = 1}^k \frac{(N_i - np_i)^2}{np_i}.\]Její kritický obor \(S_\alpha\) stanovíme následovně:\[\chi^2 \geq \chi^2_{\alpha, k - 1}.\]Podle věty o Pearsonově statistice je \(\chi^2\) test pouze asymptotický, a je nutné dodržet\[np_i \geq 5\]pro všechna \(i \in \hat k\).<br/>
+        </div>
+    </note>
+    <note id="1147526338" type="1708237251">
+        <div class="field">
+Popište typy hypotéz podle množství rozdělení v hypotéze.
+        </div>
+        <div class="field">
+Podle množství rozdělení v hypotéze rozdělujeme hypotézy na dva druhy:<br/><ul><li><b>jednoduché </b>- obsahují pouze jednu skupinu rozdělení (např. rozdělení s nulovou střední hodontou),<br/></li><li><b>složené</b> - obsahují více skupin rozdělení.<br/></li></ul>
+        </div>
+    </note>
+    <note id="1308601007" type="1708237251">
+        <div class="field">
+Popište vlasntosti rozdělení \(p\)-hodnoty.
+        </div>
+        <div class="field">
+Při platnosti nulové hypotézy \(H_0\) má \(p\)-hodnota uniformní rozdělení na intervalu \((0, 1)\), tedy\[\hat p \sim \operatorname{Unif}(0, 1).\]Z toho plyne, že i v případě, že je \(H_0\) platná, je \(\alpha\%\) šance, že bude \(H_0\) zamítnuta, tedy, že dojde k chybě 1. druhu.
+        </div>
+    </note>
+    <note id="1839675978" type="1708237251">
+        <div class="field">
+Náhodný výběr z rozdělení \(F\)
+        </div>
+        <div class="field">
+\(n\)-tice stejně rozdělených nezávislých náhodných veličin \(x_1,...,x_n\) s distribuční funkcí \(F\)
+        </div>
+    </note>
+    <note id="1302859347" type="1708237251">
+        <div class="field">
+Kroky statistického uvažovaní
+        </div>
+        <div class="field">
+<ul><li>Odhad tvaru rozdělení</li><li>Odhad parametrů rozdělení</li><ul><li>Bodový odhad</li><li>Intervalový odhad</li></ul><li>Testovaní hypotéz (oveření správnosti modelu)</li><ul><li>Testy dobré shody = oveřujeme hypotézy ve tvaru pravděpodobnostího rozdělení</li><li>Parametrické testy = tvoříme hypotézu o parametru \(\theta\) a na základě dat se snažíme rozhodnout, zda je možné hypotézu zamítnout</li></ul></ul>
+        </div>
+    </note>
+    <note id="1651100569" type="1708237251">
+        <div class="field">
+Intervaly spolehlivosti
+        </div>
+        <div class="field">
+<ul><li>Interval spolehlivosti (<i>confidence interval</i>) je obecně interval, ve kterém leží skutečná hodnota parametru s danou pravděpodobností \(1-\alpha\)</li><li>oboustranný CI je interval \((L, U)\) splňující \(P(\theta \in (L,U))=P(L &lt; \theta &lt; U)=1-\alpha\).<br/></li><li>jednostranný CI je interval \((L,+\infty)\), resp. \((-\infty, U)\) určený statistikou \(L\), resp. \(U\), splňující<br/>\(P(\theta \in (L,+\infty))=P(\theta \in(-\infty, U))=1-\alpha\)</li></ul><div><i>* </i>\(𝐿 ≡ 𝐿(𝑥_1… 𝑥_𝑛)\)<i>, </i>\(U ≡ U(𝑥_1… 𝑥_𝑛)\)<i> jsou funkce náhodného výběru</i></div><div><i>* pro oboustranný interval spolehlivosti volíme </i>\(L\)<i>, </i>\(U\)<i> tak, aby platilo</i></div>\(P(\theta \lt L) = \frac\alpha2 \ \land \ P(U \lt \theta) = \frac\alpha2\)
+        </div>
+    </note>
+    <note id="1780465303" type="1708237251">
+        <div class="field">
+Interval spolehlivosti pro střední hodnotu při známém rozptylu
+        </div>
+        <div class="field">
+Interval spolehlivosti pro střední hodnotu při známém rozptylu:<br/><br/>\(\left(
+\overline{X_n} - z_{\frac\alpha2} \frac\sigma{\sqrt n},
+\overline{X_n} + z_{\frac\alpha2} \frac\sigma{\sqrt n}
+\right)\),<br/><br/>kde \(z_\alpha = \phi^{-1}(1-\alpha)\) je kritická hodnota standardního normálního rozdělení \(N(0,1)\).
+        </div>
+    </note>
+    <note id="2045966205" type="1708237251">
+        <div class="field">
+Interval spolehlivosti pro střední hodnotu při neznámém rozptylu
+        </div>
+        <div class="field">
+<ul><li>Neznáme rozptyl \(\sigma^2\), proto odhadujeme pomocí výběrového rozptylu \(s_n^2\).</li><li>Oboustranný interval spolehlivosti:<br/><br/>\(\left(
+\overline{X_n} - t_{\frac\alpha2,n-1} \frac{s_n}{\sqrt n},
+\overline{X_n} + t_{\frac\alpha2,n-1} \frac{s_n}{\sqrt n}
+\right)\),<br/><br/>kde \(t_{\alpha, n-1}\) je kritická hodnota studentova rozdělení \(t_{n-1}\) s \(n-1\) stupni volnosti.</li></ul>
+        </div>
+    </note>
+    <note id="1623227985" type="1708237251">
+        <div class="field">
+Interval spolehlivosti pro rozptyl
+        </div>
+        <div class="field">
+<ul><li>Předpokládáme náhodný výběr z normálního rozdělení \(N(\mu, \sigma^2)\), pro jiná rozdělení nelze použít</li><li>Využijeme výběrový rozptylu \(s_n^2\).</li><li>Oboustranný interval spolehlivosti:<br/><br/>\(\left(
+\frac{(n-1) s_n^2}{\chi^2_{\frac\alpha2, n-1}},
+\frac{(n-1) s_n^2}{\chi^2_{1-\frac\alpha2, n-1}}
+\right)\),<br/><br/>kde \(\chi^2_{\alpha, n-1}\) je kritická hodnota rozdělení \(\chi^2\) s \(n-1\) stupni volnosti.</li></ul>
+        </div>
+    </note>
+    <note id="1152801905" type="1708237251">
+        <div class="field">
+Hypotéza
+        </div>
+        <div class="field">
+Buď náhodný vektor \(X=(x_1,...,x_n)^T\) s nějakým rozdělením. <b>Hypotéza </b>je tvrzení o tomto rozdělení, jehož platnost je neznámá.
+        </div>
+    </note>
+    <note id="1362935309" type="1708237251">
+        <div class="field">
+Testování hypotéz
+        </div>
+        <div class="field">
+ Platnost hypotéz ověřujeme na základě napozorovaných hodnot \(X\) pomocí <b>testování hypotéz</b>.<br/><ul><li>Nulová hypotéza \(H_0\) = tvrzení o kterém chceme rozhodovat</li><li>Alternativní hypotéza \(H_A\) (někdy \(H_1\)) = tvrzení opačné k \(H_0\)</li></ul>Test nulové hypotézy je rozhodovací proces založený na hodnotě \(X\) na jehož základě zamítneme nebo nezamítneme hypotézu \(H_0\)<br/>
+        </div>
+    </note>
+    <note id="2072129223" type="1708237251">
+        <div class="field">
+Chyby při testování hypotéz
+        </div>
+        <div class="field">
+<ul><li>Zamítneme \(H_0\), i když platí (chyba 1. druhu)</li><ul><li>Když zamítneme \(H_0\), existuje šance (\(\alpha\)), že jsme se dopustili chyby, tj. máme pouze \(1-\alpha\) jistotu</li></ul><li>Nezamítneme \(H_0\), i když neplatí (chyba 2. druhu)</li><ul><li>Minimalizaci neděláme my, ale máme testy, které jsou minimální - \(\alpha\) umísťujeme tak, aby bylo minimální</li></ul></ul><i>* chceme minimalizovat obě, ale minimalizace jedné zvyšuje druhou<br/>* hypotézu </i>\(H_0\)<i> volíme tak, aby chyba 1. druhu byla závažnější, než chyba 2. druhu<br/></i><br/>
+        </div>
+    </note>
+    <note id="2019529846" type="1708237251">
+        <div class="field">
+Definice - Kritický obor \(W_\alpha\)
+        </div>
+        <div class="field">
+<div><b>Kritickým oborem</b> \(W_\alpha \subset \mathbb R^n\) nazýváme množinu realizací náhodného vektoru \(\mathbf X\), pro které testování na hladině významnosti \(\alpha\) skončí zamítnutím nulové hypotézy \(H_0\). Pokud tedy:<br/></div><div><ul><li>\(\mathbf X \in W_\alpha \iff\) zamítáme \(H_0\) na hladině významnosti \(\alpha\);<br/></li><li>\(\mathbf X \notin W_\alpha \iff\) nezamátíme \(H_0\) na hladině významnosti \(\alpha\).</li></ul></div>
+        </div>
+    </note>
+    <note id="2006260146" type="1708237251">
+        <div class="field">
+Testování statistických hypotéz
+        </div>
+        <div class="field">
+<ul><li>Máme náhodnou veličinu \(X\) a předpokládáme, že má rozdělení \(P_\theta\), kde \(\theta\) je parametr (skalár/vektor)<br/></li><li>Všechny existující parametry \(P\) jsou množina \(\Theta=\Theta_0\ \cup\ \Theta_A\), platí hypotéza, do jejíž podmnožiny spadá \(\theta\)</li><li>Existuje hypotéza \(H_0\) a jej alternativa \(H_A\)</li><ul><li>\(H_0:\theta\in\Theta_0\)</li><li>\(H_A:\theta\in\Theta_A\)<br/></li></ul><li>O \(H_0\) rozhodujeme, zda ji zamítáme, či nikoli, na určité hladině významnosti \(\alpha\)</li></ul>
+        </div>
+    </note>
+    <note id="1625669434" type="1708237251">
+        <div class="field">
+Hladina významnosti testu
+        </div>
+        <div class="field">
+Chceme, aby pravědpodobnost chyby 1. druhu byla nejvýše rovna zvolené hodnotě \(\alpha\), kterou nazývame hladinou významosti testu
+        </div>
+    </note>
+    <note id="1105840230" type="1708237251">
+        <div class="field">
+Kritická hodnota
+        </div>
+        <div class="field">
+<div>Hodnota z tabulek. Rozděluje graf na obor kritický (kde hypotézu zamítáme) a obor nezamítnutí.</div>
+        </div>
+    </note>
+    <note id="1960592177" type="1708237251">
+        <div class="field">
+Testovaná statistika \(T\)
+        </div>
+        <div class="field">
+<div>Rozhodne o zamítnutí \(H_0\) podle toho, kam spadá (kritický obor, nebo ne)</div>
+        </div>
+    </note>
+    <note id="1238134943" type="1708237251">
+        <div class="field">
+\(p\)-hodnota
+        </div>
+        <div class="field">
+\(p\)-hodnota je minimální hladina významnosti \(\hat{p}\), na které můžeme \(H_0\) zamítnout při daném pozorování náhodného vektoru \(\mathbf X\), tedy<br/><br/>\(\hat{p} \equiv \hat{p}(\mathbf X) = \inf\{\alpha\ |\ \mathbf X\in W_a\}\) <br/><br/>Když je \(p\)-hodnota menší, než naše požadovaná hladina významnosti \(\alpha\), \(H_0\) zamítáme.<br/><br/><div style="text-align: center;"><img src="p-value-4bb93368ff4bd5060841a76c2791c0cc.png"/></div><i><br/>* mnoho statistických programů dáva jako výstup pouze </i>\(p\)<i>-hodnotu</i><br/>
+        </div>
+    </note>
+    <note id="1519406101" type="1708237251">
+        <div class="field">
+Intervaly spolahlivosti X
+        </div>
+        <div class="field">
+Na intervaloch spolahlivosti zakladáme parametrické testy<br/><ul><li>Parametrické testy = poznáme rozdelenie a pýtame sa na jeho parameter</li><li>Obojstranné intervaly = používame pre \(H_0\) v tvare \(\Theta=\Theta_0\), kde \(\Theta\) je parameter rozdelenia</li><ul><li>\(H_A\) potom bude v tvare \(\Theta \ne \Theta_0\)</li></ul><li>Jednostranné intervaly = používame pre \(H_0\) v tvare \(\Theta \le \Theta_0\)</li><ul><li>\(H_A\) potom bude v tvare \(\Theta \gt \Theta_0\)<br/></li></ul></ul>
+        </div>
+    </note>
+    <note id="2013518644" type="1708237251">
+        <div class="field">
+Bodový odhad výběrového průměru
+        </div>
+        <div class="field">
+\(\overline{X}_n = \frac{1}{n}\cdot\sum_{i=1}^nX_i\)
+        </div>
+    </note>
+    <note id="1986058273" type="1708237251">
+        <div class="field">
+Bodový odhad výběrového rozptylu
+        </div>
+        <div class="field">
+\(s^2_n = \frac{1}{n-1}\cdot\sum_{i=1}^n(X_i-\overline{X}_n)^2\)
+        </div>
+    </note>
+    <note id="1347116894" type="1708237251">
+        <div class="field">
+Parametrické testy
+        </div>
+        <div class="field">
+<img src="parametric-0bd0db02f17ebec9b547d1d567e3809c9ef75061.png"/>
+        </div>
+    </note>
+    <note id="1628238244" type="1708237251">
+        <div class="field">
+Testy parametrů normálního rozdělení
+        </div>
+        <div class="field">
+<img src="normalparams-c461f99a2ba16da7074907cd8ac8453801e8e2f8.png"/>
+        </div>
+    </note>
+    <note id="1277155296" type="1708237251">
+        <div class="field">
+Testové statistiky
+        </div>
+        <div class="field">
+<img src="statistics-04f05b58a319407aacac5fa54a44bd6d9992c0cb.png"/>
+        </div>
+    </note>
+    <note id="1275427106" type="1708237251">
+        <div class="field">
+Testy o střední hodnotě normálního rozdělení
+        </div>
+        <div class="field">
+<img src="normalmean-07f680a015671498f6307d2e34614d7cc6821989.png"/>
+        </div>
+    </note>
+    <note id="1897691761" type="1708237251">
+        <div class="field">
+F-test rovnosti rozptylů
+        </div>
+        <div class="field">
+<img src="f-test-1f0d2ba368f73fc64c82ae437d79a096b5cb9061.png"/>
+        </div>
+    </note>
+    <note id="1287007603" type="1708237251">
+        <div class="field">
+Test dobré shody - multinomické rozdělení
+        </div>
+        <div class="field">
+<img src="goodnessmultinom-d13c1b47c3f7da5e24c62a1f7598dca7d19852e7.png"/>
+        </div>
+    </note>
+    <note id="1638772596" type="1708237251">
+        <div class="field">
+Test dobré shody - Pearsonova statistika
+        </div>
+        <div class="field">
+Mějme náhodný vektor \(\mathbf N = (N_1, \dots, N_k)^T\) takový, že \(\mathbf N \sim \operatorname M(n, \mathbf p)\). Potom Pearsonova statistika\[\chi^2 = \displaystyle \sum_{i = 1}^k \frac{(N_i - np_i)^2}{np_i} = \displaystyle \sum_{i = 1}^k \frac{N_i^2}{np_i} - n\]má pro \(n \to + \infty\) rozdělení \(\chi^2_{k - 1}\).<br/><br/><i>* </i>\(N_i\)<i> jsou naměřené četnosti, </i>\(np_i\)<i> jsou teoretické četnosti</i>
+        </div>
+    </note>
+    <note id="1519140246" type="1708237251">
+        <div class="field">
+Test nezávislosti v kontigenčních tabulkách
+        </div>
+        <div class="field">
+Mějme náhodný vektor \(\mathbf X = (Y, Z)^T\) s diskrétním rozdělením, přičemž veličina \(Y\) nabývá hodnot \(1, \dots, r\) a veličina \(Z\) nabývá hodnot \(1, \dots, c\). Označme sdružené pravděpodobnosti\[p_{ij} = \operatorname P(Y = i \cap Z = j)\]a marginální pravděpodobnosti\[\begin{align}
+p_{i \bullet} = \displaystyle \sum_j p_{ij}, \\
+p_{\bullet j} = \displaystyle \sum_i p_{ij}. \\
+\end{align}\]Dále mějme náhodný výběr \(X_1, \dots, X_n\) z rozdělení vektoru \(\mathbf X\). Četnosti \(N_{ij}\) dvojic hodnot \((i, j)\) tohoto náhodného výběru pak mají sdružené multinomické rozdělení s pravděpodobnostmi \(p_{ij}\), kde\[N_{ij} = |\{ k \mid Y_k = i \cap Z_k = j \}|.\]Sestavme náhodnou matici \(\mathbf N\) rozměru \(r \times c\) se složkami \(N_{ij}\), kterou budeme nazývat kontingenční tabulkou, a definujme marginální četnosti\[\begin{align}
+N_{i \bullet} = \displaystyle \sum_j N_{ij}, \\
+N_{\bullet j} = \displaystyle \sum_i N_{ij}.
+\end{align}\]Pro test nezávislosti v kontingenční tabulce při hypotéze\[H_0: p_{ij} = p_{i \bullet} p_{\bullet j} \quad \text{proti} \quad H_A: p_{ij} \neq p_{i \bullet} p_{\bullet j}\]použijeme \(\chi^2\) test dobré shody při \((r - 1) + (c - 1)\) neznámých parametrech. Odhady marignálních pravděpodobností metodou minimálního \(\chi^2\) jsou:\[\begin{align}
+\hat p_{i \bullet} &amp;= \frac{N_{i \bullet}} n,\\
+\hat p_{\bullet j} &amp;= \frac{N_{\bullet j}} n.
+\end{align}\]Dosazením do testové statistiky \(\chi^2\) testu dobré shody dostaneme testovou statistiku:\[\chi^2 = \displaystyle \sum_{i = 1}^r \displaystyle \sum_{j = 1}^c \frac{\Big( N_{ij} - n \hat p_{i \bullet} \hat p_{\bullet j} \Big)^2}{n \hat p_{i \bullet} \hat p_{\bullet j}} = \displaystyle \sum_{i = 1}^r \displaystyle \sum_{j = 1}^c \frac{\Big( N_{ij} - \frac{N_{i \bullet} N_{\bullet j}}{n} \Big)^2}{\frac{N_{i \bullet} N_{\bullet j}}{n}}\]Její kritický obor stanovíme následovně:\[\chi^2 \geq \chi^2_{\alpha, (r - 1) (c - 1)},\]protože počet stupňů volnosti lze upravit následujícím způsobem:\[k - m - 1 = rc - \bigl( (r - 1) + (c - 1) \bigr) - 1= (r - 1) (c - 1).\]<br/>
+        </div>
+    </note>
+    <note id="1884871203" type="1708237251">
+        <div class="field">
+Kontigenční tabulka
+        </div>
+        <div class="field">
+<img src="contingencytable-1638d996e6d6b737337eff4c814d72c3a2c21ce6.png"/>
+        </div>
+    </note>
+    <note id="1924108427" type="1708237251">
+        <div class="field">
+Testovanie pomocou testových štatistík
+        </div>
+        <div class="field">
+<ul><li>Zostrojíme štatistiku \(T ≡ T(X)\) (funkciu náhodného vektoru \(X)\)</li><li>V oblastni možných hodnôt \(T\) vyberieme podmnožinu \(S_\alpha\) pre ktorú platí:</li><ul><li>\(\sup_{\theta\in\Theta_0}P_\theta(T \in S_\alpha) \le \alpha\)<br/></li><li>Pri platnosti \(H_0\) má \(T\) hodnoty v \(S_\alpha\) s pravdepodobnosťou najviac \(\alpha\)</li></ul><li>Zároveň obvykle chceme, aby pre každé \(\theta \in \Theta_A\) platilo:</li><ul><li>\(P_\theta(T\in S_\alpha) \gt \sup_{\theta\in\Theta_0}P_\theta(T \in S_\alpha)\)<br/></li><li>Pri platnosti \(H_A\) má \(T\) hodnoty v \(S_\alpha\) s vyššou pravedpodobnosťou než pri platnosti \(H_0\)</li></ul></ul>
+        </div>
+    </note>
+    <note id="1637653293" type="1708237251">
+        <div class="field">
+Jednovýběrový t-test
+        </div>
+        <div class="field">
+<ul><li>Slouží k testování hypotéz o střední hodnotě</li><li>Používame <b>studentovo rozdělení</b></li><li>Do kritického oboru vybereme hodnoty určené kritickou hodnotou studentova rozdělenia pro dané \(\alpha\) a \(n-1\) stupeň volnosti</li></ul>
+        </div>
+    </note>
+    <note id="2129829592" type="1708237251">
+        <div class="field">
+Testová statistika t-testu při známém rozptylu
+        </div>
+        <div class="field">
+<img src="t-testknown-bd050feff7ebba6503a55cd2038c5812.png"/>
+        </div>
+    </note>
+    <note id="1461112465" type="1708237251">
+        <div class="field">
+Testová statistika t-testu při neznámém rozptylu
+        </div>
+        <div class="field">
+<img src="t-testunknown-e83c0f3a832e97430d712f3657939313.png"/>
+        </div>
+    </note>
+    <note id="1597933555" type="1708237251">
+        <div class="field">
+Párový t-test
+        </div>
+        <div class="field">
+<div>Mějme náhodný výběr \((X_1, Y_1)^T, \dots, (X_n, Y_n)^T\) z nějakého dvourozměrného rozdělení s neznámým vektorem středních hodnot \((\mu_1, \mu_2)^T\) a předpokládejme, že chceme testovat \(H_0 : \mu_1 = \mu_2\) proti \(H_A : \mu_1 \neq \mu_2\) na hladině významnosti \(\alpha\). Položme\[Z_i = X_i - Y_i,\]čímž dostaneme i.i.d. náhodné veličiny \(Z_1, \dots, Z_n\) se střední hodnotou\[\mu_\Delta = \mu_1 - \mu_2.\]Předpokládáme \(Z_i \sim \operatorname N(\mu_\Delta, \sigma^2)\), kde \(\sigma^2\) je neznámé. Potom požadovaný test můžeme převést na jednovýběrový \(\operatorname t\)-test hypotézy \(H_0 : \mu_\Delta = 0\) proti \(H_A : \mu_\Delta \neq 0\) na hladině významnosti \(\alpha\) s testovou statistikou\[T = \frac{\bar Z_n}{\frac {s_Z}{\sqrt n}}.\]Kritický obor testové statistiky \(S_\alpha\) stanovíme následovně:<table style="text-align: center;"><tbody><tr><td><b>nulová hypotéza</b> \(H_0\)</td><td><b>alternativní hypotéza </b>\(H_A\)</td><td><b>kritický obor testové statistiky </b>\(S_\alpha\)</td></tr><tr><td>\(\mu_1 = \mu_2\)<br/></td><td>\(\mu_1 \neq \mu_2\)<br/></td><td>\(|T| \geq t_{\frac \alpha 2, n - 1}\)<br/></td></tr><tr><td>\(\mu_1 \leq \mu_2\)</td><td>\(\mu_1 &gt; \mu_2\)</td><td>\(T \geq t_{\alpha, n - 1}\)<br/></td></tr><tr><td>\(\mu_1 \geq \mu_2\)</td><td>\(\mu_1 &lt; \mu_2\)</td><td>\(T \leq -t_{\alpha, n - 1}\)<br/></td></tr></tbody></table></div><div><br/></div><div><i>* např. můžeme testovat rozdíl v naměřené teplotě u pacientů před a po podání léků</i></div>
+        </div>
+    </note>
+    <note id="1584504263" type="1708237251">
+        <div class="field">
+Dvouvýběrový t-test
+        </div>
+        <div class="field">
+<div>Mějme nezávislé náhodné výběry \(X_1, \dots, X_n\) resp. \(Y_1, \dots, Y_m\) z normálního rozdělení \(\operatorname N(\mu_1, \sigma_1^2)\) resp. \(\operatorname N(\mu_2, \sigma_2^2)\) a předpokládejme, že chceme testovat \(H_0 : \mu_1 = \mu_2\) proti \(H_A : \mu_1 \neq \mu_2\) na hladině významnosti \(\alpha\). Za předpokladu \(\sigma_1^2 = \sigma_2^2\), uvažujeme testovou statistiku\[T = \frac{\bar X_n - \bar Y_m}{s_{12}} \sqrt{\frac{n \cdot m}{n + m}},\]kde \(s_{12} &gt; 0\) závisí na \(s_X^2\) a \(s_Y^2\). Kritický obor testové statistiky \(S_\alpha\) stanovíme následovně:<br/><table style="text-align: center;"><tbody><tr><td><b>nulová hypotéza</b> \(H_0\)</td><td><b>alternativní hypotéza </b>\(H_A\)</td><td><b>kritický obor testové statistiky </b>\(S_\alpha\)</td></tr><tr><td>\(\mu_1 = \mu_2\)<br/></td><td>\(\mu_1 \neq \mu_2\)<br/></td><td>\(|T| \geq t_{\frac \alpha 2, n + m - 2}\)<br/></td></tr><tr><td>\(\mu_1 \leq \mu_2\)</td><td>\(\mu_1 &gt; \mu_2\)</td><td>\(T \geq t_{\alpha, n + m - 2}\)<br/></td></tr><tr><td>\(\mu_1 \geq \mu_2\)</td><td>\(\mu_1 &lt; \mu_2\)</td><td>\(T \leq -t_{\alpha, n + m - 2}\)<br/></td></tr></tbody></table>Pokud není možné předpokládat \(\sigma_1^2 = \sigma_2^2\), pak uvažujeme testovou statistiku\[T = \frac{\bar X_n - \bar Y_m}{s_d},\]kde \(s_d &gt; 0\) závisí na \(s_X^2\) a \(s_Y^2\). Kritický obor testové statistiky \(S_\alpha\) stanovíme následovně:<table style="text-align: center;"><tbody><tr><td><b>nulová hypotéza</b> \(H_0\)</td><td><b>alternativní hypotéza </b>\(H_A\)</td><td><b>kritický obor testové statistiky </b>\(S_\alpha\)</td></tr><tr><td>\(\mu_1 = \mu_2\)<br/></td><td>\(\mu_1 \neq \mu_2\)<br/></td><td>\(|T| \geq t_{\frac \alpha 2, n_d}\)<br/></td></tr><tr><td>\(\mu_1 \leq \mu_2\)</td><td>\(\mu_1 &gt; \mu_2\)</td><td>\(T \geq t_{\alpha, n_d}\)<br/></td></tr><tr><td>\(\mu_1 \geq \mu_2\)</td><td>\(\mu_1 &lt; \mu_2\)</td><td>\(T \leq -t_{\alpha, n_d}\)<br/></td></tr></tbody></table></div><div><br/></div><div>Pro úplnost:\[\begin{matrix}
+s_{12} = \sqrt{\frac{(n - 1) s_X^2 + (m - 1) s_Y^2}{n + m -2}},\\
+s_d = \sqrt{\frac{s_X^2}{n} + \frac{s_Y^2}{m}},\\
+n_d = \frac{s_d^4}{\frac{1}{n - 1} \big( \frac{s_X^2}{n} \big)^2 + \frac{1}{m - 1} \big( \frac{s_Y^2}{m} \big)^2}.
+\end{matrix}\]<br/></div><div><br/></div><div><br/></div><div><i>* např. naměřené teploty pacientů ve dvou skupinách, kdy jedné byl podán lék, a druhé nikoli</i><br/></div>
+        </div>
+    </note>
+    <note id="1664177973" type="1708237251">
+        <div class="field">
+Testová statistika dvouvýběrového t-testu při shodném rozptylu
+        </div>
+        <div class="field">
+<img src="t-testequal1-b8add9f3d5bb53d9edab6ace80f185fd.png"/><br/><img src="t-testequal2-dbccc0df1d6abd9ae4182b670ac06427.png"/>
+        </div>
+    </note>
+    <note id="1078067037" type="1708237251">
+        <div class="field">
+Testová statistika dvouvýběrového t-testu při rozdílném rozptylu
+        </div>
+        <div class="field">
+<img src="t-testdifferent1-6012d1f8103f73250b70f53d4e7b6e05.png"/><br/><img src="t-testdifferent2-32a4a05db8ccea4e0c0fc35d3ac761e7.png"/>
+        </div>
+    </note>
+    <note id="2059580633" type="1708237251">
+        <div class="field">
+Multinomické rozdelenie \(N\sim M(n,p)\)
+        </div>
+        <div class="field">
+<ul><li>Máme náhodnú veličinu \(X\), ktorá nabýva \(k\) rôznych hodnôt \(1,\dots,k\) s pravedpodobnosťami \(p=(p_1,\dots,p_k)\) (čiže máme obmedzenú množinu hodnôt a každá nastane s pravedpodobnosťou \(p_i\))<br/></li><li>Urobíme náhodný výber hodnôt z \(X\) o veľkosti \(n\) a výsledok v podobe četnosti každej hodnoty zaznamenáme (náhodné veličiny \(N_1,\dots,N_k\), četnosti hodnôt \(1,\dots,k\) \(\to\) \(N_1+\dots+N_k=n\)</li><li>Združené rozdelenie náh. vek. \(N=(N_1,\dots,N_k)^T\) sa nazýva multitonické \(M(n,p)\) a je určené pravedpodobnosťou \(P(N_1 = n_1,\dots,N_k=n_k)=\frac{n!}{n_1!\dots n_k!}p_1^{n_1}\dots p_k^{n_k}\)</li></ul>
+        </div>
+    </note>
+    <note id="1716854561" type="1708237251">
+        <div class="field">
+Test dobrej zhody
+        </div>
+        <div class="field">
+<ul><li>Slúži na testovanie hypotéz o zhode náhodného výberu s konkrétnym rozdelením</li><li>Používame chí-kvadrát štatistiku</li><li>Vychádza z multinomického rozdelenia</li><li>Rozdeľujeme na "biny"</li><ul><li>testujeme či počty odpovedajú tým teoretickým</li><li>teoretické četnosti musia byť aspoň 5</li></ul><li>Dá sa využiť aj na spojité náhodné veličiny tým, že ich diskretizujeme rozdelením na \(k\) intervalov a napočítame pre ne četnosti</li></ul>
+        </div>
+    </note>
+    <note id="1158132235" type="1708237251">
+        <div class="field">
+Testová štatistika testu dobrej zhody pri známych parametroch
+        </div>
+        <div class="field">
+<img src="goodnesknown-ff9b2e7addf4f4e116700560d5154f87.png"/>
+        </div>
+    </note>
+    <note id="1930424023" type="1708237251">
+        <div class="field">
+Testová štatistika testu dobrej zhody pri neznámych parametroch
+        </div>
+        <div class="field">
+<img src="goodnessunknown-7d6f0a424147225f47de9bb377caf014.png"/>
+        </div>
+    </note>
+    <note id="1849933631" type="1708237251">
+        <div class="field">
+Test nezávislosti
+        </div>
+        <div class="field">
+<ul><li>Slúži na testovanie nezávislosti dvoch náhodných veličin</li><li>Využíva kontigenčnú tabuľku</li><li>Náhodný vektor \(X=(Y,Z)\)</li><ul><li>Združené rozdelenie: \(p_{ij}=P(Y=i,Z=j)\)</li><li>Marginálne rozdelenie: \(p_{i∙}=\sum_jp_{ij},\ p_{i∙}\sum_ip_{ij}\)</li></ul><li>Testujeme \(H_0:p_{ij}=p_{i∙}p_{∙j}\)</li><li>Stupeň volnosti: \(-k-m-1\) (počet "binov" \(r \cdot c\), odhadované \((r-1)\cdot(c-1)\)</li></ul><div><ul><img src="independence1-938d5e13bde31901e2d5d52054208b39.png"/></ul><ul><img src="independence2-547695ed8b515d5031c36e592fb9707fb9b4573f.png"/><br/></ul></div><div><br/></div>
+        </div>
+    </note>
+    <note id="1829653187" type="1708237251">
+        <div class="field">
+Testovaná štatisticka testu nezávislosti
+        </div>
+        <div class="field">
+<img src="independencestat-2529b982e9643d51291720ad19e581db.png"/><br/><br/>Alternatívne:<br/><br/>\(\chi^2=\sum_{i=1}^r\sum_{j=1}^c\frac{(N_{ij}-p_{i∙}p_{∙j}N)^2}{p_{i∙}p_{∙j}N}\)
+        </div>
+    </note>
+    <note id="1917899824" type="1708237251">
+        <div class="field">
+Definujte Studentovo \(t\)-rozdělení
+        </div>
+        <div class="field">
+Spojitá náhodná veličina \(X\) má Studentovo \(\operatorname t\)-rozdělení s \(n \in \mathbb N\) stupni volnosti, jestliže\[f_X(x) = \frac{\operatorname \Gamma(\frac{n + 1} 2)}{\operatorname \Gamma(\frac n 2) \sqrt{\pi n}} \bigg( 1 + \frac {x^2} n \bigg)^{- \frac{n + 1} 2}, \quad x \in (-\infty, +\infty).\]Značíme \(X \sim \operatorname{t}_n\). Pro střední hodnotu a rozptyl platí:\[\begin{matrix}
+\operatorname EX = 0, &amp;&amp; n &gt; 1 \\
+\operatorname{var}X = \displaystyle \frac n {n - 2} &amp;&amp; n &gt; 2.
+\end{matrix}\]
+        </div>
+    </note>
+    <note id="1501431214" type="1708237251">
+        <div class="field">
+Definujte \(\chi^2\) rozdělení.
+        </div>
+        <div class="field">
+Spojitá náhodná veličina \(X\) má \(\chi^2\) rozdělení s \(n \in \mathbb N\) stupni volnosti, jestliže\[f_X(x) = \begin{cases}
+\displaystyle \frac 1 {2^\frac n 2 \operatorname \Gamma(\frac n 2)} x^{\frac n 2 - 1} e ^{- \frac x 2} &amp;&amp; x \in (0, +\infty),\\
+0 &amp;&amp; \text{jinde}.
+\end{cases}\]Značíme \(X \sim \chi^2_n\). Pro střední hodnotu a rozptyl platí:\[\begin{matrix}
+\operatorname E X = n,\\
+\operatorname{var} X = 2n.
+\end{matrix}\]
+        </div>
+    </note>
+
+</deck>

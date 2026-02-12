@@ -1,0 +1,309 @@
+<deck id="1705377049" name="NI-MPI::NI-SPOL-03" deck_slug="NI-SPOL-03">
+
+    <note id="1489606660" type="1708237251">
+        <div class="field">
+Definice - Norma
+        </div>
+        <div class="field">
+<b>Norma</b> (<i>norm</i>) vektorového prostoru \(V\) je zobrazení \(∥ \cdot ∥ : V \to \mathbb{R}^+_0\) splňující:<br/><ol><li>\(∥x∥=0 ⇒ x=0\) (pozitivní definitnost)<br/></li><li>\(∥\alpha x∥ = |\alpha| \cdot ∥x∥\) (konzistenci)</li><li>\(∥x + y∥ ~\leq~ ∥x∥ + ∥y∥\) (trojúhelníková nerovnost)<br/></li></ol><div>pro všechna \(x, y \in V\) a všechna skaláry \(\alpha\).</div><div><br/></div><div><i>* nejznámější je pravděpodobně <b>eukleidovská</b> norma </i>\(∥ x ∥_2\)</div>
+        </div>
+    </note>
+    <note id="1223769661" type="1708237251">
+        <div class="field">
+Definice - Limita funkce v bodě
+        </div>
+        <div class="field">
+\(c \in R\) je limitou funkce \(f\) v bodě \(a\) \(\iff\) pro všechna okolí \(H_c\) existují okolí \(H_a\)<br/><br/>\((\forall H_c)(\exists H_a)(\forall x \in D_f)\)\((x \in H_a \setminus \{a\} \implies f(x) \in H_c)\)
+        </div>
+    </note>
+    <note id="1139092654" type="1708237251">
+        <div class="field">
+Derivace funkce v bodě
+        </div>
+        <div class="field">
+\(\lim_{x \to a}{\frac{f(x)-f(a)}{x-a}}\), alternativně \(\lim_{h \to 0}{\frac{f(a+h)-f(a)}{h}}\)
+        </div>
+    </note>
+    <note id="1193311672" type="1708237251">
+        <div class="field">
+Definice - Limita funkce více proměnných
+        </div>
+        <div class="field">
+<div>Řekneme, že funkce \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^n\), má limitu \(L \in \mathbb R\) v hromadném bodě \(\mathbf b\) množiny \(D_f\), pokud</div><div></div><div></div><div><br/></div><div>\((\forall H(L))(\exists H(\mathbf b))\)\(~(\mathbf x \in ( D_f \cap H(\mathbf b) \setminus \{ \mathbf b \})\)\(\implies f(\mathbf x) \in H(L)).\)</div><div></div><div><br/></div><div>Tuto skutečnost značíme\[\displaystyle \lim_{\mathbf x \to \mathbf b} f( \mathbf x) = L.\]<br/></div>
+        </div>
+    </note>
+    <note id="1474373952" type="1708237251">
+        <div class="field">
+Věta - Limita funkce více proměnných
+        </div>
+        <div class="field">
+<div>Funkce \(f: D_f \in \mathbb R^n \to \mathbb R^m\), \(D_f \subset \mathbb R^n\) má v hromadném bodě  </div><div>\(\mathbf b \in D_f\) limitu \(L\), tedy \(\lim_{\mathbf x \to \mathbf b} f(\mathbf x) = L\), právě tehdy, když pro všechny posloupnosti vektorů \((\mathbf x_i)_{i=0}^{+\infty} \subset D_f\), \(\mathbf x_i \neq \mathbf b\), platí:</div><br/>\(\lim_{n \to \infty}{\mathbf x_n} = \mathbf b\)\(\implies
+\lim_{n \to \infty}{f(\mathbf x_n)} = L\)<br/>
+        </div>
+    </note>
+    <note id="1239643950" type="1708237251">
+        <div class="field">
+Definice - Spojitost funkce
+        </div>
+        <div class="field">
+<div>Řekneme, že funkce \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^n\), je spojitá v bodě \(\mathbf a \in D_f\), pokud<br/>\[(\forall \varepsilon &gt; 0) (\exists \delta &gt; 0) \big( \forall \mathbf x \in D_f : d(\mathbf x, \mathbf a) &lt; \delta \big) \Big( d \big(f(\mathbf x), f(\mathbf a) \big) &lt; \varepsilon \Big).\]Spojitost lze formulovat i pomocí limity. Funkce \(f\) je spojitá v bodě \(\mathbf a\), pokud\[\displaystyle \lim_{ \mathbf x \to \mathbf a } f(\mathbf x) = f(\mathbf a).\]<br/></div>
+        </div>
+    </note>
+    <note id="1757478767" type="1708237251">
+        <div class="field">
+Definice - ostrý a neostrý lokální extrém
+        </div>
+        <div class="field">
+<div>Řekneme, že reálná funkce \(f\) má v bodě \(\mathbf b \in D_f\)</div><div><ol><li><b>lokální minimum</b>, pokud \(\exists \delta &gt; 0\), \(\forall \mathbf x \in (D_f \cap H_\delta (\mathbf b))\), \(f(\mathbf x) \geq f(\mathbf b)\);</li><li><b>ostré lokální minimum</b>, pokud \(\exists \delta &gt; 0\), \(\forall \mathbf x \in (D_f \cap H_\delta (\mathbf b)) \setminus \{\mathbf b\}\), \(f(\mathbf x) &gt; f(\mathbf b)\);</li><li><b>globální minimum</b>, pokud \(\forall \mathbf x \in D_f\), \(f(\mathbf x) \geq f(\mathbf b)\).</li></ol></div><div>Bod \(\mathbf b\) se nazývá postupně bodem lokálního minima, bodem ostrého lokálního minima a bodem globálního minima funkce \(f\).</div>
+        </div>
+    </note>
+    <note id="1125234479" type="1708237251">
+        <div class="field">
+Definice - omezená, otevřená a uzavřená množina
+        </div>
+        <div class="field">
+Množina \(D \subset \mathbb R^n\) se nazývá:<br/><ul><li><b>omezená</b>, pokud je podmnožinou nějaké otevřené koule (otevřeného okolí);<br/></li><li><b>otevřená</b>, pokud s každým svým bodem obsahuje i nějaké jeho okolí,<br/></li><li><b>uzavřená</b>, pokud je její doplněk (\(\mathbb R^n \setminus D\)) otevřený (tj. \(D\) obsahuje i svou hranici).</li></ul><div><i>* Hranicí množiny </i>\(D\)<i> rozumíme množinu bodů, v jejichž každém okolí leží bod z </i>\(D\)<i> a bod mimo </i>\(D\)<i>.</i></div>
+        </div>
+    </note>
+    <note id="1803286037" type="1708237251">
+        <div class="field">
+Věta - postačující podmínka existence globálního extrému
+        </div>
+        <div class="field">
+Mějme spojitou funkci \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^n\). Je-li \(D_f\) uzavřená a omezená množina, pak na ní \(f\) nabývá globálního maxima i minima.
+        </div>
+    </note>
+    <note id="2060404208" type="1708237251">
+        <div class="field">
+Parciální derivace více proměnných v bodě
+        </div>
+        <div class="field">
+Parciální derivace funkce \(f\) ve směru proměnné \(x_i\) v bodě \(\mathbf b=(b_1,\dots,b_n) \in D_f\) tak, že \(\exists H(\mathbf b) \subset D_f\) je<br/><br/>\(\lim_{h \to 0} {\frac{f(b_1,\dots,b_i +h,\dots,b_n) - f(b_1,\dots,b_i,\dots,b_n)}{h}}\)\(= L \in \mathbb{R}\), <br/><br/>pokud tato limita existuje. Značíme \(\frac{\partial f}{\partial x_i}(\mathbf b) = L\).<br/><br/><i>* jedná se o směrnici tečny ke grafu funkce </i>\(f\)<i> ve směru osy </i>\(x_i\)<br/><br/><img src="partial-e90c7b660be55c03a9040a041f9a66bd678a868d.jpg"/>
+        </div>
+    </note>
+    <note id="1123165639" type="1708237251">
+        <div class="field">
+Definice - Gradient funkce v bodě
+        </div>
+        <div class="field">
+Gradient funkce \(f\) v bodě \(\mathbf b \in D_f\) je (řádkový) vektor<br/><br/>\(\nabla f(\mathbf b)=
+\left(\frac{\partial f}{\partial x_1}(\mathbf b),\dots,\frac{\partial f}{\partial x_n}(\mathbf b) \right).\)<br/><br/><i>* vektor parciálních derivací v bodě podle každé proměnné<br/>* ukazuje směr největšího růstu funkce</i><br/><br/><img src="gradient-ee6d812640984b3ee17c29f5eb22f8f42cd14133.jpg"/>
+        </div>
+    </note>
+    <note id="1879701292" type="1708237251">
+        <div class="field">
+Definice, věta - Derivace ve směru
+        </div>
+        <div class="field">
+Derivace funkce \(f\) v směru \(\mathbf v\),\(||\mathbf v|| = 1\), v bodě \(\mathbf b \in D_f\) tak, že \(\exists H(\mathbf b) \subseteq D_f \)<br/><br/>\(\nabla_{\mathbf v} f(\mathbf b) = \lim_{h \to 0} \frac{f(\mathbf b + h \mathbf v) - f(\mathbf b)}{h}.\)<br/><br/><i>* směr je zadaný vektorem, jehož norma musí být rovná 1<br/>* Věta: pokud jsou všechny parciální derivace </i>\(f\)<i> na nějakém okolí bodu </i>\(\mathbf b\)<i> spojité, platí: </i>\(\nabla_{\mathbf v} f(\mathbf b) = \nabla f(\mathbf b) \cdot \mathbf v\)
+        </div>
+    </note>
+    <note id="1366597408" type="1708237251">
+        <div class="field">
+Definice - Tečná nadrovina, její normálový vektor
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R, D_f \subset \mathbb R^n\) a bod \(\mathbf a \in D_f\) takový, že \(f\) má v bodě \(\mathbf a\) gradient. Tečná nadrovina funkce \(f\) v bodě \(\mathbf a\) je sjednocením tečen ve všech směrech v bodě \(\mathbf a\), tedy množina bodů \((x_1, \dots, x_n, z) \in \mathbb R^{n + 1}\) vyhovujících rovnici\[z = f(\mathbf a) + \sum_{i=1}^n \frac{\partial f}{\partial x_i}(\mathbf a)(x_i - a_i).\]Jejím normálovým vektorem je vektor\[\Big( \frac{\partial f}{\partial x_1}(\mathbf a), \dots, \frac{\partial f}{\partial x_n}(\mathbf a), -1 \Big).\]<br/><img src="tangentplane-a301313c3d9bc321e0519b06fb35554ba10f4dcb.jpg"/><br/>
+        </div>
+    </note>
+    <note id="1922499627" type="1708237251">
+        <div class="field">
+Věta - Nutná podmínka existence lokálního extrému I
+        </div>
+        <div class="field">
+Nechť má funkce \(f: D_f \to \mathbb{R}\), \(D_f \subseteq \mathbb{R}^n\) v bodě \(\mathbf b\) parciální derivaci podle \(i\)-té proměnné. Pokud má \(f\) v bodě \(\mathbf b\) lokální extrém, potom<br/>\(\frac{\partial f}{\partial x_i}(\mathbf b) = 0.\)<br/><br/>Důsledek: pokud existuje gradient funkce \(f\) v bodě \(\mathbf b\), pak existence lokálního extrému implikuje \(\nabla f(\mathbf b) = 0\).
+        </div>
+    </note>
+    <note id="1425490863" type="1708237251">
+        <div class="field">
+Definice - Stacionární bod, kritický bod
+        </div>
+        <div class="field">
+Body \(\mathbf b \in D_f\) splňující \(\nabla f(\mathbf b) = 0\) se nazývají <b>stacionární</b>.<br/><br/><img src="stationary-89d329b4d7de85ed8d23414725791ba7e45c4d63.jpg"/><br/><br/><b>Kritické body</b> jsou body podezřelé z extrému, tj. body stacionární a body, v kterých gradient \(f\) neexistuje.
+        </div>
+    </note>
+    <note id="1910465110" type="1708237251">
+        <div class="field">
+Parciální derivace 2. řádu
+        </div>
+        <div class="field">
+\(\frac{\partial^2f}{\partial x_j\partial x_i}(b) =
+\frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right) (b)\)
+        </div>
+    </note>
+    <note id="1916533127" type="1708237251">
+        <div class="field">
+Definice - Hessova matice
+        </div>
+        <div class="field">
+Mějme funkci \(f: D_f \to \mathbb R, D_f \subset \mathbb R ^n\). Pokud existují všechny druhé parciální derivace funkce \(f\) v bodě \(\mathbf b\), potom je píšeme do matice:<br/><br/>\(\nabla^2f(\mathbf b)= \begin{pmatrix}
+    \frac{\partial^2 f}{\partial x_1^2}(\mathbf b) &amp;\dots &amp; \frac{\partial^2 f}{\partial x_1 \partial x_n}(\mathbf b) \\
+    \vdots &amp;&amp; \vdots\\
+    \frac{\partial^2 f}{\partial x_n \partial x_1}(\mathbf b) &amp;\dots &amp; \frac{\partial^2 f}{\partial x_n^2}(\mathbf b)
+\end{pmatrix}\).<br/><br/>Matici \(\nabla^2 f(\mathbf b)\) nazýváme <b>Hessovou maticí funkce </b>\(f\)<b> v bodě </b>\(\mathbf b\).
+        </div>
+    </note>
+    <note id="1358452401" type="1708237251">
+        <div class="field">
+Věta - o zaměnitelnosti druhých parciálních derivací
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^2\) a bod \(\mathbf b \in D_f\). Pokud existuje \(\frac {\partial^2 f}{\partial x \partial y}(\mathbf b)\) a je v bodě \(\mathbf b\) spojitá, pak existuje i \(\frac {\partial^2 f}{\partial y \partial x}(\mathbf b)\) a platí<br/>\[\frac {\partial^2 f}{\partial x \partial y}(\mathbf b) =
+\frac {\partial^2 f}{\partial y \partial x}(\mathbf b).\]<br/><i>* Důsledek: Hessova matice je často symetrická</i>
+        </div>
+    </note>
+    <note id="1893932083" type="1708237251">
+        <div class="field">
+Definice, věta - druhá derivace ve směru
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^n\), bod \(\mathbf b \in D_f\) takový, že \(f\) je definovaná na nějakém jeho okolí \(H(\mathbf b) \subset D_f\) a vektor \(\mathbf v \in \mathbb R^{n, 1}\) takový, že \(\| \mathbf v \| = 1\). <b>Druhá parciální derivace funkce </b>\(f\)<b> ve směru </b>\(\mathbf v\)<b> v bodě </b>\(\mathbf b\) je\[\nabla_\mathbf v (\nabla_\mathbf v f)(\mathbf b).\]<br/>Pokud navíc platí, že má \(f\) na \(H(\mathbf b)\) spojité všechny druhé parciální derivace, pak\[\nabla_\mathbf v (\nabla_\mathbf v f)(\mathbf b) = \mathbf v^T \cdot \nabla^2 f(\mathbf b) \cdot \mathbf v.\]<br/><i>* vektor </i>\(\mathbf v\)<i> udává směr derivace, a proto musí mít "velikost 1"</i>
+        </div>
+    </note>
+    <note id="1201799047" type="1708237251">
+        <div class="field">
+Definice - Definitnost matic
+        </div>
+        <div class="field">
+<div>Mějme \(\mathbf A \in \mathbb R^{n,n}\). Řekneme, že matice \(\mathbf A\) je</div><ul><li><b>pozitivně semidefinitní</b>, pokud \(\mathbf x^T \mathbf A \mathbf x \geq 0\) pro \(\forall \mathbf x \in \mathbb{R}^{n,1}\)</li><li><b>pozitivně definitní</b>, pokud \(\mathbf x^T \mathbf A \mathbf x \gt 0\) pro \(\forall \mathbf x \in \mathbb{R}^{n,1},~ \mathbf x \neq 0\)</li><li><b>negativně semidefinitní</b>, pokud \(\mathbf x^T \mathbf A \mathbf x \leq 0\) pro \(\forall \mathbf x \in \mathbb{R}^{n,1}\)</li><li><b>negativně definitní</b>, pokud \(\mathbf x^T \mathbf A \mathbf x \lt 0\) pro \(\forall \mathbf x \in \mathbb{R}^{n,1},~ \mathbf x \neq 0\)</li><li><b>indefinitní</b>, pokud není pozitivně ani negativně semidefinitní. Tj. matice, kde \(\exists \mathbf x, \mathbf y \in \mathbb{R}^n\), \( \mathbf x^T \mathbf A \mathbf x \gt 0\) a \(\mathbf y^T \mathbf A \mathbf y \lt 0\).</li></ul>
+        </div>
+    </note>
+    <note id="1251459139" type="1708237251">
+        <div class="field">
+Věta - charakterizace (semi)definitnosti
+        </div>
+        <div class="field">
+<div>Buď \(\mathbf A \in \mathbb R^{n,n}\) <b>symetrická</b> matice. Potom platí následující:</div><ul><li>Matice \(\mathbf A\) je <i>pozitivně semidefinitní</i> iff všechna její vlastní čísla jsou <i>nezáporná</i>.</li><li>Matice \(\mathbf A\) je <i>pozitivně definitní</i> iff všechna její vlastní čísla jsou <i>kladná</i>.<br/></li><li>Matice \(\mathbf A\) je <i>negativně semidefinitní</i> iff všechna její vlastní čísla jsou <i>nekladná</i>.</li><li>Matice \(\mathbf A\) je <i>negativně definitní</i> iff všechna její vlastní čísla jsou <i>záporná</i>.</li><li>Matice \(\mathbf A\) je <i>indefinitní</i> iff má aspoň jedno <i>kladné</i> vlastní číslo a má aspoň jedno <i>záporné</i> vlastní číslo.</li></ul>
+        </div>
+    </note>
+    <note id="1461219052" type="1708237251">
+        <div class="field">
+Věta - Sylvestrovo kritérium
+        </div>
+        <div class="field">
+Mějme <b>symetrickou</b> matici \(\mathbf A \in \mathbb{R}^{n,n}\). Definujme \(\mathbf A_k \in \mathbb{R}^{k,k}\) jako podmatici v levém horním rohu \(\mathbf A\). Potom platí:<br/><ul><li>Matice \(\mathbf A\) je pozitivně definitní \(\iff\)determinant všech podmatic je kladný</li><li>Matice \(\mathbf A\) je negativně definitní \(\iff\)determinant podmatice \(\mathbf A_k\) je záporný pro lichá \(k\) a kladný pro sudá \(k\)</li></ul>
+        </div>
+    </note>
+    <note id="1073882493" type="1708237251">
+        <div class="field">
+Věta - diagonála matice a její indefinitnost
+        </div>
+        <div class="field">
+Pokud má matice \(\mathbf A \in \mathbb R^{n,n}\) na diagonále prvky s různým znaménkem (alespoň jeden kladný a alespoň jeden záporný) pak je nutně indefinitní.
+        </div>
+    </note>
+    <note id="1216054398" type="1708237251">
+        <div class="field">
+Věta - Postačující podmínka existence extrému a sedlového bodu
+        </div>
+        <div class="field">
+Nechť \(\mathbf b \in D_f\) je stacionární bod funkce \(f: D_f \to \mathbb{R}\), \(D_f \subseteq \mathbb{R}^n\). Nechť existuje okolí \(H(\mathbf b)\) tak, že \(f\) v bodě \(\mathbf b\) má spojité všechny druhé parciální derivace, potom:<br/><ul><li>je-li \(\nabla^2 f(\mathbf b)\) pozitivně definitní\(\implies\)\(\mathbf b\) je ostré lokální minimum</li><li>je-li \(\nabla^2 f(\mathbf b)\) negativně definitní\(\implies\)\(\mathbf b\) je ostré lokální maximum</li><li>je-li \(\nabla^2 f(\mathbf b)\) indefinitní\(\implies\)\(\mathbf b\) je sedlový bod</li></ul>
+        </div>
+    </note>
+    <note id="1602041810" type="1708237251">
+        <div class="field">
+Věta - Nutná podmínka existence lokálního extrému II
+        </div>
+        <div class="field">
+Nechť \(\mathbf b \in D_f\) je stacionární bod funkce \(f: D_f \to \mathbb{R}\), \(D_f \subseteq \mathbb{R}^n\). Nechť existuje okolí \(H(\mathbf b)\) tak, že \(f\) v bodě \(\mathbf b\) má spojité všechny druhé parciální derivace, potom:<br/><ul><li>je-li v \(\mathbf b\) lokální minimum, pak \(\nabla^2 f(\mathbf b)\) je pozitivně semidefinitní</li><li>je-li v \(\mathbf b\) lokální maximum, pak \(\nabla^2 f(\mathbf b)\) je negativně semidefinitní</li></ul>
+        </div>
+    </note>
+    <note id="1354344061" type="1708237251">
+        <div class="field">
+Postup hledání extrému
+        </div>
+        <div class="field">
+<ol><li>Najít kritické body, tj. stacionární body a body, kde alespoň jedna parciální derivace neexistuje</li><li>Jsou-li všechny druhé parciální derivace v okolí stacionárního bodu spojité, určíme definitnost Hessovy matice v tomto bodě:</li></ol><ul><ul><li>Pozitivně definitní \(\implies\)lokální min. (konvexní)</li><li>Negativně definitní\(\implies\)lokální max. (konkávní)</li><li>Indefinitní\(\implies\)sedlový bod</li><li>v ostatních případech je třeba rozhodnout jiným způsobem</li></ul></ul>
+        </div>
+    </note>
+    <note id="1850431343" type="1708237251">
+        <div class="field">
+Definice - konvexní a konkávní funkce
+        </div>
+        <div class="field">Funkce \(f: D_f \to \mathbb{R}\), \(D_f \subset \mathbb{R}^n\) je <b>konvexní</b>, pokud je \(D_f\) konvexní množina a<br/> \(\forall \mathbf b_1, \mathbf b_2 \in D_f, \forall t \in [0, 1]:\)\(f(t \mathbf b_1 + (1-t) \mathbf b_2) \leq t f(\mathbf b_1) + (1-t)f(\mathbf b_2)\).<br/>Funkce \(f\) je <b>konkávní</b>, pokud \(-f\) je konvexní.<br/><div>* tj. funkční hodnoty všech bodů mezi každými dvěma body musí být menší nebo rovny lineární interpolaci funkční hodnoty v daném bodě</div><div>* pod pojmem konvexní množina se rozumí, že pro každé dva body \(A, B \in M\) leží úsečka \(AB\) v \(M\).</div><div>
+<table><tbody><tr><td><img src="paste-386bf89b3a25a29cd99c0999c5cf863e0a0bb750.jpg"/></td><td><img src="paste-573a23d81b2408b5983b3b1082a7e6fec6fb4ae7.jpg"/></td></tr></tbody></table>
+        </div>
+        </div>
+    </note>
+    <note id="1989729362" type="1708237251">
+        <div class="field">
+Věta - vztah definitnosti Hessovy matice a konvexity
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R^n\), \(D_f \subset \mathbb R\) a nechť má spojité všechny druhé parciální derivace. Funkce \(f\) je konvexní právě tehdy, když je její Hessova matice pozitivně semidefinitní (PSD) ve všech bodech vnitřku \(D_f\).
+        </div>
+    </note>
+    <note id="1969910025" type="1708237251">
+        <div class="field">
+Věta - o implicitní funkci
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^2\). Nechť má spojité všechny parciální derivace na okolí bodu \((a, b) \in D_f\) a platí<br/>\[f(a, b) = 0 \quad \text a \quad \frac {\partial f}{\partial x_2}(a, b) \neq 0.\]Potom existuje \(\varepsilon &gt; 0\) a čtvercové okolí<br/>\[R := \{ (x_1, x_2) : |x_1 - a| &lt; \varepsilon, |x_2 - b| &lt; \varepsilon \}\]bodu \((a, b)\) takové, že pro každé \(x_1 \in (a - \varepsilon, a + \varepsilon)\) existuje právě jedno \(x_2 \in (b - \varepsilon, b + \varepsilon)\) takové, že platí<br/>\[f(x_1, x_2) = 0.\]Proměnná \(x_2\) je tedy funkcí proměnné \(x_1\), neboli<br/>\[x_2 = \varphi(x_1), \quad x_1 \in (a - \varepsilon, a + \varepsilon).\]Pro funkci \(\varphi\) navíc platí, že je spojitá pro \(x \in (a - \varepsilon, a + \varepsilon)\) a<br/>\[\varphi'(x) = - \frac{\frac{\partial f}{\partial x_1} \big(x, \varphi(x) \big)}{\frac{\partial f}{\partial x_2} \big( x, \varphi(x) \big)}, \quad x \in (a - \varepsilon, a + \varepsilon).\]<br/>
+        </div>
+    </note>
+    <note id="1876542190" type="1708237251">
+        <div class="field">
+Definice - množina přípustných řešení, rovnostní vazby a nerovnostní vazby
+        </div>
+        <div class="field">
+Mějme funkci \(f : D_f \to \mathbb R\), \(D_f \subset \mathbb R^n\) a \(m, p \in \mathbb N\). <b>Množinu přípustných řešení</b> \(\mathcal M\) definujeme následovně:<br/>\[\mathcal M = \{ \mathbf x \in D_f : (\forall j \in \hat m) \big( g_j(\mathbf x) = 0 \big) \land (\forall k \in \hat p) \big (h_k (\mathbf x) \leq 0 \big).\]Funkce \(g_j : D_{g_j} \to \mathbb R\), \(D_{g_j} \subset \mathbb R^n\) pak nazýváme <b>rovnostními vazbami </b>(podmínkami) a funkce \(h_k : D_{h_k} \to \mathbb R\), \(D_{h_k} \subset \mathbb R^n\) <b>nerovnostními vazbami </b>(podmínkami).<br/>
+        </div>
+    </note>
+    <note id="1268000484" type="1708237251">
+        <div class="field">
+Hlavní princip Lagrangeovy funkce
+        </div>
+        <div class="field">
+Pro extrém funkce \(f\) s rovnostní vazbou \(g\) musí platit, že normálový vektor \(g\) v bodě je kolmý na tečnu vrstevnice \(f\), tj. \(\nabla f\) musí být \(\lambda\)-násobek \(\nabla g\) pro nějaké \(\lambda\).<br/><br/><img src="lagrange1-da3ef216c41d1513f8eae2a07a18d43baaaa2fe9.jpg"/>
+        </div>
+    </note>
+    <note id="1690462917" type="1708237251">
+        <div class="field">
+Definice - Lagrangeova funkce a Lagrangeovy multiplikátory při rovnostních vazbách
+        </div>
+        <div class="field">
+Funkci \(L : \mathcal M \times \mathbb R^m \to \mathbb R\) definovanou jako<br/>\[L(\mathbf x; \lambda) = f(\mathbf x) + \displaystyle \sum_{j = 1}^m \lambda_j g_j (\mathbf x)\]nazýváme <b>Lagrangeovou funkcí</b> pro úlohu při rovnostních vazbách. Koeficienty<br/>\[\lambda = (\lambda_1, \dots, \lambda_m)\]nazýváme <b>Lagrangeovy multiplikátory</b>.<br/>
+        </div>
+    </note>
+    <note id="2060906061" type="1708237251">
+        <div class="field">
+Věta - Postačující podmínka existence ostrého lokálního minima pro rovnostní vazby
+        </div>
+        <div class="field">
+Nechť \(f,g_j\) pro \(j \in \hat{m}\) mají spojité všechny druhé parciální derivace na nějaké otevřené nadmnožině \(\widetilde{\cal M} \supset \cal M\). Pokud dvojice \((x^*, \lambda^*) \in \mathbb{R}^n \times \mathbb{R}^m \) splňuje podmínky:<br/><ul><li>(<i>0. derivace</i>) \(x^* \in \cal M\)<br/></li><li>(<i>1. derivace</i>) \(\forall{i}, \frac{\partial L}{\partial x_i}(x^*; \lambda^*) = 0\) (optimalita)</li><li>(<i>2. derivace</i>) Pro každý (sloupcový) vektor \(0 \neq v \in \mathbb{R}^n\) splňující\((\forall j \in \hat{m})\ \nabla g_j(x^*) \cdot v=0\), platí \(v^T \cdot \nabla^2_x L(x^*;\lambda^*) \cdot v&gt;0\), kde \(\nabla^2_x L\) je Hessova matice funkce \(L\) vzhledem k proměnným \(x = (x_1, x_2, \dots, x_n)\)</li></ul><div>potom je \(x^*\) bodem ostrého lokálního <b>minima</b>.</div><div><b><br/></b></div><div><i><b>* </b>Podmínky 0. a 1. derivace zajišťují, že </i>\(\nabla L(\mathbf x^*; \lambda^*) = \theta\)<i>, tedy že </i>\(\nabla f\)<i> a </i>\(\nabla g_j\)<i> mají stejné směry a vazby v daném bodě neprotínají vrstevnici. Jedině v takových bodech se může nacházet lokální extrém.</i></div><i>Podmínka 2. derivace omezuje vyhodnocení definitnosti </i>\(\nabla^2_\mathbf x L\)<i> pouze na vektory </i>\(v\)<i> kolmé na gradienty rovnostních vazeb </i>\(g_j\)<i>, tedy na vektory v jejich směru.</i>
+        </div>
+    </note>
+    <note id="1494756672" type="1708237251">
+        <div class="field">
+Definice - Lagrangeova funkce a Lagrangeovy multiplikátory při rovnostních i nerovnostních vazbách
+        </div>
+        <div class="field">
+Funkci \(L : \mathcal M \times \mathbb R^m \times \mathbb R^p \to \mathbb R\) definovanou jako<br/>\[L(\mathbf x; \lambda; \mu) = f(\mathbf x) + \displaystyle \sum_{j = 1}^m \lambda_j g_j (\mathbf x) + \displaystyle \sum_{k = 1}^p \mu_k h_k (\mathbf x)\]nazýváme <b>Lagrangeovou funkcí</b> pro úlohu při rovnostních i nerovnostních vazbách. Koeficienty<br/>\[\lambda = (\lambda_1, \dots, \lambda_m) \quad \text a \quad \mu = (\mu_1, \dots, \mu_p)\]nazýváme <b>Lagrangeovy multiplikátory</b>.<br/>
+        </div>
+    </note>
+    <note id="1296762567" type="1708237251">
+        <div class="field">
+Definice - množina aktivních omezení
+        </div>
+        <div class="field">
+Mějme bod \(\mathbf x \in \mathcal M\) a nerovnostní vazby \(h_k\), \(k \in \hat p\). Množinu aktivních omezení definujeme jako<br/>\[\mathcal B(\mathbf x) = \{ k \in \hat p : h_k(\mathbf x) = 0 \}.\]<br/><i>* Množina aktivních omezení udává indexy nerovnostních vazeb, na jejichž hranici leží bod </i>\(\mathbf x\)<i>.</i><br/>
+        </div>
+    </note>
+    <note id="2027601891" type="1708237251">
+        <div class="field">
+Věta - Postačující podmínka existence ostrého lokálního minima pro nerovnostní vazby
+        </div>
+        <div class="field">
+Nechť \(f,g_j,h_k\) pro \(j \in \hat{m}\), \(k \in \hat{p}\) mají spojité všechny druhé parciální derivace na nějaké otevřené nadmnožině \(\widetilde{\cal M} \supset \cal M\). Pokud trojice \((x^*, \lambda^*,\mu^*) \in \mathbb{R}^n \times \mathbb{R}^M \times \mathbb{R}^p\) splňuje podmínky:<br/><ul><li>(<i>0. derivace</i>) \(x^* \in \cal M\)<br/></li><li>(<i>1. derivace</i>) \(\forall{i}, \frac{\partial L}{\partial x_i}(x^*; \lambda^*;\mu^*) = 0\) (optimalita)</li><li>(<i>aktivní a neaktivní vazby</i>) \(\forall{k} \in \hat{p}\), \(\mu^*_k=0 \) nebo \(h_k(x^*)=0\)</li><li>(<i>2. derivace</i>) Pro každý (sloupcový) vektor \(0 \neq v \in \mathbb{R}^n\) splňující\((\forall j \in \hat{m})\ \nabla g_j(x^*) \cdot v=0\) a \((\forall k \in \hat{p}, \mu^*_k \neq0)\ \nabla h_k(x^*) \cdot v=0\) platí \(v^T \cdot \nabla^2_x L(x^*;\lambda^*;\mu^*) \cdot v&gt;0\), kde \(\nabla^2_x L\) je Hessova matice funkce \(L\) vzhledem k proměnným \(x = (x_1, x_2, \dots, x_n)\)</li><li>(<i>správný směr od hranice</i>) \(\mu_k^* \ge 0\), pro každé \(k \in \hat{p}\)<br/></li></ul><div>potom je \(x^*\) bodem ostrého lokálního <b>minima</b>.</div><div><b><br/></b></div><div><i><b>* </b>Podmínky 0. a 1. derivace zajišťují, že </i>\(\nabla L(\mathbf x^*; \lambda^*, \mu^*) = \theta\)<i>, tedy že </i>\(\nabla f\)<i>, </i>\(\nabla g_j\)<i> a </i>\(\nabla h_k\)<i> mají stejný směr a vazby v daném bodě neprotínají vrstevnici. Jedině v takových bodech se může nacházet lokální extrém.</i></div><i>Podmínka 2. derivace omezuje vyhodnocení definitnosti </i>\(\nabla^2_\mathbf x L\)<i> pouze na vektory </i>\(v\)<i> kolmé na gradienty rovnostních vazeb </i>\(g_k\)<i> a nerovnostních vazeb </i>\(h_k\)<i>, tedy na vektory v jejich směru, a případně na vektory s nulovými Lagrangeovými multiplikátory </i>\(\mu_k^*\)<i>, protože ty se nachází uvnitř nerovnostních vazeb.</i>
+        </div>
+    </note>
+    <note id="1288068133" type="1708237251">
+        <div class="field">
+Jaký je obecný postup pro nalezení vázaných extrémů?
+        </div>
+        <div class="field">
+<div>1. Nalézt všechny body a k nim příslušné Lagrangeovy multiplikátory které splňují podmínku optimality a KKT.</div><div><br/></div><div>2. V případě nerovnostní vazby rozdělit řešení na 2 podproblémy.</div><div>- vazba je aktivní (\(h(x) = 0\), řešíme jako rovnostní vazbu)</div><div>- vazba není aktivní (\(h(x) \ne{} 0\), nastavíme \(\mu{} = 0\), abychom splnili KKT)</div><div><br/></div><div>Obecně při více nerovnostních vazbách musíme pokrýt všechny možné kombinace aktivních a neaktivních vazeb.</div><div><br/></div><div>3. V případě nerovnostní vazby označíme body s \(\mu{} \ge{} 0\) za kandidáty na ostré lokální minimum a body s \(\mu{} \le{} 0\) za kandidáty na ostré lokální maximum. U rovnostní vazby jsou všechny body kandidáty na ostré lokální minimum i maximum.</div><div><br/></div><div>4. Pokud nerovnostní vazba není aktivní, řešíme úlohu bez ní a kontrolujeme náležitost do množiny přípustných řešení.<br/></div><div>5. Pokud nerovnostní vazba je aktivní nebo řešíme rovnostní vazbu, ověříme podmínku 2. řádu a pokusíme se rozhodnout na základě postačující podmínky. Pokud to nejde, nedokážeme rozhodnout.</div>
+        </div>
+    </note>
+
+</deck>

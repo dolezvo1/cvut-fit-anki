@@ -1,0 +1,185 @@
+<deck id="1996959830" name="NI-VSM::NI-SPOL-10" deck_slug="NI-SPOL-10">
+
+    <note id="1896809432" type="1708237251">
+        <div class="field">
+Systém hromadné obsluhy: přehled
+        </div>
+        <div class="field">
+<ul><li>Slouží k modelování systémů postavených na požadavcích a jejich odbavování</li><li>Požadavky přicházají podle určitého náhodného procesu</li><li>Každý server může v danou chvíli obsluhovat pouze jeden požadavek, ale potenciálně můžeme mít více serverů</li><li>Před servery se tvoří fronta požadavků čekajících na obsloužení</li><ul><li>typicky uvažujeme nekonečnou FIFO, ale lze modelovat i LIFO nebo prioritní frontu</li></ul></ul><i>* např. zpracování packetů v switchi, obsluha požadavků na server...</i>
+        </div>
+    </note>
+    <note id="1225331098" type="1708237251">
+        <div class="field">
+Definice - Proces hromadné obsluhy
+        </div>
+        <div class="field">
+<div>Proces hromadné obsluhy je náhodný proces \(\{ X_t \mid t \geq 0 \}\), který zaznamenává počet zákazníků v modelu hromadné obsluhy v čase \(t\).<br/></div>
+        </div>
+    </note>
+    <note id="1511171231" type="1708237251">
+        <div class="field">
+Vstupní tok požadavků
+        </div>
+        <div class="field">
+Je charakterizovaný:<br/><ul><li>Procesem příchodu zákazníků - různé kategorie, pro nás důležité:<br/></li><ul><li>\(M\) - memoryless, tedy Poissonův proces (exponenciální, nezávislé)</li><li>\(G\) - obecné rozdělení</li></ul><li>Velikostí populace - ta může být konečná, nebo nekonečná (nekonečná se snáze modeluje)</li></ul><i>* zákazníci se řadí do fronty, dokud není plná (potom se jejich příchody ignorují)</i><br/>
+        </div>
+    </note>
+    <note id="1323897739" type="1708237251">
+        <div class="field">
+Obsluha požadavků
+        </div>
+        <div class="field">
+<ul><li>Můžeme modelovat různé počty serverů</li><li>Každý server může být jiný (může zpracovávat podle jiného rozdělení)</li><li>Servery mohou být zapojené paralelně, sériově, nebo nějakou kombinací</li></ul>
+        </div>
+    </note>
+    <note id="1087337729" type="1708237251">
+        <div class="field">
+Kendallova notace
+        </div>
+        <div class="field">
+Zápis charakteristik systému ve formě \(A/S/c/K/N/D\)<br/><ul><li>\(A\) - rozdělení časů do příchodu \((M,D,E_k,G,GI)\)<br/></li><li>\(S\) - rozdělení časů do obsluhy \((M,D,E_k,G)\)<br/></li><li>\(c\) - počet obslužných míst</li><li>\(K\) - kapacita systému (počet obslužných míst + velikost fronty, implicitně \(+\infty\))</li><li>\(N\) - velikost populace (implicitně \(+\infty\))</li><li>\(D\) - způsob řazení fronty (implicitně FIFO)</li></ul><div><i>* protože fronta je obvykle nekonečná a v režimu FIFO, a populace nekonečná, </i>\(K\), \(N\) <i>a </i>\(D\)<i> se často vynechávají</i></div>
+        </div>
+    </note>
+    <note id="2004082658" type="1708237251">
+        <div class="field">
+Věta - Littleho
+        </div>
+        <div class="field">
+<div>Buď \(\{X_t\ |\ t\geq0\}\) striktně stacionární proces hromadné obsluhy. Buďte dále:</div><div><ul><li>\(\mathrm{E}N\) - střední počet zákazníků v systému<br/></li><li>\(\lambda\) - intenzita procesu příchodů</li><li>\(\mathrm{E}T\) - střední doba strávená v systému (čekání + obsluha)</li></ul><div>Jsou-li všechny střední hodnoty konečné, pak \(\mathrm{E}N=\lambda \cdot \mathrm{E}T\).</div></div><div><i><br/></i></div><div><i>* tzn. čím více zákazníků za jednotku času přijde, a čím více času budou trávit v systému, tím více jich v průměru bude v systému</i></div>
+        </div>
+    </note>
+    <note id="2083417196" type="1708237251">
+        <div class="field">
+Souvislost s Markovskými řetězci
+        </div>
+        <div class="field">
+<ul><li>Počet zákazníků v systému v čase \(t\) lze vyjádřit Markovským řetězcem \(X_t\) se spojitým časem</li><li>Stav řetězce odpovídá počtu zákazníků</li><li>Přechody jsou možné vždy ze stavu \(i\) do \(i + 1\) s intenzitou \(\lambda\) a z \(i\) do \(i-1\) s intenzitou \(\mu\)</li><li>\(\lambda\) udáva intenzitu příchodů a \(\mu\) intenzitu odchodů</li><li>Zajímá nás především stacionární rozdělení tohoto řetězce, které nám řekne, zda je systém správně dimenzovaný</li></ul>
+        </div>
+    </note>
+    <note id="1801570912" type="1708237251">
+        <div class="field">
+Hustota provozu \(\rho\)
+        </div>
+        <div class="field">
+\(\rho=\frac{\lambda}{c\mu}\)<br/><ul><li>\(ρ&gt;1\) - počet zákazníků roste nad všechny meze (zahlcení)</li><li>\(\rho &lt;1\) - systém se ustálí na rovnovážném rozdělení<br/></li></ul><div><i>* </i>\(\lambda\)<i> je intenzita příchodů, </i>\(\mu\) je<i> intenzita odchodů,</i><i> </i>\(c\)<i> je počet obslužných míst</i></div>
+        </div>
+    </note>
+    <note id="1841781320" type="1708237251">
+        <div class="field">
+Systémy \(M/M/1\)
+        </div>
+        <div class="field">
+<ul><li>Příchody a odchody jsou určené Poissonovým procesem s intenzitami \(\lambda\) a \(\mu\)</li><li>Máme jeden server (nedochází k žádné paralelizaci ani serializaci)</li><li>Střední počet právě zpracovávaných požadavků: \(\mathrm{E}N_S = \rho = \frac{\lambda}{\mu}\)</li><li>Střední počet požadavků v systému: \(\mathrm{E}N = \frac{\rho}{1-\rho}\)</li><li>Střední doba obsluhy požadavku: \(T_S=\frac{1}{\mu}\)</li><li>Střední doba strávená v systému: \(\mathrm{E}T = \frac1{\mu-\lambda}\) (z Littleho věty)</li></ul>
+        </div>
+    </note>
+    <note id="1732221189" type="1708237251">
+        <div class="field">
+Systémy \(M/M/1\) - stacionární rozdělení
+        </div>
+        <div class="field">
+Mějme proces hromadné obsluhy \(\{ X_t \mid t \geq 0 \}\) systému \(\text M | \text M | 1\) a položme\[\varrho = \frac \lambda \mu.\]Potom pokud \(\varrho &lt; 1\), pak existuje jednoznačné stacionární rozdělení \(\boldsymbol \pi\) a pro všechna \(n \in \mathbb N_0\) platí\[\operatorname P(X_t = n) \to \boldsymbol \pi_n = (1 - \varrho) \varrho^n.\]Naopak pokud \(\varrho \geq 1\), pak stacionární rozdělení neexistuje a pro všechna \(n \in \mathbb N_0\) platí\[\operatorname P(X_t = n) \to 0.\]<br/>
+        </div>
+    </note>
+    <note id="1093448838" type="1708237251">
+        <div class="field">
+Systémy \(M/M/1\) - stacionární vlastnosti
+        </div>
+        <div class="field">
+Mějme proces hromadné obsluhy \(\{ X_t \mid t \geq 0 \}\) systému \(\text M | \text M | 1\) ve stacionárním stavu, tedy \(\mathbf p(t) = \boldsymbol \pi\), a předpokládejme\[\varrho = \frac \lambda \mu &lt; 1.\]Označme \(\operatorname E N\) střední počet zákazníků v systému, \(\operatorname E N_s\) střední počet zákazníků na serveru a \(\operatorname E N_f\) střední počet zákaznků ve frontě. Pak platí\[\begin{matrix}
+\operatorname E N = \operatorname E X_t =  \displaystyle \sum_{n = 0}^{+\infty} n \cdot \boldsymbol \pi_n = \frac \varrho {1 - \varrho},\\
+\operatorname E N_s = 1 - \boldsymbol \pi_0 = \varrho,\\
+\operatorname E N_f = \operatorname E N - \operatorname E N_s = \displaystyle \frac{\varrho^2}{1 - \varrho}.
+\end{matrix}\]<br/>
+        </div>
+    </note>
+    <note id="1389277351" type="1708237251">
+        <div class="field">
+Systémy \(M/M/1\) - doba čekání ve frontě
+        </div>
+        <div class="field">
+<div>Mějme systém hromadné obsluhy \(\text M | \text M | 1\). </div><div><br/></div><div>Zákazník nečeká právě a jen tehdy, pokud je server prázdný, tj.\[P(W=0) = P(X_t = 0) = \pi_0 = 1 - \frac\lambda\mu\]</div><div>Podmíněné rozdělení \(W\) doby čekání ve frontě za podmínky, že zákazník skutečně čeká, tedy \(W &gt; 0\), je exponenciální s parametrem \(\mu - \lambda\), tedy\[(W | W &gt; 0) \sim \operatorname{Exp}(\mu - \lambda).\]<br/></div><div><i>* Střední hodnota</i> \((W | W &gt; 0)\) <i>je tedy</i> \(\frac{1}{\mu-\lambda}\)<i> a </i>\(P(W&gt;t\ |\ W&gt;0)=e^{-t(\mu-\lambda)}\)<i>.</i></div><div></div>
+        </div>
+    </note>
+    <note id="1152632674" type="1708237251">
+        <div class="field">
+Systém \(M/M/c\)
+        </div>
+        <div class="field">
+<ul><li>Uvažujeme \(c\) paralelně zapojených serverů, můžeme tedy zpracovávat \(c\) požadavků naráz</li><li>Jedná se o proces zrodu a zániku s intenzitami<br/>\(Q_{n,n+1}=\lambda\), \(Q_{n,n-1}=\begin{cases}
+n\cdot\mu &amp; n \leq c,\\
+c\cdot\mu &amp; n &gt; c.
+\end{cases}\)</li><li>Stacionární rozdělení pro \(\rho \lt 1\):<br/>\(\pi_n = \begin{cases}
+\frac1{n!} \left(\frac\lambda\mu\right)^n \pi_0 &amp; n\leq c, \\
+\frac{c^c}{c!} \left(\frac\lambda{c\mu}\right)^n \pi_0 &amp; n \gt c.
+\end{cases}\)</li></ul><div><i>* hodnoty </i>\(\pi\)<i> pro stavy </i>\(0 \dots c-1\)<i> jsou jiné, protože když máme v systému méně než </i>\(c\)<i> zákazníků, některé servery zůstanou nevyužité</i></div><div><i>* ostatní vlastnosti těžko odvodit i spočítat, a v NI-VSM se neuvádí</i></div>
+        </div>
+    </note>
+    <note id="2016010009" type="1708237251">
+        <div class="field">
+Systém \(M/M/c\) - stacionární rozdělení
+        </div>
+        <div class="field">
+Mějme proces hromadné obsluhy \(\{ X_t \mid t \geq 0 \}\) systému \(\text M | \text M | c\) a položme\[\varrho = \frac \lambda {c \mu}.\]Potom pokud \(\varrho &lt; 1\), pak existuje jednoznačné stacionární rozdělení \(\boldsymbol \pi\) a pro všechna \(n \in \mathbb N_0\) platí\[\boldsymbol \pi_n = \begin{cases}
+\displaystyle \frac 1 {n!} \biggl( \frac \lambda \mu \biggr)^n \boldsymbol \pi_0 &amp; n \leq c,\\
+\displaystyle \frac {c^c}{c!} \biggl( \frac \lambda {c \mu} \biggr)^n \boldsymbol \pi_0 &amp; n &gt; c,
+\end{cases}\]kde \(\boldsymbol \pi_0\) získáme pomocí normalizační podmínky vektoru rozdělení \(\boldsymbol \pi\). Naopak pokud \(\varrho \geq 1\), pak stacionární rozdělení neexistuje.<br/>
+        </div>
+    </note>
+    <note id="1808043874" type="1708237251">
+        <div class="field">
+Systém \(M/M/\infty\) - stacionární rozdělení
+        </div>
+        <div class="field">
+Mějme proces hromadné obsluhy \(\{ X_t \mid t \geq 0 \}\) systému \(\text M | \text M | \infty\). Stacionární rozdělení tohoto procesu je pak Poissonovo s parametrem \(\lambda / \mu\), tedy\[\operatorname P_\boldsymbol \pi (X_t = n) = \boldsymbol \pi_n = \frac 1 {n!} \bigg( \frac \lambda \mu \bigg)^n e^{- \frac \lambda \mu}.\]<br/>
+        </div>
+    </note>
+    <note id="2073797063" type="1708237251">
+        <div class="field">
+Systém \(M/G/\infty\)
+        </div>
+        <div class="field">
+<ul><li>Přechody jsou stále Poissonovské, ale doba zpracování má libovolné rozdělení a vykonává ho nekonečný počet serverů.</li><li>\(G\) je obecné rozdělení časů obsluhy se střední hodnotou \(1/\mu\). </li><li>Jedná se o proces zrodu a zániku s intenzitami<br/>\(Q_{n,n+1}=\lambda\), \(Q_{n,n-1}=n\cdot\mu\)</li><li>Stacionární rozdělení vždy existuje a je Poissonovo. Počet zákazníků v systému má z dlouhodobého pohledu Poissonovo rozdělení s parametrem \(\lambda/\mu\).</li><li>Používá se na výpočet počtu potřebných serverů pro zaručení obsloužení např. 99.5% zákazníků (teda \(P(N\le c)=99.5\%\)) - \(c\) můžeme určit z distribuční funkce Poissonova rozdělení</li></ul><i>* to, že </i>\(N\)<i> má Poissonovo rozdělení je netriviální a vychází z Thinningu Poissonova procesu</i><br/>
+        </div>
+    </note>
+    <note id="1451387873" type="1708237251">
+        <div class="field">
+Definice - Nehomogenní Poissonův proces
+        </div>
+        <div class="field">
+Buď \(\lambda(r)\) funkce integrabilní na libovolném
+konečném intervalu. Pak proces \(\{ N_t | t \geq 0 \}\) nazvu nehomogenním Poissonovým procesem s
+intenzitou \(\lambda(r)\), pokud<br/><ol><li>\(N_0 = 0\) skoro jistě,</li><li>\(\{ N_t \}\) má nezávislé přírůstky,</li><li>\(N_t - N_s \sim \mathrm{Poisson} \left(\int_s^t \lambda (r)\ \mathrm d r \right)\) pro \(t &gt; s\).</li></ol>
+        </div>
+    </note>
+    <note id="1165220087" type="1708237251">
+        <div class="field">
+Věta - Dělení Poissonova procesu
+        </div>
+        <div class="field">
+Mějme homogenní Poissonův proces \(\{ N_t \mid t \geq 0 \}\) s intenzitou \(\lambda\) a předpokládejme, že v čase příchodu události nastává s pravděpodobností \(p_1 \in (0, 1)\) událost typu 1 a s pravděpodobností \(p_2 = 1 - p_1\) událost typu 2. Procesy \(\{ N_t^{(1)} \mid t \geq 0 \}\) resp. \(\{ N_t^{(2)} \mid t \geq 0 \}\) čítající události typu 1 resp. typu 2 do času \(t\) jsou pak nezávislé homogenní Poissonovy procesy s intenzitami \(\lambda p_1\) resp. \(\lambda p_2\).<br/><br/><img src="thinning-5e4fb425cafab8913151b8a44c99580982266ca9.jpg"/>
+        </div>
+    </note>
+    <note id="1980872929" type="1708237251">
+        <div class="field">
+Definice - Rozdělení náhodného procesu
+        </div>
+        <div class="field">
+<div>Rozdělení náhodného procesu \(\{ X_t \mid t \in T \}\) je systém rozdělení všech vektorů \((X_{t_1}, X_{t_2}, \dots, X_{t_k})\) konečných rozměrů, tedy systém distribučních funkcí konečných rozměrů\[\begin{matrix}
+F_{X_{t_1}, X_{t_2}, \dots, X_{t_k}}(x_1, x_2, \dots, x_k) = \\
+\operatorname P(X_{t_1} \leq x_1 \cap  X_{t_2} \leq x_2 \cap \dots \cap X_{t_k} \leq x_k),
+\end{matrix}\]kde \(k \in \mathbb N\), \(t_1, t_2, \dots, t_k \in T\) a \(x_1, x_2, \dots, x_k \in \mathbb R\).<br/></div>
+        </div>
+    </note>
+    <note id="1193458345" type="1708237251">
+        <div class="field">
+Definice - Striktně stacionární náhodný proces
+        </div>
+        <div class="field">
+<div>Náhodný proces \(\{ X_t \mid t \in T \}\) je striktně stacionární, pokud jsou jeho rozdělení konečných rozměrů invariantní vůči posunu v čase, tedy pro všechna \(k \in \mathbb N\), \(t_1, t_2, \dots, t_k \in T\), \(x_1, x_2 \dots, x_k \in \mathbb R\) a \(h \in \mathbb R\) taková, že \(t_1 + h, t_2 + h, \dots, t_k + h \in T\) platí\[\begin{matrix}
+F_{X_{t_1}, X_{t_2}, \dots, X_{t_k}}(x_1, x_2, \dots, x_k)\\
+= F_{X_{t_1 + h}, X_{t_2 + h}, \dots, X_{t_k + h}}(x_1, x_2, \dots, x_k).
+\end{matrix}\]<br/></div>
+        </div>
+    </note>
+
+</deck>

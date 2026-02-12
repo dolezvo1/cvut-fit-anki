@@ -1,0 +1,68 @@
+<deck id="1377430945" name="NI-FME::NI-FME-02" deck_slug="NI-FME-02">
+
+    <note id="1827463443" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: aserce
+        </div>
+        <div class="field">
+<ul><li>\(\mathrm{assume}\) assertion - something to be ensured by the user outside the program, generally reflects input specification (e.g. if algorithm requires a sorted array as a parameter, we can \(\mathrm{assume}\text{ }\mathrm{is\_sorted}(a)\))</li><li>\(\mathrm{@}\) assertion - something which should be implied by the algorithm, generally reflects output specification of a portion of the code and is to be verified (e.g. \(\mathrm{@} z \geq 0\))</li></ul>
+        </div>
+    </note>
+    <note id="1255215646" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: správnost
+        </div>
+        <div class="field">
+<ul><li>A program execution is <b>regular</b> iff it satisfies all assume-assertions. (i.e. iff user supplied valid arguments)<br/></li><li>A program is <b>partially correct</b> iff every regular program execution the first program line to a line with \(\mathrm{@}\)-assertion satisfies this \(\mathrm{@}\)-assertion</li><li>A program is <b>totally correct</b> iff it is partially correct and terminates</li></ul>
+        </div>
+    </note>
+    <note id="1379977769" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: SSA
+        </div>
+        <div class="field">
+Static Single Assignment = formulation of the program such that all variables are immutable and mutability is expressed by creation of new variables (e.g. \(x = x - 2\) would be rewritten as  \(x_2 \leftarrow x_1 - 2\))
+        </div>
+    </note>
+    <note id="1865703525" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: ověřovací podmínky
+        </div>
+        <div class="field">
+For programs without control structures, verification condition is formula consisting of implication which has program statements in SSA on the left hand side, and an \(\mathrm{@}\)-assertion on the right hand side.<br/><br/><div>Example program with assertions and verification condition:</div><div><img src="vc1-e20f8f129c3366e06c3dbccbba5d0e8c27173caa.jpg"/><br/></div><div><img src="vc2-86fced0546f6818ca6b5d88b9ea98d4d2ddc6999.jpg"/></div>
+        </div>
+    </note>
+    <note id="1956067281" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: if-then-else
+        </div>
+        <div class="field">
+If-then-else control structures decided by \(P\) must be linearized into two basic paths where one assumes \(P\) and the other assumes \(\neg P\)
+        </div>
+    </note>
+    <note id="1934367554" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: while-do
+        </div>
+        <div class="field">
+While-do control structures decided by \(P\) must be linearized into two basic paths, one entering or re-entering the loop (\(\mathrm{assume}\text{ } P\)) and the other leaving or jumping over the loop (\(\mathrm{assume}\text{ } \neg P\)).
+        </div>
+    </note>
+    <note id="1590580785" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: invarianty smyček
+        </div>
+        <div class="field">
+Loop invariants are \(\mathrm{@}\)-assertions which mainly serve to prove that loops terminate.<br/><ul><li>A loop invariant is <b>correct</b> iff it holds for all executions (no assertion failure)</li><li>A loop invariant is <b>inductive</b> iff all verification conditions ending in this loop invariant are true</li></ul>
+        </div>
+    </note>
+    <note id="1749923983" type="1708237251">
+        <div class="field">
+Dokazování správnosti programů: důkazy terminace
+        </div>
+        <div class="field">
+To prove that a loop terminates, we use loop variants. Generally this could be thought of as a values assigned to each loop, and which are ordered and bounded.<br/><br/><img src="loopvariant-9f1d796f5c1b71262a83abd905b194822c11c5bb.jpg"/>
+        </div>
+    </note>
+
+</deck>

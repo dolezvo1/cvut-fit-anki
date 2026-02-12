@@ -1,0 +1,20 @@
+<deck id="1960136787" name="NI-NUR::NI-NUR-02" deck_slug="NI-NUR-02">
+
+    <note id="1232781666" type="1708237251">
+        <div class="field">
+Prototypy a prototypování uživatelských rozhraní
+        </div>
+        <div class="field">
+<ul><li>Lo-Fi prototype = simplified visual and interaction design</li><li>Hi-Fi prototype = illusion of final visual and interaction design, but application logic not necessarily implemented</li></ul>
+        </div>
+    </note>
+    <note id="1340644791" type="1708237251">
+        <div class="field">
+Použitelnost (Usability)
+        </div>
+        <div class="field">
+<img src="usability-69c4b3742dfe2683396413d04399423f145da190.jpg"/>
+        </div>
+    </note>
+
+</deck>

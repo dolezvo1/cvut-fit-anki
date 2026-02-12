@@ -1,0 +1,84 @@
+<deck id="1972492816" name="NI-KOP::NI-SPOL-15" deck_slug="NI-SPOL-15">
+
+    <note id="1487622014" type="1708237251">
+        <div class="field">
+Simulované ochlazování
+        </div>
+        <div class="field">
+<ul><li>Lokální heuristická metoda, konkrétně pravděpodobnostní optimalizační metoda pro prohledávání okolního stavového prostoru</li><li>Mimo jiné se snaží vyřešit problém uváznutí v lokálním minimu pomocí dočasného zhoršování aktuálního stavu</li><li>Jedná se o analogii k tuhnutí taveniny (rozpálené oceli)</li><ul><li>Equilibrium - postupné ochladzovaní počáteční teploty (navíc při každém teplotním skoku prohledáváme okolí stavového prostoru)</li><li>Diverzifikace - na počátku má ocel vysokou teplotu (existuje vysoká pravděpodobnost, že přijmeme horší řešení)</li><li>Intenzifikace - postupně, jak se ocel ochlazuje, dochází ke konvergenci k finálnímu stavu</li></ul></ul>
+        </div>
+    </note>
+    <note id="1729670435" type="1708237251">
+        <div class="field">
+Princip simulovaného ochlazování
+        </div>
+        <div class="field">
+<ul><li>Zvolíme náhodné počáteční řešení a počáteční teplotu</li><li>Náhodně vybereme jednoho ze sousedů tohoto řešení</li><ul><li>Pokud je soused lepší, přejdeme na něj</li><li>Jinak ohodnotíme o kolik je horší</li><ul><li>Pokud máme dostatečně vysokou teplotu a zhoršení je dostatečně malé, přejdeme na něj</li><li>Jinak zůstáváme v současném řešení</li></ul></ul><li>Po několika krocích snížíme teplotu</li><li>Ve chvíli kdy teplota klesne dostatečně nízko, končíme (v opačném případě jdeme zase od druhého bodu)</li></ul><div><i>* teplota a velikost zhoršení určují pravděpodobnost přijetí horšího řešení</i></div><div><i>* teplota se postupně snižuje, a tím přecházíme od diverzifikace k intenzifikaci</i></div>
+        </div>
+    </note>
+    <note id="2136701466" type="1708237251">
+        <div class="field">
+Ukončovací podmínka simulovaného ochlazování
+        </div>
+        <div class="field">
+Například:<br/><ul><li>dolní mez pro teplotu (koncová teplota)</li><li>dolní mez pro počet změn</li><li>dolní mez pro počet přijatých zlepšujících řešení (dokud přijímáme zlepšující řešení, nemá smysl končit)</li></ul><div><i>* třeba myslet na to, že přijímané řešení se zpomalí, když začneme padat k lokálnímu minimu (je dobré počkat, zda se to ještě nerozběhne)</i></div>
+        </div>
+    </note>
+    <note id="1351698531" type="1708237251">
+        <div class="field">
+Omezující podmínky simulovaného ochlazování
+        </div>
+        <div class="field">
+<ul><li>Nevalidní sousedy můžeme ignorovat, ale pracovat s nimi je vhodnější:</li><ul><li>Relaxace - náhrada omezujících podmínek přirážkou k fitness hodnotě (nutné správně odladit)</li><li>Další možnost přiřadit konfiguracím které nejsou řešením stejný cost jako nějakému řešení (netřeba ladit)</li></ul></ul>
+        </div>
+    </note>
+    <note id="1553508984" type="1708237251">
+        <div class="field">
+Počáteční řešení
+        </div>
+        <div class="field">
+Můžeme buď zvolit náhodně, nebo konstruktivně<ul><li><div><div>Konstruktivní počáteční řešení<br/></div><ul><li>Vhodnou volbou počátečního řešení můžeme práci heuristiky urychlit - pokud máme na začátku poměrně dobré řešení, pro heuristiku nebude problém dostat se k ještě lepšímu</li></ul></div></li><li><div>Náhodné řešení<br/></div><ul><li>Vícenásobné spuštění</li><li>Správně aplikované simulované ochlazování není závislé na počátečním řešení (může to ale trvat trochu déle)</li></ul></li></ul>
+        </div>
+    </note>
+    <note id="2005745766" type="1708237251">
+        <div class="field">
+Ladění parametrů
+        </div>
+        <div class="field">
+<ul><li>Nejdříve white-box evaluation přístup následně black-box</li><ul><li>Tedy nejdříve na malé sadě instancí a detailně měříme průběh algoritmu, děláme modifikace kódu a parametrů, snažíme se porozumět</li></ul><li>Jakmile jsme spokojeni s nastavením parametrů, můžeme začít testovat na plné sadě instancí</li><li>U simulovaného ochlazování je velmi vhodné si vygenerovat graf ceny řešení v průběhu algoritmu</li><ul><li>Z něj dokážeme rozeznat, zda máme na začátku dostatečně vysokou teplotu</li></ul></ul>
+        </div>
+    </note>
+    <note id="1119956302" type="1708237251">
+        <div class="field">
+Počáteční teplota
+        </div>
+        <div class="field">
+<ul><li>Ideální je, když víme, o kolik horší musí být řešení, aby umožnilo únik z lokálního minima</li><ul><li>Potom dokážeme teplotu nastavit aby např. byla pravděpodobnost úniku \(50\%\)</li></ul><li>Jelikož touto informací většinou nedsiponujeme, využijeme zpětnou vazbu</li><ul><li>Před samotným započetím algoritmu uděláme přípravný běh</li><li>Během něj postupně zvyšujeme teplotu a sledujeme podíl přijatých zhoršujících řešení</li><li>V momentě kdy dosáhneme požadovaného podílu, uložíme si nalezenou teplotu a spustíme s ní hlavní algoritmus</li></ul><li>Příliš vysoká počáteční teplota - přijímá i velké zhoršení (bude trvat dlouho)</li><li>Přílis nízká počáteční teplota - riziko uváznutí v lokálním minimu</li></ul><div></div>
+        </div>
+    </note>
+    <note id="1202216213" type="1708237251">
+        <div class="field">
+Algoritmus iterativní optimalizace
+        </div>
+        <div class="field">
+<img src="sa-fad8d638293a83aebd389522b172c4fe5901a352.png"/>
+        </div>
+    </note>
+    <note id="1514380275" type="1708237251">
+        <div class="field">
+Ochlazovací funkce
+        </div>
+        <div class="field">
+\(t_k = \frac {c} {\log(1 + k)}\)<br/>kde \(k\) je číslo kroku, \(c\) je hloubka lokálního minima.
+        </div>
+    </note>
+    <note id="1915425807" type="1708237251">
+        <div class="field">
+Equilibrium a koeficient ochlazování
+        </div>
+        <div class="field">
+<ul><li>Ochlazujeme tak, že teplotu vynásobíme parametrem mezi \(0\) a \(1\), většinou \(0.8\)<i> a </i>\(0.999\)</li><li>Správná míra ochlazování lze za běhu řídit délkou ekvilibria</li><li>Příliš vysoký koeficient ochlazování - výpočet trvá dlouho bez zlepšování výsledku</li><li>Příliš nízký koeficient ochlazování - riziko uváznutí</li><li><div><b>Délka ekvilibria</b> - ovlivňuje počet okolních stavů, které prohledáváme v každém teplotním skoku</div><ul><li>Většinou implementujeme tak, že ekvilibrium skončí po \(X\) přijatých řešeních, nebo \(Y\) iteracích<br/></li><li>Správná hodnota ekvilibria závisí na problému a na míře ochlazování</li><li>Příliš vysoká - výpočet trvá dlouho bez zlepšení výsledku</li><li>Příliš nízká - riziko uváznutí v lokálním minimu</li></ul></li></ul>
+        </div>
+    </note>
+
+</deck>

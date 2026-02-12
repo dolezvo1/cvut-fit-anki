@@ -1,0 +1,76 @@
+<deck id="1940476364" name="NI-ADP::NI-ADP-05" deck_slug="NI-ADP-05">
+
+    <note id="1446885063" type="1708237251">
+        <div class="field">
+MVC
+        </div>
+        <div class="field">
+<div>Basic idea is to split code into three parts based on their responsibilities: Model, View and Controller.</div><div><br/></div><div><img alt="mvc04" src="mvc-0451a974f2caffacfde17887c8e45ec7.png"/><br/></div>
+        </div>
+    </note>
+    <note id="1563811118" type="1708237251">
+        <div class="field">
+MVP
+        </div>
+        <div class="field">
+Model-View-Presenter (MVP) is an evolution of the traditional Model View Controller (MVC) to improve the separation of concerns and facilitate the automatic unit testing.<br/><br/><img alt="mvp03" src="mvp-a9fdb3d23f9884892e6d2840f956d766.png"/>
+        </div>
+    </note>
+    <note id="1746449332" type="1708237251">
+        <div class="field">
+MVVM
+        </div>
+        <div class="field">
+MVVM separates View from Model and they both communicates only with ViewModel. In comparison with MVP, ViewModel doesn’t know anything about View. It just provides data for View in a way, that View can subscribe to them so it knows, when changes has been made and that it should re-render itself.<br/><br/><img alt="mvvm01" src="mvvm-c5ab44cc115cb9a2519fccd84613fb82.png"/>
+        </div>
+    </note>
+    <note id="1085903754" type="1708237251">
+        <div class="field">
+Client-Server
+        </div>
+        <div class="field">
+In client-server architecture, the client and the server are typically connected over a network, such as the internet. The client initiates a request to the server, which can be a request for data or a request to perform an action. The server receives the request, processes it, and sends back a response.<br/><br/><i>* in contrast with peer-to-peer architectures, which are decentralized</i>
+        </div>
+    </note>
+    <note id="1200618557" type="1708237251">
+        <div class="field">
+Microservices vs monolithic server
+        </div>
+        <div class="field">
+Monolithic server means single, indivisable unit (any changes require redeploying the entire monolith)<br/><br/>Microservices approach splits the application into small, loosely coupled, services, which may be redeployed and scaled independently.
+        </div>
+    </note>
+    <note id="1221442230" type="1708237251">
+        <div class="field">
+Asynchronous messaging
+        </div>
+        <div class="field">
+A layer that allows heterogenous components to asynchronously communicate despite their differences, usually realized by message queues.<br/><br/><img alt="Basic Messaging" src="async-f6bb9604ef3aae851c8d6f15df8b71e9.png"/>
+        </div>
+    </note>
+    <note id="1370974272" type="1708237251">
+        <div class="field">
+Blackboard architecture
+        </div>
+        <div class="field">
+<div>How to design a system that integrates large and diverse specialized modules, and implements complex, non-deterministic control strategy.</div><ul><li>Blackboard - a structured global memory containing objects from the solution space</li><li>Knowledge sources (agents) - specialized modules with their own representation</li><li>Control component - selects, configures and executes modules</li></ul><div><img alt="Blackboard architecture" src="blackboard-46a92cf0bafcd9e02f2ccbbddceaa52c.png"/><br/></div>
+        </div>
+    </note>
+    <note id="1343502225" type="1708237251">
+        <div class="field">
+Rule-based architecture
+        </div>
+        <div class="field">
+<div>Rule-based architectures provide a means of codifying the problem-solving knowhow of human experts.</div><ul><li>The basic features of a rule-based architecture are essentially the features of a table-driven interpreter:</li><ul><li>The pseudo-code to be executed, in this case the knowledge base</li><li>The interpretation engine, in this case the rule interpreter, the heart of the inference engine</li><li>The control state of the interpretation engine, in this case the rule and data element selector</li><li>The current state of the program running on the virtual machine, in this case the working memory.</li></ul></ul><div><img alt="Rule-based architecture" src="rulebased-69d16ab4e753f3bfbc6b9b631f03c0f7.png"/><br/></div>
+        </div>
+    </note>
+    <note id="1507065537" type="1708237251">
+        <div class="field">
+Publish-subscribe
+        </div>
+        <div class="field">
+Publishers categorize published messages. Subscribers express interest in messages from a category and only receive messages that are of interest, without knowledge of publishers.<br/><br/><img alt="Publish-subscribe" src="publishsubscribe-b11678ca1be277ba0844a021809df955.jpg"/>
+        </div>
+    </note>
+
+</deck>

@@ -1,0 +1,229 @@
+<deck id="1231250960" name="NI-VSM::NI-SPOL-07" deck_slug="NI-SPOL-07">
+
+    <note id="1569940085" type="1708237251">
+        <div class="field">
+Entropie
+        </div>
+        <div class="field">
+Entropie \(H(X)\) je očekávaná míra neurčitosti náhodné veličiny \(X\):<br/><br/>\(H(X)=-\sum_{x\in X}p(x)\cdot\log(p(x))\)
+        </div>
+    </note>
+    <note id="1843605544" type="1708237251">
+        <div class="field">
+Entropie jako střední hodnota
+        </div>
+        <div class="field">
+Entropii \(H(X)\) lze chápat jako střední hodnotu:<br/>\(H(X) = -E\log(p(X)) = EI(X)\),<br/>kde vlastní informace \(I(X) = -\log p(x)\).
+        </div>
+    </note>
+    <note id="1660758769" type="1708237251">
+        <div class="field">
+Vlastnosti entropie
+        </div>
+        <div class="field">
+<ul><li>Entropie je vždy nezáporná (\(H(X)\ge0\))</li><li>Entropie je konkávní funkcí rozdělení</li><li>Nulová entropie znamená naprostou jistotu ohledně výsledku měření</li><li>Maximální \(H(x)\), tedy nejvyšší neurčitost, má rovnoměrné rozdělení</li></ul>
+        </div>
+    </note>
+    <note id="1325992380" type="1708237251">
+        <div class="field">
+Definice - Sdružená entropie veličin a vektoru
+        </div>
+        <div class="field">
+Sdružená entropie \(H(X, Y)\) diskrétních náhodných veličin \(X, Y\) se sdruženým
+rozdělením \(p(x, y)\) je definována jako<br/>\[H(X,Y)=-\sum_{x\in\cal X}\sum_{y\in\cal Y}p(x,y)\cdot \log p(x,y).\]<br/>Sdužená entropie \(H(\mathbf X)\) diskrétního náhodného vektoru \(\mathbf X\) se sdruženým rozdělením \(p(\mathbf x)\) se definuje analogicky jako\[H(\mathbf X) = - \displaystyle \sum_{\mathbf x \in \mathcal X} p(\mathbf x) \log p(\mathbf x).\]<br/><i>* alternativně </i>\(H(X,Y)=-E\log(p(X,Y))\)<br/>
+        </div>
+    </note>
+    <note id="1136570778" type="1708237251">
+        <div class="field">
+Definice - Podmíněná entropie
+        </div>
+        <div class="field">
+Podmíněná entropie diskrétních náhodných veličin \(X\), \(Y\) se sdruženým rozdělením \(p(x, y)\) je definována vztahem\[H(Y|X) = - \displaystyle \sum_{x \in \mathcal X} \displaystyle \sum_{y \in \mathcal Y} p(x, y) \log p(y|x),\]kde\[p(y|x) = \frac{P(X=x, Y=y)}{P(X=x)} = \frac{p(x, y)}{p(x)}.\]<br/>* alternativně \(H(Y|X) = -E\log(p(X|Y))\)
+        </div>
+    </note>
+    <note id="1466244320" type="1708237251">
+        <div class="field">
+Věta - Řetězové pravidlo sdružené entropie
+        </div>
+        <div class="field">
+Podle řetězového pravidla pro sdruženou entropii platí\[H(X, Y) = H(X) + H(Y|X).\]<br/><i>* tj. pro nezávislé </i>\(X\)<i> a </i>\(Y\)<i> platí: </i>\(H(X,Y)=H(X)+H(Y)\)<br/>
+        </div>
+    </note>
+    <note id="1740243289" type="1708237251">
+        <div class="field">
+Definice - Relativní entropie (Kullback-Leiblerova vzdálenost)
+        </div>
+        <div class="field">
+Relativní entropie (Kullback-Leiblerova vzdálenost) mezi diskrétním rozdělením \(p\) a diskrétním rozdělením \(q\) na množině \(\mathcal X\) je definována vztahem<br/><br/>\(D(p||q)=\sum_{x \in \cal X}p(x)\cdot \log\left(\frac{p(x)}{q(x)}\right)\)<br/><br/><i>* obecně <b>neplatí</b>, že </i>\(D(p||q)=D(q||p)\)
+        </div>
+    </note>
+    <note id="1833725928" type="1708237251">
+        <div class="field">
+Věta - Informační nerovnost
+        </div>
+        <div class="field">
+Buďte \(p(x)\) a \(q(x)\) pro \(x \in \cal X\) dvě možná rozdělení diskrétní náhodné veličiny \(X\). Potom \(D(p\ ||\ q) \geq 0\). Rovnost nastává pouze pokud \(p(x) = q(x)\) pro všechna \(x \in \cal X\).
+        </div>
+    </note>
+    <note id="1203901819" type="1708237251">
+        <div class="field">
+Věta - Nezápornost vzájemné informace
+        </div>
+        <div class="field">
+Pro dvojici diskrétních náhodných veličin \(X\), \(Y\) platí \(I(X; Y) \geq 0\). Rovnost nastává právě, když jsou nezávislé.<br/><br/><i>* jedná se o důsledek informační nerovnosti</i>
+        </div>
+    </note>
+    <note id="1451345288" type="1708237251">
+        <div class="field">
+Věta - Maximalizace entropie
+        </div>
+        <div class="field">
+Pro diskrétní náhodnou veličinu \(X\) s hodnotami z \(\cal X\) platí \(H(X) \leq \log |\cal X|\). Rovnost nastává, právě když \(X\) má rovnoměrné rozdělení.<br/><br/><i>* jedná se o důsledek informační nerovnosti</i>
+        </div>
+    </note>
+    <note id="1297193589" type="1708237251">
+        <div class="field">
+Věta - Redukce entropie podmíněním
+        </div>
+        <div class="field">
+Pro diskrétní náhodné veličiny \(X\), \(Y\) platí \(H(X|Y) \leq H(X)\). Rovnost nastává, pouze pokud \(X\) a \(Y\) jsou nezávislé.<br/><br/><div><i>* tj. znalost </i>\(Y\)<i> může v průměru pouze redukovat neurčitost v </i>\(X\)<i> (nějaké konkrétní </i>\(H(X|Y = y)\)<i> ale může být větší, než </i>\(H(X)\)<i>)</i></div><div><i>* jedná se o důsledek informační nerovnosti</i></div>
+        </div>
+    </note>
+    <note id="1171740733" type="1708237251">
+        <div class="field">
+Definice - Vzájemná informace
+        </div>
+        <div class="field">
+Vzájemná informace diskrétních náhodných veličin \(X\) a \(Y\) je definována vztahem\[I(X; Y) = \displaystyle \sum_{x \in \mathcal X} \displaystyle \sum_{y \in \mathcal Y} p(x, y) \cdot \log \frac {p(x, y)}{p(x) p(y)}.\]Jedná se tedy o relativní entropii skutečného sdruženého rozdělení a rozdělení nezávislých náhodných veličin se stejnými marginálami\[I(X; Y) = D \big( p(x, y)\ \|\ p(x) \cdot p(y) \big).\]<br/><i>* Pokud jsou veličiny nezávislé, tak jejich vzdálenost, a teda i vzájemná informace je nulová</i><br/>
+        </div>
+    </note>
+    <note id="1966151702" type="1708237251">
+        <div class="field">
+Vztahy vzájemné informace a entropie
+        </div>
+        <div class="field">
+Mějme diskrétní náhodné veličiny \(X\) a \(Y\). Pak platí\[\begin{align}
+I(X; Y) &amp;= I(Y; X),\\
+I(X, Y) &amp;= H(X) - H(X | Y),\\
+I(X, Y) &amp;= H(Y) - H(Y | X),\\
+I(X, Y) &amp;= H(X) + H(Y) - H(X, Y),\\
+I(X, X) &amp;= H(X).
+\end{align}\]<br/><div style="text-align: center;"><img src="mutual-93830389266b6087dd06af7287249cf0e2fe3658.jpg"/></div>
+        </div>
+    </note>
+    <note id="1577334356" type="1708237251">
+        <div class="field">
+Teorie kódování
+        </div>
+        <div class="field">
+Zabývá se problémem, jak co nejefektivněji zapsat informaci do posloupnosti symbolů
+        </div>
+    </note>
+    <note id="1232199078" type="1708237251">
+        <div class="field">
+Definice - Kód, kódové slovo a jeho délka
+        </div>
+        <div class="field">
+Mějme \(D\)-ární abecedu \(\mathcal D\). Zobrazení \(C : \mathcal X \to \mathcal D^*\), kde \(\mathcal D^*\) je množina konečných řetězců symbolů \(\mathcal D\), tedy\[\mathcal D^* = \displaystyle \bigcup_{n \in \mathbb N} \mathcal D^n,\]nazýváme \(D\)<b>-árním kódem diskrétní náhodné veličiny </b>\(X\). Obraz \(C(x)\) prvku \(x \in \mathcal X\) nazýváme <b>kódové slovo</b> příslušející prvku \(x\) a jeho <b>délku</b> značíme \(\ell(x)\).<br/>
+        </div>
+    </note>
+    <note id="1803542647" type="1708237251">
+        <div class="field">
+Definice - Střední délka kódu
+        </div>
+        <div class="field">
+Střední délka kódu \(C\) náhodné veličiny \(X\) s rozdělením \(p(x)\) je definována vztahem\[L(C) = E\ \ell(x) = \displaystyle \sum_{x \in \mathcal X} \ell(x) \cdot p(x)\]kde \(\ell(x)\) je délka kódového slova pro zprávu \(x\)<br/>
+        </div>
+    </note>
+    <note id="1351146272" type="1708237251">
+        <div class="field">
+Definice - nesingulární kód
+        </div>
+        <div class="field">
+Kód je nesingulární pokud \(C\) je prosté zobrazení, tedy pro každé \(x,x'\in \cal X\) platí, že \((x \ne x') \implies (C(x) \ne C(x'))\).<br/><br/><div><i>* Nesingularita je tedy dostačující pro schopnost rekonstuovat z kódových slov jednotlivé hodnoty </i>\(\cal X\)<i>, není ale dostačující pro dekódování posloupností hodnot </i>\(\cal X\)<i>, tedy celých zpráv.</i></div><div><i>* Řešením by bylo přidat speciální symbol pro oddělovač znaků, to ale není efektivní řešení.</i></div>
+        </div>
+    </note>
+    <note id="1729570165" type="1708237251">
+        <div class="field">
+Definice - rozšíření kódu
+        </div>
+        <div class="field">
+<div>Rozšíření kódu<b> </b>\(C \) diskrétní náhodné veličiny \(X\) je zobrazení \(C^* : \mathcal X^* \to \mathcal D^*\) definované jako\[C^*(x_1 x_2 \cdots x_n) = C(x_1) C(x_2) \cdots C(x_n),\]kde \(C(x_1) C(x_2) \cdots C(x_n)\) znamená zápis jednotlivých kódových slov za sebe a \(\mathcal X^*\) značí množinu všech konečných řetězců symbolů z \(\mathcal X\).<br/></div>
+        </div>
+    </note>
+    <note id="1905032126" type="1708237251">
+        <div class="field">
+Definice - jednoznačně dekódovatelný kód
+        </div>
+        <div class="field">
+<ul><li>Označme \(\cal X^*\) množinu všech konečných řetězců nad \(\cal X\). Rozšíření \(C^*\) kódu \(C\) je zobrazení z množiny \(\cal X^*\) do \(\cal D^*\), tedy kód kódující celé řetězce jako \(C^*(X) = C(x_1) \dots C(x_n)\).</li><li>Řekneme, že kód \(C\) je jednoznačně dekódovatelný, pokud \(C^*\)je nesingulární.</li></ul>
+        </div>
+    </note>
+    <note id="1179338135" type="1708237251">
+        <div class="field">
+Definice - instantní (prefixový) kód
+        </div>
+        <div class="field">
+Kód, kde žádné kódové slovo není <b>prefixem</b> jiného kódového slova, a tedy dokážeme zprávu dekódovat znak po znaku ihned po jejich obdržení.
+        </div>
+    </note>
+    <note id="1430930801" type="1708237251">
+        <div class="field">
+Věta - Kraftova nerovnost
+        </div>
+        <div class="field">
+Pro libovolný instantní kód nad \(D\)-nární abecedou musí délky kódových slov \(\ell_1,\ell_2,\dots,\ell_n\) splnit nerovnost \(\sum_iD^{-\ell_1} \le1\).<br/>Navíc, ke každé \(n\)-tici délek, které splní tuto nerovnost, existuje instantní kód s kódovými slovy těchto délek.
+        </div>
+    </note>
+    <note id="2121037298" type="1708237251">
+        <div class="field">
+Věta - McMillanova nerovnost
+        </div>
+        <div class="field">
+Pro libovolný jednoznačně dekódovatelný kód nad \(D\)-nární abecedou musí délky kódových slov \(\ell_1,\ell_2,\dots,\ell_n\) splnit nerovnost \(\sum_iD^{-\ell_1} \le1\).<br/>Navíc, ke každé \(n\)-tici délek, které splní tuto nerovnost, existuje jednoznačně dekódovatelný (instantní) kód s kódovými slovy těchto délek.<br/><br/><i>* Důsledky: Ukazuje, že množina jednoznačně dekódovatelných kódů nenabízí žádné další možnosti
+délek kódových slov oproti množině instantních kódů - ke každému jednoznačně dekódovatelnému kódu lze sestrojit instantní kód, který má
+stejně dlouhá kódová slova.</i>
+        </div>
+    </note>
+    <note id="2049134001" type="1708237251">
+        <div class="field">
+Optimální kód
+        </div>
+        <div class="field">
+Instatní kód, který má nejmenší možnou střední délku.
+        </div>
+    </note>
+    <note id="1547504157" type="1708237251">
+        <div class="field">
+Věta - Dolní mez střední délky instantního kódu
+        </div>
+        <div class="field">
+<div>Střední délka instantního \(D\)-árního kódu \(C\) diskrétní náhodné veličiny \(X\) je\[L(C) \geq H_D(X),\]přičemž rovnost nastává právě tehdy, když\[D^{-\ell(x)} = p(x)\]pro všechna \(x \in \mathcal X\).<br/></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1379004170" type="1708237251">
+        <div class="field">
+Věta - Střední délka optimálního kódu
+        </div>
+        <div class="field">
+Uvažujme optimální instantní \(D\)-ární kód \(C^*\) diskrétní náhodné veličiny \(X\). Potom platí\[H_D(X) \leq L(C^*) &lt; H_D(X) + 1.\]<br/><i>* Tj. entropie omezuje střední délku optimálního instantního kódu.</i><br/>
+        </div>
+    </note>
+    <note id="2105896355" type="1708237251">
+        <div class="field">
+Algoritmus sestavení Huffmanova kódování
+        </div>
+        <div class="field">
+<ul><li>Slouží k sestrojení optimálního kódu pro zprávy s danými pravděpodobnostmi</li><li>Vytváříme strom počínaje listy, ve kterých jsou jednotlivé znaky. Postup:</li></ul><ol><ol><li>Vytvoříme uzly pro všechny znaky, ohodnotíme je jejich pravděpodobnostmi</li><li>Postupně vždy vytvoříme "rodičovský" uzel pro dva uzly s nejmenší pravděpodobností a každou hranu označíme jiným znakem abecedy (0 alebo 1)</li><li>Po sestavení stromu určíme pro každý znak kódové slovo zřetězením symbolů na hranách od kořene</li></ol></ol><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="1777305989" type="1708237251">
+        <div class="field">
+Věta - optimalita Huffmanova kódování
+        </div>
+        <div class="field">
+Huffmanův kód je optimální, tedy je-li \(C\) Huffmanův kód a \(C'\) libovolný jednoznačně dekódovatelný kód, potom\[L(C) \leq L(C').\]<br/><i>* navíc platí: </i>\(H_D(X) \le L(C^*)\le H_D(X)+1\)<br/><div></div><div></div><div></div><div></div>
+        </div>
+    </note>
+
+</deck>

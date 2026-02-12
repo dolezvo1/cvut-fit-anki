@@ -1,0 +1,20 @@
+<deck id="1268191010" name="NI-NUR::NI-NUR-01" deck_slug="NI-NUR-01">
+
+    <note id="1999196441" type="1708237251">
+        <div class="field">
+Proces návrhu uživatelských rozhraní
+        </div>
+        <div class="field">
+<ol><li>Product statement (what it does for whom, what it does not)</li><li>Personas - models of users (typical user, occasional user, etc.)</li><li>UseCases and Scenarios (use case is a list of actions defining the interactions between an actor and a system, use cases are derived from the business requirements)</li><li>WireFrames (schematic focusing on what the screen does, actions available to the user, etc.)</li><li>Prototypes (Lo-Fi/Hi-Fi)</li></ol>
+        </div>
+    </note>
+    <note id="1280455402" type="1708237251">
+        <div class="field">
+Parametry lidského vnímání a jejich vliv na návrh uživatelských rozhraní
+        </div>
+        <div class="field">
+<ul><li>The user has a mental model of how the program works. When this mental model does not fit the reality, issues arise.</li><li>The short term memory can hold 3-5 "items" at once. The average user will have issues using a program that assumes they can hold more than 3 "items" at once in their short term memory.</li><li>TODO: Human eye and colors</li></ul>
+        </div>
+    </note>
+
+</deck>

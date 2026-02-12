@@ -1,0 +1,85 @@
+<deck id="1639501070" name="NI-ADP::NI-ADP-02" deck_slug="NI-ADP-02">
+
+    <note id="1387472892" type="1708237251">
+        <div class="field">
+GoF Creational: Abstract factory
+        </div>
+        <div class="field">
+An interface for object creation (e.g. chairs and sofas). Different implementations may then be supplied to the code using this interface (e.g. different furniture styles).
+        </div>
+    </note>
+    <note id="2042993819" type="1708237251">
+        <div class="field">
+GoF Creational: Factory method
+        </div>
+        <div class="field">
+Factory Method provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.<br/><img alt="The structure of creator classes" src="factorymethod-85192cfab129f344ea29ec992803d220.png"/>
+        </div>
+    </note>
+    <note id="2053388666" type="1708237251">
+        <div class="field">
+GoF Creational: Builder
+        </div>
+        <div class="field">
+Builder lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
+        </div>
+    </note>
+    <note id="1287354196" type="1708237251">
+        <div class="field">
+GoF Creational: Prototype
+        </div>
+        <div class="field">
+Prototype lets you copy existing objects without making your code dependent on their classes.
+        </div>
+    </note>
+    <note id="1443531991" type="1708237251">
+        <div class="field">
+GoF Creational: Singleton
+        </div>
+        <div class="field">
+Singleton lets you ensure that a class has only one instance, while providing a global access point to this instance.
+        </div>
+    </note>
+    <note id="2103476438" type="1708237251">
+        <div class="field">
+Non-GoF: Double-checked locking
+        </div>
+        <div class="field">
+Check value, lock mutex, check value again.<br/><br/><pre><code><span style="font-weight: bold;">public</span> <span style="font-weight: bold;">static</span> Singleton <span style="font-weight: bold;">getInstance</span>() {
+    <span style="font-weight: bold;">if</span> (INSTANCE == <span style="font-weight: bold;">null</span>) {
+        <span style="font-weight: bold;">synchronized</span> (Singleton.<span style="font-weight: bold;">class</span>) {
+            <span style="font-weight: bold;">if</span> (INSTANCE == <span style="font-weight: bold;">null</span>) {
+                INSTANCE = <span style="font-weight: bold;">new</span> Singleton();
+            }
+        }
+    }
+    <span style="font-weight: bold;">return</span> INSTANCE;
+}</code></pre>
+        </div>
+    </note>
+    <note id="1671229023" type="1708237251">
+        <div class="field">
+Non-GoF: Thread pool
+        </div>
+        <div class="field">
+The main motivation behind using the pattern is to avoid the overhead associated with creating and destroying threads.
+        </div>
+    </note>
+    <note id="1475508188" type="1708237251">
+        <div class="field">
+Non-GoF: Mock object
+        </div>
+        <div class="field">
+A Mock Object is an object that substitutes for a real object. In object-oriented programming, mock objects are simulated objects that mimic the behavior of real objects in controlled ways. Common usage in testing.
+        </div>
+    </note>
+    <note id="1239334754" type="1708237251">
+        <div class="field">
+Non-GoF: Null object
+        </div>
+        <div class="field">
+The Null object pattern is a design pattern that simplifies the use of dependencies that can be undefined. This is achieved by using instances of a concrete class that implements a known interface, instead of null references.
+        </div>
+    </note>
+
+</deck>

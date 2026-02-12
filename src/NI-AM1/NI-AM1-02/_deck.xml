@@ -1,0 +1,44 @@
+<deck id="1332355544" name="NI-AM1::NI-AM1-02" deck_slug="NI-AM1-02">
+
+    <note id="1444461250" type="1708237251">
+        <div class="field">
+Service Oriented Architecture
+        </div>
+        <div class="field">
+SOA supports two core business strategies<br/><ul><li>Growing top-line revenue (Enterprise reacts quickly to requirements from the market - Business processes can be reconfigured rather than reimplemented)</li><li>Improving bottom-line profit (Saving development costs by resuing existing services)</li></ul><div><img src="soa-7faabdfe9f1671700889065dac11d47b528c236a.jpg"/><br/></div>
+        </div>
+    </note>
+    <note id="1644549124" type="1708237251">
+        <div class="field">
+One-to-one Service Intergration
+        </div>
+        <div class="field">
+<ul><li>Direct integration of applications</li><li>Multiple protocols problem, multiple vendor problem</li></ul><img src="onetoone-590c5970b8e6a30d43c4074e56afdbca5231131d.jpg"/><br/>
+        </div>
+    </note>
+    <note id="1894753162" type="1708237251">
+        <div class="field">
+Enterprise Service Bus
+        </div>
+        <div class="field">
+ESB is a central intermediary in SOA<br/><ul><li>ESB serves as a message broker (can mix and match protocols)</li><li>ESB can hide changes in location of services without affecting clients</li><li>ESB can pool sessions, enrich messages, etc.</li></ul><img src="esb-9a0944d2595faaf1174f8e462d60fb696b6c5df5.jpg"/><br/>
+        </div>
+    </note>
+    <note id="2128205385" type="1708237251">
+        <div class="field">
+synchronní a asynchronní komunikace
+        </div>
+        <div class="field">
+<ul><li>synchronous = one socket, only the server defines endpoint, response time must be relatively small</li><li>asynchronous = request and response each have sockets, response time can be large (hours, even days)</li></ul>
+        </div>
+    </note>
+    <note id="1261345483" type="1708237251">
+        <div class="field">
+blocking vs non-blocking I/O
+        </div>
+        <div class="field">
+<ul><li>Blocking I/O generally means when an I/O operation is being processed, the thread is being blocked</li><li>Blocking I/O is not good for network applications, because connections require their own threads and large number of threads means large overhead</li><li>Non-blocking (asynchronous) I/O usually uses some kind of worker threads, which process the requests asynchronously (I/O doesn't block the thread, the worker thread process other requests while I/O is processed)</li></ul>
+        </div>
+    </note>
+
+</deck>

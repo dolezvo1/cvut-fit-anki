@@ -1,0 +1,228 @@
+<deck id="1827918230" name="NI-PDP::NI-SPOL-18" deck_slug="NI-SPOL-18">
+
+    <note id="1278734729" type="1708237251">
+        <div class="field">
+Distribuovaná paměť
+        </div>
+        <div class="field">
+Každý výpočetní uzel má svoji vlastní paměť. Komunikace probíhá zasíláním zpráv skrze propojovací síť.
+        </div>
+    </note>
+    <note id="2135665868" type="1708237251">
+        <div class="field">
+Popište <i>Message Passing Interface </i>(MPI)
+        </div>
+        <div class="field">
+<i>Message Passing Interface </i>(MPI) je standard popisující systém zasílání zpráv mezi procesy paralelního programu. Typicky se používá pro paralelní systémy s distribuovanou pamětí (NUMA), které sestávají z uzlů propojených komunikační sítí.
+        </div>
+    </note>
+    <note id="1910934792" type="1708237251">
+        <div class="field">
+Popište rozdíly mezi OpenMP a <i>Message Passing Interface </i>(MPI)
+        </div>
+        <div class="field">
+Mezi OpenMP a <i>Message Passing Interface </i>(MPI) jsou následující rozdíly:<br/><table style="text-align: center;"><tbody><tr><td><b>OpenMP</b></td><td><b><i>Message Passing Interface </i>(MPI)</b></td></tr><tr><td>programy se kompilují kompilátorem napřímo</td><td>programy se kompilují skrze <i>wrapper</i></td></tr><tr><td>programy se spouští napřímo</td><td>programy se spouští skrze <i>launcher</i></td></tr><tr><td>vlákna běží na počítači, na kterém byl program spuštěn</td><td>procesy běží na různých uzlech výpočetního <i>clusteru</i></td></tr><tr><td>vlákna komunikují pomocí sdílené paměti</td><td>procesy komunikují posíláním zpráv a žádnou paměť nesdílí</td></tr></tbody></table>
+        </div>
+    </note>
+    <note id="1448103965" type="1708237251">
+        <div class="field">
+Míra podpory spolupráce mezi vlákny v MPI
+        </div>
+        <div class="field">
+<ul><li>OpenMP - pomocí čtení/zápisů sdílené paměti</li><li>MPI - procesy nesdílí paměť - komunikace zasíláním zpráv, všechny proměnné privátní</li></ul><div>Inicializace skrze funkci \(\texttt{MPI_Init_thread}\), v proměnné vrací míru spolupráce mezi vlákny:<br/></div><div><ul><li>\(\texttt{MPI_THREAD_SINGLE}\) - pouze MPI, procesy se nedělí na vlákna<br/></li><li>\(\texttt{MPI_THREAD_FUNNELED}\) - vícevláknové procesy s omezením, že pouze hlavní vlákno může zavolat funkce MPI = jednoportový model</li><li>\(\texttt{MPI_THREAD_SERIALIZED}\) - vícevláknové procesy s omezením, že v daném okamžiku smpí funkce MPI volat pouze jedno vlákno = jednoportový model</li><li>\(\texttt{MPI_THREAD_MULTIPLE}\) - vícevláknové procesy, kde všechna vlákna mohou volat funkce MPI bez omezení = všeportový model</li></ul></div>
+        </div>
+    </note>
+    <note id="1085657925" type="1708237251">
+        <div class="field">
+Komunikátor v MPI
+        </div>
+        <div class="field">
+<b>Komunikátor</b> je objekt typu \(\texttt{MPI_Comm}\), který určuje množinu procesů, v rámci kterých probíhá komunikace pomocí funkcí.<br/><br/>Rozlišujeme:<br/><ul><li><div><b>Intra-komunikátor</b> je asociovaný s konkrétnou skupinou procesů a určuje komunikaci <b>uvnitř</b> této skupiny</div></li><ul><li><div>\(\texttt{MPI_COMM_WORLD}\) je předdefinovaný intra-komunikátor pro všechny MPI procesy</div></li></ul><li><b>Inter-komunikátor</b> je asociovaný se dvěmi různými skupinami procesů a určuje komunikaci <b>mezi </b>procesy z těchto skupin (dále nerozváděno)</li></ul><div>Rank a počet procesů ve skupině asociované s daným komunikátorem lze zjistit pomocí funkcí \(\texttt{MPI_Comm_rank}\) a \(\texttt{MPI_Comm_size}\).</div>
+        </div>
+    </note>
+    <note id="1833790758" type="1708237251">
+        <div class="field">
+Dělení komunikačních operací v MPI
+        </div>
+        <div class="field">
+<div>Podle počtu zůčastněných procesů:</div><ul><li><b>dvoubodové</b> (<i>point-to-point</i>) = komunikace mezi dvěma procesy (\(\texttt{MPI_Send}\), \(\texttt{MPI_Recv}\), atd.)</li><li><b>kolektivní</b> (<i>collective</i>) = komunikace mezi všemi procesy asociovanými s daným komunikátorem (\(\texttt{MPI_Bcast}\), \(\texttt{MPI_Gather}\), atd.)</li></ul><div>Blokující/neblokující:</div><div><ul><li><b>Blokující</b> komunikační operace = Příslušná MPI funkce je ukončená až po dosažení určitého stavu dané komunikační operace (např. odeslání zprávy/obdržení zprávy)</li><li><b>Neblokující </b>komunikační operace = Funkce se vrátí ihned, práce se odehrává na pozadí, její dokončení je nutné explicitně testovat</li></ul></div>
+        </div>
+    </note>
+    <note id="2102429206" type="1708237251">
+        <div class="field">
+\(\texttt{MPI_Send}\): parametry
+        </div>
+        <div class="field">
+\(\texttt{MPI_Send}\)(\(\texttt{void* buf}\), \(\texttt{int count}\), \(\texttt{MPI_Datatype dt}\), \(\texttt{int dest}\), \(\texttt{int tag}\), \(\texttt{MPI_Comm comm}\)) = slouží k odeslání dat jednomu příjemci (tj. je to dvoubodová operace)<br/><ul><li>\(\texttt{void* buf}\) je ukazatel na odesílaná data</li><li>\(\texttt{int count}\) je počet posílaných položek</li><li>\(\texttt{MPI_Datatype dt}\) je typ posílaných dat<ul><li><div>např. \(\texttt{MPI_INT}\), ale lze definovat vlastní typy</div></li></ul></li><li>\(\texttt{int dest}\) je číslo cílového procesu<br/></li><li>\(\texttt{int tag}\) je značka k rozeznání sémantického významu zprávy<br/></li><li>\(\texttt{MPI_Comm comm}\) je MPI komunikátor</li></ul><div>Ze signatury plyne, že přenášené prvky musí být stejného datového typu a uloženy v souvislém bloku paměti.<br/></div>
+        </div>
+    </note>
+    <note id="1892122692" type="1708237251">
+        <div class="field">
+\(\texttt{MPI_Send}\): módy
+        </div>
+        <div class="field">
+<ul><li>\(\texttt{MPI_Send}\) realizuje tzv. <b>standardní mód</b>, kdy si MPI může buď data překopírovat do bufferu, nebo počkat, než budou data přijata příjemcem (tj. je nelokální). Jediné, co funkce zaručuje je, že vstupní buffer může být po návratu bezpečně přepsán.</li><li>\(\texttt{MPI_BSend}\) realizuje <b>buffered mode</b>, kde návrat zaručeně nezávisí na připravenosti příjemce přijímat data, lokální operace</li><ul><li>Pokud příjem nebyl inciován, MPI musí odesílaná data uložit do bufferu, který si musí uživatel předtím připravit pomocí \(\texttt{MPI_Buffer_attach}\)</li></ul><li>\(\texttt{MPI_SSend}\) realizuje <b>synchronous mode</b>, kde neproběhne návrat, dokud není inicializované přijetí dat, nelokální operace<br/></li><li>\(\texttt{MPI_RSend}\) realizuje <b>ready mode</b>, kde pokud při volání není init příjmu, vrátí chybu, nelokální operace</li></ul><div><div>Komunikační módy <b>neblokujících komunikačních operací</b> jsou totožné s tím, že provedou návrat ihned po iniciování komunikační operace.</div></div>
+        </div>
+    </note>
+    <note id="1558613228" type="1708237251">
+        <div class="field">
+\(\texttt{MPI_Recv}\): parametry
+        </div>
+        <div class="field">
+\(\texttt{MPI_Recv}\)(\(\texttt{void* buf}\), \(\texttt{int count}\), \(\texttt{MPI_Datatype dt}\), \(\texttt{int source}\), \(\texttt{int tag}\), \(\texttt{MPI_Comm comm}\), \(\texttt{MPI_Status* status}\)) = slouží k přijetí dat od jednoho odesílatele<br/><ul><li>\(\texttt{void* buf}\) je ukazatel na přijímaná data</li><li>\(\texttt{int count}\) je maximální počet položek k přijetí</li><li>\(\texttt{MPI_Datatype dt}\) je typ přijímaných dat<ul><li><div>např. \(\texttt{MPI_INT}\), ale lze definovat vlastní typy</div></li></ul></li><li>\(\texttt{int dest}\) je číslo zdrojového procesu (lze použít\(\texttt{MPI_ANY_SOURCE}\))<br/></li><li>\(\texttt{int tag}\) je značka k rozeznání sémantického významu zprávy (lze použít \(\texttt{MPI_ANY_TAG}\))<br/></li><li>\(\texttt{MPI_Comm comm}\) je MPI komunikátor<br/></li><li>\(\texttt{MPI_Status* status}\) je ukazatel na stavový objekt</li><ul><li><div>můžeme ignorovat, jinak ukazatel na strukturu se skutečným zdrojem, značkou a velikostí</div></li></ul></ul><div>* \(\texttt{MPI_Recv}\) nemá komunikační módy, pouze neblokující variantu \(\texttt{MPI_IRecv}\) </div><div></div><div></div><div></div>
+        </div>
+    </note>
+    <note id="2000678421" type="1708237251">
+        <div class="field">
+Neblokující komunikační operace
+        </div>
+        <div class="field">
+Dále existují neblokující varianty \(\texttt{MPI_ISend}\), \(\texttt{MPI_BSend}\), \(\texttt{MPI_Issend}\) a \(\texttt{MPI_Irsend}\), které iniciují odeslání, a ihned se vrátí. V tomto případě není bezpečné vstupní buffer modifikovat, dokud data nejsou odeslána.<br/><br/>Všechny neblokující funkce mají navíc výstupní parametr typu \(\texttt{MPI_Request*}\), který identifikuje daný request, a umožňuje s ním dále pracovat např. pomocí \(\texttt{MPI_Test}\) (neblokující test dekončení) nebo \(\texttt{MPI_Wait}\) (blokující do dokončení).
+        </div>
+    </note>
+    <note id="1313359974" type="1708237251">
+        <div class="field">
+\(\texttt{MPI_Testany}\)/\(\texttt{Waitany}\)/\(\texttt{Testall}\)/\(\texttt{Waitall}\)
+        </div>
+        <div class="field">
+Množinové varianty \(\texttt{MPI_Test}\) (neblokující test dekončení) a \(\texttt{MPI_Wait}\) (blokující do dokončení), beroucí jako argument \(\texttt{MPI_Request[]}\):<br/><br/>\(\texttt{MPI_Testany}\)/\(\texttt{Waitany}\) = Dokončení libovolné operace<br/>\(\texttt{MPI_Testall}\)/\(\texttt{Waitall}\) = Dokončení všech operací z množiny
+        </div>
+    </note>
+    <note id="1940561463" type="1708237251">
+        <div class="field">
+\(\texttt{MPI_Iprobe}\), \(\texttt{MPI_Probe}\)
+        </div>
+        <div class="field">
+Tyto funkce testují příchozí zprávy, aniž by tyto zprávy přijaly:<br/><br/>\(\texttt{MPI_Iprobe}\) je neblokující lokální funkce s parametry:<br/><ul><li>\(\texttt{int source}\) (může být \(\texttt{MPI_ANY_SOURCE}\))</li><li>\(\texttt{int tag}\) (může být \(\texttt{MPI_ANY_TAG}\))</li><li>\(\texttt{MPI_Comm comm}\) je komunikátor</li><li>\(\texttt{int* flag}\) je funkcí nastaven na hodnotu  \(\texttt{true}\), pokud zpráva s danými parametry existuje</li><li>\(\texttt{MPI_Status* status}\) obsahuje skutečné hodnoty zdroje a značky, navíc samozřejmě velikost</li></ul><div>\(\texttt{MPI_Probe}\) je blokující nelokální funkce, která se vrátí, jakmile existuje zpráva s danými parametry, tj. nemá parametr \(\texttt{flag}\).<br/></div><br/>* Požadavky na implementaci:<br/><img src="iprobeimpl-e51b0d26209d5559131dce02d4396f6c7923b799.png"/><br/>
+        </div>
+    </note>
+    <note id="1129058745" type="1708237251">
+        <div class="field">
+Sondovaní s rezervací pro budoucí přijetí
+        </div>
+        <div class="field">
+Standardní sondování pomocí \(\texttt{MPI_Iprobe}\) a \(\texttt{MPI_Probe}\) nedokáže zaručit, že daná zpráva nebude po sondování přijata jiným vláknem.<br/><br/>Rezervaci zprávy umožňují funkce \(\texttt{MPI_Mprobe}\) a \(\texttt{MPI_Improbe}\), které mají navíc výstupní parametr \(\texttt{MPI_Message* message}\), díky kterému lze danou zprávu následně přijmout pomocí funkce \(\texttt{MPI_Mrecv}\).
+        </div>
+    </note>
+    <note id="1995049820" type="1708237251">
+        <div class="field">
+Popište varianty implementace cyklického posuvu pomocí komunikačních operací <i>Message Passing Interface </i>(MPI)
+        </div>
+        <div class="field">
+Mějme \(p\) procesů a předpokládejme, že \(i\)-tý proces posílá zprávu \(|i + 1|_p\)-tému procesu. Při implementaci této komunikační operace pomocí funkcí \(\texttt{MPI_Send}\) a \(\texttt{MPI_Recv}\) dojde s vysokou pravděpodobností k uváznutí (při použití komunikačního módu <i>synchronous</i> dojde k uváznutí vždy). Možné korektní implementace zahrnují:<br/><ul><li><b>odstranění cyklů</b> - sudé procesy nejprve posílají a následně přijímají, liché naopak;<br/></li><li><b>komunikační mód <i>buffered</i></b> - funkce \(\texttt{MPI_Bsend}\) zaručeně skončí, i když nebyl iniciován příjem;</li><li><b>neblokující komunikační operace </b>- neblokující komunikační operace zaručeně skončí, i když nebyl iniciován příjem, úspěšné odeslání je následně potřeba otestovat.</li><li><b>funkce </b>\(\texttt{MPI_Sendrecv}\) - implementace MPI zaručuje, že nedojde k uváznutí.</li></ul>
+        </div>
+    </note>
+    <note id="1428879792" type="1708237251">
+        <div class="field">
+Návratová hodnota MPI funkce, chyby
+        </div>
+        <div class="field">
+<i>Message Passing Interface </i>(MPI) předpokládá, že komunikace je spolehlivá a neposkytuje mechanismy pro řešení chyb komunikačního systému, běhových software chyb nebo hardware chyb. Funkce MPI vracejí při úspěchu hodnotu \(\texttt{MPI_SUCCESS}\), při neúspěchu vrátí* chybový kód.<br/><br/>Před návratem z funkce, která by vrátila chybový kód, se zavolá kód pro obsluhu chyb (=error handler). Lze vytvářet vlastní, ale 3 předdefinované obsluhy chyb jsou:<br/><ul><li>\(\texttt{MPI_ERRORS_ARE_FATAL}\) - násilně ukončí celý\(\texttt{MPI_COMM_WORLD}\)</li><li>\(\texttt{MPI_ERRORS_RETURN}\) - vrátí se z funkce, ale stav výpočtu není definován</li><li>\(\texttt{MPI_ERRORS_ABORT}\) - násilně ukončí procesy spojené s daným komunikátorem</li></ul>
+        </div>
+    </note>
+    <note id="1457853936" type="1708237251">
+        <div class="field">
+Dělení kolektivních komunikačních operací v propojovacích sítích paralelních počítačů
+        </div>
+        <div class="field">
+Kolektivní komunikační operace v propojovacích sítích paralelních počítačů se dělí podle rolí uzlů na:<br/><ul><li><i><b>one-to-all</b></i> - jeden proces je zdrojem/cílem a ostatní plní opačnou funkci,<br/></li><li><i><b>all-to-all</b></i> - všechny procesy jsou současně zdroje i cíle.<br/></li></ul><div><i>One-to-all</i> kolektivní komunikační operace dále dělíme na:<br/></div><div><ul><li><i>one-to-all broadcast</i> (OAB),</li><li><i>multicast<b> </b></i>(MC),<br/></li><li><i>one-to-all scatter</i> (OAS),<br/></li><li><i>all-to-one gather</i> (AOG),<br/></li></ul><div>přičemž <i>scatter </i>se od <i>broadcastu</i> liší tím, že rozesílané zprávy jsou různé. <i>All-to-all </i>operace pak dělíme na:</div></div><div><ul><li><i>all-to-all broadcast</i> (AAB) ekvivalentní s <i>all-to-all gather</i> (AAG),</li><li><i>all-to-all scatter</i> (AAS).</li></ul></div>
+        </div>
+    </note>
+    <note id="1259442923" type="1708237251">
+        <div class="field">
+Popište možnosti mapování hustých matic na procesy v algoritmu násobení hustých matic vektorem.
+        </div>
+        <div class="field">
+Mapování hustých matic na procesy v algoritmu násobení hustých matic vektorem lze provést:<br/><ul><li><b>proužkově</b> - matice je dělena podle sloupců nebo řádků, procesy tvoří virtuální 1-D mřížku,</li><li><b>šachovnicově</b> - matice je dělena podle sloupců a řádků současně, procesy tvoří virtuální 2-D mřížku.<br/></li></ul><div>Oba typy mapování lze provádět následujícími způsoby:</div><div><ul><li><b>blokově </b>- maximální granularita (maximum sousedních řádků/sloupců/prvků),<br/></li><li><b>cyklicky </b>- minimální granularita (jeden řádek/sloupec/prvek),<br/></li><li><b>blokově-cyklicky</b> - volitelná granularita (\(n\) řádků/sloupců/prvků).</li></ul></div><table style="text-align: center;"><tbody><tr><td><img src="rowmapping-77668e59c1fa1943c406da70fe9e1aa7448570a6.jpg"/><br/>proužkové mapování</td><td><img src="checkedmapping-23368c11f60dc0ba3000d83a1ae954982cc44e58.jpg"/><br/>šachovnicové mapování</td></tr></tbody></table>
+        </div>
+    </note>
+    <note id="1721678331" type="1708237251">
+        <div class="field">
+Popište algoritmus násobení hustých matic vektorem v řádkovém blokovém mapování a jeho paralelní čas
+        </div>
+        <div class="field">
+Mějme matici \(\mathbf A \in \mathbb R^{n, n}\) a vektor \(\mathbf x \in \mathbb R^n\) a počítejme\[\mathbf y = \mathbf{Ax}.\]Algoritmus násobení hustých matic vektorem v řádkovém blokovém mapování předpokládá, že se \(\mathbf x\) mapuje také řádkově (každý proces má \(\frac n p\) prvků). Průběh je následující:<br/><ul><li>Každý proces \(P_i\) rozešle svou část vektoru \(\mathbf x\) ostatním procesorům.</li><li>Každý proces\(P_i\) paralelně spočte svou část \(\mathbf y_i\) (případně několik částí, pokud \(p \neq n\)).</li></ul><div>Paralelní čas algoritmu je řádově stejný jako při sloupcovém blokovém mapování\[T(n, p) = \mathcal O \biggl(n + \frac {n^2}{p} \biggr).\]</div><div style="text-align: center;"><img src="mvmrowmapping-6c14013255c389764aabc70fccda0cbb5bb8ddea.jpg"/></div>
+        </div>
+    </note>
+    <note id="1357867932" type="1708237251">
+        <div class="field">
+Popište algoritmus násobení hustých matic vektorem ve sloupcovém blokovém mapování a jeho paralelní čas
+        </div>
+        <div class="field">
+Mějme matici \(\mathbf A \in \mathbb R^{n, n}\) a vektor \(\mathbf x \in \mathbb R^n\) a počítejme\[\mathbf y = \mathbf{Ax}.\]Algoritmus násobení hustých matic vektorem ve sloupcovém blokovém mapování předpokládá, že se \(\mathbf x\) mapuje také sloupcově (každý proces má \(\frac p n\) prvků). Průběh je následující:<br/><ul><li>Každý proces\(P_i\) paralelně spočte své příspěvky do \(\mathbf y\) (provede násobení své části \(\mathbf x\) s každou svou částí řádku \(\mathbf A\)).</li><li>Každý proces se stane kořenem řádkové paralelní redukce částečných skalárních součinů s tím, že hodnoty sčítá.</li></ul><div>Paralelní čas algoritmu je řádově stejný jako při řádkovém blokovím mapování:\[T(n, p) = \mathcal O \biggl(n + \frac {n^2}{p} \biggr).\]</div><div style="text-align: center;"><img src="mvmcolumnmapping-87455a2d53fe8e96c9f7bad1cd8c8b918340a342.jpg"/></div>
+        </div>
+    </note>
+    <note id="1137816565" type="1708237251">
+        <div class="field">
+Popište algoritmus násobení hustých matic vektorem v šachovnicovém mapování a jeho paralelní čas
+        </div>
+        <div class="field">
+Mějme matici \(\mathbf A \in \mathbb R^{n, n}\) a vektor \(\mathbf x \in \mathbb R^n\) a počítejme\[\mathbf y = \mathbf{Ax}.\]Algoritmus násobení hustých matic vektorem v šachovnicovém mapování předpokládá, že se \(\mathbf x\) na poslední sloupec (existují procesy, které nemají žádnou část \(\mathbf x\)). Průběh je následující:<br/><ul><li>Procesy posledního sloupce paralelně pošlou svou část \(\mathbf x\) diagonálnímu procesu.</li><li>Diagonální procesy paralelně rozešlou obdrženou část \(\mathbf x\) ve svých sloupcích (OAB).</li><li>Každý proces provede paralelně násobění své části \(\mathbf A\) a \(\mathbf x\).</li><li>Provede se paralelní redukce, kdy se mezivýsledky agregují do posledního sloupce operací sčítání, čímž v procesech posledního sloupce vznikají části \(\mathbf y\).</li></ul><div>Paralelní čas algoritmu je\[T(n, p) = \mathcal O \biggl(\sqrt{\frac{n^2} p} + \frac {n^2}{p} \biggr).\]</div><div style="text-align: center;"><img src="mvmcheckedmapping-894453b1cfdaa10516b9478afe5e6a38628fe187.jpg"/></div>
+        </div>
+    </note>
+    <note id="1410960233" type="1708237251">
+        <div class="field">
+Násobení hustých matic MPI
+        </div>
+        <div class="field">
+Předpokládám klasický školní algoritmus na násobení matic a blokově šachovnicové mapování matic.<br/><br/>Naivní algoritmus: Každý procesor potřebuje odpovídající submatice pomocí All-to-All Gather. Na závěr se provede lokální vynásobení, časová náročnost \(\Theta(N/p \cdot (\sqrt p + \sqrt N))\), paměťově neefektivní (nevejde se to do paměti jednoho procesoru).
+        </div>
+    </note>
+    <note id="1419504513" type="1708237251">
+        <div class="field">
+Cannonův systolický algoritmus
+        </div>
+        <div class="field">
+<div>Mějme matice \(\mathbf A, B \in \mathbb R^{n, n}\) a počítejme\[\mathbf C = \mathbf{AB}.\]Cannonův systolický algoritmus pro násobení hustých matic předpokládá, že všechny tři matice jsou mapovány šachovnicově a používá toroid \(K(\sqrt p, \sqrt p)\). Hlavním principem algoritmu je synchronní přesun matic mezi procesy tak, že každá podmatice \(\mathbf A\) a \(\mathbf B\) se v každém procesu objeví právě jednou. Algoritmus probíhá následujícím způsobem:<br/></div><ul><li>Pro všechna \(i = 0, \dots, \sqrt p - 1\) jsou paralelně rotovány všechny podmatice \(\mathbf A_{i, \bullet}\) v řádku \(i\) o \(i\) pozic doleva.</li><li>Pro všechna \(i = 0, \dots, \sqrt p - 1\) jsou paralelně rotovány všechny podmatice \(\mathbf B_{i, \bullet}\) ve sloupci \(i\) o \(i\) pozic nahoru.</li><li>Celkem \(\sqrt q\)-krát se provedou následující kroky:</li><ul><li>Pro všechna \(i, k = 0, \dots, \sqrt p -1\) paralelně vynásobí každý \(P_{i, k}\) aktuální podmatice \(\mathbf A\) s \(\mathbf B\) a přičte výsledek do \(\mathbf C_{i, k}\).</li><li>Pro všechna \(i = 0, \dots, \sqrt p - 1\) jsou paralelně rotovány všechny podmatice \(\mathbf A_{i, \bullet}\) v řádku \(i\) o jednu pozici doleva.</li><li>Pro všechna \(i = 0, \dots, \sqrt p - 1\) jsou paralelně rotovány všechny podmatice \(\mathbf B_{i, \bullet}\) ve sloupci \(i\) o jednu pozici nahoru.</li></ul></ul><div>Paralelní čas algoritmu je:\[T(n, p) = \mathcal O(t_s \sqrt p) + \mathcal O \biggr( \frac {n^2} {\sqrt p} t_m \biggr) + \mathcal O \biggr( \frac {\sqrt{n^2}^3} p \biggr).\]</div><img src="mmmcannon-7f0c470c3139751c7c5455e8f3f1b3711571c784.jpg"/><br/>
+        </div>
+    </note>
+    <note id="1806480873" type="1708237251">
+        <div class="field">
+Cannonův systolický algoritmus v MPI
+        </div>
+        <div class="field">
+Implementace Cannonova systolického algoritmu pro násobení hustých matic v <i>Message Passing Interface </i>(MPI) postupuje následovně:<br/><ul><li>Pomocí funkce \(\texttt{MPI_Cart_create}\) je vytvořen nový komunikátor simulující toroid \(K(\sqrt p, \sqrt p)\).</li><li>Pomocí funkce \(\texttt{MPI_Cart_shift}\) jsou spočteny indexy pro rotace podmatic \(\mathbf A\) a \(\mathbf B\) a pomocí funkce \(\texttt{MPI_Sendrecv_replace}\) jsou rotace realizovány.</li><li>Stejnými funkcemi jsou realizovány i operace v hlavním násobícím cyklu algoritmu.</li><li>Na konci je pomocí funkce \(\texttt{MPI_Cart_shift}\) obnoveno původní mapování \(\mathbf A\) a \(\mathbf B\) a vytvořený komunikátor je uvolněn.</li></ul>
+        </div>
+    </note>
+    <note id="2022780221" type="1708237251">
+        <div class="field">
+Foxův algoritmus (Broadcast-Multiply-Roll)
+        </div>
+        <div class="field">
+<ul><li>Nejprve se submatice pošle všem procesorům v rámci řádku \(i\) (OAB: \(\texttt{MPI_Bcast}\))</li><li>Následně se provede lokální násobení přijatých submatic</li><li>Na závěr se provede rotace ve sloupci o jednu pozici nahoru (cyklický posun)</li><li>Časová složitelnost a škálovatelnost podobná jako u Cannonova algoritmu</li></ul><img src="mmmfox-4c93433486c1db7947053a13df267afa39e79ffc.jpg"/><br/>
+        </div>
+    </note>
+    <note id="1947896104" type="1708237251">
+        <div class="field">
+Paralelní mocninná metoda: přehled
+        </div>
+        <div class="field">
+Mocniná metoda hledá iterativně největší vlastní číslo, je vhodné pro velmi řídkou matici. Využití např. Google PageRank.<br/><br/>Algoritmus:<br/><ul><li>Vytvořím nenulový počteční vektor (typicky \(x = (1,\dots,1)\))</li><li>Vynásobím matici \(A\) vektorem \(x\), vznikne vektor \(y=Ax\) (použijeme nějaký algoritmus pro řídkou MVM)</li><li>Spočteme normu \(\alpha\) vektoru \(y\), nahradíme \(x\) normalizovaným \(y = x/\alpha\) (paralelní redukce)</li><li>Vyhodnotíme kritérium konvergence, pokud není splněno, pokračujeme dál</li></ul>Implementace v MPI:<br/><ul><li>Předpokládáme řídkou matici, předem neurčená struktura</li><li>Procesory provádí lokální násobení, dílčí výsledky redukují (\(\texttt{MPI_Allreduce}\))</li></ul>
+        </div>
+    </note>
+    <note id="1612653142" type="1708237251">
+        <div class="field">
+Paralelní mocninná metoda: náhodné mapování matic
+        </div>
+        <div class="field">
+<div>Implementace mocninné metody s náhodným mapováním v <i>Message Passing Interface </i>(MPI) rozděluje prvky matice \(\mathbf A\) mezi procesy náhodně, z čehož plynou následující paměťové požadavky:<br/></div><div><ul><li>každý proces potřebuje celý vektor \(\mathbf x\) (\(n\) prvků),</li><li>každý proces může produkovat příspěvek do libovolného prvku \(\mathbf y\) a potřebuje tak vlastní kopii \(\mathbf y\) (\(n\) prvků).</li></ul><div>Jedna iterace mocninné metody pak vypadá následovně:</div><div><ul><li>Každý proces paralelně spočte svou část součinu\[\mathbf y = \mathbf{Ax}.\]</li><li>Pomocí paralelní redukce funkcí \(\texttt{MPI_Allreduce}\) je v každém procesu spočten výsledný vektor \(\mathbf y\) součtem částí jednotlivých procesů.</li><li>Následně je spočtena norma \(\mathbf y\), vektor \(\mathbf y\) je normalizován a je vyhodnocena prodmínka konvergence.</li></ul></div></div>
+        </div>
+    </note>
+    <note id="1219675076" type="1708237251">
+        <div class="field">
+Paralelní mocninná metoda: řádkové mapování matic
+        </div>
+        <div class="field">
+<div>Implementace mocninné metody s řádkovým blokovým mapováním v <i>Message Passing Interface </i>(MPI) rozděluje prvky matice \(\mathbf A\) mezi procesy po řádkových blocích o velikosti \(n /p \) a pracuje na virtuální mřížce \(M(p)\). Z toho plynou následující paměťové požadavky:<br/></div><div><ul><li>každý proces potřebuje celý vektor \(\mathbf x\) (\(n\) prvků),</li><li>procesy produkují disjunktní části vektoru \(\mathbf y\) a potřebují tak vlastní kopii pouze \(n /p \) prvků \(\mathbf y\).</li></ul><div>Jedna iterace mocninné metody pak vypadá následovně:</div><div><ul><li>Každý proces paralelně spočte svou část součinu\[\mathbf y = \mathbf{Ax}.\]</li><li>Pomocí funkce \(\texttt{MPI_Allgather}\) je v každém procesu složen výsledný vektor \(\mathbf y\) z disjunktních částí v jednotlivých procesech.</li><li>Následně je spočtena norma \(\mathbf y\), vektor \(\mathbf y\) je normalizován a je vyhodnocena prodmínka konvergence.</li></ul><div style="text-align: center;"><img src="pmrowmapping-19f6fbb2bc2d1e307c1fcd5f04facb90796e0ca7.jpg"/></div></div></div>
+        </div>
+    </note>
+    <note id="1686036672" type="1708237251">
+        <div class="field">
+Paralelní mocninná metoda: šachovnicové mapování matic
+        </div>
+        <div class="field">
+<div>Implementace mocninné metody se šachovnicovým mapováním v <i>Message Passing Interface </i>(MPI) pracuje na virtuální mřížce \(M(\sqrt p, \sqrt p)\). Z toho plynou následující paměťové požadavky:<br/></div><div><ul><li>každý proces potřebuje pouze \(n / \sqrt p\) prvků vektoru \(\mathbf x\),</li><li>procesy ve stejném řádku produkují příspěvky do stejné disjunktní části \(\mathbf y\) a potřebují tak vlastní kopii pouze \(n / \sqrt p\) prvků \(\mathbf y\).</li></ul><div>Implementace mocninné metody se šachovnicovým mapováním spočívá ve vytvoření podkomunikátorů pomocí funkce \(\texttt{MPI_Comm_split}\), které umožní procesům nezávisle komunikovat v rámci řádků, sloupců či diagonály. Jedna iterace mocninné metody pak vypadá následovně:</div><div><ul><li>Každý proces paralelně spočte svou část součinu\[\mathbf y = \mathbf{Ax}.\]</li><li>Pomocí funkce \(\texttt{MPI_Reduce}\) s řádkovým komunikátorem je v každém řádku redukována část \(\mathbf y\) na diagonální proces.</li><li>Diagonální procesy spočtou normu \(\mathbf y\) tak, že každý diagonální proces provede součet druhých mocnin svých složek \(\mathbf y\), které jsou následně redukovány pomocí funkce \(\texttt{MPI_Allreduce}\) s diagonálním komunikátorem a odmocněny.</li><li>Části vektoru \(\mathbf y\) jsou v diagonálních procesech normalizovány.</li><li>Diagonální procesory nyní pomocí funkce \(\texttt{MPI_Bcast}\) se sloupcovým komunikátorem rozešlou své části vektoru \(\mathbf y\) ve svých sloupcích.</li><li>Dojde k vyhodnocení prodmínky konvergence a komunikátory jsou případně uvoněny.</li></ul><div><div><img src="pmcheckedmapping1-c36e09b6d47caf92552bf12cc0955f04e9cefed4.jpg"/><br/></div><div><img src="pmcheckedmapping2-e9228dbac56d5e32d2e5a29b922e1b77c0a93068.jpg"/></div></div></div></div>
+        </div>
+    </note>
+
+</deck>
