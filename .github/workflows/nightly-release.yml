@@ -47,6 +47,7 @@ jobs:
       - name: Upload asset to release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: nightly
           files: CVUT-FIT-Anki.apkg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
