@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  check-asdf-ids:
+  check-ids:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
