@@ -35,6 +35,12 @@ jobs:
           name: CVUT-FIT-Anki.apkg
           path: CVUT-FIT-Anki.apkg
 
+      - uses: ClementTsang/delete-tag-and-release@v0.3.1
+        with:
+          tag_name: nightly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create or update nightly release
         id: release
         uses: softprops/turnstyle@v2
