@@ -13,7 +13,35 @@ TODO
 Způsoby zajištění evolvability software pomocí NSS: návrhové vzory
         </div>
         <div class="field">
-TODO
+<ul>
+  <li><div><strong>Separation of concerns (SoC)</strong> – rozdělení zodpovědnosti:</div>
+    <ul><li><div>když máš stejnou funkcionalitu rozkopírovanou na více míst, změna v jednom místě vede k nekonzistenci → oddělením dosáhneš, že se mění <strong>jedno místo</strong> (implementace + komunikace). </div></li></ul>
+  </li>
+  <li><div><strong>Action version transparency (verzování akcí / API)</strong>:</div>
+    <ul>
+      <li><div>A,B,C volají metodu D; když D změníš, musíš měnit A,B,C → kombinatorický efekt.</div></li>
+      <li><div>řešení: <strong>stabilní rozhraní</strong> nebo <strong>verzování</strong> vystavené akce. </div></li>
+    </ul>
+  </li>
+  <li><div><strong>Data version transparency (verzování datových struktur / zdrojů)</strong>:</div>
+    <ul>
+      <li><div>A,B,C používají datový zdroj se strukturou; změna struktury rozbije všechny konzumenty.</div></li>
+      <li><div>řešení: <strong>enkapsulace</strong> + <strong>verzování datového modelu</strong>. </div></li>
+    </ul>
+  </li>
+  <li><div><strong>Separation of states (oddělení stavů)</strong>:</div>
+    <ul>
+      <li><div>změna D přidá nový typ chyby/stavu, který musí A,B,C obsloužit → ripple efekt.</div></li>
+      <li><div>řešení: vyčlenit stav (např. „globální state“ pro neošetřené stavy) a zpracovat ho separátně. </div></li>
+    </ul>
+  </li>
+  <li><div><strong>Separate emerging concern</strong>:</div>
+    <ul>
+      <li><div>v materiálech je uvedeno, že není detailně popsáno; rozumná interpretace je „když se objeví nový průřezový problém (např. chybové zpracování), neřešit ho DIY v každém modulu, ale vyčlenit“. </div></li>
+    </ul>
+  </li>
+  <li><div>Typický chyták: verzovat jen API, ale ne data (nebo naopak). V praxi musí být stabilní <strong>kontrakty</strong> na obou stranách (akce i data).</div></li>
+</ul>
         </div>
     </note>
     <note id="1614555445" type="1708237251">

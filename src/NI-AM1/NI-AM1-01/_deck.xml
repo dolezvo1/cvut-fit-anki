@@ -5,7 +5,24 @@
 Architektura softwarového systému
         </div>
         <div class="field">
-TODO
+Architektura je soubor pravidel a rozhodnutí, která vznikají během analýzy a vývoje systému.
+
+Dělí se na:
+<ul>
+  <li>Doménově závislé části:
+    <ul>
+      <li>Data</li>
+      <li>Functions</li>
+      <li>Processes</li>
+    </ul>
+  </li>
+  <li>Doménově nezávislé části:
+    <ul>
+      <li>Software (platformy, middleware)</li>
+      <li>Hardware</li>
+    </ul>
+  </li>
+</ul>
         </div>
     </note>
     <note id="2085339866" type="1708237251">
@@ -16,12 +33,66 @@ Pojem služba a její charakteristiky
 <ul><li>Služba realizuje účinek, který má hodnotu pro jejího uživatele</li><li>Charakteristiky: encapsulation, reusability, loose coupling, contracting, abstraction, discoverability, composability</li><li>Obecně se jedná o nějaké rozhraní (a jeho dokumentaci), které je realizováno nějakým počtem implementací</li></ul><div><img src="service-144d29a2b528103ab3f27ea568497b23dc5632be.jpg"/><br/></div>
         </div>
     </note>
-    <note id="1904210323" type="1708237251">
+    <note id="1548597349" type="1708237251">
         <div class="field">
-Architektura REST: vlastnosti
+SaaS
         </div>
         <div class="field">
-<ul><li>client/server, stateless, cacheable, layered</li></ul>
+<b>Software as a Service</b> poskytuje celou aplikaci, provoz a aktualizace aplikace řeší poskytovatel služby.
+        </div>
+    </note>
+    <note id="1138975535" type="1708237251">
+        <div class="field">
+PaaS
+        </div>
+        <div class="field">
+<b>Platform as a Service</b> poskytuje běhové prostředí pro provoz aplikací (deployment runtime).
+        </div>
+    </note>
+    <note id="1387756376" type="1708237251">
+        <div class="field">
+IaaS
+        </div>
+        <div class="field">
+<b>Infrastructure as a Service</b> poskytuje infrastrukturu (VM, storage, síť), tedy "železo v cloudu".
+        </div>
+    </note>
+    <note id="1304405785" type="1708237251">
+        <div class="field">
+Monolithic architecture
+        </div>
+        <div class="field">
+Monolit znamená, že celá aplikace je jeden nedělitelný balík. Jednoduché na prototypy, ale jednotlivé komponenty aplikace nelze nezávisle škálovat nebo redeployovat.
+        </div>
+    </note>
+    <note id="1349437428" type="1708237251">
+        <div class="field">
+Two-tier, Three-tier, Multi-tier architecture
+        </div>
+        <div class="field">
+<ul>
+  <li>
+    <b>Two-tier architecture</b> - tzv. tlustý klient, klientská aplikace obsahuje prezentační i aplikační vrstvu, a má přímý přístup do databáze.
+  </li>
+  <li>
+    <b>Three-tier architecture</b> - vrstvy jsou fyzicky oddělené, klientská aplikace je tvz. tenký klient, obsahuje pouze prezentační vrstvu.
+  </li>
+  <li>
+    <b>Multi-tier architecture</b> - obsahuje navíc middleware mezi tenkým klientem a aplikačním serverem.
+  </li>
+</ul>
+        </div>
+    </note>
+
+    <note id="1904210323" type="1708237251">
+        <div class="field">
+Architektura REST: základní vlastnosti
+        </div>
+        <div class="field">
+<ul>
+    <li><b>Re</b>presentational <b>S</b>tate <b>T</b>ransfer</li>
+    <li>client/server, stateless, cacheable, layered, uniform interface</li>
+</ul>
         </div>
     </note>
     <note id="2126412501" type="1708237251">
@@ -32,6 +103,62 @@ Architektura REST: zdroj
 <ul><li>Zdroj (<i>resource</i>) je univerzálně identifikovaný pomocí URI<br/><img src="uri-d3ab01f91b30bde52c443270bc36163d010e6b52.jpg"/><br/></li><li>A resource in REST corresponds to one or more entities of a data model, its identifier (URI) serves as a way to access it<br/><img src="uri2-f9d37a475309cf54d9b5fc2e6be1f554b8d87356.jpg"/></li><li>A data model entity may be accessible through multiple identifiers, such as \(/orders/\{customer\_id\}/\{order\_id\}\) and \(/customers/\{customer\_id\}/orders/\{order\_id\}\). This is called URI aliasing and it's a good practice to limit it.</li><li>A Query serves to opt into selection, projection, or other processing instructions (e.g. \(/customers/?status=valid\))</li><li>Capability URL is a short-term URL, e.g. for verification</li></ul>
         </div>
     </note>
+    <note id="1842647608" type="1708237251">
+        <div class="field">
+Architektura REST: HATEOAS
+        </div>
+        <div class="field">
+<ul>
+    <li><b>H</b>ypertext <b>A</b>s <b>T</b>he <b>E</b>ngine <b>O</b>f <b>A</b>pplication <b>S</b>tate</li>
+    <li>server klientu dodává možné operace a jejich zdroje, takže cesty se mohou měnit bez nutnosti updatu klienta</li>
+</ul>
+        </div>
+    </note>
+    <note id="1292358671" type="1708237251">
+        <div class="field">
+Architektura REST: safe a unsafe operace
+        </div>
+        <div class="field">
+<ul>
+    <li>Safe operace nemění stav zrdoje (např. GET)</li>
+    <li>Unsafe operace mění stav zdroje (POST, PUT, atd.)</li>
+</ul>
+        </div>
+    </note>
+    <note id="1946197234" type="1708237251">
+        <div class="field">
+Architektura REST: idempotence
+        </div>
+        <div class="field">
+<ul>
+    <li>Idempotentní operace mají při opakovaném volání stejný efekt na stav systému, i když odpověď může být jiná (například pokud by při přenosu došlo k duplikaci)</li>
+    <li>Typicky se jedná o GET, PUT a DELETE</li>
+</ul>
+        </div>
+    </note>
+    <note id="1838656919" type="1708237251">
+        <div class="field">
+Architektura REST: caching
+        </div>
+        <div class="field">
+Odpovědi safe operací mohou být cachovány klientem, aby se snížila latence a zátěž serveru. Řízeno HTTP hlavičkami <b>Cache-Control</b>:
+<ul>
+    <li><b>max-age</b> lze použít k omezení jak ze strany serveru (jak dlouho může být odpověď uchována), tak ze strany klienta (jak "nová" musí odpověď být): např. <code>Cache-Control: max-age=10800</code></li>
+</ul>
+        </div>
+    </note>
+    <note id="1504577696" type="1708237251">
+        <div class="field">
+Architektura REST: konkurence
+        </div>
+        <div class="field">
+Konkurence (souběžné úpravy) se často řeší optimisticky přes ETag, aby se zabránilo přepsání cizích změn:
+<ul>
+    <li><b>Last-Modified</b> používá server k indikaci, kdy došlo k poslední změně zdroje, což může být využito klientem</li>
+    <li><b>ETag</b> identifikuje konkrétní verzi zdroje, například hash</li>
+</ul>
+        </div>
+    </note>
     <note id="1159298125" type="1708237251">
         <div class="field">
 Architektura REST: srovnání se SOAP
@@ -40,6 +167,7 @@ Architektura REST: srovnání se SOAP
 <ul><li>REST používá HTTP/S, SOAP podporuje jiné způsoby přenosu, např. SMTP</li><li>REST většinou pro data používá JSON, SOAP vždy XML</li><li>REST používá HTTP metody podle jejich sémantiky, SOAP (v případě HTTP) vše tahá přes POST</li></ul>
         </div>
     </note>
+
     <note id="1619959542" type="1708237251">
         <div class="field">
 Optimalizace protokolu HTTP: latence

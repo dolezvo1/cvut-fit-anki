@@ -2,10 +2,34 @@
 
     <note id="1834387779" type="1708237251">
         <div class="field">
-<table><tbody><tr><td>Práce se vstupními a výstupními daty v informačních systémech – konsolidace, normalizace, agregace</td></tr></tbody></table>
+Práce se vstupními a výstupními daty v informačních systémech
         </div>
         <div class="field">
-???
+IS data sbírá, zpracovává, ukládá a distribuuje - cílem je podpora řízení podniku. Rozlišujeme aktuální operativní data (např. stav objednávek) a historická data (typicky pro analýzu a predikci budoucnosti).
+        </div>
+    </note>
+    <note id="1834387780" type="1708237251">
+        <div class="field">
+Konsolidace dat
+        </div>
+        <div class="field">
+Shromáždění dat z více zdrojů do společného pohledu. Problémy: různé formáty, různé definice pojmů, atd.
+        </div>
+    </note>
+    <note id="1834387781" type="1708237251">
+        <div class="field">
+Normalizace dat
+        </div>
+        <div class="field">
+V praxi data přicházejí často neuspořádaná, duplicitní, chybná - normalizace je jejich "vyčištění a sjednocení".
+        </div>
+    </note>
+    <note id="1834387782" type="1708237251">
+        <div class="field">
+Agregace dat
+        </div>
+        <div class="field">
+Agregace je převod detailních dat na souhrny (např. denní tržby) - management nepotřebuje "každý řádek objednávky", ale podklady pro rozhodnutí.
         </div>
     </note>
     <note id="2109109033" type="1708237251">
@@ -13,7 +37,7 @@
 Manažerské informační systémy
         </div>
         <div class="field">
-???
+MIS podporují řízení podniku, poskytují informace pro manažerská rozhodnutí.
         </div>
     </note>
     <note id="1680979868" type="1708237251">
