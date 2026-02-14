@@ -1,4 +1,4 @@
 
-*.py     text diff=python
-*.md     text diff=markdown
+*.py     text diff=python eol=lf
+*.md     text diff=markdown eol=lf
 *.xml    text eol=lf
