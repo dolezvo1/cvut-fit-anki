@@ -19,12 +19,12 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      
-      - name: Run ID checker
-        run: python check_ids.py src
 
       - name: Install build dependencies
         run: python -m pip install --upgrade pip && pip install beautifulsoup4 && pip install genanki
+
+      - name: Run ID checker
+        run: python check_ids.py src
 
       - name: Run build
         run: python generator.py --all --output CVUT-FIT-Anki.apkg
