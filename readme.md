@@ -1,6 +1,6 @@
 # CVUT-FIT-Anki
 
-Anki cards for ČVUT FIT SZZ in a versionable format (HTML to be precise).
+Anki cards for ČVUT FIT SZZ in a versionable format (almost HTML, but with some non-standard attributes).
 
 
 ## Usage
@@ -8,7 +8,7 @@ Anki cards for ČVUT FIT SZZ in a versionable format (HTML to be precise).
 To generate an `.apkg` file from the source files in the `src/` directory, run:
 
 ```
-pip install genanki
+pip install beautifulsoup4 genanki
 python generator.py --all --output out.apkg
 ```
 
