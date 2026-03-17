@@ -5,7 +5,7 @@
 Definice - Úplná strategie pohybu stavovým prostorem
         </div>
         <div class="field">
-<div>Úplná strategie prohledávání stavového prostoru je strategie, která navštíví všechny stavy kromě těch, o kterých je známo, že nedávají řešení (nebo optimální řešení).<br/></div>
+<div>Úplná strategie prohledávání stavového prostoru je strategie, která navštíví všechny stavy kromě těch, o kterých je známo, že nedávají řešení (nebo optimální řešení).<br></div>
         </div>
     </note>
     <note id="2113018335" type="1708237251">
@@ -13,7 +13,7 @@ Definice - Úplná strategie pohybu stavovým prostorem
 Definice - Systematická strategie pohybu stavovým prostorem
         </div>
         <div class="field">
-Systematická strategie prohledávání stavového prostoru je úplná strategie, která každý stav navštíví nejvýše jednou.<br/><ul><li>Ukladáme si informaci o tom, které stavy jsme už navštívili</li><li>V nejhorším případě musíme projít všechny stavy (=brute force)</li></ul>
+Systematická strategie prohledávání stavového prostoru je úplná strategie, která každý stav navštíví nejvýše jednou.<br><ul><li>Ukladáme si informaci o tom, které stavy jsme už navštívili</li><li>V nejhorším případě musíme projít všechny stavy (=brute force)</li></ul>
         </div>
     </note>
     <note id="1449201646" type="1708237251">
@@ -21,7 +21,7 @@ Systematická strategie prohledávání stavového prostoru je úplná strategie
 Popište realizace systematických strategií prohledávání stavového prostoru
         </div>
         <div class="field">
-Systematické strategie prohledávání stavového prostoru lze realizovat v následujících podobách:<br/><ul><li><b>prohledávání do šířky</b> (BFS) - pomocí fronty,</li><li><b>prohledávání do hloubky </b>(DFS) - pomocí zásobníku,</li><li><b>prohledávání metodou „nejlepší nejdříve“ </b>(<i>best first</i>) - pomocí prioritní fronty.</li></ul>
+Systematické strategie prohledávání stavového prostoru lze realizovat v následujících podobách:<br><ul><li><b>prohledávání do šířky</b> (BFS) - pomocí fronty,</li><li><b>prohledávání do hloubky </b>(DFS) - pomocí zásobníku,</li><li><b>prohledávání metodou „nejlepší nejdříve“ </b>(<i>best first</i>) - pomocí prioritní fronty.</li></ul>
         </div>
     </note>
     <note id="1154556882" type="1708237251">
@@ -29,7 +29,7 @@ Systematické strategie prohledávání stavového prostoru lze realizovat v ná
 Strategie prořezávání stavovým prostorem
         </div>
         <div class="field">
-Určíme, které uzly nenavštěvovat.<br/><ul><li>Prořezáváme se na základě znalosti optimalizačního kritéria a omezujících podmínek</li><li>Pokud víme, že určitá část stavového prostoru nemůže poskytnout lepší řešení než to dosud nalezené, nemusíme ji prohledávat</li><li>Pokud víme, že určitá část stavového prostoru nesplňuje omezující podmínky, nemusíme ji prohledávat</li><li>Můžeme využít i odhad horní/dolní meze optimálního kritéria a prořezávat i na základě toho</li></ul>
+Určíme, které uzly nenavštěvovat.<br><ul><li>Prořezáváme se na základě znalosti optimalizačního kritéria a omezujících podmínek</li><li>Pokud víme, že určitá část stavového prostoru nemůže poskytnout lepší řešení než to dosud nalezené, nemusíme ji prohledávat</li><li>Pokud víme, že určitá část stavového prostoru nesplňuje omezující podmínky, nemusíme ji prohledávat</li><li>Můžeme využít i odhad horní/dolní meze optimálního kritéria a prořezávat i na základě toho</li></ul>
         </div>
     </note>
     <note id="1910560775" type="1708237251">
@@ -85,7 +85,7 @@ Lokální heuristiky
 Jednoduché lokální heuristiky, příklady
         </div>
         <div class="field">
-<div>Jednoduché heuristiky mají pouze jeden aktuální stav a počítají s jeho sousedy.<br/></div><ul><li>Náhodná procházka<br/></li><ul><li>Přesun na náhodného souseda</li></ul><li>Best only</li><ul><li>Přesun na souseda s nejlepší cenou</li></ul><li>First improvement</li><ul><li>Podobné jako Best only, ale vybere nějakého souseda z množiny sousedů s vyššími hodnotami</li></ul><li>Kernighan-Lin</li><ul><li>Podobné jako Best only, ale z aktuálního stavu pokračuje několik kroků pomocí stejné operace a z takto navštívených stavů vybere další stav</li></ul></ul><div><i>* mezi pokročilé lokální heuristiky dále patří simulované ochlazování a simulovaná evoluce, které se však svou strukturou od základních lokálních heuristik liší</i></div>
+<div>Jednoduché heuristiky mají pouze jeden aktuální stav a počítají s jeho sousedy.<br></div><ul><li>Náhodná procházka<br></li><ul><li>Přesun na náhodného souseda</li></ul><li>Best only</li><ul><li>Přesun na souseda s nejlepší cenou</li></ul><li>First improvement</li><ul><li>Podobné jako Best only, ale vybere nějakého souseda z množiny sousedů s vyššími hodnotami</li></ul><li>Kernighan-Lin</li><ul><li>Podobné jako Best only, ale z aktuálního stavu pokračuje několik kroků pomocí stejné operace a z takto navštívených stavů vybere další stav</li></ul></ul><div><i>* mezi pokročilé lokální heuristiky dále patří simulované ochlazování a simulovaná evoluce, které se však svou strukturou od základních lokálních heuristik liší</i></div>
         </div>
     </note>
     <note id="1685373216" type="1708237251">
@@ -109,7 +109,7 @@ Metody řešení uváznutí v lokálním optimu
 Definice - Stav algoritmu
         </div>
         <div class="field">
-Mějme vnitřní proměnné \(Z\) algoritmu \(A\) řešícího instanci \(I\) problému \(\Pi\) s konfiguračními proměnnými \(Y\). Každé ohodnocení \(s\) proměnných \(Z \cup Y\) nazýváme stavem algoritmu \(A\) řešícího \(I\).<br/><br/><i>* jedno ohodnocení vnitřních a konfiguračních proměnných</i>
+Mějme vnitřní proměnné \(Z\) algoritmu \(A\) řešícího instanci \(I\) problému \(\Pi\) s konfiguračními proměnnými \(Y\). Každé ohodnocení \(s\) proměnných \(Z \cup Y\) nazýváme stavem algoritmu \(A\) řešícího \(I\).<br><br><i>* jedno ohodnocení vnitřních a konfiguračních proměnných</i>
         </div>
     </note>
     <note id="1507706876" type="1708237251">
@@ -117,7 +117,7 @@ Mějme vnitřní proměnné \(Z\) algoritmu \(A\) řešícího instanci \(I\) pr
 Definice - Stavový prostor, akce
         </div>
         <div class="field">
-<div>Mějme množinu všech stavů \(S = \{ s_i \}\) algoritmu \(A\) řešícího instanci \(I\). Nechť \(Q = \{ q_j \}\) je množina operátorů takových, že<br/>\[q_j : S \to S, \quad q_j(s_i) \neq s_i, \quad \forall q_j, \forall s_i.\]Dvojici \((S, Q)\) pak nazýváme <b>statovým prostorem</b> algoritmu \(A\) řešícího \(I\). Aplikace \(q_j\) na \(s_i\) se nazývá <b>akce</b>.<br/></div><div><br/></div><div><br/></div><div><i>* stavový prostor je dvojice </i><i>množiny stavů a </i><i>množiny operátorů, které netvoří smyčky</i></div><div><i>* akce je aplikace operátoru na stav</i></div>
+<div>Mějme množinu všech stavů \(S = \{ s_i \}\) algoritmu \(A\) řešícího instanci \(I\). Nechť \(Q = \{ q_j \}\) je množina operátorů takových, že<br>\[q_j : S \to S, \quad q_j(s_i) \neq s_i, \quad \forall q_j, \forall s_i.\]Dvojici \((S, Q)\) pak nazýváme <b>statovým prostorem</b> algoritmu \(A\) řešícího \(I\). Aplikace \(q_j\) na \(s_i\) se nazývá <b>akce</b>.<br></div><div><br></div><div><br></div><div><i>* stavový prostor je dvojice </i><i>množiny stavů a </i><i>množiny operátorů, které netvoří smyčky</i></div><div><i>* akce je aplikace operátoru na stav</i></div>
         </div>
     </note>
     <note id="2009356199" type="1708237251">
@@ -125,7 +125,7 @@ Definice - Stavový prostor, akce
 Graf stavového prostoru
         </div>
         <div class="field">
-Graf stavového prostoru lokální heuristiky je orientovaný graf, kde hrany odpovídají akcím.<br/><br/>V závislosti na typu heuristiky může mít následující vlastnosti:<br/><ul><li><b>acykličnost</b> - jednodušší heuristiky, typicky hladové algoritmy;</li><li><b>cykličnost</b> - složitější heuristiky.</li></ul>
+Graf stavového prostoru lokální heuristiky je orientovaný graf, kde hrany odpovídají akcím.<br><br>V závislosti na typu heuristiky může mít následující vlastnosti:<br><ul><li><b>acykličnost</b> - jednodušší heuristiky, typicky hladové algoritmy;</li><li><b>cykličnost</b> - složitější heuristiky.</li></ul>
         </div>
     </note>
     <note id="1764922584" type="1708237251">
@@ -173,7 +173,7 @@ Stavový prostor TSP/HC
 Definice - Prostor prohledávání
         </div>
         <div class="field">
-Prostor prohledávání se od stavového prostoru liší tím, že ohodnocení proměnných jeho prvků může být nedefinované. Dosazením všech možných hodnot za nedefinované proměnné vzniká podmnožina stavového prostoru.<br/><br/><i>* např. v prostoru prohledávání by mohl být přípustný prvek </i>\(\texttt{0?1}\)<i> a dosazením všech možných hodnot za nedefinovanou proměnnou lze získat stavy </i>\(\texttt{011}\)<i> a </i>\(\texttt{001}\)<i>, které tvoří podmnožinu stavového prostoru</i>
+Prostor prohledávání se od stavového prostoru liší tím, že ohodnocení proměnných jeho prvků může být nedefinované. Dosazením všech možných hodnot za nedefinované proměnné vzniká podmnožina stavového prostoru.<br><br><i>* např. v prostoru prohledávání by mohl být přípustný prvek </i>\(\texttt{0?1}\)<i> a dosazením všech možných hodnot za nedefinovanou proměnnou lze získat stavy </i>\(\texttt{011}\)<i> a </i>\(\texttt{001}\)<i>, které tvoří podmnožinu stavového prostoru</i>
         </div>
     </note>
 

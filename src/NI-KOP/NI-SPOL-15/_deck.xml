@@ -21,7 +21,7 @@ Princip simulovaného ochlazování
 Ukončovací podmínka simulovaného ochlazování
         </div>
         <div class="field">
-Například:<br/><ul><li>dolní mez pro teplotu (koncová teplota)</li><li>dolní mez pro počet změn</li><li>dolní mez pro počet přijatých zlepšujících řešení (dokud přijímáme zlepšující řešení, nemá smysl končit)</li></ul><div><i>* třeba myslet na to, že přijímané řešení se zpomalí, když začneme padat k lokálnímu minimu (je dobré počkat, zda se to ještě nerozběhne)</i></div>
+Například:<br><ul><li>dolní mez pro teplotu (koncová teplota)</li><li>dolní mez pro počet změn</li><li>dolní mez pro počet přijatých zlepšujících řešení (dokud přijímáme zlepšující řešení, nemá smysl končit)</li></ul><div><i>* třeba myslet na to, že přijímané řešení se zpomalí, když začneme padat k lokálnímu minimu (je dobré počkat, zda se to ještě nerozběhne)</i></div>
         </div>
     </note>
     <note id="1351698531" type="1708237251">
@@ -37,7 +37,7 @@ Omezující podmínky simulovaného ochlazování
 Počáteční řešení
         </div>
         <div class="field">
-Můžeme buď zvolit náhodně, nebo konstruktivně<ul><li><div><div>Konstruktivní počáteční řešení<br/></div><ul><li>Vhodnou volbou počátečního řešení můžeme práci heuristiky urychlit - pokud máme na začátku poměrně dobré řešení, pro heuristiku nebude problém dostat se k ještě lepšímu</li></ul></div></li><li><div>Náhodné řešení<br/></div><ul><li>Vícenásobné spuštění</li><li>Správně aplikované simulované ochlazování není závislé na počátečním řešení (může to ale trvat trochu déle)</li></ul></li></ul>
+Můžeme buď zvolit náhodně, nebo konstruktivně<ul><li><div><div>Konstruktivní počáteční řešení<br></div><ul><li>Vhodnou volbou počátečního řešení můžeme práci heuristiky urychlit - pokud máme na začátku poměrně dobré řešení, pro heuristiku nebude problém dostat se k ještě lepšímu</li></ul></div></li><li><div>Náhodné řešení<br></div><ul><li>Vícenásobné spuštění</li><li>Správně aplikované simulované ochlazování není závislé na počátečním řešení (může to ale trvat trochu déle)</li></ul></li></ul>
         </div>
     </note>
     <note id="2005745766" type="1708237251">
@@ -61,7 +61,7 @@ Počáteční teplota
 Algoritmus iterativní optimalizace
         </div>
         <div class="field">
-<img src="sa-fad8d638293a83aebd389522b172c4fe5901a352.png"/>
+<img src="sa-fad8d638293a83aebd389522b172c4fe5901a352.png">
         </div>
     </note>
     <note id="1514380275" type="1708237251">
@@ -69,7 +69,7 @@ Algoritmus iterativní optimalizace
 Ochlazovací funkce
         </div>
         <div class="field">
-\(t_k = \frac {c} {\log(1 + k)}\)<br/>kde \(k\) je číslo kroku, \(c\) je hloubka lokálního minima.
+\(t_k = \frac {c} {\log(1 + k)}\)<br>kde \(k\) je číslo kroku, \(c\) je hloubka lokálního minima.
         </div>
     </note>
     <note id="1915425807" type="1708237251">
@@ -77,7 +77,7 @@ Ochlazovací funkce
 Equilibrium a koeficient ochlazování
         </div>
         <div class="field">
-<ul><li>Ochlazujeme tak, že teplotu vynásobíme parametrem mezi \(0\) a \(1\), většinou \(0.8\)<i> a </i>\(0.999\)</li><li>Správná míra ochlazování lze za běhu řídit délkou ekvilibria</li><li>Příliš vysoký koeficient ochlazování - výpočet trvá dlouho bez zlepšování výsledku</li><li>Příliš nízký koeficient ochlazování - riziko uváznutí</li><li><div><b>Délka ekvilibria</b> - ovlivňuje počet okolních stavů, které prohledáváme v každém teplotním skoku</div><ul><li>Většinou implementujeme tak, že ekvilibrium skončí po \(X\) přijatých řešeních, nebo \(Y\) iteracích<br/></li><li>Správná hodnota ekvilibria závisí na problému a na míře ochlazování</li><li>Příliš vysoká - výpočet trvá dlouho bez zlepšení výsledku</li><li>Příliš nízká - riziko uváznutí v lokálním minimu</li></ul></li></ul>
+<ul><li>Ochlazujeme tak, že teplotu vynásobíme parametrem mezi \(0\) a \(1\), většinou \(0.8\)<i> a </i>\(0.999\)</li><li>Správná míra ochlazování lze za běhu řídit délkou ekvilibria</li><li>Příliš vysoký koeficient ochlazování - výpočet trvá dlouho bez zlepšování výsledku</li><li>Příliš nízký koeficient ochlazování - riziko uváznutí</li><li><div><b>Délka ekvilibria</b> - ovlivňuje počet okolních stavů, které prohledáváme v každém teplotním skoku</div><ul><li>Většinou implementujeme tak, že ekvilibrium skončí po \(X\) přijatých řešeních, nebo \(Y\) iteracích<br></li><li>Správná hodnota ekvilibria závisí na problému a na míře ochlazování</li><li>Příliš vysoká - výpočet trvá dlouho bez zlepšení výsledku</li><li>Příliš nízká - riziko uváznutí v lokálním minimu</li></ul></li></ul>
         </div>
     </note>
 

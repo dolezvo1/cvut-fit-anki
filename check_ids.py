@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 import sys
 from pathlib import Path
-import xml.etree.ElementTree as ET
 from collections import defaultdict
+from bs4 import BeautifulSoup
 
 def find_deck_files(root_dir: Path):
     return list(root_dir.rglob("_deck.xml"))
 
 def extract_ids(xml_path: Path):
     try:
-        tree = ET.parse(xml_path)
-        root = tree.getroot()
-        deck_id = root.get("id")
-        if deck_id is not None:
-            deck_id = deck_id.strip()
+        text = xml_path.read_text(encoding="utf-8", errors="replace")
+        soup = BeautifulSoup(text, "html.parser")
+        deck_tag = soup.find("deck")
+        deck_id = None
+        if deck_tag and deck_tag.has_attr("id"):
+            deck_id = deck_tag["id"].strip()
         note_ids = []
-        for n in root.findall(".//note"):
-            note_id = n.get("id")
-            if note_id is not None:
-                note_id = note_id.strip()
-            note_ids.append(note_id)
+        for n in soup.find_all("note"):
+            nid = n.get("id")
+            if nid is not None:
+                nid = nid.strip()
+            note_ids.append(nid)
         return deck_id, note_ids
     except Exception as e:
         print(f"ERROR parsing {xml_path}: {e}", file=sys.stderr)
@@ -27,7 +28,7 @@ def extract_ids(xml_path: Path):
 
 def main(argv):
     if len(argv) < 2:
-        print("Usage: check_asdf_ids.py <src-dir>", file=sys.stderr)
+        print("Usage: check_ids.py <src-dir>", file=sys.stderr)
         return 2
 
     root_dir = Path(argv[1])
@@ -42,7 +43,6 @@ def main(argv):
 
     deck_id_to_files = defaultdict(list)
     note_id_to_files = defaultdict(list)
-    parse_errors = False
 
     for f in sorted(files):
         deck_id, note_ids = extract_ids(f)

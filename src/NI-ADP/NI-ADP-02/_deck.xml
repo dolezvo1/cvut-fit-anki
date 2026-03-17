@@ -13,7 +13,7 @@ An interface for object creation (e.g. chairs and sofas). Different implementati
 GoF Creational: Factory method
         </div>
         <div class="field">
-Factory Method provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.<br/><img alt="The structure of creator classes" src="factorymethod-85192cfab129f344ea29ec992803d220.png"/>
+Factory Method provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.<br><img alt="The structure of creator classes" src="factorymethod-85192cfab129f344ea29ec992803d220.png">
         </div>
     </note>
     <note id="2053388666" type="1708237251">
@@ -45,7 +45,7 @@ Singleton lets you ensure that a class has only one instance, while providing a 
 Non-GoF: Double-checked locking
         </div>
         <div class="field">
-Check value, lock mutex, check value again.<br/><br/><pre><code><span style="font-weight: bold;">public</span> <span style="font-weight: bold;">static</span> Singleton <span style="font-weight: bold;">getInstance</span>() {
+Check value, lock mutex, check value again.<br><br><pre><code><span style="font-weight: bold;">public</span> <span style="font-weight: bold;">static</span> Singleton <span style="font-weight: bold;">getInstance</span>() {
     <span style="font-weight: bold;">if</span> (INSTANCE == <span style="font-weight: bold;">null</span>) {
         <span style="font-weight: bold;">synchronized</span> (Singleton.<span style="font-weight: bold;">class</span>) {
             <span style="font-weight: bold;">if</span> (INSTANCE == <span style="font-weight: bold;">null</span>) {

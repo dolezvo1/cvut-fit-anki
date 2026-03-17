@@ -4,11 +4,11 @@
 import argparse
 import os
 import sys
-import xml.etree.ElementTree as ET
 import genanki
 import random
 import html
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 class ExportManager:
     def __init__(self):
@@ -26,24 +26,33 @@ class ExportManager:
 
 def generate_deck(models, top_deck_name, path):
     print(f"Processing {path}")
-    tree = ET.parse(path)
-    root = tree.getroot()
-    
-    deck_id = int(root.attrib.get("id"))
-    deck_name = top_deck_name + "::" + root.attrib.get("name")
-    deck_slug = root.attrib.get("deck_slug")
+    text = Path(path).read_text(encoding="utf-8", errors="replace")
+    soup = BeautifulSoup(text, "html.parser")
+
+    root = soup.find("deck")
+    if root is None:
+        raise ValueError(f"No <deck> element found in {path}")
+
+    deck_id = int(root.get("id"))
+    deck_name = top_deck_name + "::" + (root.get("name") or "")
+    deck_slug = root.get("deck_slug")
     deck = genanki.Deck(deck_id, deck_name)
-    
-    for idx, note_elem in enumerate(root.findall(".//note")):
-        fields = [ET.tostring(fld, encoding="unicode") for fld in note_elem.findall("div")]
-        
+
+    for idx, note_elem in enumerate(root.find_all("note")):
+        fields = []
+        for fld in note_elem.find_all("div", {"class": "field"}):
+            fields.append(fld.decode_contents())
+
         if len(fields) < 2:
             continue
+
         fields.append(f"{deck_slug}_{(idx + 1) * 10:04d}")
-        
-        note = genanki.Note(model=models[note_elem.attrib.get("type")], guid=note_elem.attrib.get("id"), fields=fields)
+
+        model_key = note_elem.get("type")
+        guid = note_elem.get("id")
+        note = genanki.Note(model=models[model_key], guid=guid, fields=fields)
         deck.add_note(note)
-    
+
     return deck
 
 

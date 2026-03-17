@@ -5,7 +5,7 @@
 Service Oriented Architecture
         </div>
         <div class="field">
-SOA supports two core business strategies<br/><ul><li>Growing top-line revenue (Enterprise reacts quickly to requirements from the market - Business processes can be reconfigured rather than reimplemented)</li><li>Improving bottom-line profit (Saving development costs by resuing existing services)</li></ul><div><img src="soa-7faabdfe9f1671700889065dac11d47b528c236a.jpg"/><br/></div>
+SOA supports two core business strategies<br><ul><li>Growing top-line revenue (Enterprise reacts quickly to requirements from the market - Business processes can be reconfigured rather than reimplemented)</li><li>Improving bottom-line profit (Saving development costs by resuing existing services)</li></ul><div><img src="soa-7faabdfe9f1671700889065dac11d47b528c236a.jpg"><br></div>
         </div>
     </note>
     <note id="1644549124" type="1708237251">
@@ -13,7 +13,7 @@ SOA supports two core business strategies<br/><ul><li>Growing top-line revenue (
 One-to-one Service Intergration
         </div>
         <div class="field">
-<ul><li>Direct integration of applications</li><li>Multiple protocols problem, multiple vendor problem</li></ul><img src="onetoone-590c5970b8e6a30d43c4074e56afdbca5231131d.jpg"/><br/>
+<ul><li>Direct integration of applications</li><li>Multiple protocols problem, multiple vendor problem</li></ul><img src="onetoone-590c5970b8e6a30d43c4074e56afdbca5231131d.jpg"><br>
         </div>
     </note>
     <note id="1894753162" type="1708237251">
@@ -21,7 +21,7 @@ One-to-one Service Intergration
 Enterprise Service Bus
         </div>
         <div class="field">
-ESB is a central intermediary in SOA<br/><ul><li>ESB serves as a message broker (can mix and match protocols)</li><li>ESB can hide changes in location of services without affecting clients</li><li>ESB can pool sessions, enrich messages, etc.</li></ul><img src="esb-9a0944d2595faaf1174f8e462d60fb696b6c5df5.jpg"/><br/>
+ESB is a central intermediary in SOA<br><ul><li>ESB serves as a message broker (can mix and match protocols)</li><li>ESB can hide changes in location of services without affecting clients</li><li>ESB can pool sessions, enrich messages, etc.</li></ul><img src="esb-9a0944d2595faaf1174f8e462d60fb696b6c5df5.jpg"><br>
         </div>
     </note>
     <note id="2128205385" type="1708237251">

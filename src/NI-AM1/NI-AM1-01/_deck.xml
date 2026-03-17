@@ -30,7 +30,7 @@ Dělí se na:
 Pojem služba a její charakteristiky
         </div>
         <div class="field">
-<ul><li>Služba realizuje účinek, který má hodnotu pro jejího uživatele</li><li>Charakteristiky: encapsulation, reusability, loose coupling, contracting, abstraction, discoverability, composability</li><li>Obecně se jedná o nějaké rozhraní (a jeho dokumentaci), které je realizováno nějakým počtem implementací</li></ul><div><img src="service-144d29a2b528103ab3f27ea568497b23dc5632be.jpg"/><br/></div>
+<ul><li>Služba realizuje účinek, který má hodnotu pro jejího uživatele</li><li>Charakteristiky: encapsulation, reusability, loose coupling, contracting, abstraction, discoverability, composability</li><li>Obecně se jedná o nějaké rozhraní (a jeho dokumentaci), které je realizováno nějakým počtem implementací</li></ul><div><img src="service-144d29a2b528103ab3f27ea568497b23dc5632be.jpg"><br></div>
         </div>
     </note>
     <note id="1548597349" type="1708237251">
@@ -100,7 +100,7 @@ Architektura REST: základní vlastnosti
 Architektura REST: zdroj
         </div>
         <div class="field">
-<ul><li>Zdroj (<i>resource</i>) je univerzálně identifikovaný pomocí URI<br/><img src="uri-d3ab01f91b30bde52c443270bc36163d010e6b52.jpg"/><br/></li><li>A resource in REST corresponds to one or more entities of a data model, its identifier (URI) serves as a way to access it<br/><img src="uri2-f9d37a475309cf54d9b5fc2e6be1f554b8d87356.jpg"/></li><li>A data model entity may be accessible through multiple identifiers, such as \(/orders/\{customer\_id\}/\{order\_id\}\) and \(/customers/\{customer\_id\}/orders/\{order\_id\}\). This is called URI aliasing and it's a good practice to limit it.</li><li>A Query serves to opt into selection, projection, or other processing instructions (e.g. \(/customers/?status=valid\))</li><li>Capability URL is a short-term URL, e.g. for verification</li></ul>
+<ul><li>Zdroj (<i>resource</i>) je univerzálně identifikovaný pomocí URI<br><img src="uri-d3ab01f91b30bde52c443270bc36163d010e6b52.jpg"><br></li><li>A resource in REST corresponds to one or more entities of a data model, its identifier (URI) serves as a way to access it<br><img src="uri2-f9d37a475309cf54d9b5fc2e6be1f554b8d87356.jpg"></li><li>A data model entity may be accessible through multiple identifiers, such as \(/orders/\{customer\_id\}/\{order\_id\}\) and \(/customers/\{customer\_id\}/orders/\{order\_id\}\). This is called URI aliasing and it's a good practice to limit it.</li><li>A Query serves to opt into selection, projection, or other processing instructions (e.g. \(/customers/?status=valid\))</li><li>Capability URL is a short-term URL, e.g. for verification</li></ul>
         </div>
     </note>
     <note id="1842647608" type="1708237251">
@@ -173,7 +173,7 @@ Architektura REST: srovnání se SOAP
 Optimalizace protokolu HTTP: latence
         </div>
         <div class="field">
-Creating new TCP connections is expensive (requires a full round trip)<br/><br/><img alt="PPT - Lecture 23: Network Primer PowerPoint Presentation, free download ..." src="threeway-aa2dafbb438ebfbc3f6a5639ea358174.jpg"/>
+Creating new TCP connections is expensive (requires a full round trip)<br><br><img alt="PPT - Lecture 23: Network Primer PowerPoint Presentation, free download ..." src="threeway-aa2dafbb438ebfbc3f6a5639ea358174.jpg">
         </div>
     </note>
     <note id="1179512223" type="1708237251">

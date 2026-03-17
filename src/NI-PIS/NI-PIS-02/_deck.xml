@@ -45,7 +45,7 @@ MIS podporují řízení podniku, poskytují informace pro manažerská rozhodnu
 Úlohy z pohledu data science
         </div>
         <div class="field">
-<ul><li>klasifikace<br/>– Je to případ A, nebo B?</li><li>predikce<br/>– Jaká je pravděpodobnost, že nastane událost?</li><li>odhady<br/>– Kolik bude X? Jaký podíl pozitivních se objeví?</li><li>segmentace<br/>– Jaké jsou typické skupiny, typické vzorce chování? </li><li>detekce<br/>– Je to normální případ, nebo anomalita?</li><li>podobnost<br/> – Které případy se sobě podobají? Kdo má s kým vztah?<br/></li></ul>
+<ul><li>klasifikace<br>– Je to případ A, nebo B?</li><li>predikce<br>– Jaká je pravděpodobnost, že nastane událost?</li><li>odhady<br>– Kolik bude X? Jaký podíl pozitivních se objeví?</li><li>segmentace<br>– Jaké jsou typické skupiny, typické vzorce chování? </li><li>detekce<br>– Je to normální případ, nebo anomalita?</li><li>podobnost<br> – Které případy se sobě podobají? Kdo má s kým vztah?<br></li></ul>
         </div>
     </note>
     <note id="1896449903" type="1708237251">
@@ -62,7 +62,7 @@ redukce dimenzionality atd.</li><li>Modeling
 výkonnosti modelu</li><li>Evaluation
 – vyhodnocení úspěšnosti modelu vzhledem k věcným kritériím</li><li>Deployment
 – produkční nasazení modelu v datovém workflow zákazníka;
-vyřešení administrace, údržby, zaškolení, rekalibrace…<br/></li></ol>
+vyřešení administrace, údržby, zaškolení, rekalibrace…<br></li></ol>
         </div>
     </note>
     <note id="2001590646" type="1708237251">
@@ -70,7 +70,7 @@ vyřešení administrace, údržby, zaškolení, rekalibrace…<br/></li></ol>
 Big data
         </div>
         <div class="field">
-<ul><li>Characterized by 3Vs: Volume, Velocity, Variety</li><li>Data processing:</li><ul><li><div>Batch processing (Hadoop, Spark) - efficient, not online</div></li><li><div>Stream processing (Kafka) - resource intensive, online</div></li></ul><li>Different roles in bigdata world<br/><img src="bigdataroles-735e2db0bf676a2bc60062f2d0c1cbd0984eb8f3.jpg"/><br/></li><li>Data hierarchy<br/><img src="datascienceneeds-066e62cf5c2cd001a968ea26c8206f53c5d6a6d3.jpg"/><br/></li><li>On-premises vs Cloud</li></ul>
+<ul><li>Characterized by 3Vs: Volume, Velocity, Variety</li><li>Data processing:</li><ul><li><div>Batch processing (Hadoop, Spark) - efficient, not online</div></li><li><div>Stream processing (Kafka) - resource intensive, online</div></li></ul><li>Different roles in bigdata world<br><img src="bigdataroles-735e2db0bf676a2bc60062f2d0c1cbd0984eb8f3.jpg"><br></li><li>Data hierarchy<br><img src="datascienceneeds-066e62cf5c2cd001a968ea26c8206f53c5d6a6d3.jpg"><br></li><li>On-premises vs Cloud</li></ul>
         </div>
     </note>
 

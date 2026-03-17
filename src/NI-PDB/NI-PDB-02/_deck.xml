@@ -53,7 +53,7 @@ Represents data as nodes (entities) and edges (relationships). Suitable for comp
 Query languages: SQL
         </div>
         <div class="field">
-Structured Query Language is used for managing and querying relational databases.<br/><br/>Example select query:<br/><ul><li><code>SELECT attribute FROM table1</code></li><li><code>WHERE condition</code> (filter rows)</li><li><code>JOIN table2 ON condition</code></li><li><code>GROUP BY attribute</code> (aggregate rows by attribute)</li><li><code>HAVING condition</code> (filter aggregated groups)</li><li><code>ORDER BY attribute ASC</code></li></ul>
+Structured Query Language is used for managing and querying relational databases.<br><br>Example select query:<br><ul><li><code>SELECT attribute FROM table1</code></li><li><code>WHERE condition</code> (filter rows)</li><li><code>JOIN table2 ON condition</code></li><li><code>GROUP BY attribute</code> (aggregate rows by attribute)</li><li><code>HAVING condition</code> (filter aggregated groups)</li><li><code>ORDER BY attribute ASC</code></li></ul>
         </div>
     </note>
     <note id="1724529703" type="1708237251">
@@ -61,7 +61,7 @@ Structured Query Language is used for managing and querying relational databases
 Query languages: XQuery
         </div>
         <div class="field">
-A query language designed for querying XML data. It allows usage of XML tags, which allows for creation of new XML documents.<br/><br/>Example:<br/><img src="xquery-58e855ddf958a6510c2f646b86af53ef35c16208.jpg"/>
+A query language designed for querying XML data. It allows usage of XML tags, which allows for creation of new XML documents.<br><br>Example:<br><img src="xquery-58e855ddf958a6510c2f646b86af53ef35c16208.jpg">
         </div>
     </note>
     <note id="1900741437" type="1708237251">
@@ -69,7 +69,7 @@ A query language designed for querying XML data. It allows usage of XML tags, wh
 Query languages: Cypher
         </div>
         <div class="field">
-A declarative query language for graph databases.<br/><br/>Example query:<br/><ul><li><code>MATCH p=(s:City {code: 'sf'})-[:DIRECT *1..5]-&gt;(d)</code> (find any paths of edges of type <code>DIRECT</code> from <code>'sf'</code> with length at most 5)</li><li><code>OPTIONAL MATCH (f)-[:ASDF]-&gt;(d)</code> (optionally find another object with edge of type <code>ASDF</code> towards <code>d</code>)</li><li><code>WHERE condition</code> (filter matches based on a condition)</li><li><code>RETURN DISTINCT s, d;</code></li></ul><div>List comprehension:</div><div><ul><li><code>RETURN [x IN range(0,10) WHERE x % 2 = 0 | x^3]</code> (take range, filter to evens, apply third power)</li></ul></div>
+A declarative query language for graph databases.<br><br>Example query:<br><ul><li><code>MATCH p=(s:City {code: 'sf'})-[:DIRECT *1..5]-&gt;(d)</code> (find any paths of edges of type <code>DIRECT</code> from <code>'sf'</code> with length at most 5)</li><li><code>OPTIONAL MATCH (f)-[:ASDF]-&gt;(d)</code> (optionally find another object with edge of type <code>ASDF</code> towards <code>d</code>)</li><li><code>WHERE condition</code> (filter matches based on a condition)</li><li><code>RETURN DISTINCT s, d;</code></li></ul><div>List comprehension:</div><div><ul><li><code>RETURN [x IN range(0,10) WHERE x % 2 = 0 | x^3]</code> (take range, filter to evens, apply third power)</li></ul></div>
         </div>
     </note>
 

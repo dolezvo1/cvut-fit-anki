@@ -35,13 +35,13 @@ A note node has two attributes: `id` and `type` (the id of the note type). For e
 </note>
 ```
 
-A field node is simply a `div` element which is pasted into the note field verbatim (including the outer `div` tags). Note that XML does not permit `&nbsp;`. Note XML requires non-pair tags (`br`, `img`, etc.) to have have slash before the final `>`, for example `br` looks like `<br/>`.
+A field node is simply a `div` element which is pasted into the note field verbatim (including the outer `div` tags).
 
 ## Contributing
 
 The cards are not perfect by any means and many improvements could be made. Forks and PRs are very welcome.
 
-To convert your existing Anki decks to XML, you can export the decks individually from Anki to txt, and then use `tsv_to_xml.py` (requires some manual cleanup).
+To convert your existing Anki decks to XML, you can export the decks individually from Anki to txt, and then use `tsv_to_xml.py` (might require some manual cleanup).
 
 
 ## Copyright

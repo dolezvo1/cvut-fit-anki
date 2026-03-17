@@ -13,7 +13,7 @@ Adapter allows objects with incompatible interfaces to collaborate.
 GoF Structural: Bridge
         </div>
         <div class="field">
-Bridge lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.<br/><br/><img alt="Solution suggested by the Bridge pattern" src="bridge-065879952cf7ec719899d7e49fb69ada.png"/>
+Bridge lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.<br><br><img alt="Solution suggested by the Bridge pattern" src="bridge-065879952cf7ec719899d7e49fb69ada.png">
         </div>
     </note>
     <note id="1341859317" type="1708237251">
@@ -29,7 +29,7 @@ Composite lets you compose objects into tree structures and then work with these
 GoF Structural: Decorator
         </div>
         <div class="field">
-Decorator lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.<br/><br/>Commonly given example are Java's I/O streams:<br/><pre>inputStream = new BufferedReader(new FileReader("xanadu.txt"));</pre>
+Decorator lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.<br><br>Commonly given example are Java's I/O streams:<br><pre>inputStream = new BufferedReader(new FileReader("xanadu.txt"));</pre>
         </div>
     </note>
     <note id="1635351046" type="1708237251">
@@ -37,7 +37,7 @@ Decorator lets you attach new behaviors to objects by placing these objects insi
 GoF Structural: Facade
         </div>
         <div class="field">
-Facade provides a simplified interface to a library, a framework, or any other complex set of classes.<br/><br/><img alt="The structure of the Facade pattern example" src="facade-78e77b45212e72b85d3db599ef2084d3.png"/>
+Facade provides a simplified interface to a library, a framework, or any other complex set of classes.<br><br><img alt="The structure of the Facade pattern example" src="facade-78e77b45212e72b85d3db599ef2084d3.png">
         </div>
     </note>
     <note id="1981056605" type="1708237251">
