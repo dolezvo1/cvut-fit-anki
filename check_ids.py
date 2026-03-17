@@ -11,12 +11,12 @@ def extract_ids(xml_path: Path):
     try:
         text = xml_path.read_text(encoding="utf-8", errors="replace")
         soup = BeautifulSoup(text, "html.parser")
-        deck_tag = soup.find("deck")
+        deck_tag = soup.find("div", {"class": "deck"})
         deck_id = None
         if deck_tag and deck_tag.has_attr("id"):
             deck_id = deck_tag["id"].strip()
         note_ids = []
-        for n in soup.find_all("note"):
+        for n in soup.find_all("div", {"class": "note"}):
             nid = n.get("id")
             if nid is not None:
                 nid = nid.strip()

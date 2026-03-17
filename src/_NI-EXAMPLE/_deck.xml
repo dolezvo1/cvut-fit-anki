@@ -1,12 +1,12 @@
-<deck id="1420498952" name="NI-EXAMPLE::NI-EXAMPLE-01" deck_slug="NI-EXAMPLE-01">
+<div class="deck" id="1420498952" name="NI-EXAMPLE::NI-EXAMPLE-01" deck_slug="NI-EXAMPLE-01">
 
-    <note id="1420498952" type="1708237251">
+    <div class="note" id="1420498952" type="1708237251">
         <div class="field">
             Front text
         </div>
         <div class="field">
             Back text
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>

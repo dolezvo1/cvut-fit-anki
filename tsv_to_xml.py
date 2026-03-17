@@ -13,18 +13,18 @@ def sanitize_field_text(s):
     return s.replace("</field>", "<!/field>")
 
 def row_to_note_xml(fields, note_id="", note_type=""):
-    parts = [f'    <note id="{note_id}" type="{note_type}">']
+    parts = [f'    <div class="note" id="{note_id}" type="{note_type}">']
     for f in fields:
         parts.append('        <div class="field">')
         parts.append(sanitize_field_text(f))
         parts.append('        </div>')
-    parts.append('    </note>')
+    parts.append('    </div>')
     return "\n".join(parts)
 
 def tsv_to_xml(input_tsv, output_xml):
     lines = []
     lines.append('<?xml version="1.0" encoding="utf-8"?>')
-    lines.append('<deck>')
+    lines.append('<div class="deck">')
 
     with open(input_tsv, newline='', encoding='utf-8') as fh:
         reader = csv.reader(fh, delimiter="\t")
@@ -38,7 +38,7 @@ def tsv_to_xml(input_tsv, output_xml):
         for _, fields in rows:
             note_xml = row_to_note_xml(fields, str(random.randrange(1 << 30, 1 << 31)), str(1708237251))
             lines.append(note_xml)
-    lines.append('</deck>')
+    lines.append('</div>')
 
     content = "\n".join(lines) + "\n"
     Path(output_xml).write_text(content, encoding='utf-8')

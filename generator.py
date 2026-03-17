@@ -29,7 +29,7 @@ def generate_deck(models, top_deck_name, path):
     text = Path(path).read_text(encoding="utf-8", errors="replace")
     soup = BeautifulSoup(text, "html.parser")
 
-    root = soup.find("deck")
+    root = soup.find("div", {"class": "deck"})
     if root is None:
         raise ValueError(f"No <deck> element found in {path}")
 
@@ -38,7 +38,7 @@ def generate_deck(models, top_deck_name, path):
     deck_slug = root.get("deck_slug")
     deck = genanki.Deck(deck_id, deck_name)
 
-    for idx, note_elem in enumerate(root.find_all("note")):
+    for idx, note_elem in enumerate(root.find_all("div", {"class": "note"})):
         fields = []
         for fld in note_elem.find_all("div", {"class": "field"}):
             fields.append(fld.decode_contents())

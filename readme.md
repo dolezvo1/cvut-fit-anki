@@ -1,6 +1,6 @@
 # CVUT-FIT-Anki
 
-Anki cards for ČVUT FIT SZZ in a versionable format (XML to be precise).
+Anki cards for ČVUT FIT SZZ in a versionable format (HTML to be precise).
 
 
 ## Usage
@@ -22,20 +22,20 @@ Decks are stored as `_deck.xml` files. All other files in a given directory are 
 A deck node has three attributes: `id`, `name` and `deck_slug` (which is used as a prefix for the note sorting field). For example:
 
 ```
-<deck id="1446238097" name="NI-PIS::NI-PIS-02" deck_slug="NI-PIS-02">
+<div class="deck" id="1446238097" name="NI-PIS::NI-PIS-02" deck_slug="NI-PIS-02">
     ...notes here...
-</deck>
+</div>
 ```
 
 A note node has two attributes: `id` and `type` (the id of the note type). For example:
 
 ```
-<note id="1834387779" type="1708237251">
+<div class="note" id="1834387779" type="1708237251">
     ...fields here...
-</note>
+</div>
 ```
 
-A field node is simply a `div` element which is pasted into the note field verbatim (including the outer `div` tags).
+A field node is simply a `div` element with `class="field"` which is pasted into the note field verbatim (including the outer `div` tags).
 
 ## Contributing
 

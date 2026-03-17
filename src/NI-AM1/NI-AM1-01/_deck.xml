@@ -1,6 +1,6 @@
-<deck id="1803793656" name="NI-AM1::NI-AM1-01" deck_slug="NI-AM1-01">
+<div class="deck" id="1803793656" name="NI-AM1::NI-AM1-01" deck_slug="NI-AM1-01">
 
-    <note id="1817845146" type="1708237251">
+    <div class="note" id="1817845146" type="1708237251">
         <div class="field">
 Architektura softwarového systému
         </div>
@@ -24,48 +24,48 @@ Dělí se na:
   </li>
 </ul>
         </div>
-    </note>
-    <note id="2085339866" type="1708237251">
+    </div>
+    <div class="note" id="2085339866" type="1708237251">
         <div class="field">
 Pojem služba a její charakteristiky
         </div>
         <div class="field">
 <ul><li>Služba realizuje účinek, který má hodnotu pro jejího uživatele</li><li>Charakteristiky: encapsulation, reusability, loose coupling, contracting, abstraction, discoverability, composability</li><li>Obecně se jedná o nějaké rozhraní (a jeho dokumentaci), které je realizováno nějakým počtem implementací</li></ul><div><img src="service-144d29a2b528103ab3f27ea568497b23dc5632be.jpg"><br></div>
         </div>
-    </note>
-    <note id="1548597349" type="1708237251">
+    </div>
+    <div class="note" id="1548597349" type="1708237251">
         <div class="field">
 SaaS
         </div>
         <div class="field">
 <b>Software as a Service</b> poskytuje celou aplikaci, provoz a aktualizace aplikace řeší poskytovatel služby.
         </div>
-    </note>
-    <note id="1138975535" type="1708237251">
+    </div>
+    <div class="note" id="1138975535" type="1708237251">
         <div class="field">
 PaaS
         </div>
         <div class="field">
 <b>Platform as a Service</b> poskytuje běhové prostředí pro provoz aplikací (deployment runtime).
         </div>
-    </note>
-    <note id="1387756376" type="1708237251">
+    </div>
+    <div class="note" id="1387756376" type="1708237251">
         <div class="field">
 IaaS
         </div>
         <div class="field">
 <b>Infrastructure as a Service</b> poskytuje infrastrukturu (VM, storage, síť), tedy "železo v cloudu".
         </div>
-    </note>
-    <note id="1304405785" type="1708237251">
+    </div>
+    <div class="note" id="1304405785" type="1708237251">
         <div class="field">
 Monolithic architecture
         </div>
         <div class="field">
 Monolit znamená, že celá aplikace je jeden nedělitelný balík. Jednoduché na prototypy, ale jednotlivé komponenty aplikace nelze nezávisle škálovat nebo redeployovat.
         </div>
-    </note>
-    <note id="1349437428" type="1708237251">
+    </div>
+    <div class="note" id="1349437428" type="1708237251">
         <div class="field">
 Two-tier, Three-tier, Multi-tier architecture
         </div>
@@ -82,9 +82,9 @@ Two-tier, Three-tier, Multi-tier architecture
   </li>
 </ul>
         </div>
-    </note>
+    </div>
 
-    <note id="1904210323" type="1708237251">
+    <div class="note" id="1904210323" type="1708237251">
         <div class="field">
 Architektura REST: základní vlastnosti
         </div>
@@ -94,16 +94,16 @@ Architektura REST: základní vlastnosti
     <li>client/server, stateless, cacheable, layered, uniform interface</li>
 </ul>
         </div>
-    </note>
-    <note id="2126412501" type="1708237251">
+    </div>
+    <div class="note" id="2126412501" type="1708237251">
         <div class="field">
 Architektura REST: zdroj
         </div>
         <div class="field">
 <ul><li>Zdroj (<i>resource</i>) je univerzálně identifikovaný pomocí URI<br><img src="uri-d3ab01f91b30bde52c443270bc36163d010e6b52.jpg"><br></li><li>A resource in REST corresponds to one or more entities of a data model, its identifier (URI) serves as a way to access it<br><img src="uri2-f9d37a475309cf54d9b5fc2e6be1f554b8d87356.jpg"></li><li>A data model entity may be accessible through multiple identifiers, such as \(/orders/\{customer\_id\}/\{order\_id\}\) and \(/customers/\{customer\_id\}/orders/\{order\_id\}\). This is called URI aliasing and it's a good practice to limit it.</li><li>A Query serves to opt into selection, projection, or other processing instructions (e.g. \(/customers/?status=valid\))</li><li>Capability URL is a short-term URL, e.g. for verification</li></ul>
         </div>
-    </note>
-    <note id="1842647608" type="1708237251">
+    </div>
+    <div class="note" id="1842647608" type="1708237251">
         <div class="field">
 Architektura REST: HATEOAS
         </div>
@@ -113,8 +113,8 @@ Architektura REST: HATEOAS
     <li>server klientu dodává možné operace a jejich zdroje, takže cesty se mohou měnit bez nutnosti updatu klienta</li>
 </ul>
         </div>
-    </note>
-    <note id="1292358671" type="1708237251">
+    </div>
+    <div class="note" id="1292358671" type="1708237251">
         <div class="field">
 Architektura REST: safe a unsafe operace
         </div>
@@ -124,8 +124,8 @@ Architektura REST: safe a unsafe operace
     <li>Unsafe operace mění stav zdroje (POST, PUT, atd.)</li>
 </ul>
         </div>
-    </note>
-    <note id="1946197234" type="1708237251">
+    </div>
+    <div class="note" id="1946197234" type="1708237251">
         <div class="field">
 Architektura REST: idempotence
         </div>
@@ -135,8 +135,8 @@ Architektura REST: idempotence
     <li>Typicky se jedná o GET, PUT a DELETE</li>
 </ul>
         </div>
-    </note>
-    <note id="1838656919" type="1708237251">
+    </div>
+    <div class="note" id="1838656919" type="1708237251">
         <div class="field">
 Architektura REST: caching
         </div>
@@ -146,8 +146,8 @@ Odpovědi safe operací mohou být cachovány klientem, aby se snížila latence
     <li><b>max-age</b> lze použít k omezení jak ze strany serveru (jak dlouho může být odpověď uchována), tak ze strany klienta (jak "nová" musí odpověď být): např. <code>Cache-Control: max-age=10800</code></li>
 </ul>
         </div>
-    </note>
-    <note id="1504577696" type="1708237251">
+    </div>
+    <div class="note" id="1504577696" type="1708237251">
         <div class="field">
 Architektura REST: konkurence
         </div>
@@ -158,39 +158,39 @@ Konkurence (souběžné úpravy) se často řeší optimisticky přes ETag, aby 
     <li><b>ETag</b> identifikuje konkrétní verzi zdroje, například hash</li>
 </ul>
         </div>
-    </note>
-    <note id="1159298125" type="1708237251">
+    </div>
+    <div class="note" id="1159298125" type="1708237251">
         <div class="field">
 Architektura REST: srovnání se SOAP
         </div>
         <div class="field">
 <ul><li>REST používá HTTP/S, SOAP podporuje jiné způsoby přenosu, např. SMTP</li><li>REST většinou pro data používá JSON, SOAP vždy XML</li><li>REST používá HTTP metody podle jejich sémantiky, SOAP (v případě HTTP) vše tahá přes POST</li></ul>
         </div>
-    </note>
+    </div>
 
-    <note id="1619959542" type="1708237251">
+    <div class="note" id="1619959542" type="1708237251">
         <div class="field">
 Optimalizace protokolu HTTP: latence
         </div>
         <div class="field">
 Creating new TCP connections is expensive (requires a full round trip)<br><br><img alt="PPT - Lecture 23: Network Primer PowerPoint Presentation, free download ..." src="threeway-aa2dafbb438ebfbc3f6a5639ea358174.jpg">
         </div>
-    </note>
-    <note id="1179512223" type="1708237251">
+    </div>
+    <div class="note" id="1179512223" type="1708237251">
         <div class="field">
 Optimalizace protokolu HTTP: keep-alive
         </div>
         <div class="field">
 HTTP keepalive = TCP connection is reused for multiple requests/responses, this reduces latency (three-way handshake is expensive)
         </div>
-    </note>
-    <note id="1132312658" type="1708237251">
+    </div>
+    <div class="note" id="1132312658" type="1708237251">
         <div class="field">
 Optimalizace protokolu HTTP: pipelining
         </div>
         <div class="field">
 <ul><li>Requests are pipelined one after another, this saves one request and response propagation latency</li><li>Issues: a single slow response blocks all requests behind it, this may be resolved by using multiple TCP connections</li></ul>
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>

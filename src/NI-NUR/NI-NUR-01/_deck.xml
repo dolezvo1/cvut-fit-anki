@@ -1,14 +1,14 @@
-<deck id="1268191010" name="NI-NUR::NI-NUR-01" deck_slug="NI-NUR-01">
+<div class="deck" id="1268191010" name="NI-NUR::NI-NUR-01" deck_slug="NI-NUR-01">
 
-    <note id="1999196441" type="1708237251">
+    <div class="note" id="1999196441" type="1708237251">
         <div class="field">
 Proces návrhu uživatelských rozhraní
         </div>
         <div class="field">
 <ol><li>Product statement (what it does for whom, what it does not)</li><li>Personas - models of users (typical user, occasional user, etc.)</li><li>UseCases and Scenarios (use case is a list of actions defining the interactions between an actor and a system, use cases are derived from the business requirements)</li><li>WireFrames (schematic focusing on what the screen does, actions available to the user, etc.)</li><li>Prototypes (Lo-Fi/Hi-Fi)</li></ol>
         </div>
-    </note>
-    <note id="1738406647" type="1708237251">
+    </div>
+    <div class="note" id="1738406647" type="1708237251">
         <div class="field">
 Mentální model
         </div>
@@ -17,8 +17,8 @@ Mentální model
   <li>The user has a mental model of how the program works. When this mental model does not fit the reality, issues arise, usually the user has issues with using the product and that makes them feel stupid.</li>
 </ul>
         </div>
-    </note>
-    <note id="1199301791" type="1708237251">
+    </div>
+    <div class="note" id="1199301791" type="1708237251">
         <div class="field">
 Limity lidské paměti
         </div>
@@ -27,8 +27,8 @@ Limity lidské paměti
   <li>The short term memory can hold 3-5 "items" at once. The average user will have issues using a program that assumes they can hold more than 3 "items" at once in their short term memory.</li>
 </ul>
         </div>
-    </note>
-    <note id="1506472806" type="1708237251">
+    </div>
+    <div class="note" id="1506472806" type="1708237251">
         <div class="field">
 Lidské vnímání
         </div>
@@ -38,6 +38,6 @@ Lidské vnímání
   <li>Different colors have different cultural associations (e.g. warm colors such as red tend to evoke energy and action, cool colors such as blue tend to evoke calmness...)</li>
 </ul>
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>

@@ -1,54 +1,54 @@
-<deck id="1446238097" name="NI-PIS::NI-PIS-02" deck_slug="NI-PIS-02">
+<div class="deck" id="1446238097" name="NI-PIS::NI-PIS-02" deck_slug="NI-PIS-02">
 
-    <note id="1834387779" type="1708237251">
+    <div class="note" id="1834387779" type="1708237251">
         <div class="field">
 Práce se vstupními a výstupními daty v informačních systémech
         </div>
         <div class="field">
 IS data sbírá, zpracovává, ukládá a distribuuje - cílem je podpora řízení podniku. Rozlišujeme aktuální operativní data (např. stav objednávek) a historická data (typicky pro analýzu a predikci budoucnosti).
         </div>
-    </note>
-    <note id="1834387780" type="1708237251">
+    </div>
+    <div class="note" id="1834387780" type="1708237251">
         <div class="field">
 Konsolidace dat
         </div>
         <div class="field">
 Shromáždění dat z více zdrojů do společného pohledu. Problémy: různé formáty, různé definice pojmů, atd.
         </div>
-    </note>
-    <note id="1834387781" type="1708237251">
+    </div>
+    <div class="note" id="1834387781" type="1708237251">
         <div class="field">
 Normalizace dat
         </div>
         <div class="field">
 V praxi data přicházejí často neuspořádaná, duplicitní, chybná - normalizace je jejich "vyčištění a sjednocení".
         </div>
-    </note>
-    <note id="1834387782" type="1708237251">
+    </div>
+    <div class="note" id="1834387782" type="1708237251">
         <div class="field">
 Agregace dat
         </div>
         <div class="field">
 Agregace je převod detailních dat na souhrny (např. denní tržby) - management nepotřebuje "každý řádek objednávky", ale podklady pro rozhodnutí.
         </div>
-    </note>
-    <note id="2109109033" type="1708237251">
+    </div>
+    <div class="note" id="2109109033" type="1708237251">
         <div class="field">
 Manažerské informační systémy
         </div>
         <div class="field">
 MIS podporují řízení podniku, poskytují informace pro manažerská rozhodnutí.
         </div>
-    </note>
-    <note id="1680979868" type="1708237251">
+    </div>
+    <div class="note" id="1680979868" type="1708237251">
         <div class="field">
 Úlohy z pohledu data science
         </div>
         <div class="field">
 <ul><li>klasifikace<br>– Je to případ A, nebo B?</li><li>predikce<br>– Jaká je pravděpodobnost, že nastane událost?</li><li>odhady<br>– Kolik bude X? Jaký podíl pozitivních se objeví?</li><li>segmentace<br>– Jaké jsou typické skupiny, typické vzorce chování? </li><li>detekce<br>– Je to normální případ, nebo anomalita?</li><li>podobnost<br> – Které případy se sobě podobají? Kdo má s kým vztah?<br></li></ul>
         </div>
-    </note>
-    <note id="1896449903" type="1708237251">
+    </div>
+    <div class="note" id="1896449903" type="1708237251">
         <div class="field">
 CRISP-DM
         </div>
@@ -64,14 +64,14 @@ výkonnosti modelu</li><li>Evaluation
 – produkční nasazení modelu v datovém workflow zákazníka;
 vyřešení administrace, údržby, zaškolení, rekalibrace…<br></li></ol>
         </div>
-    </note>
-    <note id="2001590646" type="1708237251">
+    </div>
+    <div class="note" id="2001590646" type="1708237251">
         <div class="field">
 Big data
         </div>
         <div class="field">
 <ul><li>Characterized by 3Vs: Volume, Velocity, Variety</li><li>Data processing:</li><ul><li><div>Batch processing (Hadoop, Spark) - efficient, not online</div></li><li><div>Stream processing (Kafka) - resource intensive, online</div></li></ul><li>Different roles in bigdata world<br><img src="bigdataroles-735e2db0bf676a2bc60062f2d0c1cbd0984eb8f3.jpg"><br></li><li>Data hierarchy<br><img src="datascienceneeds-066e62cf5c2cd001a968ea26c8206f53c5d6a6d3.jpg"><br></li><li>On-premises vs Cloud</li></ul>
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>

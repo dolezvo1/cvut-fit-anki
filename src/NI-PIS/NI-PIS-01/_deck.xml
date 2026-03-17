@@ -1,14 +1,14 @@
-<deck id="1618192023" name="NI-PIS::NI-PIS-01" deck_slug="NI-PIS-01">
+<div class="deck" id="1618192023" name="NI-PIS::NI-PIS-01" deck_slug="NI-PIS-01">
 
-    <note id="1981893515" type="1708237251">
+    <div class="note" id="1981893515" type="1708237251">
         <div class="field">
 Architektura informačního systému
         </div>
         <div class="field">
 <ul><li>Architektura je soubor klíčových rozhodnutí během analýzy a vývoje systému</li></ul>
         </div>
-    </note>
-    <note id="1981893516" type="1708237251">
+    </div>
+    <div class="note" id="1981893516" type="1708237251">
         <div class="field">
 Vliv kontextu a velikosti organizace na architekturu systémů
         </div>
@@ -16,22 +16,22 @@ Vliv kontextu a velikosti organizace na architekturu systémů
 Architektura musí sedět na potřeby orgranizace v daném stádiu:
 <ul><li>Když firma začíná, stačí jí na prodej krabicové řešení a prakticky na všechny popůrné činnosti Excel</li><li>Když se poté zvětšuje, jsou věší nároky na efektivitu business procesů (Camunda), task tracking (Jira), regulace, atd.</li><li>Buy vs Build</li></ul>
         </div>
-    </note>
-    <note id="1881790158" type="1708237251">
+    </div>
+    <div class="note" id="1881790158" type="1708237251">
         <div class="field">
 Information systems taxonomy
         </div>
         <div class="field">
 <ul><li>Operational-level systems - basic operation<ul><li><div>Transaction Processing System - used by workers for basic reporting</div></li></ul></li><li>Management-level systems - management<ul><li><div>Management Information System - used by managers for operational efficiency</div></li><li><div>Decision Support System - used by senior managers for decision making<br></div></li></ul></li><li>Strategic-level systems - strategic planning</li><ul><li><div>Executive Information System - used by executives for strategic decisions</div></li></ul></ul><div><img src="taxonomy-89f5c014b6a3076d62b3a6c6a334d7ce4c217e68.jpg"><br></div>
         </div>
-    </note>
-    <note id="1290507554" type="1708237251">
+    </div>
+    <div class="note" id="1290507554" type="1708237251">
         <div class="field">
 Praktické využití distribuovaných systémů
         </div>
         <div class="field">
 Distribuované systémy mají vyšší odolnost vůči výpadkům. Pokud lze systém efektivně horizontálně škálovat, může být i levnější.
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>

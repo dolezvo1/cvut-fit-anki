@@ -1,14 +1,14 @@
-<deck id="1889470801" name="NI-NSS::NI-NSS-02" deck_slug="NI-NSS-02">
+<div class="deck" id="1889470801" name="NI-NSS::NI-NSS-02" deck_slug="NI-NSS-02">
 
-    <note id="1286229319" type="1708237251">
+    <div class="note" id="1286229319" type="1708237251">
         <div class="field">
 Způsoby zajištění evolvability software pomocí NSS: principy
         </div>
         <div class="field">
 TODO
         </div>
-    </note>
-    <note id="1970365755" type="1708237251">
+    </div>
+    <div class="note" id="1970365755" type="1708237251">
         <div class="field">
 Způsoby zajištění evolvability software pomocí NSS: návrhové vzory
         </div>
@@ -43,30 +43,30 @@ Způsoby zajištění evolvability software pomocí NSS: návrhové vzory
   <li><div>Typický chyták: verzovat jen API, ale ne data (nebo naopak). V praxi musí být stabilní <strong>kontrakty</strong> na obou stranách (akce i data).</div></li>
 </ul>
         </div>
-    </note>
-    <note id="1614555445" type="1708237251">
+    </div>
+    <div class="note" id="1614555445" type="1708237251">
         <div class="field">
 Způsoby zajištění evolvability software pomocí NSS: architektura
         </div>
         <div class="field">
 TODO
         </div>
-    </note>
-    <note id="1464596925" type="1708237251">
+    </div>
+    <div class="note" id="1464596925" type="1708237251">
         <div class="field">
 Způsoby zajištění evolvability software pomocí NSS: generování kódu
         </div>
         <div class="field">
 TODO
         </div>
-    </note>
-    <note id="1086539573" type="1708237251">
+    </div>
+    <div class="note" id="1086539573" type="1708237251">
         <div class="field">
 Další oblasti aplikace NSS mimo doménu softwarových systémů.
         </div>
         <div class="field">
 TODO
         </div>
-    </note>
+    </div>
 
-</deck>
+</div>
